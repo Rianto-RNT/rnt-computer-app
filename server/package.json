@@ -1,0 +1,53 @@
+{
+  "name": "rnt-computer-app",
+  "version": "1.0.0",
+  "description": "Build one of The Biggest Real World MERN Stack E-commerce Project using React Redux Node MongoDB and Ant Design.",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production & node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rianto-RNT/rnt-computer-app.git"
+  },
+  "keywords": [
+    "node.js",
+    "express.js",
+    "mongodb",
+    "postman",
+    "api",
+    "restful",
+    "ecommerce",
+    "application",
+    "react",
+    "http",
+    "backend",
+    "javascript"
+  ],
+  "author": "rian-rnt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rianto-RNT/rnt-computer-app/issues"
+  },
+  "homepage": "https://github.com/Rianto-RNT/rnt-computer-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cloudinary": "^1.23.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.3",
+    "express-jwt": "^6.1.0",
+    "firebase-admin": "^9.12.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.14",
+    "morgan": "^1.10.0",
+    "npm-check-updates": "^12.3.1",
+    "slugify": "^1.4.5",
+    "stripe": "^8.104.0",
+    "uniqueid": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
