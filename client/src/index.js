@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 // import 'antd/dist/antd.css';
-import 'antd/dist/antd.min.css';
+import "antd/dist/antd.min.css";
 
 ReactDOM.render(
   // <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   // </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById("root"),
 );
 
 reportWebVitals();
