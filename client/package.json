@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.2.2",
+    "@ant-design/icons": "^4.7.0",
     "@david.kucsai/react-pdf-table": "^0.3.0",
     "@react-pdf/renderer": "^1.6.11",
     "@stripe/react-stripe-js": "^1.1.2",
