@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useState(() => {
+    setEmail(window.localStorage.getItem("emailForRegistration"));
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = {
-      url: "http://localhost:3000/register/complete",
+      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
       handleCodeInApp: true,
     };
 
@@ -22,18 +25,20 @@ const RegisterComplete = ({ history }) => {
     setEmail("");
   };
 
-  const registerForm = () => (
+  const completeRegisterationForm = () => (
     <form onSubmit={handleSubmit}>
+      <input type="email" className="form-control" value={email} disabled />
       <input
-        type="email"
+        type="password"
         className="form-control"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
         autoFocus
       />
-
+      <br />
       <button type="submit" className="btn btn-primary">
-        Register
+        Complete Registeration
       </button>
     </form>
   );
@@ -42,9 +47,8 @@ const RegisterComplete = ({ history }) => {
     <div className="container p-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h4>Register</h4>
-          <ToastContainer />
-          {registerForm()}
+          <h4>Register Complete</h4>
+          {completeRegisterationForm()}
         </div>
       </div>
     </div>
