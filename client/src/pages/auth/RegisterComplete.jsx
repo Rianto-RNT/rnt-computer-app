@@ -3,8 +3,9 @@ import { auth } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Register = () => {
+const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,9 +15,7 @@ const Register = () => {
     };
 
     await auth.sendSignInLinkToEmail(email, config);
-    toast.success(
-      `Email is sent to ${email}. Click the link to complete your registration.`
-    );
+    toast.success(`Email is sent to ${email}. Click the link to complete your registration.`);
     // save user email in local storage
     window.localStorage.setItem("emailForRegistration", email);
     // clear state
@@ -52,4 +51,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterComplete;

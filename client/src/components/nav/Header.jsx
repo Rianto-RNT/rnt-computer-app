@@ -27,7 +27,7 @@ const Header = () => {
         <Link to="/login">Login</Link>
       </Item>
 
-      <SubMenu icon={<UserOutlined />} title="Username">
+      <SubMenu key="username" icon={<UserOutlined />} title="Username">
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
       </SubMenu>
