@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { toast } from "react-toastify";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, Spin} from "antd";
 import {
   GoogleOutlined,
   MailOutlined,
@@ -153,7 +153,7 @@ const Login = ({ history }) => {
     <div className="container p-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          {loading ? <h4 className="text-danger">Loading...</h4> : <h4>Login</h4>}
+          {loading ? <Spin size="large" tip="Loading..." /> : <h4>Login</h4>}
           {loginForm()}
           <Button
             onClick={googleLogin}
@@ -174,7 +174,7 @@ const Login = ({ history }) => {
             </Link>
             </p>
           </Item>
-          
+
         </div>
       </div>
     </div>
