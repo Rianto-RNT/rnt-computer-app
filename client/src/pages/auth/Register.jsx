@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
+import { Form, Input, Button } from "antd";
+import {
+  MailOutlined
+} from "@ant-design/icons";
+
+const { Item } = Form;
+
 const Register = () => {
   const [email, setEmail] = useState("");
 
@@ -21,20 +28,62 @@ const Register = () => {
   };
 
   const registerForm = () => (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        className="form-control"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Your Email"
-        autoFocus
-      />
-      <br />
-      <button type="submit" className="btn btn-primary">
-        Register
-      </button>
-    </form>
+    <Form
+      name="Register"
+      className="login-form"
+      initialValues={{
+        remember: true,
+      }}
+      onFinish={handleSubmit}
+    >
+      <Item
+        name="email"
+        rules={[
+          {
+            required: true,
+            message: "Please input your email for registration",
+          },
+        ]}
+      >
+        <Input
+          prefix={<MailOutlined className="site-form-item-icon" />}
+          placeholder="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          autoFocus
+        />
+      </Item>
+
+      <Item>
+        <Button
+          onClick={handleSubmit}
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          block
+          shape="round"
+          size="middle"
+        >
+          Register
+        </Button>
+      </Item>
+    </Form>
+
+    // <form onSubmit={handleSubmit}>
+    //   <input
+    //     type="email"
+    //     className="form-control"
+    //     value={email}
+    //     onChange={(e) => setEmail(e.target.value)}
+    //     placeholder="Your Email"
+    //     autoFocus
+    //   />
+    //   <br />
+    //   <button type="submit" className="btn btn-primary">
+    //     Register
+    //   </button>
+    // </form>
   );
 
   return (

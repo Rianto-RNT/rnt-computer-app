@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
+import { Form, Input, Button } from "antd";
+import {
+  LockOutlined,
+  EyeInvisibleOutlined,
+  EyeTwoTone,
+} from "@ant-design/icons";
+
+const { Item } = Form;
+
 const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,10 +35,7 @@ const RegisterComplete = ({ history }) => {
     }
 
     try {
-      const result = await auth.signInWithEmailLink(
-        email,
-        window.location.href
-      );
+      const result = await auth.signInWithEmailLink(email, window.location.href);
       //   console.log("RESULT", result);
       if (result.user.emailVerified) {
         // remove user email fom local storage
@@ -50,22 +56,53 @@ const RegisterComplete = ({ history }) => {
   };
 
   const completeRegistrationForm = () => (
-    <form onSubmit={handleSubmit}>
-      <input type="email" className="form-control" value={email} disabled />
+    <Form
+      name="password"
+      className="login-form"
+      initialValues={{
+        remember: true,
+      }}
+      onFinish={handleSubmit}
+    >
+      <Item
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: "Please add a Password to complete your registration!",
+             
+          },
+          {
+            min: 5, 
+            message: 'Password must be minimum 6 characters.'
+          }
+        ]}
+      >
+        <Input.Password
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+          iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoFocus
+        />
+      </Item>
 
-      <input
-        type="password"
-        className="form-control"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        autoFocus
-      />
-      <br />
-      <button type="submit" className="btn btn-success">
-        Complete Registration
-      </button>
-    </form>
+      <Item>
+        <Button
+          onClick={handleSubmit}
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          block
+          shape="round"
+          size="middle"
+        >
+          Complete Registration
+        </Button>
+      </Item>
+    </Form>
   );
 
   return (
