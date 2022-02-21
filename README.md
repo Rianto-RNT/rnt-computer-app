@@ -1,10 +1,10 @@
 <h1 align="center">
   <br>
-  Bootcamp Booking Backend API Specifications
+  RNT Computer App - Fullstack web development Specifications
   <br>
 </h1>
 
-<h4 align="center">Backend API for Bootcamp application, which is a bootcamp directory website built on top of <a href="https://nodejs.org/en/" target="_blank">NodeJS</a>.</h4>
+<h4 align="center">Fullstack web development (MERN) for RNT Computer Application, which is an Aplication directory website built on top of <a href="https://nodejs.org/en/" target="_blank">NodeJS</a>.</h4>
 
  <p align="center">
  <a href="#deployed-version">Demo</a> •
@@ -52,9 +52,9 @@ $ npm i
 $ npm start
 ```
 
-## Run App in Development
+## Run App in Development for client / React
 ```sh
- npm run dev
+ npm start
 ```
 
 ## Run App in Production
@@ -75,6 +75,8 @@ $ npm start
 ## Build With
 
 * [Node.js](https://nodejs.org/en) - JS runtime environment
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [Firebase](https://firebase.google.com/) - Authentication — user login and identity
 * [VSCode](https://code.visualstudio.com) - Free source-code editor made by Microsoft
 * [Express](http://expressjs.com/) - The web framework used
 * [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
@@ -88,6 +90,8 @@ $ npm start
 ## NPM Packages
 
 - [dotenv](https://github.com/motdotla/dotenv#readme)
+- [ant-design](https://github.com/ant-design/ant-design/)
+- [redux](https://github.com/reduxjs/redux)
 - [morgan](https://github.com/expressjs/morgan)
 - [multer](https://github.com/expressjs/multer)
 - [eslint](https://github.com/eslint/eslint)
