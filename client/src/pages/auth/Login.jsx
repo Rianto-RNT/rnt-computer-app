@@ -108,6 +108,10 @@ const Login = ({ history }) => {
             required: true,
             message: "Please input your Password!",
           },
+          {
+            min: 5, 
+            message: 'Password must be minimum 6 characters.'
+          }
         ]}
       >
         <Input.Password
@@ -126,7 +130,7 @@ const Login = ({ history }) => {
           <Checkbox>Remember me</Checkbox>
         </Item>
 
-        <a style={rightStyleForgotPassword} className="login-form-forgot" href="">
+        <a style={rightStyleForgotPassword} className="login-form-forgot" href="/#">
           Forgot password
         </a>
       </Item>

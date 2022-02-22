@@ -9,16 +9,10 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const { SubMenu, Item } = Menu;
-
-const centerStyle = {
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-};
 
 const rightStyleRegister = { position: "absolute", top: 0, right: 0 };
 const rightStyleLogin = {
@@ -33,6 +27,7 @@ const Header = () => {
   const [current, setCurrent] = useState("home");
 
   let distpatch = useDispatch();
+  let { user } = useSelector((state) => ({ ...state }));
   let history = useHistory();
 
   const handleClick = (e) => {
@@ -56,21 +51,31 @@ const Header = () => {
         <Link to="/">Home</Link>
       </Item>
 
-      <Item key="register" icon={<UserAddOutlined />} style={rightStyleRegister}>
-        <Link to="/register">Register</Link>
-      </Item>
-
-      <Item key="login" icon={<LoginOutlined />} style={rightStyleLogin}>
-        <Link to="/login">Login</Link>
-      </Item>
-
-      <SubMenu style={centerStyle} key="username" icon={<UserOutlined />} title="Username">
-        <Item key="setting:1">Option 1</Item>
-        <Item key="setting:2">Option 2</Item>
-        <Item key="logout" icon={<LogoutOutlined />} onClick={logout}>
-          Logout
+      {!user && (
+        <Item key="register" icon={<UserAddOutlined />} style={rightStyleRegister}>
+          <Link to="/register">Register</Link>
         </Item>
-      </SubMenu>
+      )}
+
+      {!user && (
+        <Item key="login" icon={<LoginOutlined />} style={rightStyleLogin}>
+          <Link to="/login">Login</Link>
+        </Item>
+      )}
+
+      {user && (
+        <SubMenu
+          style={rightStyleLogin}
+          icon={<UserOutlined />}
+          title={user.email && user.email.match(/^.+(?=@)/)[0]}
+        >
+          <Item key="setting:1">Option 1</Item>
+          <Item key="setting:2">Option 2</Item>
+          <Item danger key="logout" icon={<LogoutOutlined />} onClick={logout}>
+            Logout
+          </Item>
+        </SubMenu>
+      )}
     </Menu>
   );
 };
