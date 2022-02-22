@@ -57,9 +57,9 @@ $ npm start
  npm start
 ```
 
-## Run App in Production
+## Run App in Development for Server / Node
 ```sh
- npm start
+ npm run dev
 ```
 
 ## Import Data to Database
@@ -121,7 +121,7 @@ $ npm start
 - [compression](https://www.npmjs.com/package/compression)
 
 ## Demonstration
-### 1) Bootcamps
+### 1) User Authentication client side using firebase
 - Home 
    * Pagination
    * Select specific fields in result
@@ -197,4 +197,4 @@ Please enjoy and feel free to share your opinion, constructive criticism, or com
 
 # Acknowledgement
 
-* This project is part of the online course I've taken at Udemy. Thanks to Brad Traversy for creating this awesome course! Link to the course: [Node.js API Masterclass With Express & MongoDB](https://www.udemy.com/course/nodejs-api-masterclass)
+* This project is part of the online course I've taken at Udemy. Thanks to Ryan Dhungel for creating this awesome course! Link to the course: [React Redux Ecommerce - Master MERN Stack Web Development](https://www.udemy.com/course/react-redux-ecommerce/)
