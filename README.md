@@ -122,84 +122,43 @@ $ npm start
 
 ## Demonstration
 ### 1) Bootcamps
-- List all bootcamps in the database
+- Home 
    * Pagination
    * Select specific fields in result
    * Limit number of results
    * Filter by fields
-- Search bootcamps by radius from zipcode
-  * Use a geocoder to get exact location and coords from a single address field
-- Get single bootcamp
-- Create new bootcamp
-  * Authenticated users only
-  * Must have the role "publisher" or "admin"
-  * Only one bootcamp per publisher (admins can create more)
-  * Field validation via Mongoose
-- Upload a photo for bootcamp
-  * Owner only
-  * Photo will be uploaded to local filesystem
-- Update bootcamps
-  * Owner only
+- Login
+  * email
+  * Password
+- Register
+  * Email registration
+- registration complete
+  * Redirect link from firebase then you can completly login as a user/admin
+- Forgot Password
+  * User can reset password using Forgot password menu
   * Validation on update
-- Delete Bootcamp
-  * Owner only
-- Calculate the average cost of all courses for a bootcamp
-- Calculate the average rating from the reviews for a bootcamp
+- Header
+  * Home menu
+  * Login menu
+  * Register menu
+  * User and logout menu
 
-### 2) Courses
-- List all courses for bootcamp
-- List all courses in general
-  * Pagination, filtering, etc
-- Get single course
-- Create new course
-  * Authenticated users only
-  * Must have the role "publisher" or "admin"
-  * Only the owner or an admin can create a course for a bootcamp
-  * Publishers can create multiple courses
-- Update course
-  * Owner only
-- Delete course
-  * Owner only
-  
-### 3) Reviews
-- List all reviews for a bootcamp
-- List all reviews in general
-  * Pagination, filtering, etc
-- Get a single review
-- Create a review
-  * Authenticated users only
-  * Must have the role "user" or "admin" (no publishers)
-- Update review
-  * Owner only
-- Delete review
-  * Owner only
+### 2) Backend API setup with Node.js and MongoDB
+- We have complete a first major section in client side
+- However we want to use our node server with mongodb
+- That means the firebase client-side implementation pretty much ends here
+- we'll use firebase to only log the user and get token (authentication)
 
-### 4) Users & Authentication
-- Authentication will be ton using JWT/cookies
-  * JWT and cookie should expire in 30 days
-- User registration
-  * Register as a "user" or "publisher"
-  * Once registered, a token will be sent along with a cookie (token = xxx)
-  * Passwords must be hashed
-- User login
-  * User can login with email and password
-  * Plain text password will compare with stored hashed password
-  * Once logged in, a token will be sent along with a cookie (token = xxx)
-- User logout
-  * Cookie will be sent to set token = none
-- Get user
-  * Route to get the currently logged in user (via token)
-- Password reset (lost password)
-  * User can request to reset password
-  * A hashed token will be emailed to the users registered email address
-  * A put request can be made to the generated url to reset password
-  * The token will expire after 10 minutes
-- Update user info
-  * Authenticated user only
-  * Separate route to update password
-- User CRUD
-  * Admin only
-- Users can only be made admin by updating the database field manually
+- In our backend we will validate thet token using firebase admin so that our App is well secure
+- what i mean by secure is that if we dont check the validity of token in  the backend then anyone can send anything as a token to get access to protected routes/resource
+
+- Once we implement fire base in backend, when user register or login to our app, we will create or update user in mongodb
+
+- then we will comeback to our login/register page and make some adjustments, so then when user login, the response is from our backend.
+
+
+  * Pagination, filtering, etc
+
 
 ## Future Updates
 
@@ -212,19 +171,29 @@ Feel free to email me at rianto.rnt@gmail.com if you run into any issues or have
 Please enjoy and feel free to share your opinion, constructive criticism, or comments about my work. Thank you! 🙂
 
 
-## Route Structure
+## Route Structure Client
 
-> GET/POST/PUT/DELETE
+> /Home
 
-> api/v1/bootcamps
+> /login
 
-> api/v1/courses
+> /register
 
-> api/v1/reviews
+> /forgotpassword
 
-> api/v1/auth
+> /complete/registration
 
-> api/v1/users
+## Route Structure Server
+
+> /Home
+
+> /login
+
+> /register
+
+> /forgotpassword
+
+> /complete/registration
 
 # Acknowledgement
 
