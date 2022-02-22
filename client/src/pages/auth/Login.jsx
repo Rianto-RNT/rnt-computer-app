@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { toast } from "react-toastify";
-import { Form, Input, Button, Checkbox, Spin} from "antd";
+import { Form, Input, Button, Checkbox, Spin } from "antd";
 import {
   GoogleOutlined,
   MailOutlined,
@@ -109,9 +109,9 @@ const Login = ({ history }) => {
             message: "Please input your Password!",
           },
           {
-            min: 5, 
-            message: 'Password must be minimum 6 characters.'
-          }
+            min: 5,
+            message: "Password must be minimum 6 characters.",
+          },
         ]}
       >
         <Input.Password
@@ -121,7 +121,6 @@ const Login = ({ history }) => {
           iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          autoFocus
         />
       </Item>
 
@@ -130,9 +129,9 @@ const Login = ({ history }) => {
           <Checkbox>Remember me</Checkbox>
         </Item>
 
-        <a style={rightStyleForgotPassword} className="login-form-forgot" href="/#">
+        <Link to="/forgotpassword" style={rightStyleForgotPassword} className="login-form-forgot">
           Forgot password
-        </a>
+        </Link>
       </Item>
 
       <Item>
@@ -172,13 +171,13 @@ const Login = ({ history }) => {
           </Button>
 
           <Item className="text-center">
-            <p>Not have an account ?
-            <Link to="/register" variant="body2" type="link">
-            &nbsp; Register
-            </Link>
+            <p>
+              Not have an account ?
+              <Link to="/register" variant="body2" type="link">
+                &nbsp; Register
+              </Link>
             </p>
           </Item>
-
         </div>
       </div>
     </div>

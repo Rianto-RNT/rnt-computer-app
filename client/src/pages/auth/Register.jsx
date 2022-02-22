@@ -69,21 +69,6 @@ const Register = () => {
         </Button>
       </Item>
     </Form>
-
-    // <form onSubmit={handleSubmit}>
-    //   <input
-    //     type="email"
-    //     className="form-control"
-    //     value={email}
-    //     onChange={(e) => setEmail(e.target.value)}
-    //     placeholder="Your Email"
-    //     autoFocus
-    //   />
-    //   <br />
-    //   <button type="submit" className="btn btn-primary">
-    //     Register
-    //   </button>
-    // </form>
   );
 
   return (
