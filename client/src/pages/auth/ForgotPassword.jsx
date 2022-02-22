@@ -3,13 +3,20 @@ import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { Form, Input, Button, Spin } from "antd";
 import { MailOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 
 const ForgotPassword = ({ history }) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-
+   
   const { Item } = Form;
 
+  const { user } = useSelector((state) => ({ ...state }));
+  
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  }, [user]);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
