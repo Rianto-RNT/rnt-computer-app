@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu } from "antd";
+import { Menu, Dropdown, Avatar, Skeleton } from "antd";
 import {
   HomeOutlined,
   UserAddOutlined,
@@ -12,7 +12,7 @@ import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const { SubMenu, Item } = Menu;
+const { Item } = Menu;
 
 const rightStyleRegister = { position: "absolute", top: 0, right: 0 };
 const rightStyleLogin = {
@@ -45,6 +45,24 @@ const Header = () => {
     history.push("/login");
   };
 
+  const avatarDropdown = (
+    <Menu key="avatar-dropdown">
+      <Item key="option 1">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Option 1
+        </a>
+      </Item>
+      <Item key="option 2">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Option 2
+        </a>
+      </Item>
+      <Item danger key="logout" icon={<LogoutOutlined />} onClick={logout}>
+        Logout
+      </Item>
+    </Menu>
+  );
+
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item key="home" icon={<HomeOutlined />}>
@@ -64,18 +82,21 @@ const Header = () => {
       )}
 
       {user && (
-        <SubMenu
-          style={rightStyleLogin}
-          icon={<UserOutlined />}
+        <Dropdown
+          key="username"
+          overlay={avatarDropdown}
           title={user.email && user.email.match(/^.+(?=@)/)[0]}
         >
-          <Item key="setting:1">Option 1</Item>
-          <Item key="setting:2">Option 2</Item>
-          <Item danger key="logout" icon={<LogoutOutlined />} onClick={logout}>
-            Logout
-          </Item>
-        </SubMenu>
+          <div onClick={(e) => e.preventDefault()} style={rightStyleLogin}>
+            <Avatar
+              style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
+              size="middle"
+              icon={<UserOutlined />}
+            />
+          </div>
+        </Dropdown>
       )}
+
     </Menu>
   );
 };

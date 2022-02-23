@@ -12,6 +12,19 @@ import {
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const createOrUpdateUser = async (authtoken) => {
+  return await axios.post(
+    `${process.env.REACT_APP_API}/create-or-update-user`,
+    {},
+    {
+      headers: {
+        authtoken,
+      },
+    },
+  );
+};
 
 const { Item } = Form;
 
@@ -41,15 +54,19 @@ const Login = ({ history }) => {
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
 
-      dispatch({
-        type: "LOGGED_IN_USER",
-        payload: {
-          name: user.email,
-          token: idTokenResult.token,
-        },
-      });
+      createOrUpdateUser(idTokenResult.token)
+        .then((res) => console.log("Create or Update response", res))
+        .catch();
 
-      history.push("/");
+      // dispatch({
+      //   type: "LOGGED_IN_USER",
+      //   payload: {
+      //     name: user.email,
+      //     token: idTokenResult.token,
+      //   },
+      // });
+
+      // history.push("/");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -132,8 +149,8 @@ const Login = ({ history }) => {
       </Item>
 
       <Item>
-        <Item name="remember" history="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+        <Item name="checkbox" valuePropName="checked" noStyle>
+          <Checkbox className="ps-checkbox">Remember me</Checkbox>
         </Item>
 
         <Link to="/forgotpassword" style={rightStyleForgotPassword} className="login-form-forgot">

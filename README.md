@@ -96,6 +96,7 @@ $ npm start
 - [dotenv](https://github.com/motdotla/dotenv#readme)
 - [ant-design](https://github.com/ant-design/ant-design/)
 - [redux](https://github.com/reduxjs/redux)
+- [axios](https://github.com/axios/axios)
 - [firebase-admin](github.com/firebase/firebase-admin-node)
 - [morgan](https://github.com/expressjs/morgan)
 - [multer](https://github.com/expressjs/multer)
