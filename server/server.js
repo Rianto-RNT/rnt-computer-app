@@ -12,15 +12,16 @@ dotenv.config({ path: './config.env' });
 //app
 const app = express();
 
+// Import Routes
+const auth = require('./routes/auth');
+
 //Connect DB
 mongoose
   .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() =>
-    console.log(`MongoDB connected`.cyan.underline.bold)
-  )
+  .then(() => console.log(`MongoDB connected`.cyan.underline.bold))
   .catch((err) => console.log('MongoDB Connection error', err));
 
 // Middleware
@@ -28,13 +29,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json({ limit: '2mb' }));
 app.use(cors());
 
-//Route
-app.get('/api', (req, res) => {
-  res.json({
-    success: true,
-    data: 'Hit it!!!',
-  });
-});
+// Routes Middleware
+app.use('/api', auth);
 
 // PORT
 const PORT = process.env.PORT || 8000;
