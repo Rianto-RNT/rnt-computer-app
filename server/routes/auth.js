@@ -1,12 +1,10 @@
-const express = require('express')
+const express = require('express');
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/create-or-update-user', (req, res) => {
-    res.json({
-      success: true,
-      data: 'Hit it!!! create-or-update-user',
-    });
-  });
+// Import
+const { createOrUpdateUser } = require('../controllers/auth');
 
-  module.exports = router;
+router.get('/create-or-update-user', createOrUpdateUser);
+
+module.exports = router;
