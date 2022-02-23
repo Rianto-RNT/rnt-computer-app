@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Dropdown, Avatar, Skeleton } from "antd";
+import { Menu, Dropdown, Avatar } from "antd";
 import {
   HomeOutlined,
   UserAddOutlined,

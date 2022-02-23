@@ -5,13 +5,14 @@ import { useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 
-const Register = ({history}) => {
+const Register = ({ history }) => {
   const [email, setEmail] = useState("");
 
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
     if (user && user.token) history.push("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const { Item } = Form;
