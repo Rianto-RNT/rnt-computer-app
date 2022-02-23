@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const colors = require('colors');
 const cors = require('cors');
+const { readdirSync } = require('fs');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
@@ -11,9 +12,6 @@ dotenv.config({ path: './config.env' });
 
 //app
 const app = express();
-
-// Import Routes
-const auth = require('./routes/auth');
 
 //Connect DB
 mongoose
@@ -30,7 +28,7 @@ app.use(bodyParser.json({ limit: '2mb' }));
 app.use(cors());
 
 // Routes Middleware
-app.use('/api', auth);
+readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)));
 
 // PORT
 const PORT = process.env.PORT || 8000;
