@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 // Load env vars
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: './config/config.env' });
 
 //app
 const app = express();
