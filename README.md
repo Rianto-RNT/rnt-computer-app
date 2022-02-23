@@ -77,23 +77,30 @@ $ npm start
 * [Node.js](https://nodejs.org/en) - JS runtime environment
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 * [Firebase](https://firebase.google.com/) - Authentication — user login and identity
+* [Firebase-admin](https://firebase.google.com/) - lets you interact with Firebase from privileged environments to perform actions
 * [VSCode](https://code.visualstudio.com) - Free source-code editor made by Microsoft
 * [Express](http://expressjs.com/) - The web framework used
 * [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
 * [Postman](https://www.getpostman.com/) - API testing
 * [Git](https://git-scm.com) - Open source distributed version control system
-* [MailTrap](https://mailtrap.io) - Email delivery platform
+* [Cloudinary](https://cloudinary.com
+) - Effortlessly optimize, transform, upload and manage your cloud's assets.
+* [Stripe](hhttps://stripe.com/) - Online Payment Processing API payment gateway
 * [MapQuest Dev API](https://developer.mapquest.com) - Free online web mapping service
 * [Heroku](https://www.heroku.com/) - Cloud platform
+* [Digital Ocean](https://www.digitalocean.com) - Cloud platform
 
 ## NPM Packages
 
 - [dotenv](https://github.com/motdotla/dotenv#readme)
 - [ant-design](https://github.com/ant-design/ant-design/)
 - [redux](https://github.com/reduxjs/redux)
+- [firebase-admin](github.com/firebase/firebase-admin-node)
 - [morgan](https://github.com/expressjs/morgan)
 - [multer](https://github.com/expressjs/multer)
+- [body-parser](https://github.com/expressjs/body-parser#readme)
+- [Uniqueid](github.com/adamhalasz/uniqid)
 - [eslint](https://github.com/eslint/eslint)
 - [eslint-config-airbnb](https://github.com/airbnb/javascript)
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
@@ -105,17 +112,15 @@ $ npm start
 - [ndb](https://github.com/GoogleChromeLabs/ndb)
 - [prettier](https://github.com/prettier/prettier)
 - [nodemon](https://github.com/remy/nodemon)
-- [chalk](https://github.com/chalk/chalk)
 - [slugify](https://github.com/simov/slugify)
-- [node-geocoder](https://github.com/nchaulet/node-geocoder)
 - [bcryptjs](https://github.com/dcodeIO/bcrypt.js#readme)
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
-- [nodemailer](https://nodemailer.com/about)
 - [express-mongo-sanitize](https://github.com/fiznool/express-mongo-sanitize#readme)
 - [xss-clean](https://github.com/jsonmaur/xss-clean)
 - [helmet](https://github.com/helmetjs/helmet)
 - [hpp](https://github.com/analog-nico/hpp)
 - [express-rate-limit](https://github.com/nfriedly/express-rate-limit)
+- [express-jwt](github.com/auth0/express-jwt)
 - [cors](https://github.com/expressjs/cors)
 - [validator](https://www.npmjs.com/package/validator)
 - [compression](https://www.npmjs.com/package/compression)
@@ -143,7 +148,7 @@ $ npm start
   * Register menu
   * User and logout menu
 
-### 2) Backend API setup with Node.js and MongoDB
+### 2) Before We Start
 - We have complete a first major section in client side
 - However we want to use our node server with mongodb
 - That means the firebase client-side implementation pretty much ends here
@@ -156,9 +161,24 @@ $ npm start
 
 - then we will comeback to our login/register page and make some adjustments, so then when user login, the response is from our backend.
 
+### 3) Backend API setup with Node.js and MongoDB
+- Setup Server and Install Dependencies
+```sh
+npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwebtoken nodemon dotenv
+```
+- Connect to NoSQL Database
+  * Local mongodb server
+  * Mongodb Atlas
+- Hit Routes Endpoint Testing
+- Setup Controllers
+  * Auth
+  * User
+- Create Model
+  * User
 
-  * Pagination, filtering, etc
-
+## Articles
+[mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
+[How to use mongodb atlas](https://kaloraat.com/articles/how-to-use-mongodb-atlas)
 
 ## Future Updates
 
