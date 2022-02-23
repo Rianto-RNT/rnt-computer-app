@@ -178,6 +178,12 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * User
 - Middleware
   * Auth
+- API User Response
+  * When user login, save user data to database.
+- Current User From API
+  * When user register, save user data to database.
+  * Refactor Create or update user function in react
+  * Service folder in client side for calling's API endpoint from server
 
 
 ## Articles

@@ -90,27 +90,6 @@ const ForgotPassword = ({ history }) => {
         </div>
       </div>
     </div>
-
-    // <div className="container col-md-6 offset-md-3 p-5">
-    //   {loading ? <Spin size="large" tip="Please wait..." /> : <h4>Forgot Password</h4>}
-
-    //   <form onSubmit={handleSubmit}>
-    //     <input
-    //       type="email"
-    //       className="form-control"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       placeholder="type your email"
-    //       autoFocus
-    //     />
-
-    //     <br />
-
-    //     <button className="btn btn-primary" disabled={!email}>
-    //       Submit
-    //     </button>
-    //   </form>
-    // </div>
   );
 };
 

@@ -5,7 +5,7 @@ exports.createOrUpdateUser = async (req, res) => {
 
   const user = await User.findOneAndUpdate(
     { email },
-    { name, picture },
+    { name: email.match(/^([^@]*)@/)[1], picture },
     { new: true }
   );
 
@@ -15,7 +15,7 @@ exports.createOrUpdateUser = async (req, res) => {
   } else {
     const newUser = await new User({
       email,
-      name,
+      name: email.match(/^([^@]*)@/)[1],
       picture,
     }).save();
     console.log('User Created', newUser)

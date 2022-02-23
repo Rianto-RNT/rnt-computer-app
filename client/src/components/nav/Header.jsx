@@ -12,7 +12,7 @@ import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const { Item } = Menu;
+const { SubMenu, Item } = Menu;
 
 const rightStyleRegister = { position: "absolute", top: 0, right: 0 };
 const rightStyleLogin = {
@@ -45,23 +45,23 @@ const Header = () => {
     history.push("/login");
   };
 
-  const avatarDropdown = (
-    <Menu key="avatar-dropdown">
-      <Item key="option 1">
-        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-          Option 1
-        </a>
-      </Item>
-      <Item key="option 2">
-        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-          Option 2
-        </a>
-      </Item>
-      <Item danger key="logout" icon={<LogoutOutlined />} onClick={logout}>
-        Logout
-      </Item>
-    </Menu>
-  );
+  // const avatarDropdown = (
+  //   <Menu key="avatar-dropdown">
+  //     <Item key="option 1">
+  //       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+  //         Option 1
+  //       </a>
+  //     </Item>
+  //     <Item key="option 2">
+  //       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+  //         Option 2
+  //       </a>
+  //     </Item>
+  //     <Item danger key="logout" icon={<LogoutOutlined />} onClick={logout}>
+  //       Logout
+  //     </Item>
+  //   </Menu>
+  // );
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
@@ -82,21 +82,32 @@ const Header = () => {
       )}
 
       {user && (
-        <Dropdown
-          key="username"
-          overlay={avatarDropdown}
-          title={user.email && user.email.match(/^.+(?=@)/)[0]}
+        <SubMenu
+          style={rightStyleRegister}
+          icon={<UserOutlined />}
+          title={user.email && user.email.match(/^([^@]*)@/)[1]}
         >
-          <div onClick={(e) => e.preventDefault()} style={rightStyleLogin}>
-            <Avatar
-              style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-              size="middle"
-              icon={<UserOutlined />}
-            />
-          </div>
-        </Dropdown>
-      )}
+          <Item key="setting:1">Option 1</Item>
+          <Item key="setting:2">Option 2</Item>
+          <Item icon={<LogoutOutlined />} onClick={logout}>
+            Logout
+          </Item>
+        </SubMenu>
 
+        // <Dropdown
+        //   key="username"
+        //   overlay={avatarDropdown}
+        //   title={user.email && user.email.split("@")[0]} // email.match(/^.+(?=@)/)[0] OR email.split("@")[0]
+        // >
+        //   <div onClick={(e) => e.preventDefault()} style={rightStyleLogin}>
+        //     {/* <Avatar
+        //       style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
+        //       size="middle"
+        //       icon={<UserOutlined />}
+        //     /> */}
+        //   </div>
+        // </Dropdown>
+      )}
     </Menu>
   );
 };
