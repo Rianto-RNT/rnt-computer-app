@@ -184,7 +184,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * When user register, save user data to database.
   * Refactor Create or update user function in react
   * Service folder in client side for calling's API endpoint from server
-
+- Role base on redirect
+  * If user role = subscriber then redirect to user history page
+  * If user role = admin then redirect to admin dashboard page
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)

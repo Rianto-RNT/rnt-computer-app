@@ -12,9 +12,7 @@ import {
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {createOrUpdateUser} from "../../services/auth";
-
-
+import { createOrUpdateUser } from "../../services/auth";
 
 const { Item } = Form;
 
@@ -33,6 +31,14 @@ const Login = ({ history }) => {
   }, [user]);
 
   let dispatch = useDispatch();
+
+  const roleBaseRedirect = (res) => {
+    if (res.data.role === "admin") {
+      history.push("/admin/dashboard");
+    } else {
+      history.push("/user/history");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,10 +63,11 @@ const Login = ({ history }) => {
               _id: res.data._id,
             },
           });
+          roleBaseRedirect(res);
         })
         .catch((error) => console.log(error));
 
-      history.push("/");
+      // history.push("/");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -87,10 +94,11 @@ const Login = ({ history }) => {
                 _id: res.data._id,
               },
             });
+            roleBaseRedirect(res);
           })
           .catch((error) => console.log(error));
 
-        history.push("/");
+        // history.push("/");
       })
       .catch((error) => {
         console.log(error);
