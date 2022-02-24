@@ -190,6 +190,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Redirect count down
   * When user need to go to user history or Checkout (etc) without login then rediret to login page
   * show loading animation countdown when redirect in 5 second
+- Sitebar Nav User History
+  * creating User navbar component : User history, Password change, wishlist, etc.
 
 
 ## Articles
