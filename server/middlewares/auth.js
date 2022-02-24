@@ -1,4 +1,5 @@
 const admin = require('../firebase/index');
+const User = require('../models/user');
 
 exports.protect = async (req, res, next) => {
   // console.log(req.headers);
@@ -16,5 +17,19 @@ exports.protect = async (req, res, next) => {
     res.status(401).json({
       error: 'Invalid or expired token',
     });
+  }
+};
+
+exports.adminProtect = async (req, res, next) => {
+  const { email } = req.user;
+
+  const admin = await User.findOne({ email }).exec();
+
+  if (admin.role !== 'admin') {
+    res.status(403).json({
+      error: 'Resource not found! Access denied.',
+    });
+  } else {
+    next();
   }
 };
