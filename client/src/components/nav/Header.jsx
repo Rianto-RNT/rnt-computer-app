@@ -83,6 +83,7 @@ const Header = () => {
 
       {user && (
         <SubMenu
+          key="sub-menu"
           style={rightStyleRegister}
           icon={<UserOutlined />}
           title={user.email && user.email.match(/^([^@]*)@/)[1]}

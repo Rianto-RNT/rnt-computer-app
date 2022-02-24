@@ -187,6 +187,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Role base on redirect
   * If user role = subscriber then redirect to user history page
   * If user role = admin then redirect to admin dashboard page
+- Redirect count down
+  * When user need to go to user history without login then rediret to login page
+  * show loading animation countdown when redirect 
+
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
