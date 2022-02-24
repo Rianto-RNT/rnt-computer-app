@@ -188,8 +188,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * If user role = subscriber then redirect to user history page
   * If user role = admin then redirect to admin dashboard page
 - Redirect count down
-  * When user need to go to user history without login then rediret to login page
-  * show loading animation countdown when redirect 
+  * When user need to go to user history or Checkout (etc) without login then rediret to login page
+  * show loading animation countdown when redirect in 5 second
 
 
 ## Articles
