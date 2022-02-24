@@ -198,8 +198,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * change password form
   * validate all element, set loading, etc
 - Admin Role authentication and athorization
-  * Protecting routes for admin role
-  * Implementing middleware for admin role
+  * Protecting routes for admin role (Backend)
+  * Implementing middleware for admin role (backend)
+  * When Admin login then redirect to admin dashboard (Frontend)
+  * Create admin page (Frontend)
 
 
 

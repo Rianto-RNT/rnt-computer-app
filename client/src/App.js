@@ -13,6 +13,8 @@ import UserRoute from "./utils/routes/UserRoute";
 import History from "./pages/myAccounts/History";
 import ChangePassword from "./pages/myAccounts/ChangePassword";
 import Wishlist from "./pages/myAccounts/Wishlist";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminRoute from "./utils/routes/AdminRoute";
 
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
@@ -47,9 +49,7 @@ const App = () => {
 
     //Cleanup
     return () => unsubscribe();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -64,6 +64,7 @@ const App = () => {
         <UserRoute exact path="/my-account/history" component={History} />
         <UserRoute exact path="/my-account/change-password" component={ChangePassword} />
         <UserRoute exact path="/my-account/wishlist" component={Wishlist} />
+        <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
       </Switch>
     </>
   );
