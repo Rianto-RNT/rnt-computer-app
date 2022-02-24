@@ -10,7 +10,7 @@ exports.createOrUpdateUser = async (req, res) => {
   );
 
   if (user) {
-    console.log('User Updated', user)
+    console.log('User Updated', user);
     res.json(user);
   } else {
     const newUser = await new User({
@@ -18,7 +18,14 @@ exports.createOrUpdateUser = async (req, res) => {
       name: email.match(/^([^@]*)@/)[1],
       picture,
     }).save();
-    console.log('User Created', newUser)
+    console.log('User Created', newUser);
     res.json(newUser);
   }
+};
+
+exports.currentUser = async (req, res, next) => {
+  User.findOne({ email: req.user.email }).exec((error, user) => {
+    if (error) throw new Error(error);
+    res.json(user);
+  });
 };

@@ -58,7 +58,7 @@ const Login = ({ history }) => {
             },
           });
         })
-        .catch();
+        .catch((error) => console.log(error));
 
       history.push("/");
     } catch (error) {
@@ -88,7 +88,7 @@ const Login = ({ history }) => {
               },
             });
           })
-          .catch();
+          .catch((error) => console.log(error));
 
         history.push("/");
       })
