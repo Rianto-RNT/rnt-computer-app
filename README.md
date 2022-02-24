@@ -184,23 +184,33 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * When user register, save user data to database.
   * Refactor Create or update user function in react
   * Service folder in client side for calling's API endpoint from server
-- Role base on redirect
+- Role Base on Redirect
   * If user role = subscriber then redirect to user history page
   * If user role = admin then redirect to admin dashboard page
-- Redirect count down
+- Redirect Count Down
   * When user need to go to user history or Checkout (etc) without login then rediret to login page
   * show loading animation countdown when redirect in 5 second
 - Sitebar Nav User History
   * creating User navbar component : User history, Password change, wishlist, etc.
+- Change Password Feature
+  * Current user login can update their own password
+  * authentication from firebase service
+  * change password form
+  * validate all element, set loading, etc
+
 
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
+
 [How to use mongodb atlas](https://kaloraat.com/articles/how-to-use-mongodb-atlas)
 
 ## Future Updates
 
-* Create Front-End design for the api
+* Make User interface more beautiful with react material UI
+* Implementing clean code architecture
+* Refactoring code for client side (Frontend)
+* Refactoring code for server (Backend)
 * Improve authentication and authorization
 * And More ! There's always room for improvement!
 
