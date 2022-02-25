@@ -162,7 +162,7 @@ $ npm start
 
 - then we will comeback to our login/register page and make some adjustments, so then when user login, the response is from our backend.
 
-### 3) Backend API setup with Node.js and MongoDB
+### 3) Development Process
 - Setup Server and Install Dependencies
 ```sh
 npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwebtoken nodemon dotenv
@@ -202,6 +202,12 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Implementing middleware for admin role (backend)
   * When Admin login then redirect to admin dashboard (Frontend)
   * Create admin page (Frontend)
+- Admin Authorization
+  * Create Product
+  * Must have Category
+  * Must have Sub Category
+  * CRUD in Dashboard panel
+  
 
 
 
