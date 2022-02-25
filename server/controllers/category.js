@@ -3,6 +3,38 @@ const asyncHandler = require('../middlewares/async');
 const slugify = require('slugify');
 const Category = require('../models/Category');
 
+// @desc    Get All Category
+// @route   GET /api/category
+// @access  Public
+exports.getAllCategory = asyncHandler(async (req, res, next) => {
+  const categories = await Category.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: categories.length, data: categories });
+});
+
+// @desc    Get Single Category
+// @route   GET /api/category/:slug
+// @access  Public
+exports.getSingleCategory = asyncHandler(async (req, res, next) => {
+  const category = await Category.findOne({ slug: req.params.slug });
+
+  if (!category) {
+    return next(
+      new ErrorResponse(
+        `Category not found with ${req.params.slug}. Please add corect value`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: category });
+});
+
+// @desc    Create Category
+// @route   POST /api/category
+// @access  Private / Admin
 exports.createCategory = asyncHandler(async (req, res, next) => {
   const { name } = req.body;
   const category = await new Category({ name, slug: slugify(name) }).save();
@@ -18,10 +50,49 @@ exports.createCategory = asyncHandler(async (req, res, next) => {
 
   const displayCategory = await Category.findOne(req.body);
 
-  res.status(200).json({ success: true, data: displayCategory });
+  res.status(201).json({ success: true, data: displayCategory });
 });
 
-exports.getAllCategory = async (req, res, next) => {};
-exports.getSingleCategory = async (req, res, next) => {};
-exports.updateCategory = async (req, res, next) => {};
-exports.removeCategory = async (req, res, next) => {};
+// @desc    Update Category
+// @route   PUT /api/category/:slug
+// @access  Private / Admin
+exports.updateCategory = asyncHandler(async (req, res, next) => {
+  let { name } = req.body;
+
+  let category = await Category.findOneAndUpdate(
+    { slug: req.params.slug },
+    { name, slug: slugify(name) },
+    { new: true, runValidators: true }
+  );
+
+  if (!category) {
+    return next(
+      new ErrorResponse(
+        `Category not found with ${req.params.slug}. Please add corect value`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: category });
+});
+
+// @desc    Delete Category
+// @route   DELETE /api/category/:slug
+// @access  Private / Admin
+exports.removeCategory = asyncHandler(async (req, res, next) => {
+  const category = await Category.findOneAndDelete({ slug: req.params.slug });
+
+  if (!category) {
+    return next(
+      new ErrorResponse(
+        `Category not found with ${req.params.slug}. Please add corect value`,
+        400
+      )
+    );
+  }
+
+  category.remove();
+
+  res.status(200).json({ success: true, data: 'Category has been remove' });
+});
