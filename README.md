@@ -209,6 +209,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * CRUD in Dashboard panel
 - Category 
   * Category model (Backend)
+  * Category controller and routes CRUD
 
 
 
