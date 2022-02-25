@@ -6,6 +6,7 @@ const cors = require('cors');
 const { readdirSync } = require('fs');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const errorHandler = require('./middlewares/error');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -29,6 +30,8 @@ app.use(cors());
 
 // Routes Middleware
 readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)));
+
+app.use(errorHandler);
 
 // PORT
 const PORT = process.env.PORT || 8000;

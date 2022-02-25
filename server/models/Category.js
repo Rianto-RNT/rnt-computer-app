@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 const { ObjectId } = mongoose.Schema;
 
-const categorySchema = new mongoose.Schema(
+const CategorySchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -17,7 +18,7 @@ const categorySchema = new mongoose.Schema(
       index: true,
     },
   },
-  { timeseries: true }
+  { timestamps: true }
 );
 
-module.exports = mongoose.model('Category', categorySchema);
+module.exports = mongoose.model('Category', CategorySchema);

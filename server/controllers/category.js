@@ -1,17 +1,27 @@
-const Category = require('../models/Category')
+const ErrorResponse = require('../utils/errorResponse');
+const asyncHandler = require('../middlewares/async');
+const slugify = require('slugify');
+const Category = require('../models/Category');
 
-exports.create = (req, res, next) => {
-    
-}
-exports.list = (req, res, next) => {
+exports.createCategory = asyncHandler(async (req, res, next) => {
+  const { name } = req.body;
+  const category = await new Category({ name, slug: slugify(name) }).save();
 
-}
-exports.read = (req, res, next) => {
+  if (!category) {
+    return next(
+      new ErrorResponse(
+        `Failed! Category with ${req.body} already created. Please add another category.`,
+        400
+      )
+    );
+  }
 
-}
-exports.update = (req, res, next) => {
+  const displayCategory = await Category.findOne(req.body)
 
-}
-exports.remove = (req, res, next) => {
+  res.status(200).json({ success: true, data: displayCategory });
+});
 
-}
+exports.getAllCategory = async (req, res, next) => {};
+exports.getSingleCategory = async (req, res, next) => {};
+exports.updateCategory = async (req, res, next) => {};
+exports.removeCategory = async (req, res, next) => {};
