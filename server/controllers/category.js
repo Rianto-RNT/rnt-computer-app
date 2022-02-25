@@ -10,13 +10,13 @@ exports.createCategory = asyncHandler(async (req, res, next) => {
   if (!category) {
     return next(
       new ErrorResponse(
-        `Failed! Category with ${req.body} already created. Please add another category.`,
+        `Failed! Category with ${req.category} already created. Please add another category.`,
         400
       )
     );
   }
 
-  const displayCategory = await Category.findOne(req.body)
+  const displayCategory = await Category.findOne(req.body);
 
   res.status(200).json({ success: true, data: displayCategory });
 });
