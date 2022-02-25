@@ -1,5 +1,5 @@
 const admin = require('../firebase/index');
-const User = require('../models/user');
+const User = require('../models/User');
 
 exports.protect = async (req, res, next) => {
   // console.log(req.headers);
