@@ -45,24 +45,6 @@ const Header = () => {
     history.push("/login");
   };
 
-  // const avatarDropdown = (
-  //   <Menu key="avatar-dropdown">
-  //     <Item key="option 1">
-  //       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-  //         Option 1
-  //       </a>
-  //     </Item>
-  //     <Item key="option 2">
-  //       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-  //         Option 2
-  //       </a>
-  //     </Item>
-  //     <Item danger key="logout" icon={<LogoutOutlined />} onClick={logout}>
-  //       Logout
-  //     </Item>
-  //   </Menu>
-  // );
-
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item key="home" icon={<HomeOutlined />}>
@@ -88,8 +70,18 @@ const Header = () => {
           icon={<UserOutlined />}
           title={user.email && user.email.match(/^([^@]*)@/)[1]}
         >
-          <Item key="setting:1">Option 1</Item>
-          <Item key="setting:2">Option 2</Item>
+          {user && user.role === "subscriber" && (
+            <Item key="dashboard">
+              <Link to="/my-account/history">Dashboard</Link>
+            </Item>
+          )}
+          
+          {user && user.role === "admin" && (
+            <Item key="dashboard">
+              <Link to="/admin/dashboard">Dashboard</Link>
+            </Item>
+          )}
+
           <Item icon={<LogoutOutlined />} onClick={logout}>
             Logout
           </Item>
