@@ -210,7 +210,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Category 
   * Category model (Backend)
   * Category controller and routes CRUD
-
+  * Category CRUD Endpoint in frontend service
 
 
 ## Articles
