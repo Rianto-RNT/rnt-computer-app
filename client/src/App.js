@@ -3,18 +3,22 @@ import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
+
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import RegisterComplete from "./pages/auth/RegisterComplete";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+
 import UserRoute from "./utils/routes/UserRoute";
 import History from "./pages/myAccounts/History";
 import ChangePassword from "./pages/myAccounts/ChangePassword";
 import Wishlist from "./pages/myAccounts/Wishlist";
+
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./utils/routes/AdminRoute";
+import CreateCategory from "./pages/admin/category/CreateCategory";
 
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
@@ -65,6 +69,7 @@ const App = () => {
         <UserRoute exact path="/my-account/change-password" component={ChangePassword} />
         <UserRoute exact path="/my-account/wishlist" component={Wishlist} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
+        <AdminRoute exact path="/admin/category" component={CreateCategory} />
       </Switch>
     </>
   );

@@ -214,6 +214,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Dynamic Dashboard Link
   * when user with role subscriber login then show option to their own history/settings/dashboard
   * when user with role admin login then show option to their own dashboard / Admin dashboard
+- Admin Sidebar Navigation
+  * List of admin sidebar navigation menu: Dashboard, Product, All Product, Category, Sub-Category, Coupon, and Password.
 
 
 ## Articles

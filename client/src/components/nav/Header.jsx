@@ -75,7 +75,7 @@ const Header = () => {
               <Link to="/my-account/history">Dashboard</Link>
             </Item>
           )}
-          
+
           {user && user.role === "admin" && (
             <Item key="dashboard">
               <Link to="/admin/dashboard">Dashboard</Link>
@@ -86,20 +86,6 @@ const Header = () => {
             Logout
           </Item>
         </SubMenu>
-
-        // <Dropdown
-        //   key="username"
-        //   overlay={avatarDropdown}
-        //   title={user.email && user.email.split("@")[0]} // email.match(/^.+(?=@)/)[0] OR email.split("@")[0]
-        // >
-        //   <div onClick={(e) => e.preventDefault()} style={rightStyleLogin}>
-        //     {/* <Avatar
-        //       style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-        //       size="middle"
-        //       icon={<UserOutlined />}
-        //     /> */}
-        //   </div>
-        // </Dropdown>
       )}
     </Menu>
   );

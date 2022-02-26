@@ -162,7 +162,7 @@ const Login = ({ history }) => {
           <Checkbox className="ps-checkbox">Remember me</Checkbox>
         </Item>
 
-        <Link to="/forgotpassword" style={rightStyleForgotPassword} className="login-form-forgot">
+        <Link to="/forgot-password" style={rightStyleForgotPassword} className="login-form-forgot">
           Forgot password
         </Link>
       </Item>
