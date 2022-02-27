@@ -216,6 +216,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * when user with role admin login then show option to their own dashboard / Admin dashboard
 - Admin Sidebar Navigation
   * List of admin sidebar navigation menu: Dashboard, Product, All Product, Category, Sub-Category, Coupon, and Password.
+- Category Create and show of all list the category
+  * Category form to create category
+  * 
 
 
 ## Articles
