@@ -3,9 +3,20 @@ import AdminNav from "../../../components/nav/AdminNav";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
-import { createCategory, getAllCategory } from "../../../services/category";
+import { createCategory, getAllCategory, removeCategory } from "../../../services/category";
+import { Link } from "react-router-dom";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-const CategoryCreate = () => {
+const rightStyleEdit = { position: "absolute", top: 0, right: 15 };
+const rightStyleDelete = {
+  display: "flex-end",
+  justifyContent: "space-between",
+  position: "absolute",
+  top: 0,
+  right: 60,
+};
+
+const CreateCategory = () => {
   const { user } = useSelector((state) => ({ ...state }));
 
   const [name, setName] = useState("");
@@ -28,12 +39,33 @@ const CategoryCreate = () => {
         setLoading(false);
         setName("");
         toast.success(`"${res.data.name}" is created`);
+        loadAllCategory();
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
         if (err.response.status === 400) toast.error(err.response.data);
       });
+  };
+
+  const handleRemove = async (slug) => {
+    // let answer = window.confirm("Remove Category?");
+    // console.log(answer, slug);
+    if (window.confirm("Remove Category?")) {
+      setLoading(true);
+      removeCategory(slug, user.token)
+        .then((res) => {
+          setLoading(false);
+          toast.error(`${res.data.name} deleted`);
+          loadAllCategory();
+        })
+        .catch((error) => {
+          if (error.response.status === 400) {
+            setLoading(false);
+            toast.error(error.response.data);
+          }
+        });
+    }
   };
 
   const categoryForm = () => (
@@ -64,79 +96,27 @@ const CategoryCreate = () => {
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Category</h4>}
           {categoryForm()}
           <hr />
-          {JSON.stringify(category)}
+          {category.map((c) => (
+            <div key={c._id} className="alert alert-secondary">
+              {c.name}
+              <span
+                onClick={() => handleRemove(c.slug)}
+                className="btn btn-md"
+                style={rightStyleDelete}
+              >
+                <DeleteOutlined className="text-danger" />
+              </span>
+              <span className="btn btn-md" style={rightStyleEdit}>
+                <Link to={`/admin/category/${c.slug}`}>
+                  <EditOutlined className="text-warning" />
+                </Link>
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default CategoryCreate;
-
-// const CreateCategory = () => {
-//   const { user } = useSelector((state) => ({ ...state }));
-
-//   const [name, setName] = useState("");
-//   const [loading, setLoading] = useState(false);
-//   const [categories, setCategories] = useState([]);
-
-//   useEffect(() => {
-//     loadAllCategory();
-//   }, []);
-
-//   const loadAllCategory = () =>
-//   getAllCategory().then((c) => setCategories(c.data));
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // console.log(name)
-//     setLoading(true);
-//     createCategory({ name }, user.token)
-//       .then((res) => {
-//         setLoading(false);
-//         setName("");
-//         toast.success(`${res.data.name} is created`);
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//         setLoading(false);
-//         if (error.response.status === 400) toast.error(error.response.data);
-//       });
-//   };
-
-//   const categoryForm = () => (
-//     <form onSubmit={handleSubmit}>
-//       <div className="form-group">
-//         <label>Name</label>
-//         <input
-//           type="text"
-//           className="form-control"
-//           onChange={(e) => setName(e.target.value)}
-//           value={name}
-//           autoFocus
-//           required
-//         />
-//         <br />
-//         <button className="btn btn-primary">Save</button>
-//       </div>
-//     </form>
-//   );
-
-//   return (
-//     <div className="container-fluid">
-//       <div className="row">
-//         <div className="col-md-2">
-//           <AdminNav />
-//         </div>
-//         <div className="col">
-//           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Category</h4>}
-//           {categoryForm()}
-//           <hr />
-//           {JSON.stringify(categories)}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CreateCategory;
+export default CreateCategory;

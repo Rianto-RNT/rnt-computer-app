@@ -218,7 +218,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * List of admin sidebar navigation menu: Dashboard, Product, All Product, Category, Sub-Category, Coupon, and Password.
 - Category Create and show of all list the category
   * Category form to create category
-  * 
+- Category Render and delete
+  * Delete menu icon in category create admin dashboard
+  * Update menu icon in category create admin dashboard
+  * Category Delete Functionality 
 
 
 ## Articles
