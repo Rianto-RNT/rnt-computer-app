@@ -7,17 +7,17 @@ const { protect, adminProtect } = require('../middlewares/auth');
 
 // Controller
 const {
-  createCategory,
+  getAllCategory,
   getSingleCategory,
+  createCategory,
   updateCategory,
   removeCategory,
-  getAllCategory,
 } = require('../controllers/category');
 
 // Routes
-router.post('/category', protect, adminProtect, createCategory);
 router.get('/category', getAllCategory);
 router.get('/category/:slug', getSingleCategory);
+router.post('/category', protect, adminProtect, createCategory);
 router.put('/category/:slug', protect, adminProtect, updateCategory);
 router.delete('/category/:slug', protect, adminProtect, removeCategory);
 
