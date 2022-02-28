@@ -6,6 +6,7 @@ import { Spin } from "antd";
 import { createCategory, getAllCategory, removeCategory } from "../../../services/category";
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import CategoryForm from "../../../components/forms/CategoryForm";
 
 const rightStyleEdit = { position: "absolute", top: 0, right: 15 };
 const rightStyleDelete = {
@@ -49,8 +50,6 @@ const CreateCategory = () => {
   };
 
   const handleRemove = async (slug) => {
-    // let answer = window.confirm("Remove Category?");
-    // console.log(answer, slug);
     if (window.confirm("Remove Category?")) {
       setLoading(true);
       removeCategory(slug, user.token)
@@ -68,24 +67,6 @@ const CreateCategory = () => {
     }
   };
 
-  const categoryForm = () => (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label>Name</label>
-        <input
-          type="text"
-          className="form-control"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          autoFocus
-          required
-        />
-        <br />
-        <button className="btn btn-outline-primary">Save</button>
-      </div>
-    </form>
-  );
-
   return (
     <div className="container-fluid">
       <div className="row">
@@ -94,7 +75,9 @@ const CreateCategory = () => {
         </div>
         <div className="col">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Category</h4>}
-          {categoryForm()}
+
+          <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
+
           <hr />
           {category.map((c) => (
             <div key={c._id} className="alert alert-secondary">

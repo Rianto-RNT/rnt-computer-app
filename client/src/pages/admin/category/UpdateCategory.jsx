@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
 import { updateCategory, getSingleCategory } from "../../../services/category";
+import CategoryForm from "../../../components/forms/CategoryForm";
 
 const UpdateCategory = ({ history, match }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -35,24 +36,6 @@ const UpdateCategory = ({ history, match }) => {
       });
   };
 
-  const categoryForm = () => (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label>category name</label>
-        <input
-          type="text"
-          className="form-control"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          autoFocus
-          required
-        />
-        <br />
-        <button className="btn btn-outline-primary">Save</button>
-      </div>
-    </form>
-  );
-
   return (
     <div className="container-fluid">
       <div className="row">
@@ -61,7 +44,8 @@ const UpdateCategory = ({ history, match }) => {
         </div>
         <div className="col">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Update Category</h4>}
-          {categoryForm()}
+
+          <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
         </div>
       </div>
     </div>

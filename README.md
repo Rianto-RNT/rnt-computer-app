@@ -225,6 +225,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Category update
   * category update page
   * update category and redirect to admin/category
+  * refactor code for category Create and update form 
 
 
 ## Articles
