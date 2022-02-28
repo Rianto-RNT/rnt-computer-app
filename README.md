@@ -222,6 +222,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Delete menu icon in category create admin dashboard
   * Update menu icon in category create admin dashboard
   * Category Delete Functionality 
+- Category update
+  * category update page
+  * update category and redirect to admin/category
 
 
 ## Articles
