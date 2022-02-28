@@ -46,7 +46,7 @@ const Header = () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+    <Menu key="header" onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item key="home" icon={<HomeOutlined />}>
         <Link to="/">Home</Link>
       </Item>
@@ -82,7 +82,7 @@ const Header = () => {
             </Item>
           )}
 
-          <Item icon={<LogoutOutlined />} onClick={logout}>
+          <Item key="logout" icon={<LogoutOutlined />} onClick={logout}>
             Logout
           </Item>
         </SubMenu>

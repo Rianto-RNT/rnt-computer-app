@@ -24,6 +24,9 @@ const CreateCategory = () => {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState([]);
 
+  // Search Category in Create Foms **Steps 1
+  const [keyword, setKeyword] = useState("");
+
   useEffect(() => {
     loadAllCategory();
   }, []);
@@ -67,6 +70,15 @@ const CreateCategory = () => {
     }
   };
 
+  // step 3
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setKeyword(e.target.value.toLowerCase());
+  };
+
+  // Step 4
+  const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -78,8 +90,21 @@ const CreateCategory = () => {
 
           <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
 
+          {/* // STEP 2 */}
+          <br />
+          <input
+            type="search"
+            placeholder="search"
+            value={keyword}
+            onChange={handleSearchChange}
+            className="form-control mb-4"
+          />
+
           <hr />
-          {category.map((c) => (
+
+          {/* STEP 5 */}
+
+          {category.filter(searched(keyword)).map((c) => (
             <div key={c._id} className="alert alert-secondary">
               {c.name}
               <span

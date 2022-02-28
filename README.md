@@ -226,6 +226,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * category update page
   * update category and redirect to admin/category
   * refactor code for category Create and update form 
+- Search Filter Category (admin dasboard)
+  * admin can search category by name of the product category
+
 
 
 ## Articles
