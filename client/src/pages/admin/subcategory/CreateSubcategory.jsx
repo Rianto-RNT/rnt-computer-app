@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import { Spin } from "antd";
 import {
   createSubcategory,
-  getAllSubcategory,
   removeSubcategory,
+  getAllSubcategory,
 } from "../../../services/subcategory";
 import { getAllCategory } from "../../../services/category";
 import { Link } from "react-router-dom";
@@ -29,6 +29,7 @@ const CreateSubcategory = () => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState([]);
+  const [subcategory, setSubcategory] = useState([]);
 
   // request from backend
   const [parents, setParents] = useState("");
@@ -38,10 +39,12 @@ const CreateSubcategory = () => {
 
   useEffect(() => {
     loadAllCategory();
+    loadAllSubcategory();
   }, []);
 
   const loadAllCategory = () => getAllCategory().then((c) => setCategory(c.data));
-
+  const loadAllSubcategory = () => getAllSubcategory().then((s) => setSubcategory(s.data));
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -50,6 +53,7 @@ const CreateSubcategory = () => {
         setLoading(false);
         setName("");
         toast.success(`"${res.data.name}" is created`);
+        loadAllSubcategory();
       })
       .catch((err) => {
         console.log(err);
@@ -65,6 +69,7 @@ const CreateSubcategory = () => {
         .then((res) => {
           setLoading(false);
           toast.error(`${res.data.name} deleted`);
+          loadAllSubcategory();
         })
         .catch((error) => {
           if (error.response.status === 400) {
@@ -96,7 +101,7 @@ const CreateSubcategory = () => {
               className="form-control"
               onChange={(e) => setParents(e.target.value)}
             >
-                <option>--None--</option>
+              <option>--None--</option>
               {category.length > 0 &&
                 category.map((c) => (
                   <option key={c._id} value={c._id}>
@@ -106,31 +111,29 @@ const CreateSubcategory = () => {
             </select>
           </div>
 
-          {JSON.stringify(parents)}
-
           <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
 
           {/* // STEP 2 and step 3 have been moved here */}
           <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
           {/* STEP 5 */}
-          {/* {category.filter(searched(keyword)).map((c) => (
-            <div key={c._id} className="alert alert-secondary">
-              {c.name}
+          {subcategory.filter(searched(keyword)).map((s) => (
+            <div key={s._id} className="alert alert-secondary">
+              {s.name}
               <span
-                onClick={() => handleRemove(c.slug)}
+                onClick={() => handleRemove(s.slug)}
                 className="btn btn-md"
                 style={rightStyleDelete}
               >
                 <DeleteOutlined className="text-danger" />
               </span>
               <span className="btn btn-md" style={rightStyleEdit}>
-                <Link to={`/admin/category/${c.slug}`}>
+                <Link to={`/admin/subcategory/${s.slug}`}>
                   <EditOutlined className="text-warning" />
                 </Link>
               </span>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
