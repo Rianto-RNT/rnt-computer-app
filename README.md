@@ -230,6 +230,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * admin can search category by name of the product category
 - Code Refactor search filter
   * Move search category code to local search
+- Subcategory CRUD
+  * create Subcategory model and populate to category
+  * create subcategory Routes and controllers
 
 
 
