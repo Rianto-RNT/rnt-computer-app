@@ -36,8 +36,13 @@ exports.getSingleSubcategory = asyncHandler(async (req, res, next) => {
 // @route   POST /api/subcategory
 // @access  Private / Admin
 exports.createSubcategory = asyncHandler(async (req, res, next) => {
-  const { name } = req.body;
-  const subcategory = await new Subcategory({ name, slug: slugify(name) }).save();
+  const { name, category } = req.body;
+
+  const subcategory = await new Subcategory({
+    name,
+    category,
+    slug: slugify(name),
+  }).save();
 
   if (!subcategory) {
     return next(
@@ -47,10 +52,8 @@ exports.createSubcategory = asyncHandler(async (req, res, next) => {
       )
     );
   }
-
-  const displaySubcategory = await Subcategory.findOne(req.body);
-
-  res.status(201).json({ success: true, data: displaySubcategory });
+  
+  res.status(201).json({ success: true, data: subcategory });
 });
 
 // @desc    Update Subcategory
@@ -81,7 +84,9 @@ exports.updateSubcategory = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/subcategory/:slug
 // @access  Private / Admin
 exports.removeSubcategory = asyncHandler(async (req, res, next) => {
-  const subcategory = await Subcategory.findOneAndDelete({ slug: req.params.slug });
+  const subcategory = await Subcategory.findOneAndDelete({
+    slug: req.params.slug,
+  });
 
   if (!subcategory) {
     return next(

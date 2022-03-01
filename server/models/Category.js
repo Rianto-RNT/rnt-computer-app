@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
-const { ObjectId } = mongoose.Schema;
 
 const CategorySchema = new mongoose.Schema({
   name: {
