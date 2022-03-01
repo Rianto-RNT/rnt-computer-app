@@ -7,6 +7,7 @@ import { createCategory, getAllCategory, removeCategory } from "../../../service
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../../../components/forms/CategoryForm";
+import LocalSearch from "../../../components/search/LocalSearch";
 
 const rightStyleEdit = { position: "absolute", top: 0, right: 15 };
 const rightStyleDelete = {
@@ -71,10 +72,6 @@ const CreateCategory = () => {
   };
 
   // step 3
-  const handleSearchChange = (e) => {
-    e.preventDefault();
-    setKeyword(e.target.value.toLowerCase());
-  };
 
   // Step 4
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
@@ -90,20 +87,11 @@ const CreateCategory = () => {
 
           <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
 
-          {/* // STEP 2 */}
-          <br />
-          <input
-            type="search"
-            placeholder="search"
-            value={keyword}
-            onChange={handleSearchChange}
-            className="form-control mb-4"
-          />
+          {/* // STEP 2 and step 3 have been moved here */}
+          <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
-          <hr />
 
           {/* STEP 5 */}
-
           {category.filter(searched(keyword)).map((c) => (
             <div key={c._id} className="alert alert-secondary">
               {c.name}

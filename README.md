@@ -228,6 +228,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * refactor code for category Create and update form 
 - Search Filter Category (admin dasboard)
   * admin can search category by name of the product category
+- Code Refactor search filter
+  * Move search category code to local search
 
 
 
