@@ -233,8 +233,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Subcategory CRUD
   * create Subcategory model and populate to category
   * create subcategory Routes and controllers
-
-
+- Subcategory Service (Frontend)
+  * Subcategory page and services
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)

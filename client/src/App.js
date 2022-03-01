@@ -21,6 +21,8 @@ import AdminRoute from "./utils/routes/AdminRoute";
 import CreateCategory from "./pages/admin/category/CreateCategory";
 import UpdateCategory from "./pages/admin/category/UpdateCategory";
 
+import CreateSubcategory from "./pages/admin/subcategory/CreateSubcategory";
+
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./services/auth";
@@ -66,14 +68,16 @@ const App = () => {
         <Route exact path="/register" component={Register} />
         <Route exact path="/complete-registration" component={RegisterComplete} />
         <Route exact path="/forgot-password" component={ForgotPassword} />
-        
+
         <UserRoute exact path="/my-account/history" component={History} />
         <UserRoute exact path="/my-account/change-password" component={ChangePassword} />
         <UserRoute exact path="/my-account/wishlist" component={Wishlist} />
-        
+
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/category" component={CreateCategory} />
         <AdminRoute exact path="/admin/category/:slug" component={UpdateCategory} />
+
+        <AdminRoute exact path="/admin/subcategory" component={CreateSubcategory} />
       </Switch>
     </>
   );

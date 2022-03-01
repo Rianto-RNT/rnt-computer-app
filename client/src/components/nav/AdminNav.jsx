@@ -21,7 +21,7 @@ const AdminNav = () => (
       </li>
 
       <li className="nav-item">
-        <Link to="/admin/sub-category" className="nav-link">Sub Category</Link>
+        <Link to="/admin/subcategory" className="nav-link">Subcategory</Link>
       </li>
 
       <li className="nav-item">
