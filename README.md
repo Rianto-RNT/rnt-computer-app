@@ -242,6 +242,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Product (backend)
   * Create product model/schema mongoose
   * Product Routes and Controller
+- Product (frontend)
+  * Create product page, product services and routes (admin autorization)
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
