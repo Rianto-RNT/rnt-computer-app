@@ -35,6 +35,8 @@ const CreateProduct = () => {
     createProduct(values, user.token)
       .then((res) => {
         console.log(res);
+        window.alert(`${res.data.title}" is created`);
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -75,8 +77,8 @@ const CreateProduct = () => {
 
             <div className="form-group">
               <label>Shipping</label>
-              <select name="shipping" className="form-control" onChange={handleChange}>
-                <option disabled>--Please select--</option>
+              <select defaultValue={"please-select"} name="shipping" className="form-control" onChange={handleChange}>
+                <option value="please-select" disabled>--Please select--</option>
                 <option value="no">No</option>
                 <option value="yes">Yes</option>
               </select>
@@ -89,8 +91,8 @@ const CreateProduct = () => {
 
             <div className="form-group">
               <label>Color</label>
-              <select name="color" className="form-control" onChange={handleChange}>
-                <option disabled>--Please select--</option>
+              <select defaultValue={"please-select"} name="color" className="form-control" onChange={handleChange}>
+                <option value="please-select" disabled>--Please select--</option>
 
                 {colors.map((c) => (
                   <option key={c} value={c}>
@@ -102,8 +104,8 @@ const CreateProduct = () => {
 
             <div className="form-group">
               <label>Brand</label>
-              <select name="brand" className="form-control" onChange={handleChange}>
-                <option disabled>--Please select--</option>
+              <select defaultValue={"please-select"} name="brand" className="form-control" onChange={handleChange}>
+                <option value="please-select" disabled>--Please select--</option>
 
                 {brands.map((b) => (
                   <option key={b} value={b}>

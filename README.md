@@ -246,6 +246,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Create product page, product services and routes (admin autorization)
   * create product form
   * Frist test to create Product from client to send to server
+  * Alert and reload page after product was created
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
