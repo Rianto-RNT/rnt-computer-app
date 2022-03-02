@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { toast } from "react-toastify";
 import { Form, Input, Button, Checkbox, Spin } from "antd";
-import {
-  GoogleOutlined,
-  MailOutlined,
-  UserOutlined,
-  LockOutlined,
-  EyeInvisibleOutlined,
-  EyeTwoTone,
-} from "@ant-design/icons";
+import { GoogleOutlined, MailOutlined, UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrUpdateUser } from "../../services/auth";
@@ -44,10 +37,9 @@ const Login = ({ history }) => {
     e.preventDefault();
     setLoading(true);
 
-    // console.table(email, password);
     try {
       const result = await auth.signInWithEmailAndPassword(email, password);
-      // console.log(result);
+
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
 
@@ -66,8 +58,6 @@ const Login = ({ history }) => {
           roleBaseRedirect(res);
         })
         .catch((error) => console.log(error));
-
-      // history.push("/");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -97,8 +87,6 @@ const Login = ({ history }) => {
             roleBaseRedirect(res);
           })
           .catch((error) => console.log(error));
-
-        // history.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -191,15 +179,7 @@ const Login = ({ history }) => {
         <div className="col-md-6 offset-md-3">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Login</h4>}
           {loginForm()}
-          <Button
-            onClick={googleLogin}
-            type="danger"
-            className="mb-3"
-            block
-            shape="round"
-            icon={<GoogleOutlined />}
-            size="middle"
-          >
+          <Button onClick={googleLogin} type="danger" className="mb-3" block shape="round" icon={<GoogleOutlined />} size="middle">
             Login with Google
           </Button>
 

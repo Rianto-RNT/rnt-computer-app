@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema({
     required: [true, 'Please Add a title'],
     unique: true,
     trim: true,
-    maxlength: [25, 'Title cannot be more than 50 character length'],
+    maxlength: [150, 'Title cannot be more than 150 character length'],
   },
   slug: {
     type: String,
@@ -23,24 +23,24 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Product must have a price.'],
   },
-  category: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Category',
-  },
-  subcategory: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Subcategory',
-    },
-  ],
+  // category: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: 'Category',
+  // },
+  // subcategory: [
+  //   {
+  //     type: mongoose.Schema.ObjectId,
+  //     ref: 'Subcategory',
+  //   },
+  // ],
   quantity: Number,
   sold: {
     type: Number,
     default: 0,
   },
-  images: {
-    type: Array,
-  },
+  // images: {
+  //   type: Array,
+  // },
   shipping: {
     type: String,
     enum: ['yes', 'no'],

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import AdminNav from "../../../components/nav/AdminNav";
 
 import { createProduct } from "../../../services/product";
@@ -22,16 +24,26 @@ const initialState = {
 const CreateProduct = () => {
   const [values, setValues] = useState(initialState);
 
+  // Redux
+  const { user } = useSelector((state) => ({ ...state }));
+
   // Destructure
   const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //
+    createProduct(values, user.token)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status === 400) toast.error(error.response.data);
+      });
   };
 
   const handleChange = (e) => {
-    //
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
@@ -44,6 +56,7 @@ const CreateProduct = () => {
         <div className="col-md-10">
           <h4>Create Product</h4>
           <hr />
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Title</label>
