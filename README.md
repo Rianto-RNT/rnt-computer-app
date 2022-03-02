@@ -237,6 +237,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Subcategory page and services
 - Subcategory Create
   * Calling API endpoint for subcategory service frontend enhanced
+  * showing subcategory and remove
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)

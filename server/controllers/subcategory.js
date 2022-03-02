@@ -60,11 +60,11 @@ exports.createSubcategory = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/subcategory/:slug
 // @access  Private / Admin
 exports.updateSubcategory = asyncHandler(async (req, res, next) => {
-  let { name } = req.body;
+  let { name, category } = req.body;
 
   let subcategory = await Subcategory.findOneAndUpdate(
     { slug: req.params.slug },
-    { name, slug: slugify(name) },
+    { name, category, slug: slugify(name) },
     { new: true, runValidators: true }
   );
 
