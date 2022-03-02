@@ -40,7 +40,7 @@ const CreateProduct = () => {
       })
       .catch((error) => {
         console.log(error);
-        if (error.response.status === 400) toast.error(error.response.data);
+        toast.error(error.response.data.error)
       });
   };
 

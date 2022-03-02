@@ -247,6 +247,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * create product form
   * Frist test to create Product from client to send to server
   * Alert and reload page after product was created
+  * Error handler when create duplicate value name or title in product
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
