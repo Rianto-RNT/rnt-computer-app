@@ -239,8 +239,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Calling API endpoint for subcategory service frontend enhanced
   * showing subcategory and remove
 - Update Subcategory in admin dashboard
-- Product Model
+- Product (backend)
   * Create product model/schema mongoose
+  * Product Routes and Controller
 
 ## Articles
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
