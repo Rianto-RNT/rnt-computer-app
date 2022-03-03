@@ -251,6 +251,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Frist test to create Product from client to send to server
   * Alert and reload page after product was created
   * Error handler when create duplicate value name or title in product
+  * Refactor Product code - component and page
 
 
 ## Articles
