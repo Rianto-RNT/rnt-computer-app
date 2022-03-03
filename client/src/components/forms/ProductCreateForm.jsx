@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductCreateForm = ({ handleSubmit, handleChange, values }) => {
+const ProductCreateForm = ({ handleSubmit, handleChange, values, handleCategoryChange }) => {
   const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
   return (
@@ -68,7 +68,7 @@ const ProductCreateForm = ({ handleSubmit, handleChange, values }) => {
 
       <div className="form-group">
         <label>Category</label>
-        <select defaultValue={"please-select"} name="category" className="form-control" onChange={handleChange}>
+        <select defaultValue={"please-select"} name="category" className="form-control" onChange={handleCategoryChange}>
           <option value="please-select" disabled>
             --Please select--
           </option>

@@ -254,6 +254,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Refactor Product code - component and page
   * Create product with category
   * get subcategory base on parent category
+  * subcategory props - calling subcategory when choosing caegory in create product on admin dashboard
 
 
 ## Articles
