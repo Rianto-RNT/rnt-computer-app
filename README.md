@@ -253,6 +253,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Error handler when create duplicate value name or title in product
   * Refactor Product code - component and page
   * Create product with category
+  * get subcategory base on parent category
 
 
 ## Articles

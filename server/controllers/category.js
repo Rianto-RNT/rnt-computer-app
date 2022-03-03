@@ -2,6 +2,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const slugify = require('slugify');
 const Category = require('../models/Category');
+const Subcategory = require('../models/Subcategory');
 
 // @desc    Get All Category
 // @route   GET /api/category
@@ -95,4 +96,24 @@ exports.removeCategory = asyncHandler(async (req, res, next) => {
   category.remove();
 
   res.status(200).json({ success: true, data: 'Category has been remove' });
+});
+
+// @desc    Get all subcategory for product with category ID
+// @route   GET /api/category/:id/subcategory
+// @access  Private / Admin
+exports.getAllSubcategoryForProduct = asyncHandler(async (req, res, next) => {
+  const subcategory = await Subcategory.find({ category: req.params.id });
+
+  if (!subcategory) {
+    return next(
+      new ErrorResponse(
+        `Category not found with ${req.params.id}. Please add corect value`,
+        400
+      )
+    );
+  }
+
+  res
+    .status(200)
+    .json({ success: true, count: subcategory.length, data: subcategory });
 });

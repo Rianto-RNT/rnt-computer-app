@@ -12,6 +12,7 @@ const {
   createCategory,
   updateCategory,
   removeCategory,
+  getAllSubcategoryForProduct
 } = require('../controllers/category');
 
 // Routes
@@ -20,5 +21,9 @@ router.get('/category/:slug', getSingleCategory);
 router.post('/category', protect, adminProtect, createCategory);
 router.put('/category/:slug', protect, adminProtect, updateCategory);
 router.delete('/category/:slug', protect, adminProtect, removeCategory);
+
+// this route is for create product to get all 
+// subcategory with category ID in admin dashboard
+router.get('/category/:id/subcategory',  protect, adminProtect, getAllSubcategoryForProduct)
 
 module.exports = router;
