@@ -58,12 +58,7 @@ const UpdateSubcategory = ({ history, match }) => {
 
           <div className="form-group">
             <label>Category</label>
-            <select
-              name="parents"
-              className="form-control"
-              onChange={(e) => setParents(e.target.value)}
-              defaultValue={"Please-Choose"}
-            >
+            <select name="category" className="form-control" onChange={(e) => setParents(e.target.value)} defaultValue={"Please-Choose"}>
               <option value="Please-Choose" disabled>
                 -Please Choose-
               </option>

@@ -5,6 +5,8 @@ import AdminNav from "../../../components/nav/AdminNav";
 import { createProduct } from "../../../services/product";
 import ProductCreateForm from "../../../components/forms/ProductCreateForm";
 
+import { getAllCategory } from "../../../services/category";
+
 const initialState = {
   title: "",
   description: "",
@@ -27,7 +29,11 @@ const CreateProduct = () => {
   // Redux
   const { user } = useSelector((state) => ({ ...state }));
 
-  
+  useEffect(() => {
+    loadAllCategory();
+  }, []);
+
+  const loadAllCategory = () => getAllCategory().then((c) => setValues({ ...values, categories: c.data }));
 
   const handleSubmit = (e) => {
     e.preventDefault();

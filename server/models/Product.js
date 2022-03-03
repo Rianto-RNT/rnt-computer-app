@@ -23,10 +23,10 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Product must have a price.'],
   },
-  // category: {
-  //   type: mongoose.Schema.ObjectId,
-  //   ref: 'Category',
-  // },
+  category: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Category',
+  },
   // subcategory: [
   //   {
   //     type: mongoose.Schema.ObjectId,

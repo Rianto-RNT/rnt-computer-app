@@ -3,11 +3,7 @@ import AdminNav from "../../../components/nav/AdminNav";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
-import {
-  createSubcategory,
-  removeSubcategory,
-  getAllSubcategory,
-} from "../../../services/subcategory";
+import { createSubcategory, removeSubcategory, getAllSubcategory } from "../../../services/subcategory";
 import { getAllCategory } from "../../../services/category";
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -44,7 +40,7 @@ const CreateSubcategory = () => {
 
   const loadAllCategory = () => getAllCategory().then((c) => setCategory(c.data));
   const loadAllSubcategory = () => getAllSubcategory().then((s) => setSubcategory(s.data));
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -91,17 +87,16 @@ const CreateSubcategory = () => {
         <div className="col-md-2">
           <AdminNav />
         </div>
+
         <div className="col">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Subcategory</h4>}
 
           <div className="form-group">
             <label>Category</label>
-            <select
-              name="parents"
-              className="form-control"
-              onChange={(e) => setParents(e.target.value)}
-            >
-              <option>--None--</option>
+            <select defaultValue={"please-select"} name="parents" className="form-control" onChange={(e) => setParents(e.target.value)}>
+              <option value="please-select" disabled>
+                --Please select--
+              </option>
               {category.length > 0 &&
                 category.map((c) => (
                   <option key={c._id} value={c._id}>
@@ -120,11 +115,7 @@ const CreateSubcategory = () => {
           {subcategory.filter(searched(keyword)).map((s) => (
             <div key={s._id} className="alert alert-secondary">
               {s.name}
-              <span
-                onClick={() => handleRemove(s.slug)}
-                className="btn btn-md"
-                style={rightStyleDelete}
-              >
+              <span onClick={() => handleRemove(s.slug)} className="btn btn-md" style={rightStyleDelete}>
                 <DeleteOutlined className="text-danger" />
               </span>
               <span className="btn btn-md" style={rightStyleEdit}>
