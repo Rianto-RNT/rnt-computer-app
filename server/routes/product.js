@@ -6,9 +6,10 @@ const router = express.Router();
 const { protect, adminProtect } = require('../middlewares/auth');
 
 // Controller
-const { createProduct } = require('../controllers/product');
+const { getAllProduct, createProduct } = require('../controllers/product');
 
 // Routes
+router.get('/product', getAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
 
 module.exports = router;
