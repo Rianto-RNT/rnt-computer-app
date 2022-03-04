@@ -260,6 +260,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * subcategory props - calling subcategory when choosing caegory in create product on admin dashboard
   * Multiple select for subcategory form
   * create product with subcategory array
+  * file / image resize in react
 
 
 ## Articles

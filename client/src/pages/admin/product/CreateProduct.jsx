@@ -5,6 +5,7 @@ import AdminNav from "../../../components/nav/AdminNav";
 import { createProduct } from "../../../services/product";
 import ProductCreateForm from "../../../components/forms/ProductCreateForm";
 import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
+import FileUploadForm from "../../../components/forms/FileUploadForm";
 
 const initialState = {
   title: "",
@@ -77,6 +78,10 @@ const CreateProduct = () => {
           <hr />
 
           {JSON.stringify(values.subcategory)}
+
+          <div className="p-3">
+            <FileUploadForm/>
+          </div>
 
           <ProductCreateForm
             handleSubmit={handleSubmit}

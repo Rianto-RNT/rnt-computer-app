@@ -18,7 +18,7 @@ router.get('/product', getAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
 
 // image upload cloud
-router.post('/upload-images', protect, adminProtect, uploadImages);
-router.post('/remove-images', protect, adminProtect, removeImages);
+router.post('/product/upload-images', protect, adminProtect, uploadImages);
+router.post('/product/remove-images', protect, adminProtect, removeImages);
 
 module.exports = router;

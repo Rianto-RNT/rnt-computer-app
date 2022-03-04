@@ -1,6 +1,8 @@
 import React from "react";
-import { Select } from "antd";
+import { Select, Input } from "antd";
 
+// Ant Design
+const { TextArea } = Input;
 const { Option } = Select;
 
 const ProductCreateForm = ({
@@ -23,7 +25,15 @@ const ProductCreateForm = ({
 
       <div className="form-group">
         <label>Description</label>
-        <input type="text" name="description" className="form-control" value={description} onChange={handleChange} />
+        <TextArea
+          rows={4}
+          placeholder="Maximum 2000 character"
+          maxLength={2000}
+          type="text"
+          name="description"
+          value={description}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="form-group">
