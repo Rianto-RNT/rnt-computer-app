@@ -25,6 +25,7 @@ const initialState = {
 const CreateProduct = () => {
   const [values, setValues] = useState(initialState);
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
+  const [showSubcategory, setShowSubcategory] = useState(false);
 
   // Redux
   const { user } = useSelector((state) => ({ ...state }));
@@ -79,6 +80,8 @@ const CreateProduct = () => {
             handleChange={handleChange}
             values={values}
             handleCategoryChange={handleCategoryChange}
+            subcategoryOptions={subcategoryOptions}
+            showSubcategory={showSubcategory}
           />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductCreateForm = ({ handleSubmit, handleChange, values, handleCategoryChange }) => {
+const ProductCreateForm = ({ handleSubmit, handleChange, values, handleCategoryChange, subcategoryOptions, showSubcategory }) => {
   const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
   return (
@@ -80,6 +80,8 @@ const ProductCreateForm = ({ handleSubmit, handleChange, values, handleCategoryC
             ))}
         </select>
       </div>
+
+      {subcategoryOptions ? subcategoryOptions.length : 'no subcategory yet'}
 
       <br />
 
