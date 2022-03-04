@@ -92,20 +92,26 @@ const ProductCreateForm = ({
         </select>
       </div>
 
-      <div>
-        <label>Subcategory</label>
-        <Select
-          mode="multiple"
-          allowClear
-          style={{ width: "100%" }}
-          placeholder="Please select"
-          deva={[subcategory]}
-          onChange={(value) => setValues({ ...values, getAllSubcategoryForProduct: value })}
-        >
-          <Option value="one">Option 1</Option>
-          <Option value="two">Option 2</Option>
-        </Select>
-      </div>
+      {showSubcategory && (
+        <div>
+          <label>Subcategory</label>
+          <Select
+            mode="multiple"
+            allowClear
+            style={{ width: "100%" }}
+            placeholder="Please select"
+            value={subcategory}
+            onChange={(value) => setValues({ ...values, subcategory: value })}
+          >
+            {subcategoryOptions.length &&
+              subcategoryOptions.map((s) => (
+                <Option key={s._id} value={s._id}>
+                  {s.name}
+                </Option>
+              ))}
+          </Select>
+        </div>
+      )}
 
       <br />
 

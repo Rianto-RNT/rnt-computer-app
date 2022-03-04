@@ -255,6 +255,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Create product with category
   * get subcategory base on parent category
   * subcategory props - calling subcategory when choosing caegory in create product on admin dashboard
+  * Multiple select for subcategory form
 
 
 ## Articles

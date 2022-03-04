@@ -12,7 +12,7 @@ const initialState = {
   price: "",
   categories: [],
   category: "",
-  subcategory: "",
+  subcategory: [],
   shipping: "",
   quantity: "",
   images: [],
@@ -57,11 +57,12 @@ const CreateProduct = () => {
   const handleCategoryChange = (e) => {
     e.preventDefault();
     console.log("Clicked Category", e.target.value);
-    setValues({ ...values, category: e.target.value });
+    setValues({ ...values, subcategory: [], category: e.target.value });
     getAllSubcategoryForProduct(e.target.value).then((res) => {
       console.log("Subcategory Options on click", res);
       setSubcategoryOptions(res.data);
     });
+    setShowSubcategory(true);
   };
 
   return (
@@ -75,7 +76,7 @@ const CreateProduct = () => {
           <h4>Create Product</h4>
           <hr />
 
-          {JSON.stringify(values.getAllSubcategoryForProduct)}
+          {JSON.stringify(values.subcategory)}
 
           <ProductCreateForm
             handleSubmit={handleSubmit}
