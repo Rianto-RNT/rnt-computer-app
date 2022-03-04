@@ -1,6 +1,17 @@
 import React from "react";
+import { Select } from "antd";
 
-const ProductCreateForm = ({ handleSubmit, handleChange, values, handleCategoryChange, subcategoryOptions, showSubcategory }) => {
+const { Option } = Select;
+
+const ProductCreateForm = ({
+  handleSubmit,
+  handleChange,
+  values,
+  setValues,
+  handleCategoryChange,
+  subcategoryOptions,
+  showSubcategory,
+}) => {
   const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
   return (
@@ -81,7 +92,20 @@ const ProductCreateForm = ({ handleSubmit, handleChange, values, handleCategoryC
         </select>
       </div>
 
-      {subcategoryOptions ? subcategoryOptions.length : 'no subcategory yet'}
+      <div>
+        <label>Subcategory</label>
+        <Select
+          mode="multiple"
+          allowClear
+          style={{ width: "100%" }}
+          placeholder="Please select"
+          deva={[subcategory]}
+          onChange={(value) => setValues({ ...values, getAllSubcategoryForProduct: value })}
+        >
+          <Option value="one">Option 1</Option>
+          <Option value="two">Option 2</Option>
+        </Select>
+      </div>
 
       <br />
 
