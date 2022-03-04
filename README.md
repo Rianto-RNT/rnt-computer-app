@@ -244,6 +244,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Create product model/schema mongoose
   * Product Routes and Controller
   * Product Controller - Get all product from database
+  * Cloud Upload endpoints
+  * Implementation Cloudinary SDK
+  * Product image upload and delete route, controller and utils
 
 - Product (frontend)
   * Create product page, product services and routes (admin autorization)
@@ -256,6 +259,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * get subcategory base on parent category
   * subcategory props - calling subcategory when choosing caegory in create product on admin dashboard
   * Multiple select for subcategory form
+  * create product with subcategory array
 
 
 ## Articles

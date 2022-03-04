@@ -6,10 +6,19 @@ const router = express.Router();
 const { protect, adminProtect } = require('../middlewares/auth');
 
 // Controller
-const { getAllProduct, createProduct } = require('../controllers/product');
+const {
+  getAllProduct,
+  createProduct,
+  uploadImages,
+  removeImages,
+} = require('../controllers/product');
 
 // Routes
 router.get('/product', getAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
+
+// image upload cloud
+router.post('/upload-images', protect, adminProtect, uploadImages);
+router.post('/remove-images', protect, adminProtect, removeImages);
 
 module.exports = router;
