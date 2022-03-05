@@ -261,6 +261,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Multiple select for subcategory form
   * create product with subcategory array
   * file / image resize in react
+  * multiple image upload (cloud storage)
 
 
 ## Articles

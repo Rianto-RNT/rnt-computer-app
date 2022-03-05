@@ -27,7 +27,7 @@ const CreateProduct = () => {
   const [values, setValues] = useState(initialState);
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
   const [showSubcategory, setShowSubcategory] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   // Redux
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -77,10 +77,10 @@ const CreateProduct = () => {
           <h4>Create Product</h4>
           <hr />
 
-          {JSON.stringify(values.subcategory)}
+          {JSON.stringify(values.images)}
 
           <div className="p-3">
-            <FileUploadForm/>
+            <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
           </div>
 
           <ProductCreateForm

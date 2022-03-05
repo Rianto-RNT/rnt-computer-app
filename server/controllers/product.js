@@ -36,18 +36,13 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
 });
 
 // @desc      Upload images for product
-// @route     PUT /api/product/:id/images or /api/upload-images
+// @route     PUT /api/product/upload-images
 // @access    Private
 exports.uploadImages = asyncHandler(async (req, res, next) => {
-  const imagesFile = await cloudinary.uploader.upload(req.body.image, {
+  const imagesFile = await cloudUpload.uploader.upload(req.body.image, {
     public_id: `${Date.now()}`,
     resource_type: 'auto', // jpg, png
   });
-
-  // Make sure the image is a photo
-  if (!imagesFile.mimetype.startsWith('image')) {
-    return next(new ErrorResponse(`Please upload an image file`, 400));
-  }
 
   // Check filesize
   if (imagesFile.size > process.env.MAX_FILE_UPLOAD) {
@@ -61,7 +56,7 @@ exports.uploadImages = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    public_id: XPathResult.public_id,
+    public_id: imagesFile.public_id,
     url: imagesFile.secure_url,
   });
 });
