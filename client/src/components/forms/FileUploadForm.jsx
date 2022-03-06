@@ -3,7 +3,7 @@ import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { Avatar } from "antd";
+import { Avatar, Badge, Col, Row, Divider } from "antd";
 
 const FileUpload = ({ values, setValues, setLoading }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -59,20 +59,32 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 
   return (
     <>
-      <div className=" row">
-        {values.images && values.images.map((image) => <Avatar key={image.public_id} src={image.url} shape="square" size={100} type="dashed" className="m-1" />)}
-      </div>
+      <Divider orientation="left">Upload images</Divider>
+      <Row justify="space-between" style={{ marginBottom: 8 }}>
+        <Col span={10}>
+          <div>
+            {values.images &&
+              values.images.map((image) => (
+                <Badge count="X" key={image.public_id} style={{ cursor: "pointer" }}>
+                  <Avatar src={image.url} size={100} shape="square" className="ml-3" />
+                </Badge>
+              ))}
+          </div>
+        </Col>
+      </Row>
 
       <br />
 
-      <div className="row">
-        <div className="mb-3">
-          <label className="btn btn-outline-secondary">
-            Choose Images
-            <input type="file" multiple hidden accept="images/*" onChange={fileUploadAndResize} />
-          </label>
-        </div>
-      </div>
+      <Row justify="space-around" align="bottom">
+        <Col span={4}>
+          <div value={100}>
+            <label className="btn btn-secondary">
+              Choose File
+              <input type="file" multiple hidden accept="images/*" onChange={fileUploadAndResize} />
+            </label>
+          </div>
+        </Col>
+      </Row>
     </>
   );
 };
