@@ -6,6 +6,8 @@ import { createProduct } from "../../../services/product";
 import ProductCreateForm from "../../../components/forms/ProductCreateForm";
 import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
 import FileUploadForm from "../../../components/forms/FileUploadForm";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 const initialState = {
   title: "",
@@ -28,6 +30,9 @@ const CreateProduct = () => {
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
   const [showSubcategory, setShowSubcategory] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
   // Redux
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -74,7 +79,7 @@ const CreateProduct = () => {
         </div>
 
         <div className="col-md-10">
-          <h4>Create Product</h4>
+          {loading ? <Spin indicator={antIcon} /> : <h4>Create Product</h4>}
           <hr />
 
           {JSON.stringify(values.images)}

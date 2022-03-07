@@ -67,7 +67,7 @@ exports.uploadImages = asyncHandler(async (req, res, next) => {
 exports.removeImages = asyncHandler(async (req, res, next) => {
   const image_id = req.body.public_id;
 
-  const imagesFile = cloudinary.uploader.destroy(image_id);
+  const imagesFile = cloudUpload.uploader.destroy(image_id);
 
   // Check filesize
   if (!imagesFile) {
