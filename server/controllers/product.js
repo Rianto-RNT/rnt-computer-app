@@ -5,10 +5,26 @@ const cloudUpload = require('../utils/cloudUpload');
 const Product = require('../models/Product');
 
 // @desc    Get all product
-// @route   POST /api/product
-// @access  public
+// @route   GET /api/product
+// @access  Private / Admin
 exports.getAllProduct = asyncHandler(async (req, res, next) => {
   const products = await Product.find({});
+
+  res
+    .status(200)
+    .json({ success: true, count: products.length, data: products });
+});
+
+// @desc    List all product
+// @route   GET /api/product/:count
+// @access  Private / Admin
+exports.listAllProduct = asyncHandler(async (req, res, next) => {
+  const products = await Product.find({})
+    .limit(parseInt(req.params.count))
+    .populate('category')
+    .populate('subcategory')
+    .sort([['createdAt', 'desc']])
+    .exec();
 
   res
     .status(200)
@@ -81,6 +97,6 @@ exports.removeImages = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: ("Image have been deleted"),
+    data: 'Image have been deleted',
   });
 });

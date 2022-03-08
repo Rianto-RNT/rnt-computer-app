@@ -8,6 +8,7 @@ const { protect, adminProtect } = require('../middlewares/auth');
 // Controller
 const {
   getAllProduct,
+  listAllProduct,
   createProduct,
   uploadImages,
   removeImages,
@@ -15,6 +16,7 @@ const {
 
 // Routes
 router.get('/product', getAllProduct);
+router.get('/product/:count', listAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
 
 // image upload cloud
