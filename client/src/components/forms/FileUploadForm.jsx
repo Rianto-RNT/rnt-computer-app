@@ -74,7 +74,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
         setLoading(false);
         const { images } = values;
         let filteredImages = images.filter((item) => {
-          return item.public_id != public_id;
+          return item.public_id !== public_id;
         });
         setValues({ ...values, images: filteredImages });
       })

@@ -265,6 +265,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * multiple image upload (cloud storage)
   * product image preview when upload in admin dasboard
   * Product create with multiple images
+  * Fetch all products in admin dashboard
 
 
 ## Articles
