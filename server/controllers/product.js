@@ -8,11 +8,25 @@ const Product = require('../models/Product');
 // @route   GET /api/product
 // @access  Private / Admin
 exports.getAllProduct = asyncHandler(async (req, res, next) => {
-  const products = await Product.find({});
+  const products = await Product.find();
 
   res
     .status(200)
     .json({ success: true, count: products.length, data: products });
+});
+
+// @desc    Get Single product
+// @route   GET /api/product/:slug
+// @access  Private / Admin
+exports.getSingleProduct = asyncHandler(async (req, res, next) => {
+  const product = await Product.findOne({ slug: req.params.slug })
+    .populate('category')
+    .populate('subcategory')
+    .exec();
+
+  res
+    .status(200)
+    .json({ success: true, data: product });
 });
 
 // @desc    List all product

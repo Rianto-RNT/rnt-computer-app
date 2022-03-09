@@ -8,6 +8,7 @@ const { protect, adminProtect } = require('../middlewares/auth');
 // Controller
 const {
   getAllProduct,
+  getSingleProduct,
   listAllProduct,
   createProduct,
   removeProduct,
@@ -17,7 +18,8 @@ const {
 
 // Routes
 router.get('/product', getAllProduct);
-router.get('/product/:count', listAllProduct);
+router.get('/product/:slug', getSingleProduct);
+router.get('/products/:count', listAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
 router.delete('/product/:slug', protect, adminProtect, removeProduct);
 

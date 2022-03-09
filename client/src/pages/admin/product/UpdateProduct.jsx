@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import AdminNav from "../../../components/nav/AdminNav";
-import { createProduct } from "../../../services/product";
-import ProductCreateForm from "../../../components/forms/ProductCreateForm";
-import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
-import FileUploadForm from "../../../components/forms/FileUploadForm";
-import { LoadingOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
+import { useParams } from "react-router-dom";
 
-const UpdateProduct = () => {
-  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-
+const UpdateProduct = ({ match }) => {
   // Redux
   const { user } = useSelector((state) => ({ ...state }));
+
+  // Router
+  const { slug } = match.params;
 
   return (
     <div className="container-fluid">
@@ -24,7 +19,8 @@ const UpdateProduct = () => {
 
         <div className="col-md-10">
           <h4>Update Product</h4>
-          {/* {loading ? <Spin indicator={antIcon} /> : <h4>Create Product</h4>} */}
+
+          {JSON.stringify(slug)}
           <hr />
         </div>
       </div>
