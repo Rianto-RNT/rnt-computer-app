@@ -258,7 +258,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Refactor Product code - component and page
   * Create product with category
   * get subcategory base on parent category
-  * subcategory props - calling subcategory when choosing caegory in create product on admin dashboard
+  * subcategory props - calling subcategory when choosing category in create product on admin dashboard
   * Multiple select for subcategory form
   * create product with subcategory array
   * file / image resize in react
@@ -266,6 +266,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * product image preview when upload in admin dasboard
   * Product create with multiple images
   * Fetch all products in admin dashboard
+  * Admin products card
 
 
 ## Articles
