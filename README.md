@@ -267,6 +267,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Product create with multiple images
   * Fetch all products in admin dashboard
   * Admin products card
+  * All product page admin dashboard
 
 
 ## Articles
