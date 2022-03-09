@@ -82,8 +82,6 @@ const CreateProduct = () => {
           {loading ? <Spin indicator={antIcon} /> : <h4>Create Product</h4>}
           <hr />
 
-          {JSON.stringify(values.images)}
-
           <div className="p-3">
             <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
           </div>
