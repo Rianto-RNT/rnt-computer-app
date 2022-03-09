@@ -6,14 +6,14 @@ import axios from "axios";
 //   return response.data;
 // };
 
-export const getProductByCount = async (count) => {
-  const response = await axios.get(`${process.env.REACT_APP_API}/products/${count}`);
+export const getSingleProduct = async (slug) => {
+  const response = await axios.get(`${process.env.REACT_APP_API}/product/${slug}`);
 
   return response.data;
 };
 
-export const getSingleProduct = async (slug) => {
-  const response = await axios.get(`${process.env.REACT_APP_API}/product/${slug}`);
+export const getProductByCount = async (count) => {
+  const response = await axios.get(`${process.env.REACT_APP_API}/products/${count}`);
 
   return response.data;
 };

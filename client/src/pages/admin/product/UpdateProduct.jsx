@@ -1,14 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import AdminNav from "../../../components/nav/AdminNav";
 import { useParams } from "react-router-dom";
 
+import { getSingleProduct } from "../../../services/product";
+import AdminNav from "../../../components/nav/AdminNav";
+
+const initialState = {
+  title: "",
+  description: "",
+  price: "",
+  categories: [],
+  category: "",
+  subcategory: [],
+  shipping: "",
+  quantity: "",
+  images: [],
+  colors: ["yellow", "red", "black", "silver", "blue", "white", "space gray"],
+  brands: ["apple", "lenovo", "hp", "acer", "microsoft", "asus", "msi"],
+  color: "",
+  brand: "",
+};
+
 const UpdateProduct = ({ match }) => {
-  // Redux
+  const [values, setValues] = useState(initialState);
+
   const { user } = useSelector((state) => ({ ...state }));
 
-  // Router
   const { slug } = match.params;
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
+  const loadProduct = () => {
+    getSingleProduct(slug).then((product) => {
+      setValues({ ...values, ...product.data });
+    });
+  };
 
   return (
     <div className="container-fluid">
@@ -20,7 +48,7 @@ const UpdateProduct = ({ match }) => {
         <div className="col-md-10">
           <h4>Update Product</h4>
 
-          {JSON.stringify(slug)}
+          {JSON.stringify(values)}
           <hr />
         </div>
       </div>

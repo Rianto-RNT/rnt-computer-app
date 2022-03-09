@@ -19,8 +19,8 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["yellow", "red", "black", "silver", "blue", "white"],
-  brands: ["apple", "lenovo", "hp", "acer", "microsoft", "asus"],
+  colors: ["yellow", "red", "black", "silver", "blue", "white", "space gray"],
+  brands: ["apple", "lenovo", "hp", "acer", "microsoft", "asus", "msi"],
   color: "",
   brand: "",
 };
