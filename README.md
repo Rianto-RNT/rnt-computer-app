@@ -248,6 +248,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Implementation Cloudinary SDK
   * Product image upload and delete route, controller and utils
   * List all product endpoints
+  * Product Delete
 
 - Product (frontend)
   * Create product page, product services and routes (admin autorization)

@@ -42,13 +42,33 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
   if (!product) {
     return next(
       new ErrorResponse(
-        `Failed! Category with ${req.body.slug} already created. Please add another category.`,
+        `Failed! Product with ${req.body.slug} already created. Please add another category.`,
         400
       )
     );
   }
 
   res.status(200).json({ success: true, data: product });
+});
+
+// @desc    Remove product
+// @route   DELETE /api/product/:slug
+// @access  Private / Admin
+exports.removeProduct = asyncHandler(async (req, res, next) => {
+  const product = await Product.findOneAndDelete({
+    slug: req.params.slug,
+  }).exec();
+
+  if (!product) {
+    return next(
+      new ErrorResponse(
+        `Failed! Product with ${req.body.slug} not found. Please select correct value.`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: {} });
 });
 
 // @desc      Upload images for product
@@ -89,7 +109,7 @@ exports.removeImages = asyncHandler(async (req, res, next) => {
   if (!imagesFile) {
     return next(
       new ErrorResponse(
-        `Bootcamp not found with id of ${req.params.image_id}. Please add correct id`,
+        `Images not found with id of ${req.params.image_id}. Please add correct id`,
         400
       )
     );

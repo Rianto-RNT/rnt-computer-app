@@ -10,6 +10,7 @@ const {
   getAllProduct,
   listAllProduct,
   createProduct,
+  removeProduct,
   uploadImages,
   removeImages,
 } = require('../controllers/product');
@@ -18,6 +19,7 @@ const {
 router.get('/product', getAllProduct);
 router.get('/product/:count', listAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
+router.delete('/product/:slug', protect, adminProtect, removeProduct);
 
 // image upload cloud
 router.post('/product/upload-images', protect, adminProtect, uploadImages);
