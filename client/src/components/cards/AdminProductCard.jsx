@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Card, Collapse } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import noImages from "../../assets/images/noImages.png";
 
 const { Meta } = Card;
 const { Panel } = Collapse;
@@ -11,7 +13,10 @@ const AdminProductCard = ({ product }) => {
 
   return (
     <Card
-      cover={<img src={images && images.length ? images[0].url : ""} style={{ height: "150px", objectFit: "cover" }} className="p-1" />}
+      cover={
+        <img src={images && images.length ? images[0].url : noImages} style={{ height: "333px", objectFit: "cover" }} className="p-1" />
+      }
+      actions={[<EditOutlined className="text-warning"/>, <DeleteOutlined className="text-danger"/>]}
     >
       <Meta title={title} />
       <br />

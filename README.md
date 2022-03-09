@@ -268,6 +268,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   * Fetch all products in admin dashboard
   * Admin products card
   * All product page admin dashboard
+  * Default image, edit-delete icon, and sort the description
 
 
 ## Articles
