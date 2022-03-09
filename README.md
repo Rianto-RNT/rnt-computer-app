@@ -20,20 +20,23 @@
 </p>
 
 ## Deployed Version
+
 Live demo (Feel free to visit) 👉 : https://rian-bootcamp.herokuapp.com/
 
 ## API Usage
 
-Check: 
+Check:
 
 [Bootcamp Booking API Documentation Postman](https://documenter.getpostman.com/view/16994323/UVkiSJNz)
 
-[Bootcamp Booking API Documentation Swagger](https://app.swaggerhub.com/apis-docs/rnt-development-one/bootcamp-booking_api/1.0) 
+[Bootcamp Booking API Documentation Swagger](https://app.swaggerhub.com/apis-docs/rnt-development-one/bootcamp-booking_api/1.0)
 
 for more info.
 
 ## Deployment
+
 The website is deployed with git into heroku. Below are the steps taken:
+
 ```
 git init
 git add -A
@@ -46,50 +49,55 @@ heroku open
 ```
 
 ## Installation
+
 You can fork the app or you can git-clone the app into your local machine. Once done that, please install all the dependencies by running
+
 ```
 $ npm i
 $ npm start
 ```
 
 ## Run App in Development for client / React
+
 ```sh
  npm start
 ```
 
 ## Run App in Development for Server / Node
+
 ```sh
  npm run dev
 ```
 
 ## Import Data to Database
+
 ```sh
  node seeder -import
 ```
 
 ## Import Data to Database
+
 ```sh
  node seeder -destroy
 ```
 
 ## Build With
 
-* [Node.js](https://nodejs.org/en) - JS runtime environment
-* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-* [Firebase](https://firebase.google.com/) - Authentication — user login and identity
-* [Firebase-admin](https://firebase.google.com/) - lets you interact with Firebase from privileged environments to perform actions
-* [VSCode](https://code.visualstudio.com) - Free source-code editor made by Microsoft
-* [Express](http://expressjs.com/) - The web framework used
-* [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
-* [Postman](https://www.getpostman.com/) - API testing
-* [Git](https://git-scm.com) - Open source distributed version control system
-* [Cloudinary](https://cloudinary.com
-) - Effortlessly optimize, transform, upload and manage your cloud's assets.
-* [Stripe](hhttps://stripe.com/) - Online Payment Processing API payment gateway
-* [MapQuest Dev API](https://developer.mapquest.com) - Free online web mapping service
-* [Heroku](https://www.heroku.com/) - Cloud platform
-* [Digital Ocean](https://www.digitalocean.com) - Cloud platform
+- [Node.js](https://nodejs.org/en) - JS runtime environment
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Firebase](https://firebase.google.com/) - Authentication — user login and identity
+- [Firebase-admin](https://firebase.google.com/) - lets you interact with Firebase from privileged environments to perform actions
+- [VSCode](https://code.visualstudio.com) - Free source-code editor made by Microsoft
+- [Express](http://expressjs.com/) - The web framework used
+- [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
+- [Postman](https://www.getpostman.com/) - API testing
+- [Git](https://git-scm.com) - Open source distributed version control system
+- [Cloudinary](https://cloudinary.com) - Effortlessly optimize, transform, upload and manage your cloud's assets.
+- [Stripe](hhttps://stripe.com/) - Online Payment Processing API payment gateway
+- [MapQuest Dev API](https://developer.mapquest.com) - Free online web mapping service
+- [Heroku](https://www.heroku.com/) - Cloud platform
+- [Digital Ocean](https://www.digitalocean.com) - Cloud platform
 
 ## NPM Packages
 
@@ -127,169 +135,177 @@ $ npm start
 - [compression](https://www.npmjs.com/package/compression)
 
 ## Demonstration
+
 ### 1) User Authentication client side using firebase
-- Home 
-   * Pagination
-   * Select specific fields in result
-   * Limit number of results
-   * Filter by fields
+
+- Home
+  - Pagination
+  - Select specific fields in result
+  - Limit number of results
+  - Filter by fields
 - Login
-  * email
-  * Password
+  - email
+  - Password
 - Register
-  * Email registration
+  - Email registration
 - registration complete
-  * Redirect link from firebase then you can completly login as a user/admin
+  - Redirect link from firebase then you can completly login as a user/admin
 - Forgot Password
-  * User can reset password using Forgot password menu
-  * Validation on update
+  - User can reset password using Forgot password menu
+  - Validation on update
 - Header
-  * Home menu
-  * Login menu
-  * Register menu
-  * User and logout menu
+  - Home menu
+  - Login menu
+  - Register menu
+  - User and logout menu
 
 ### 2) Before We Start
+
 - We have complete a first major section in client side
 - However we want to use our node server with mongodb
 - That means the firebase client-side implementation pretty much ends here
 - we'll use firebase to only log the user and get token (authentication)
 
 - In our backend we will validate thet token using firebase admin so that our App is well secure
-- what i mean by secure is that if we dont check the validity of token in  the backend then anyone can send anything as a token to get access to protected routes/resource
+- what i mean by secure is that if we dont check the validity of token in the backend then anyone can send anything as a token to get access to protected routes/resource
 
 - Once we implement fire base in backend, when user register or login to our app, we will create or update user in mongodb
 
 - then we will comeback to our login/register page and make some adjustments, so then when user login, the response is from our backend.
 
 ### 3) Development Process
+
 - Setup Server and Install Dependencies
+
 ```sh
 npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwebtoken nodemon dotenv
 ```
+
 - Connect to NoSQL Database
-  * Local mongodb server
-  * Mongodb Atlas
+  - Local mongodb server
+  - Mongodb Atlas
 - Hit Routes Endpoint Testing
 - Setup Controllers
-  * Auth
-  * User
+  - Auth
+  - User
 - Create Model
-  * User
+  - User
 - Middleware
-  * Auth
+  - Auth
 - API User Response
-  * When user login, save user data to database.
+  - When user login, save user data to database.
 - Current User From API
-  * When user register, save user data to database.
-  * Refactor Create or update user function in react
-  * Service folder in client side for calling's API endpoint from server
+  - When user register, save user data to database.
+  - Refactor Create or update user function in react
+  - Service folder in client side for calling's API endpoint from server
 - Role Base on Redirect
-  * If user role = subscriber then redirect to user history page
-  * If user role = admin then redirect to admin dashboard page
+  - If user role = subscriber then redirect to user history page
+  - If user role = admin then redirect to admin dashboard page
 - Redirect Count Down
-  * When user need to go to user history or Checkout (etc) without login then rediret to login page
-  * show loading animation countdown when redirect in 5 second
+  - When user need to go to user history or Checkout (etc) without login then rediret to login page
+  - show loading animation countdown when redirect in 5 second
 - Sitebar Nav User History
-  * creating User navbar component : User history, Password change, wishlist, etc.
+  - creating User navbar component : User history, Password change, wishlist, etc.
 - Change Password Feature
-  * Current user login can update their own password
-  * authentication from firebase service
-  * change password form
-  * validate all element, set loading, etc
+  - Current user login can update their own password
+  - authentication from firebase service
+  - change password form
+  - validate all element, set loading, etc
 - Admin Role authentication and athorization
-  * Protecting routes for admin role (Backend)
-  * Implementing middleware for admin role (backend)
-  * When Admin login then redirect to admin dashboard (Frontend)
-  * Create admin page (Frontend)
+  - Protecting routes for admin role (Backend)
+  - Implementing middleware for admin role (backend)
+  - When Admin login then redirect to admin dashboard (Frontend)
+  - Create admin page (Frontend)
 - Admin Authorization
-  * Create Product
-  * Must have Category
-  * Must have Sub Category
-  * CRUD in Dashboard panel
-- Category 
-  * Category model (Backend)
-  * Category controller and routes CRUD
-  * Category CRUD Endpoint in frontend service
+  - Create Product
+  - Must have Category
+  - Must have Sub Category
+  - CRUD in Dashboard panel
+- Category
+  - Category model (Backend)
+  - Category controller and routes CRUD
+  - Category CRUD Endpoint in frontend service
 - Dynamic Dashboard Link
-  * when user with role subscriber login then show option to their own history/settings/dashboard
-  * when user with role admin login then show option to their own dashboard / Admin dashboard
+  - when user with role subscriber login then show option to their own history/settings/dashboard
+  - when user with role admin login then show option to their own dashboard / Admin dashboard
 - Admin Sidebar Navigation
-  * List of admin sidebar navigation menu: Dashboard, Product, All Product, Category, Sub-Category, Coupon, and Password.
+  - List of admin sidebar navigation menu: Dashboard, Product, All Product, Category, Sub-Category, Coupon, and Password.
 - Category Create and show of all list the category
-  * Category form to create category
+  - Category form to create category
 - Category Render and delete
-  * Delete menu icon in category create admin dashboard
-  * Update menu icon in category create admin dashboard
-  * Category Delete Functionality 
+  - Delete menu icon in category create admin dashboard
+  - Update menu icon in category create admin dashboard
+  - Category Delete Functionality
 - Category update
-  * category update page
-  * update category and redirect to admin/category
-  * refactor code for category Create and update form 
+  - category update page
+  - update category and redirect to admin/category
+  - refactor code for category Create and update form
 - Search Filter Category (admin dasboard)
-  * admin can search category by name of the product category
+  - admin can search category by name of the product category
 - Code Refactor search filter
-  * Move search category code to local search
+  - Move search category code to local search
 - Subcategory CRUD
-  * create Subcategory model and populate to category
-  * create subcategory Routes and controllers
+  - create Subcategory model and populate to category
+  - create subcategory Routes and controllers
 - Subcategory Service (Frontend)
-  * Subcategory page and services
+  - Subcategory page and services
 - Subcategory Create
-  * Calling API endpoint for subcategory service frontend enhanced
-  * showing subcategory and remove
+  - Calling API endpoint for subcategory service frontend enhanced
+  - showing subcategory and remove
 - Update Subcategory in admin dashboard
 
 - Product (backend)
-  * Create product model/schema mongoose
-  * Product Routes and Controller
-  * Product Controller - Get all product from database
-  * Cloud Upload endpoints
-  * Implementation Cloudinary SDK
-  * Product image upload and delete route, controller and utils
-  * List all product endpoints
-  * Product Delete
+
+  - Create product model/schema mongoose
+  - Product Routes and Controller
+  - Product Controller - Get all product from database
+  - Cloud Upload endpoints
+  - Implementation Cloudinary SDK
+  - Product image upload and delete route, controller and utils
+  - List all product endpoints
+  - Product Delete
 
 - Product (frontend)
-  * Create product page, product services and routes (admin autorization)
-  * create product form
-  * Frist test to create Product from client to send to server
-  * Alert and reload page after product was created
-  * Error handler when create duplicate value name or title in product
-  * Refactor Product code - component and page
-  * Create product with category
-  * get subcategory base on parent category
-  * subcategory props - calling subcategory when choosing category in create product on admin dashboard
-  * Multiple select for subcategory form
-  * create product with subcategory array
-  * file / image resize in react
-  * multiple image upload (cloud storage)
-  * product image preview when upload in admin dasboard
-  * Product create with multiple images
-  * Fetch all products in admin dashboard
-  * Admin products card
-  * All product page admin dashboard
-  * Default image, edit-delete icon, and sort the description
-
+  - Create product page, product services and routes (admin autorization)
+  - create product form
+  - Frist test to create Product from client to send to server
+  - Alert and reload page after product was created
+  - Error handler when create duplicate value name or title in product
+  - Refactor Product code - component and page
+  - Create product with category
+  - get subcategory base on parent category
+  - subcategory props - calling subcategory when choosing category in create product on admin dashboard
+  - Multiple select for subcategory form
+  - create product with subcategory array
+  - file / image resize in react
+  - multiple image upload (cloud storage)
+  - product image preview when upload in admin dasboard
+  - Product create with multiple images
+  - Fetch all products in admin dashboard
+  - Admin products card
+  - All product page admin dashboard
+  - Default image, edit-delete icon, and sort the description
+  - Delete Product
 
 ## Articles
+
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
 
 [How to use mongodb atlas](https://kaloraat.com/articles/how-to-use-mongodb-atlas)
 
 ## Future Updates
 
-* Make User interface more beautiful with react material UI
-* Implementing clean code architecture
-* Refactoring code for client side (Frontend)
-* Refactoring code for server (Backend)
-* Improve authentication and authorization
-* And More ! There's always room for improvement!
+- Make User interface more beautiful with react material UI
+- Implementing clean code architecture
+- Refactoring code for client side (Frontend)
+- Refactoring code for server (Backend)
+- Improve authentication and authorization
+- And More ! There's always room for improvement!
 
 ## Known Bugs
+
 Feel free to email me at rianto.rnt@gmail.com if you run into any issues or have questions, ideas or concerns.
 Please enjoy and feel free to share your opinion, constructive criticism, or comments about my work. Thank you! 🙂
-
 
 ## Route Structure Client
 
@@ -317,4 +333,4 @@ Please enjoy and feel free to share your opinion, constructive criticism, or com
 
 # Acknowledgement
 
-* This project is part of the online course I've taken at Udemy. Thanks to Ryan Dhungel for creating this awesome course! Link to the course: [React Redux Ecommerce - Master MERN Stack Web Development](https://www.udemy.com/course/react-redux-ecommerce/)
+- This project is part of the online course I've taken at Udemy. Thanks to Ryan Dhungel for creating this awesome course! Link to the course: [React Redux Ecommerce - Master MERN Stack Web Development](https://www.udemy.com/course/react-redux-ecommerce/)

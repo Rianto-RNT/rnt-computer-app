@@ -6,8 +6,8 @@ import noImages from "../../assets/images/noImages.png";
 const { Meta } = Card;
 const { Panel } = Collapse;
 
-const AdminProductCard = ({ product }) => {
-  const { title, description, images } = product;
+const AdminProductCard = ({ product, handleRemove }) => {
+  const { title, description, images, slug } = product;
 
   const [text, setText] = useState("");
 
@@ -16,13 +16,13 @@ const AdminProductCard = ({ product }) => {
       cover={
         <img src={images && images.length ? images[0].url : noImages} style={{ height: "333px", objectFit: "cover" }} className="p-1" />
       }
-      actions={[<EditOutlined className="text-warning"/>, <DeleteOutlined className="text-danger"/>]}
+      actions={[<EditOutlined className="text-warning" />, <DeleteOutlined onClick={() => handleRemove(slug)} className="text-danger" />]}
     >
       <Meta title={title} />
       <br />
       <Collapse bordered={false} defaultActiveKey={["1"]} onChange={(e) => setText(e.target)}>
         <Panel showArrow={true} header="Read more" key="2">
-          <p>description={description}</p>
+          <p>{description}</p>
         </Panel>
       </Collapse>
     </Card>

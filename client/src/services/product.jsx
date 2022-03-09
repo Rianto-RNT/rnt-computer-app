@@ -38,12 +38,12 @@ export const createProduct = async (product, authtoken) => {
 //   return response.data;
 // };
 
-// export const removeCategory = async (slug, authtoken) => {
-//   const response = await axios.delete(`${process.env.REACT_APP_API}/category/${slug}`, {
-//     headers: {
-//       authtoken,
-//     },
-//   });
+export const removeProduct = async (slug, authtoken) => {
+  const response = await axios.delete(`${process.env.REACT_APP_API}/product/${slug}`, {
+    headers: {
+      authtoken,
+    },
+  });
 
-//   return response.data;
-// };
+  return response.data;
+};
