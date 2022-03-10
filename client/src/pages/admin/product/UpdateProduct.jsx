@@ -26,6 +26,7 @@ const UpdateProduct = ({ match }) => {
   const [categories, setCategories] = useState([]);
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
   const [arrayOfSubcategory, setArrayOfSubcategory] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -71,12 +72,25 @@ const UpdateProduct = ({ match }) => {
   const handleCategoryChange = (e) => {
     e.preventDefault();
     console.log("Clicked Category", e.target.value);
-    setValues({ ...values, subcategory: [], category: e.target.value });
+    setValues({ ...values, subcategory: [] });
+
+    setSelectedCategory(e.target.value);
+
     getAllSubcategoryForProduct(e.target.value).then((res) => {
       console.log("Subcategory Options on click", res);
       setSubcategoryOptions(res.data);
     });
-    // setShowSubcategory(true);
+
+    console.log("Exiting Category", values.category);
+
+    // if user click back to the original category
+    // show is subcategory of all category in default
+    if (values.category._id === e.target.value) {
+      loadProduct();
+    }
+
+    // the clear old category ID
+    setArrayOfSubcategory([]);
   };
 
   return (
@@ -101,6 +115,7 @@ const UpdateProduct = ({ match }) => {
             subcategoryOptions={subcategoryOptions}
             arrayOfSubcategory={arrayOfSubcategory}
             setArrayOfSubcategory={setArrayOfSubcategory}
+            selectedCategory={selectedCategory}
           />
         </div>
       </div>

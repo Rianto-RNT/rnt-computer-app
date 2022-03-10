@@ -15,6 +15,7 @@ const ProductUpdateForm = ({
   subcategoryOptions,
   arrayOfSubcategory,
   setArrayOfSubcategory,
+  selectedCategory,
 }) => {
   const { title, description, price, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
@@ -91,7 +92,12 @@ const ProductUpdateForm = ({
 
       <div className="form-group">
         <label>Category</label>
-        <select value={category ? category.name : "please-select"} name="category" className="form-control" onChange={handleCategoryChange}>
+        <select
+          name="category"
+          className="form-control"
+          onChange={handleCategoryChange}
+          value={selectedCategory ? selectedCategory : category._id}
+        >
           <option value="please-select" disabled>
             --Please select--
           </option>
