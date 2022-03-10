@@ -288,6 +288,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Delete Product
   - Product slug from router (update product)
   - Product Update Component
+  - Prepopulate shipping color and brand (Update component)
 
 ## Articles
 

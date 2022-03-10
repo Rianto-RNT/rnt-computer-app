@@ -10,9 +10,9 @@ const ProductUpdateForm = ({
   handleChange,
   values,
   setValues,
-//   handleCategoryChange,
-//   subcategoryOptions,
-//   showSubcategory,
+  //   handleCategoryChange,
+  //   subcategoryOptions,
+  //   showSubcategory,
 }) => {
   const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
@@ -43,7 +43,7 @@ const ProductUpdateForm = ({
 
       <div className="form-group">
         <label>Shipping</label>
-        <select defaultValue={"please-select"} name="shipping" className="form-control" onChange={handleChange}>
+        <select value={shipping === "yes" ? "yes" : "no"} name="shipping" className="form-control" onChange={handleChange}>
           <option value="please-select" disabled>
             --Please select--
           </option>
@@ -59,7 +59,7 @@ const ProductUpdateForm = ({
 
       <div className="form-group">
         <label>Color</label>
-        <select defaultValue={"please-select"} name="color" className="form-control" onChange={handleChange}>
+        <select value={color} name="color" className="form-control" onChange={handleChange}>
           <option value="please-select" disabled>
             --Please select--
           </option>
@@ -74,7 +74,7 @@ const ProductUpdateForm = ({
 
       <div className="form-group">
         <label>Brand</label>
-        <select defaultValue={"please-select"} name="brand" className="form-control" onChange={handleChange}>
+        <select value={brand} name="brand" className="form-control" onChange={handleChange}>
           <option value="please-select" disabled>
             --Please select--
           </option>
