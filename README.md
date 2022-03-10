@@ -290,6 +290,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product Update Component
   - Prepopulate shipping color and brand (Update component)
   - Prepopulate Caategory in product update
+  - Prepopulate Subcategory in product update
+  - 
 
 ## Articles
 

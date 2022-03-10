@@ -25,6 +25,7 @@ const UpdateProduct = ({ match }) => {
   const [values, setValues] = useState(initialState);
   const [categories, setCategories] = useState([]);
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
+  const [arrayOfSubcategory, setArrayOfSubcategory] = useState([]);
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -36,8 +37,20 @@ const UpdateProduct = ({ match }) => {
   }, []);
 
   const loadProduct = () => {
-    getSingleProduct(slug).then((product) => {
-      setValues({ ...values, ...product.data });
+    getSingleProduct(slug).then((p) => {
+      // 1) Load single Product
+      setValues({ ...values, ...p.data });
+      // 2) Load single product category subcategory
+      getAllSubcategoryForProduct(p.data.category._id).then((res) => {
+        setSubcategoryOptions(res.data); // on first load, show default subcategory
+      });
+      // 3) prepare array of subcategory ID to show default sub values in form
+      let arr = [];
+      p.data.subcategory.map((s) => {
+        arr.push(s._id);
+      });
+      console.log("Array of subcategory", arr);
+      setArrayOfSubcategory((prev) => arr); // require for ant design Select
     });
   };
 
@@ -86,6 +99,8 @@ const UpdateProduct = ({ match }) => {
             handleCategoryChange={handleCategoryChange}
             categories={categories}
             subcategoryOptions={subcategoryOptions}
+            arrayOfSubcategory={arrayOfSubcategory}
+            setArrayOfSubcategory={setArrayOfSubcategory}
           />
         </div>
       </div>

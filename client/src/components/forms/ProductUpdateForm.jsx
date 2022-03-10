@@ -10,11 +10,11 @@ const ProductUpdateForm = ({
   handleChange,
   values,
   setValues,
-    handleCategoryChange,
-    categories,
-    subcategoryOptions,
-  //   subcategoryOptions,
-  //   showSubcategory,
+  handleCategoryChange,
+  categories,
+  subcategoryOptions,
+  arrayOfSubcategory,
+  setArrayOfSubcategory,
 }) => {
   const { title, description, price, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
@@ -104,26 +104,24 @@ const ProductUpdateForm = ({
         </select>
       </div>
 
-      {/* {showSubcategory && (
-        <div>
-          <label>Subcategory</label>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Please select"
-            value={subcategory}
-            onChange={(value) => setValues({ ...values, subcategory: value })}
-          >
-            {subcategoryOptions.length &&
-              subcategoryOptions.map((s) => (
-                <Option key={s._id} value={s._id}>
-                  {s.name}
-                </Option>
-              ))}
-          </Select>
-        </div>
-      )} */}
+      <div>
+        <label>Subcategory</label>
+        <Select
+          mode="multiple"
+          allowClear
+          style={{ width: "100%" }}
+          placeholder="Please select"
+          value={arrayOfSubcategory}
+          onChange={(value) => setArrayOfSubcategory(value)}
+        >
+          {subcategoryOptions.length &&
+            subcategoryOptions.map((s) => (
+              <Option key={s._id} value={s._id}>
+                {s.name}
+              </Option>
+            ))}
+        </Select>
+      </div>
 
       <br />
 
