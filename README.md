@@ -287,6 +287,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Default image, edit-delete icon, and sort the description
   - Delete Product
   - Product slug from router (update product)
+  - Product Update Component
 
 ## Articles
 
