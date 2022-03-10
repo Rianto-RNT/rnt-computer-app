@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../../../services/product";
+import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
 import AdminNav from "../../../components/nav/AdminNav";
 import ProductUpdateForm from "../../../components/forms/ProductUpdateForm";
 
@@ -9,7 +10,6 @@ const initialState = {
   title: "",
   description: "",
   price: "",
-  categories: [],
   category: "",
   subcategory: [],
   shipping: "",
@@ -23,6 +23,8 @@ const initialState = {
 
 const UpdateProduct = ({ match }) => {
   const [values, setValues] = useState(initialState);
+  const [categories, setCategories] = useState([]);
+  const [subcategoryOptions, setSubcategoryOptions] = useState([]);
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -30,6 +32,7 @@ const UpdateProduct = ({ match }) => {
 
   useEffect(() => {
     loadProduct();
+    loadAllCategory();
   }, []);
 
   const loadProduct = () => {
@@ -38,6 +41,11 @@ const UpdateProduct = ({ match }) => {
     });
   };
 
+  const loadAllCategory = () =>
+    getAllCategory().then((c) => {
+      setCategories(c.data);
+    });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     //
@@ -45,6 +53,17 @@ const UpdateProduct = ({ match }) => {
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleCategoryChange = (e) => {
+    e.preventDefault();
+    console.log("Clicked Category", e.target.value);
+    setValues({ ...values, subcategory: [], category: e.target.value });
+    getAllSubcategoryForProduct(e.target.value).then((res) => {
+      console.log("Subcategory Options on click", res);
+      setSubcategoryOptions(res.data);
+    });
+    // setShowSubcategory(true);
   };
 
   return (
@@ -59,7 +78,15 @@ const UpdateProduct = ({ match }) => {
           {JSON.stringify(values)}
           <hr />
 
-          <ProductUpdateForm handleSubmit={handleSubmit} handleChange={handleChange} setValues={setValues} values={values} />
+          <ProductUpdateForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            setValues={setValues}
+            values={values}
+            handleCategoryChange={handleCategoryChange}
+            categories={categories}
+            subcategoryOptions={subcategoryOptions}
+          />
         </div>
       </div>
     </div>

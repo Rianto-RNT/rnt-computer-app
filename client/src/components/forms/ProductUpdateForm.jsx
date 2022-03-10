@@ -10,11 +10,13 @@ const ProductUpdateForm = ({
   handleChange,
   values,
   setValues,
-  //   handleCategoryChange,
+    handleCategoryChange,
+    categories,
+    subcategoryOptions,
   //   subcategoryOptions,
   //   showSubcategory,
 }) => {
-  const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
+  const { title, description, price, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -87,9 +89,9 @@ const ProductUpdateForm = ({
         </select>
       </div>
 
-      {/* <div className="form-group">
+      <div className="form-group">
         <label>Category</label>
-        <select defaultValue={"please-select"} name="category" className="form-control" onChange={handleCategoryChange}>
+        <select value={category ? category.name : "please-select"} name="category" className="form-control" onChange={handleCategoryChange}>
           <option value="please-select" disabled>
             --Please select--
           </option>
@@ -100,7 +102,7 @@ const ProductUpdateForm = ({
               </option>
             ))}
         </select>
-      </div> */}
+      </div>
 
       {/* {showSubcategory && (
         <div>
