@@ -68,7 +68,7 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
 // @access  Private / Admin
 exports.updateProduct = asyncHandler(async (req, res, next) => {
   if (req.body.title) {
-    req.body.slug = slugify(req.cody.title);
+    req.body.slug = slugify(req.body.title);
   }
 
   const product = await Product.findOneAndUpdate(
