@@ -79,7 +79,7 @@ const CreateProduct = () => {
         </div>
 
         <div className="col-md-10">
-          {loading ? <Spin indicator={antIcon} /> : <h4>Create Product</h4>}
+          {loading ? <Spin tip="Uploading..." indicator={antIcon} /> : <h4>Create Product</h4>}
           <hr />
 
           <div className="p-3">

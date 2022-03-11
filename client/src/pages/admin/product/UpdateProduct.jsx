@@ -5,6 +5,9 @@ import { getSingleProduct } from "../../../services/product";
 import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
 import AdminNav from "../../../components/nav/AdminNav";
 import ProductUpdateForm from "../../../components/forms/ProductUpdateForm";
+import FileUploadForm from "../../../components/forms/FileUploadForm";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 const initialState = {
   title: "",
@@ -27,6 +30,9 @@ const UpdateProduct = ({ match }) => {
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
   const [arrayOfSubcategory, setArrayOfSubcategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -101,9 +107,15 @@ const UpdateProduct = ({ match }) => {
         </div>
 
         <div className="col-md-10">
-          <h4>Update Product</h4>
-          {JSON.stringify(values)}
+          {loading ? <Spin tip="Uploading..." indicator={antIcon} /> : <h4>Update Product</h4>}
+          {/* {JSON.stringify(values)} */}
           <hr />
+
+          <div className="p-3">
+            <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
+          </div>
+
+          <br />
 
           <ProductUpdateForm
             handleSubmit={handleSubmit}
