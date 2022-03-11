@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { getProductByCount } from "../../../services/product"; 
-import AdminProductCard from "../../../components/cards/AdminProductCard";
-import { removeProduct } from "../../../services/product"; 
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import { getProductByCount } from "../../../services/product"; 
+import { removeProduct } from "../../../services/product"; 
+import AdminNav from "../../../components/nav/AdminNav";
+import AdminProductCard from "../../../components/cards/AdminProductCard";
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
   // redux
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -53,7 +58,7 @@ const AllProducts = () => {
         </div>
 
         <div className="col">
-          {loading ? <h4 className="text-danger">Loading...</h4> : <h4>All Products</h4>}
+        {loading ? <Spin tip="Loading..." indicator={antIcon} /> : <h4>Update Product</h4>}
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-4 pb-3">

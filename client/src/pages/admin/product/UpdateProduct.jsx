@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../../../services/product";
 import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
+import { updateProduct } from "../../../services/product";
 import AdminNav from "../../../components/nav/AdminNav";
 import ProductUpdateForm from "../../../components/forms/ProductUpdateForm";
 import FileUploadForm from "../../../components/forms/FileUploadForm";
-import { LoadingOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
 
 const initialState = {
   title: "",
@@ -24,7 +25,7 @@ const initialState = {
   brand: "",
 };
 
-const UpdateProduct = ({ match }) => {
+const UpdateProduct = ({ match, history }) => {
   const [values, setValues] = useState(initialState);
   const [categories, setCategories] = useState([]);
   const [subcategoryOptions, setSubcategoryOptions] = useState([]);
@@ -68,7 +69,21 @@ const UpdateProduct = ({ match }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //
+    setLoading(true);
+
+    values.subcategory = arrayOfSubcategory;
+    values.category = selectedCategory ? selectedCategory : values.category;
+
+    updateProduct(slug, values, user.token)
+      .then((res) => {
+        setLoading(false);
+        toast.success(`${res.data.title}" is updated`);
+        history.push("/admin/products");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.error);
+      });
   };
 
   const handleChange = (e) => {

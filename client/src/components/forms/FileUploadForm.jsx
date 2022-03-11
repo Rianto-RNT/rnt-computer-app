@@ -3,7 +3,12 @@ import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { Avatar, Badge, Col, Row, Divider } from "antd";
+import { Avatar, Badge, Col, Row, Divider, Card } from "antd";
+
+const gridStyle = {
+  width: "25%",
+  textAlign: "center",
+};
 
 const FileUpload = ({ values, setValues, setLoading }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -86,19 +91,22 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 
   return (
     <>
-      <Divider orientation="left">Upload images</Divider>
-      <Row justify="space-between" style={{ marginBottom: 8 }}>
-        <Col span={10}>
-          <div>
+      <div className="container">
+        <Divider orientation="left">Upload images</Divider>
+
+        <Row>
+          <Col>
             {values.images &&
               values.images.map((image) => (
-                <Badge count="X" key={image.public_id} onClick={() => handleImageRemove(image.public_id)} style={{ cursor: "pointer" }}>
-                  <Avatar src={image.url} size={100} shape="square" className="ml-3" />
-                </Badge>
+                <Card.Grid key={image.public_id} style={{ width: 150, gridStyle: gridStyle }}>
+                  <Badge count="X" onClick={() => handleImageRemove(image.public_id)} style={{ cursor: "pointer" }}>
+                    <Avatar src={image.url} size={100} shape="square" />
+                  </Badge>
+                </Card.Grid>
               ))}
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </div>
 
       <br />
 

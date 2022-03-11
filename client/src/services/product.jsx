@@ -28,15 +28,15 @@ export const createProduct = async (product, authtoken) => {
   return response.data;
 };
 
-// export const updateCategory = async (slug, category, authtoken) => {
-//   let response = await axios.put(`${process.env.REACT_APP_API}/category/${slug}`, category, {
-//     headers: {
-//       authtoken,
-//     },
-//   });
+export const updateProduct = async (slug, product, authtoken) => {
+  let response = await axios.put(`${process.env.REACT_APP_API}/product/${slug}`, product, {
+    headers: {
+      authtoken,
+    },
+  });
 
-//   return response.data;
-// };
+  return response.data;
+};
 
 export const removeProduct = async (slug, authtoken) => {
   const response = await axios.delete(`${process.env.REACT_APP_API}/product/${slug}`, {

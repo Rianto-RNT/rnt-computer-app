@@ -293,6 +293,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Prepopulate Subcategory in product update
   - Category and Subcategory Sync on update product feature
   - Image Upload in Update Product feature
+  - Product Update (Final)
 
 ## Articles
 

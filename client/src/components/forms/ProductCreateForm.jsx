@@ -1,9 +1,13 @@
 import React from "react";
-import { Select, Input } from "antd";
+import { Select, Input, Divider } from "antd";
 
 // Ant Design
 const { TextArea } = Input;
 const { Option } = Select;
+const dividerStyle = {
+  marginBottom: 2,
+  float: 'right'
+};
 
 const ProductCreateForm = ({
   handleSubmit,
@@ -19,12 +23,16 @@ const ProductCreateForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
-        <label>Title</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Title
+        </Divider>
         <input type="text" name="title" className="form-control" value={title} onChange={handleChange} />
       </div>
 
       <div className="form-group">
-        <label>Description</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Description
+        </Divider>
         <TextArea
           rows={4}
           placeholder="Maximum 2000 character"
@@ -37,12 +45,16 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Price</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Price
+        </Divider>
         <input type="number" name="price" className="form-control" value={price} onChange={handleChange} />
       </div>
 
       <div className="form-group">
-        <label>Shipping</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Shipping
+        </Divider>
         <select defaultValue={"please-select"} name="shipping" className="form-control" onChange={handleChange}>
           <option value="please-select" disabled>
             --Please select--
@@ -53,12 +65,16 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Quantity</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Quantity
+        </Divider>
         <input type="number" name="quantity" className="form-control" value={quantity} onChange={handleChange} />
       </div>
 
       <div className="form-group">
-        <label>Color</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Color
+        </Divider>
         <select defaultValue={"please-select"} name="color" className="form-control" onChange={handleChange}>
           <option value="please-select" disabled>
             --Please select--
@@ -73,7 +89,9 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Brand</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Brand
+        </Divider>
         <select defaultValue={"please-select"} name="brand" className="form-control" onChange={handleChange}>
           <option value="please-select" disabled>
             --Please select--
@@ -88,7 +106,9 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Category</label>
+      <Divider orientation="left" style={dividerStyle}>
+          Category
+        </Divider>
         <select defaultValue={"please-select"} name="category" className="form-control" onChange={handleCategoryChange}>
           <option value="please-select" disabled>
             --Please select--
@@ -104,7 +124,9 @@ const ProductCreateForm = ({
 
       {showSubcategory && (
         <div>
-          <label>Subcategory</label>
+          <Divider orientation="left" style={dividerStyle}>
+          Subcategory
+        </Divider>
           <Select
             mode="multiple"
             allowClear
