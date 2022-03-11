@@ -52,9 +52,10 @@ heroku open
 
 You can fork the app or you can git-clone the app into your local machine. Once done that, please install all the dependencies by running
 
-```
-$ npm i
-$ npm start
+```sh
+npx -p npm@6 npm i --legacy-peer-deps
+ npm i
+ npm start
 ```
 
 ## Run App in Development for client / React

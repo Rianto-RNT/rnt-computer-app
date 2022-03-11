@@ -1,4 +1,8 @@
 import React, { useEffect } from "react";
+
+import { hot } from "react-hot-loader";
+import "./assets/css/style.css";
+
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -93,4 +97,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(module)(App);
