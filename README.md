@@ -255,7 +255,6 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Update Subcategory in admin dashboard
 
 - Product (backend)
-
   - Create product model/schema mongoose
   - Product Routes and Controller
   - Product Controller - Get all product from database
