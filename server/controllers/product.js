@@ -24,9 +24,7 @@ exports.getSingleProduct = asyncHandler(async (req, res, next) => {
     .populate('subcategory')
     .exec();
 
-  res
-    .status(200)
-    .json({ success: true, data: product });
+  res.status(200).json({ success: true, data: product });
 });
 
 // @desc    List all product
@@ -57,6 +55,35 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
     return next(
       new ErrorResponse(
         `Failed! Product with ${req.body.slug} already created. Please add another category.`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: product });
+});
+
+// @desc    Update product
+// @route   PUT /api/product/:slug
+// @access  Private / Admin
+exports.updateProduct = asyncHandler(async (req, res, next) => {
+  if (req.body.title) {
+    req.body.slug = slugify(req.cody.title);
+  }
+
+  const product = await Product.findOneAndUpdate(
+    { slug: req.params.slug },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  ).exec();
+
+  if (!product) {
+    return next(
+      new ErrorResponse(
+        `Failed! Product with ${req.body.slug} not found. Please select correct value.`,
         400
       )
     );

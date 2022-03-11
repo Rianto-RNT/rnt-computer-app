@@ -11,6 +11,7 @@ const {
   getSingleProduct,
   listAllProduct,
   createProduct,
+  updateProduct,
   removeProduct,
   uploadImages,
   removeImages,
@@ -21,6 +22,7 @@ router.get('/product', getAllProduct);
 router.get('/product/:slug', getSingleProduct);
 router.get('/products/:count', listAllProduct);
 router.post('/product', protect, adminProtect, createProduct);
+router.put('/product/:slug', protect, adminProtect, updateProduct);
 router.delete('/product/:slug', protect, adminProtect, removeProduct);
 
 // image upload cloud
