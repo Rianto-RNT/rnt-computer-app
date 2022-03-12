@@ -296,6 +296,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Image Upload in Update Product feature
   - Product Update (Final)
   - Fetch product in home page
+  - Product Card in Home Page
 
 ## Articles
 
