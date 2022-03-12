@@ -91,35 +91,32 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 
   return (
     <>
-      <div className="container">
-        <Divider orientation="left">Upload images</Divider>
-
-        <Row>
-          <Col>
-            {values.images &&
-              values.images.map((image) => (
-                <Card.Grid key={image.public_id} style={{ width: 150, gridStyle: gridStyle }}>
-                  <Badge count="X" onClick={() => handleImageRemove(image.public_id)} style={{ cursor: "pointer" }}>
-                    <Avatar src={image.url} size={100} shape="square" />
-                  </Badge>
-                </Card.Grid>
-              ))}
-          </Col>
-        </Row>
-      </div>
+      <Row>
+        <Col>
+          {values.images &&
+            values.images.map((image) => (
+              <Card.Grid key={image.public_id} style={{ width: 150, gridStyle: gridStyle }}>
+                <Badge count="X" onClick={() => handleImageRemove(image.public_id)} style={{ cursor: "pointer" }}>
+                  <Avatar src={image.url} size={103} shape="square" />
+                </Badge>
+              </Card.Grid>
+            ))}
+        </Col>
+      </Row>
 
       <br />
 
-      <Row justify="space-around" align="bottom">
-        <Col span={4}>
-          <div value={100}>
-            <label className="btn btn-secondary btn-raised">
-              Choose File
-              <input type="file" multiple hidden accept="images/*" onChange={fileUploadAndResize} />
+      <form method="post" className="card">
+        <div className=" card-body">
+          <div className="form-group">
+            <label htmlFor="formFileMultiple" className="form-label">
+              Multiple files input Upload
             </label>
+
+            <input className="form-control" type="file" id="formFileMultiple" accept="images/*" multiple onChange={fileUploadAndResize} />
           </div>
-        </Col>
-      </Row>
+        </div>
+      </form>
     </>
   );
 };

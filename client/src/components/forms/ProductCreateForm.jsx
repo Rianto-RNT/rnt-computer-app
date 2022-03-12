@@ -21,10 +21,6 @@ const ProductCreateForm = ({
       <div className="row">
         <div className="col-lg-12">
           <div className="card">
-            <div className="card-header">
-              <div className="card-title">Add New Product</div>
-            </div>
-
             <div className="card-body">
               <div className="row mb-4">
                 <label className="col-md-3 form-label">Product Name :</label>
@@ -41,21 +37,19 @@ const ProductCreateForm = ({
               </div>
 
               {/* <!-- Row --> */}
-              <div className="row">
-                <label className="col-md-3 form-label mb-4">Product Description :</label>
-                <div className="col-md-9 mb-4">
+              <div className="row mb-4">
+                <label className="col-md-3 form-label">Product Description :</label>
+                <div className="col-md-9">
                   <div className="form-group">
-                    <div className="col-lg">
-                      <textarea
-                        type="text"
-                        name="description"
-                        className="form-control mb-4"
-                        placeholder="Maximum 2000 character"
-                        rows="4"
-                        value={description}
-                        onChange={handleChange}
-                      ></textarea>
-                    </div>
+                    <textarea
+                      type="text"
+                      name="description"
+                      className="form-control mb-4"
+                      placeholder="Maximum 2000 character"
+                      rows="4"
+                      value={description}
+                      onChange={handleChange}
+                    ></textarea>
                   </div>
                 </div>
               </div>
@@ -199,133 +193,6 @@ const ProductCreateForm = ({
         </div>
       </div>
       {/* <!-- /ROW-1 CLOSED --> */}
-
-      {/* <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Title
-        </Divider>
-        <input type="text" name="title" className="form-control" value={title} onChange={handleChange} />
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Description
-        </Divider>
-        <TextArea
-          rows={4}
-          placeholder="Maximum 2000 character"
-          maxLength={2000}
-          type="text"
-          name="description"
-          value={description}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Price
-        </Divider>
-        <input type="number" name="price" className="form-control" value={price} onChange={handleChange} />
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Shipping
-        </Divider>
-        <select defaultValue={"please-select"} name="shipping" className="form-control" onChange={handleChange}>
-          <option value="please-select" disabled>
-            --Please select--
-          </option>
-          <option value="no">No</option>
-          <option value="yes">Yes</option>
-        </select>
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Quantity
-        </Divider>
-        <input type="number" name="quantity" className="form-control" value={quantity} onChange={handleChange} />
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Color
-        </Divider>
-        <select defaultValue={"please-select"} name="color" className="form-control" onChange={handleChange}>
-          <option value="please-select" disabled>
-            --Please select--
-          </option>
-
-          {colors.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Brand
-        </Divider>
-        <select defaultValue={"please-select"} name="brand" className="form-control" onChange={handleChange}>
-          <option value="please-select" disabled>
-            --Please select--
-          </option>
-
-          {brands.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="form-group">
-        <Divider orientation="left" style={dividerStyle}>
-          Category
-        </Divider>
-        <select defaultValue={"please-select"} name="category" className="form-control" onChange={handleCategoryChange}>
-          <option value="please-select" disabled>
-            --Please select--
-          </option>
-          {categories.length > 0 &&
-            categories.map((c) => (
-              <option key={c._id} value={c._id}>
-                {c.name}
-              </option>
-            ))}
-        </select>
-      </div>
-
-      {showSubcategory && (
-        <div>
-          <Divider orientation="left" style={dividerStyle}>
-            Subcategory
-          </Divider>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Please select"
-            value={subcategory}
-            onChange={(value) => setValues({ ...values, subcategory: value })}
-          >
-            {subcategoryOptions.length &&
-              subcategoryOptions.map((s) => (
-                <Option key={s._id} value={s._id}>
-                  {s.name}
-                </Option>
-              ))}
-          </Select>
-        </div>
-      )}
-
-      <br />
-
-      <button className="btn btn-outline-info">Save</button> */}
     </form>
   );
 };

@@ -72,18 +72,27 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="main-container container-fluid">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
         </div>
 
         <div className="col-md-10">
-          {loading ? <Spin tip="Uploading..." indicator={antIcon} /> : <h4>Add Product</h4>}
+          {loading ? <Spin tip="Uploading..." indicator={antIcon} /> : <h4>Create Product</h4>}
           <hr />
 
-          <div className="p-3">
-            <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="card">
+                <div className="card-header">
+                  <div className="card-title">File Upload</div>
+                </div>
+                <br />
+
+                <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
+              </div>
+            </div>
           </div>
 
           <ProductCreateForm
