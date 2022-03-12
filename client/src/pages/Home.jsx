@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProductByCount } from "../services/product";
 import ProductCard from "../components/cards/ProductCard";
+import LoaderCard from "../components/cards/LoaderCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const Home = () => {
 
   const loadAllProduct = () => {
     setLoading(true);
-    getProductByCount(3).then((res) => {
+    getProductByCount(6).then((res) => {
       setProducts(res.data);
       setLoading(false);
     });
@@ -341,8 +342,9 @@ const Home = () => {
                             </a>
                           </li>
                           <li>
-                            <a href="#tab-12" data-bs-toggle="tab" className="" title="Grid">
-                              <i className="fa fa-list"></i>
+                            <a href="#!" data-bs-toggle="tab" className="" title="Grid">
+                              <i className="fa fa-align-left"></i>
+                              
                             </a>
                           </li>
                         </ul>
@@ -360,57 +362,59 @@ const Home = () => {
 
             <div className="tab-content">
               <div className="tab-pane active" id="tab-11">
-                <div className="row">
-                  {/* Product Card START */}
-                  {products.map((product) => (
-                    <div key={product.id} className="col-md-6 col-xl-4 col-sm-6">
-                      <ProductCard product={product} />
-                    </div>
-                  ))}
-                  {/* Product Card END */}
+                {loading ? (
+                  <LoaderCard count={15} />
+                ) : (
+                  <div className="row">
+                    {products.map((product) => (
+                      <div key={product._id} className="col-md-6 col-xl-4 col-sm-6">
+                        <ProductCard product={product} />
+                      </div>
+                    ))}
 
-                  <div className="mb-5">
-                    <div className="float-end">
-                      <ul className="pagination ">
-                        <li className="page-item page-prev disabled">
-                          <a className="page-link" href="#!" tabIndex="-1">
-                            Prev
-                          </a>
-                        </li>
-                        <li className="page-item active">
-                          <a className="page-link" href="#!">
-                            1
-                          </a>
-                        </li>
-                        <li className="page-item">
-                          <a className="page-link" href="#!">
-                            2
-                          </a>
-                        </li>
-                        <li className="page-item">
-                          <a className="page-link" href="#!">
-                            3
-                          </a>
-                        </li>
-                        <li className="page-item">
-                          <a className="page-link" href="#!">
-                            4
-                          </a>
-                        </li>
-                        <li className="page-item">
-                          <a className="page-link" href="#!">
-                            5
-                          </a>
-                        </li>
-                        <li className="page-item page-next">
-                          <a className="page-link" href="#!">
-                            Next
-                          </a>
-                        </li>
-                      </ul>
+                    <div className="mb-5">
+                      <div className="float-end">
+                        <ul className="pagination ">
+                          <li className="page-item page-prev disabled">
+                            <a className="page-link" href="#!" tabIndex="-1">
+                              Prev
+                            </a>
+                          </li>
+                          <li className="page-item active">
+                            <a className="page-link" href="#!">
+                              1
+                            </a>
+                          </li>
+                          <li className="page-item">
+                            <a className="page-link" href="#!">
+                              2
+                            </a>
+                          </li>
+                          <li className="page-item">
+                            <a className="page-link" href="#!">
+                              3
+                            </a>
+                          </li>
+                          <li className="page-item">
+                            <a className="page-link" href="#!">
+                              4
+                            </a>
+                          </li>
+                          <li className="page-item">
+                            <a className="page-link" href="#!">
+                              5
+                            </a>
+                          </li>
+                          <li className="page-item page-next">
+                            <a className="page-link" href="#!">
+                              Next
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
               <div className="tab-pane" id="tab-12">
                 <div className="row">

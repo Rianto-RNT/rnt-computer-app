@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
   const { title, price, images, slug } = product;
 
   return (
-    <div className="card" key={product.id}>
+    <div className="card">
       <div className="product-grid6">
         <div className="product-image6 p-5">
           <ul className="icons">
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
         <div className="card-body pt-0">
           <div className="product-content text-center">
             <div className="title fw-bold fs-20">
-              <h5 numberOfLines={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h5>
+              <h5 numberofline={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h5>
             </div>
 
             <div className="mb-2 text-warning">
@@ -51,13 +51,13 @@ const ProductCard = ({ product }) => {
               <i className="fa fa-star-o text-warning"></i>
             </div>
             <div className="price">
-              <h5 class="display-8 text-danger">{price}</h5>
+              <h5 className="display-8 text-danger">{price}</h5>
             </div>
           </div>
         </div>
 
         <div className="card-footer text-center">
-          <Link className="btn btn-primary mb-1">
+          <Link to={'/cart/item'} className="btn btn-primary mb-1">
             <i className="fe fe-shopping-cart me-2"></i>Add to cart
           </Link>
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">

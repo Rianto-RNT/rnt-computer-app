@@ -298,6 +298,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Fetch product in home page
   - Product Card in Home Page
   - Fetch product in card - Home Page
+  - Product loader card skeleton in home page
 
 ## Articles
 

@@ -10,8 +10,11 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.5.4",
     "axios": "^0.26.0",
+    "browser-sync": "^2.27.7",
+    "cssbeautify": "^0.3.1",
     "dotenv": "^16.0.0",
     "firebase": "^7.19.0",
+    "jquery": "^3.6.0",
     "node-sass": "^4.14.1",
     "postcss": "^8.3.6",
     "react": "^16.13.1",
@@ -24,9 +27,7 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "sass": "^1.49.9",
-    "web-vitals": "^2.1.4",
-    "browser-sync": "^2.27.7",
-    "cssbeautify": "^0.3.1"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
