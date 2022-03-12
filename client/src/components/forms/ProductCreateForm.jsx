@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Input } from "antd";
+import { Select } from "antd";
 
 // Ant Design
 const { Option } = Select;
@@ -13,7 +13,7 @@ const ProductCreateForm = ({
   subcategoryOptions,
   showSubcategory,
 }) => {
-  const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
+  const { title, description, price, categories, subcategory, quantity, colors, brands } = values;
 
   return (
     <form onSubmit={handleSubmit}>

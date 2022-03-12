@@ -38,6 +38,7 @@ const CreateProduct = () => {
 
   useEffect(() => {
     loadAllCategory();
+    // eslint-disable-next-line
   }, []);
 
   const loadAllCategory = () => getAllCategory().then((c) => setValues({ ...values, categories: c.data }));

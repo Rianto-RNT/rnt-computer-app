@@ -42,6 +42,7 @@ const UpdateProduct = ({ match, history }) => {
   useEffect(() => {
     loadProduct();
     loadAllCategory();
+    // eslint-disable-next-line
   }, []);
 
   const loadProduct = () => {
@@ -53,7 +54,9 @@ const UpdateProduct = ({ match, history }) => {
         setSubcategoryOptions(res.data); // on first load, show default subcategory
       });
       // 3) prepare array of subcategory ID to show default sub values in form
+      // eslint-disable-next-line
       let arr = [];
+      // eslint-disable-next-line
       p.data.subcategory.map((s) => {
         arr.push(s._id);
       });

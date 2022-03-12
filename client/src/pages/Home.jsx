@@ -240,7 +240,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="" className="fw-semibold text-dark">
+                          <a href="#!" className="fw-semibold text-dark">
                             Hand Bag
                           </a>
                           <div className="mb-1 text-warning">
@@ -260,7 +260,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="" className="fw-semibold text-dark">
+                          <a href="#!" className="fw-semibold text-dark">
                             Chair
                           </a>
                           <div className="mb-1 text-warning">
@@ -280,7 +280,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="" className="fw-semibold text-dark">
+                          <a href="#!" className="fw-semibold text-dark">
                             Laptop Bag
                           </a>
                           <div className="mb-1 text-warning">
@@ -300,7 +300,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="" className="fw-semibold text-dark">
+                          <a href="#!" className="fw-semibold text-dark">
                             Watch
                           </a>
                           <div className="mb-1 text-warning">
@@ -444,7 +444,7 @@ const Home = () => {
                                 </ul>
                               </div>
                               <div className="br-be-0 br-te-0">
-                                <a href="shop-description.html" className=""></a>
+                                {/* <a href="#!" className=""></a> */}
                                 <img src="../src/assets/images/pngs/9.jpg" alt="img" className="cover-image br-7 w-100" />
                               </div>
                             </div>
@@ -532,7 +532,7 @@ const Home = () => {
                                 </ul>
                               </div>
                               <div className="br-be-0 br-te-0">
-                                <a href="shop-description.html" className=""></a>
+                                {/* <a href="shop-description.html" className=""></a> */}
                                 <img src="../src/assets/images/pngs/10.jpg" alt="img" className="cover-image br-7 w-100" />
                               </div>
                             </div>
@@ -620,7 +620,7 @@ const Home = () => {
                                 </ul>
                               </div>
                               <div className="br-be-0 br-te-0">
-                                <a href="shop-description.html" className=""></a>
+                                {/* <a href="shop-description.html" className=""></a> */}
                                 <img src="../src/assets/images/pngs/8.jpg" alt="img" className="cover-image br-7 w-100" />
                               </div>
                             </div>
@@ -712,7 +712,7 @@ const Home = () => {
                                 </ul>
                               </div>
                               <div className="br-be-0 br-te-0">
-                                <a href="shop-description.html" className=""></a>
+                                {/* <a href="shop-description.html" className=""></a> */}
                                 <img src="../src/assets/images/pngs/4.jpg" alt="img" className="cover-image br-7 w-100" />
                               </div>
                             </div>
@@ -804,7 +804,7 @@ const Home = () => {
                                 </ul>
                               </div>
                               <div className="br-be-0 br-te-0">
-                                <a href="shop-description.html" className=""></a>
+                                {/* <a href="shop-description.html" className=""></a> */}
                                 <img src="../src/assets/images/pngs/3.jpg" alt="img" className="cover-image br-7 w-100" />
                               </div>
                             </div>

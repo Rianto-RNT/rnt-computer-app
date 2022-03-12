@@ -10,11 +10,13 @@ const { Panel } = Collapse;
 const AdminProductCard = ({ product, handleRemove }) => {
   const { title, description, images, slug } = product;
 
+  // eslint-disable-next-line
   const [text, setText] = useState("");
 
   return (
     <Card
       cover={
+        // eslint-disable-next-line
         <img src={images && images.length ? images[0].url : noImages} style={{ height: "333px", objectFit: "cover" }} className="p-1" />
       }
       actions={[

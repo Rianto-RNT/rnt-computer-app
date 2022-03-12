@@ -15,11 +15,13 @@ const UpdateSubcategory = ({ history, match }) => {
   const [category, setCategory] = useState([]);
 
   // request from backend
+  // eslint-disable-next-line
   const [parents, setParents] = useState("");
 
   useEffect(() => {
     loadAllCategory();
     loadSingleCategory();
+    // eslint-disable-next-line
   }, []);
 
   const loadAllCategory = () => getAllCategory().then((c) => setCategory(c.data));

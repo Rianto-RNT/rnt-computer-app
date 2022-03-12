@@ -21,7 +21,7 @@ const ProductUpdateForm = ({
   setArrayOfSubcategory,
   selectedCategory,
 }) => {
-  const { title, description, price, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
+  const { title, description, price, category, shipping, quantity, colors, brands, color, brand } = values;
 
   return (
     <form onSubmit={handleSubmit}>
