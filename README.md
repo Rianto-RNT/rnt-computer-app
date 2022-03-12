@@ -297,6 +297,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product Update (Final)
   - Fetch product in home page
   - Product Card in Home Page
+  - Fetch product in card - Home Page
 
 ## Articles
 

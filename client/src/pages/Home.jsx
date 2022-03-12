@@ -362,65 +362,11 @@ const Home = () => {
               <div className="tab-pane active" id="tab-11">
                 <div className="row">
                   {/* Product Card START */}
-                  <div className="col-md-6 col-xl-4 col-sm-6">
-                    {products.map((product) => (
-                      <div className="card" key={product.id}> 
-                        
-                         
-
-                        <div className="product-grid6">
-                          <div className="product-image6 p-5">
-                            <ul className="icons">
-                              <li>
-                                <a href="shop-description.html" className="bg-primary text-white border-primary border">
-                                  <i className="fe fe-eye"> </i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="add-product.html" className="bg-success text-white border-success border">
-                                  <i className="fe fe-edit"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#!" className="bg-danger text-white border-danger border">
-                                  <i className="fe fe-x"></i>
-                                </a>
-                              </li>
-                            </ul>
-                            <a href="shop-description.html" className="bg-light">
-                              <img className="img-fluid br-7 w-100" src="../src/assets/images/noImages.png" alt="img" />
-                            </a>
-                          </div>
-
-                          <div className="card-body pt-0">
-                            <div className="product-content text-center">
-                            <ProductCard product={product} />
-                              
-                              <div className="mb-2 text-warning">
-                                <i className="fa fa-star text-warning"></i>
-                                <i className="fa fa-star text-warning"></i>
-                                <i className="fa fa-star text-warning"></i>
-                                <i className="fa fa-star-half-o text-warning"></i>
-                                <i className="fa fa-star-o text-warning"></i>
-                              </div>
-                              <div className="price">
-                                $599<span className="ms-4">$799</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="card-footer text-center">
-                            <a href="cart.html" className="btn btn-primary mb-1">
-                              <i className="fe fe-shopping-cart me-2"></i>Add to cart
-                            </a>
-                            <a href="wishlist.html" className="btn btn-outline-primary mb-1">
-                              <i className="fe fe-heart me-2 wishlist-icon"></i>Add to wishlist
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  {products.map((product) => (
+                    <div key={product.id} className="col-md-6 col-xl-4 col-sm-6">
+                      <ProductCard product={product} />
+                    </div>
+                  ))}
                   {/* Product Card END */}
 
                   <div className="mb-5">
