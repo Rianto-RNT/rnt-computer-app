@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
+import Footer from "./components/nav/Footer";
 
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -93,6 +94,7 @@ const App = () => {
         <AdminRoute exact path="/admin/products" component={AllProducts} />
         <AdminRoute exact path="/admin/product/:slug" component={UpdateProduct} />
       </Switch>
+      <Footer />
     </>
   );
 };

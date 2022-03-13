@@ -40,11 +40,11 @@ const ProductCard = ({ product }) => {
         <div className="card-body pt-0">
           <div className="product-content text-center">
             <div className="title fw-bold fs-20">
-              <h5 numberofline={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h5>
+              <h6 numberofline={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h6>
             </div>
 
             <div className="mb-2 text-warning">
-              <i className="fa fa-star text-warning"></i>
+              <i className="fa fa-star text-warning"/>
               <i className="fa fa-star text-warning"></i>
               <i className="fa fa-star text-warning"></i>
               <i className="fa fa-star-half-o text-warning"></i>
