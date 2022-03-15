@@ -300,7 +300,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product Card in Home Page
   - Fetch product in card - Home Page
   - Product loader card skeleton in home page
-  - Calling new arival endpoint in home page
+  - Calling reuseable Product endpoint in home page
+  - New Arrival Card component
+  - Best Seller Card Component
 
 ## Articles
 

@@ -15,7 +15,7 @@ const {
   removeProduct,
   uploadImages,
   removeImages,
-  newArrival
+  reuseableProduct
 } = require('../controllers/product');
 
 // Main Routes
@@ -26,7 +26,7 @@ router.post('/product', protect, adminProtect, createProduct);
 router.put('/product/:slug', protect, adminProtect, updateProduct);
 router.delete('/product/:slug', protect, adminProtect, removeProduct);
 
-router.post('/products', newArrival);
+router.post('/products', reuseableProduct);
 
 // image upload cloud
 router.post('/product/upload-images', protect, adminProtect, uploadImages);

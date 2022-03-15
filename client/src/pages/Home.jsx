@@ -5,6 +5,7 @@ import LoaderCard from "../components/cards/LoaderCard";
 import HomeBanner from "../components/carousel/HomeBanner";
 import HomeBannerImagesSlider from "../components/carousel/HomeBannerImage";
 import NewArrivalCard from "../components/cards/NewArrivalCard";
+import BestSellerCard from "../components/cards/BestSellerCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -69,6 +70,10 @@ const Home = () => {
             {/* CAROUSEL */}
             <HomeBanner slides={HomeBannerImagesSlider} />
             {/* END OF CROUSEL */}
+
+            {/* BEST SELLER */}
+            <BestSellerCard />
+            {/* ENDBEST SELLER */}
 
             {/* END OF CROUSEL */}
             <NewArrivalCard />
@@ -265,9 +270,10 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+                
                 <div className="card">
                   <div className="card-header">
-                    <div className="card-title">Top Products</div>
+                    <div className="card-title">Top Product</div>
                   </div>
                   <div className="card-body">
                     <div className="">
@@ -278,9 +284,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="#!" className="fw-semibold text-dark">
-                            Hand Bag
-                          </a>
+                          <a className="fw-semibold text-dark">Hand Bag</a>
                           <div className="mb-1 text-warning">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -291,16 +295,18 @@ const Home = () => {
                           <h5 className="fw-bold">$345</h5>
                         </div>
                       </div>
-                      <div className="d-flex overflow-visible mt-5">
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="">
+                      <div className="d-flex overflow-visible">
                         <img
                           className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/5.png"
+                          src="../src/assets/images/pngs/8.png"
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="#!" className="fw-semibold text-dark">
-                            Chair
-                          </a>
+                          <a className="fw-semibold text-dark">Hand Bag</a>
                           <div className="mb-1 text-warning">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -311,36 +317,18 @@ const Home = () => {
                           <h5 className="fw-bold">$345</h5>
                         </div>
                       </div>
-                      <div className="d-flex overflow-visible mt-5">
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="">
+                      <div className="d-flex overflow-visible">
                         <img
                           className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/1.png"
+                          src="../src/assets/images/pngs/8.png"
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a href="#!" className="fw-semibold text-dark">
-                            Laptop Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-half-o"></i>
-                            <i className="fa fa-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
-                      <div className="d-flex overflow-visible mt-5">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/6.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a href="#!" className="fw-semibold text-dark">
-                            Watch
-                          </a>
+                          <a className="fw-semibold text-dark">Hand Bag</a>
                           <div className="mb-1 text-warning">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -354,6 +342,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>

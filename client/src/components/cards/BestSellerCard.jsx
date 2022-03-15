@@ -3,7 +3,7 @@ import { reuseableProduct } from "../../services/product";
 import ProductCard from "./ProductCard";
 import LoaderCard from "./LoaderCard";
 
-const NewArrival = () => {
+const BestSellerCard = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -15,7 +15,7 @@ const NewArrival = () => {
     setLoading(true);
 
     // Sort, order, limit
-    reuseableProduct("createdAt", "desc", 4).then((res) => {
+    reuseableProduct("sold", "desc", 4).then((res) => {
       setProducts(res.data);
       setLoading(false);
     });
@@ -25,7 +25,7 @@ const NewArrival = () => {
     <div className="row">
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title">New Arrival</h3>
+          <h3 className="card-title">Best Seller</h3>
         </div>
 
         <div className="card-body h-100">
@@ -65,4 +65,4 @@ const NewArrival = () => {
   );
 };
 
-export default NewArrival;
+export default BestSellerCard;

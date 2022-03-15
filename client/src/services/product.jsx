@@ -48,7 +48,7 @@ export const removeProduct = async (slug, authtoken) => {
   return response.data;
 };
 
-export const newArrival = async (sort, order, limit) => {
+export const reuseableProduct = async (sort, order, limit) => {
   const response = await axios.post(`${process.env.REACT_APP_API}/products`, {
     sort,
     order,
