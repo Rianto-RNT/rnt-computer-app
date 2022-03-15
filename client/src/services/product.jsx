@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// export const getAllCategory = async () => {
-//   const response = await axios.get(`${process.env.REACT_APP_API}/category`);
+// export const getAllProduct = async () => {
+//   const response = await axios.get(`${process.env.REACT_APP_API}/product`);
 
 //   return response.data;
 // };
@@ -43,6 +43,16 @@ export const removeProduct = async (slug, authtoken) => {
     headers: {
       authtoken,
     },
+  });
+
+  return response.data;
+};
+
+export const newArrival = async (sort, order, limit) => {
+  const response = await axios.post(`${process.env.REACT_APP_API}/products`, {
+    sort,
+    order,
+    limit,
   });
 
   return response.data;

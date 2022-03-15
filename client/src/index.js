@@ -7,6 +7,7 @@ import "antd/dist/antd.min.css";
 // import 'font-awesome/css/font-awesome.min.css';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
+
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";

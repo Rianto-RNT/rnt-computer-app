@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { getProductByCount } from "../services/product";
 import ProductCard from "../components/cards/ProductCard";
 import LoaderCard from "../components/cards/LoaderCard";
+import HomeBanner from "../components/carousel/HomeBanner";
+import HomeBannerImagesSlider from "../components/carousel/HomeBannerImage";
+// import {rntBanner} from "../assets/images/rnt-banner.png"
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -26,18 +29,50 @@ const Home = () => {
       <div className="main-container container-fluid">
         {/* <!-- PAGE-HEADER --> */}
         <div className="page-header">
-          <h1 className="page-title">Shop</h1>
-          <div>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="#!">E-Commerce</a>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Shop
-              </li>
-            </ol>
+          <div className="col-xl-12">
+            <div className="card p-0">
+              <div className="card-body p-4">
+                <div className="row">
+                  <div className="col-xl-5 col-lg-8 col-md-8 col-sm-8">
+                    <div className="input-group d-flex w-100 float-start">
+                      <input type="text" className="form-control border-end-0 my-2" placeholder="Search ..." />
+                      <button className="btn input-group-text bg-transparent border-start-0 text-muted my-2">
+                        <i className="fe fe-search text-muted" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                    <ul className="nav item2-gl-menu float-end my-2">
+                      <li className="border-end">
+                        <a href="#tab-11" className="show active" data-bs-toggle="tab" title="List style">
+                          <i className="fa fa-th"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!" data-bs-toggle="tab" className="" title="Grid">
+                          <i className="fa fa-align-left"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="col-xl-3 col-lg-12">
+                    <a href="add-product.html" className="btn btn-primary btn-block float-end my-2">
+                      <i className="fa fa-plus-square me-2"></i>New Product
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CAROUSEL */}
+            <HomeBanner slides={HomeBannerImagesSlider}/>
+
+            {/* END OF CROUSEL */}
           </div>
         </div>
+
         {/* <!-- PAGE-HEADER END --> */}
 
         {/* <!-- ROW-1 OPEN --> */}
@@ -321,45 +356,6 @@ const Home = () => {
           </div>
           {/* <!-- COL-END --> */}
           <div className="col-xl-9 col-lg-8">
-            <div className="row">
-              <div className="col-xl-12">
-                <div className="card p-0">
-                  <div className="card-body p-4">
-                    <div className="row">
-                      <div className="col-xl-5 col-lg-8 col-md-8 col-sm-8">
-                        <div className="input-group d-flex w-100 float-start">
-                          <input type="text" className="form-control border-end-0 my-2" placeholder="Search ..." />
-                          <button className="btn input-group-text bg-transparent border-start-0 text-muted my-2">
-                            <i className="fe fe-search text-muted" aria-hidden="true"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                        <ul className="nav item2-gl-menu float-end my-2">
-                          <li className="border-end">
-                            <a href="#tab-11" className="show active" data-bs-toggle="tab" title="List style">
-                              <i className="fa fa-th"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#!" data-bs-toggle="tab" className="" title="Grid">
-                              <i className="fa fa-align-left"></i>
-                              
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-xl-3 col-lg-12">
-                        <a href="add-product.html" className="btn btn-primary btn-block float-end my-2">
-                          <i className="fa fa-plus-square me-2"></i>New Product
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div className="tab-content">
               <div className="tab-pane active" id="tab-11">
                 {loading ? (
