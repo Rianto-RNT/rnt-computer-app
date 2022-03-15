@@ -112,6 +112,31 @@ exports.removeProduct = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: {} });
 });
 
+// @desc    New Arival for product
+// @route   POST /api/products
+// @access  Public
+exports.newArrival = asyncHandler(async (req, res, next) => {
+  const { sort, order, limit } = req.body;
+
+  const products = await Product.find({})
+    .populate('category')
+    .populate('subcategory')
+    .sort([sort, order])
+    .limit(limit)
+    .exec();
+
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Failed! Product with ${req.body.slug} not found. Please select correct value.`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: products });
+});
+
 // @desc      Upload images for product
 // @route     PUT /api/product/upload-images
 // @access    Private
