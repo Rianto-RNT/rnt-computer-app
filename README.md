@@ -265,6 +265,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - List all product endpoints
   - Product Delete
   - Product Update Endpoint
+  - New Arrival Product with sort, order and limit
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -299,7 +300,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product Card in Home Page
   - Fetch product in card - Home Page
   - Product loader card skeleton in home page
-  - New Arrival Product with sort, order and limit
+  - Calling new arival endpoint in home page
 
 ## Articles
 

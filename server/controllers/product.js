@@ -121,7 +121,7 @@ exports.newArrival = asyncHandler(async (req, res, next) => {
   const products = await Product.find({})
     .populate('category')
     .populate('subcategory')
-    .sort([sort, order])
+    .sort([[sort, order]])
     .limit(limit)
     .exec();
 

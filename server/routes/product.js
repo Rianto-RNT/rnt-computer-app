@@ -26,7 +26,7 @@ router.post('/product', protect, adminProtect, createProduct);
 router.put('/product/:slug', protect, adminProtect, updateProduct);
 router.delete('/product/:slug', protect, adminProtect, removeProduct);
 
-router.post('/products', protect, adminProtect, newArrival);
+router.post('/products', newArrival);
 
 // image upload cloud
 router.post('/product/upload-images', protect, adminProtect, uploadImages);

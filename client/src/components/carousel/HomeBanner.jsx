@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import HomeBannerImagesSlider from "./HomeBannerImage";
-import { Carousel } from "antd";
 
 const HomeBanner = ({ slides }) => {
   const [current, setCurrent] = useState(0);
@@ -23,8 +22,12 @@ const HomeBanner = ({ slides }) => {
       <div className="card">
         <div className="card-body">
           <div id="carousel-controls" className="carousel slide" data-bs-ride="carousel">
+            <ol className="carousel-indicators">
+              <li data-target="carousel-controls" data-slide-to="0" className="active"></li>
+              <li data-target="carousel-controls" data-slide-to="1"></li>
+            </ol>
             <div className="carousel-inner">
-              <div className="carousel-item active">
+              <div className="carousel-slide active">
                 {HomeBannerImagesSlider.map((slide, index) => {
                   return (
                     <div className={index === current ? "slide active" : "slide"} key={index}>

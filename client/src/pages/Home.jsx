@@ -4,7 +4,7 @@ import ProductCard from "../components/cards/ProductCard";
 import LoaderCard from "../components/cards/LoaderCard";
 import HomeBanner from "../components/carousel/HomeBanner";
 import HomeBannerImagesSlider from "../components/carousel/HomeBannerImage";
-// import {rntBanner} from "../assets/images/rnt-banner.png"
+import NewArrivalCard from "../components/cards/NewArrivalCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -67,8 +67,11 @@ const Home = () => {
             </div>
 
             {/* CAROUSEL */}
-            <HomeBanner slides={HomeBannerImagesSlider}/>
+            <HomeBanner slides={HomeBannerImagesSlider} />
+            {/* END OF CROUSEL */}
 
+            {/* END OF CROUSEL */}
+            <NewArrivalCard />
             {/* END OF CROUSEL */}
           </div>
         </div>
