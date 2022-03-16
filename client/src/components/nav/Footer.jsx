@@ -1,5 +1,4 @@
 import React from "react";
-import noImages from "../../assets/images/noImages.png";
 
 const Footer = () => {
   return (
@@ -69,40 +68,23 @@ const Footer = () => {
                     </ul>
                   </div>
                   <div className="col-lg-4 col-sm-12 col-md-4">
-                    <h6>Posts</h6>
-                    <img src={noImages} />
-                    <img src={noImages} />
-                    <img src={noImages} />
-                    <img src={noImages} />
+                    <h6>Send with</h6>
+                    <img src={require("../../assets/images/indo-payments/pos.svg")} />
+                    <img src={require("../../assets/images/indo-payments/jnt.svg")} />
+                    <img src={require("../../assets/images/indo-payments/jne.svg")} />
+                    <img src={require("../../assets/images/indo-payments/sicepat.svg")} />
                     <hr />
+
                     <h6 className="mb-0 m-t-30">Payments</h6>
-                    <ul className="footer-payments">
-                      <li>
-                        <a href="#!">
-                          <i className="fa fa-cc-paypal text-muted" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#!">
-                          <i className="fa fa-cc-visa text-muted" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#!">
-                          <i className="fa fa-credit-card-alt text-muted" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#!">
-                          <i className="fa fa-cc-mastercard text-muted" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#!">
-                          <i className="fa fa-cc-paypal text-muted" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                    </ul>
+                    <br />
+                    <img src={require("../../assets/images/indo-payments/ntb-syariah.svg")} />
+                    <img src={require("../../assets/images/indo-payments/bni.svg")} />
+                    <img src={require("../../assets/images/indo-payments/bri.svg")} />
+                    <br />
+                    <img src={require("../../assets/images/indo-payments/gopay.svg")} />
+                    <img src={require("../../assets/images/indo-payments/dana.svg")} />
+                    <img src={require("../../assets/images/indo-payments/alfa.svg")} />
+                    <img src={require("../../assets/images/indo-payments/indomaret.svg")} />
                   </div>
                 </div>
               </div>
@@ -112,26 +94,26 @@ const Footer = () => {
                     Copyright © 2022 <a href="#!">RNT Computer App</a>. Designed with <span className="fa fa-heart text-danger"></span>
                     by <a href="#!"> Rianto </a>
                   </div>
-                  <div className="col-xl-4 col-lg-12 col-md-12 ms-auto text-end">
-                    <ul className="footer-social-list ">
+                  <div class="col-xl-4 col-lg-12 col-md-12 ms-auto text-end">
+                    <ul class="footer-social-list ">
                       <li>
-                        <a href="#!">
-                          <i className="fa fa-facebook"></i>
+                        <a href="https://web.facebook.com/ryanmorrisonsay/">
+                          <i class="fa fa-facebook"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#!">
-                          <i className="fa fa-google"></i>
+                        <a href="https://www.google.com/">
+                          <i class="fa fa-google"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#!">
-                          <i className="fa fa-twitter"></i>
+                        <a href="https://twitter.com/ryanmorrisonsay">
+                        <i class="bi bi-twitter text-success" ></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#!">
-                          <i className="fa fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/rianto-rnt/">
+                          <i class="fa fa-linkedin"></i>
                         </a>
                       </li>
                     </ul>
