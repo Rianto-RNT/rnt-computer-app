@@ -43,15 +43,15 @@ const ProductSchema = new mongoose.Schema({
   },
   shipping: {
     type: String,
-    enum: ['yes', 'no'],
+    enum: ['Yes', 'No'],
   },
   color: {
     type: String,
-    enum: ['yellow', 'red', 'black', 'silver', 'blue', 'white'],
+    enum: ["Yellow","Green", "Red", "Black", "Silver", "Blue", "White", "Grey", "Space Grey", "Mate Black", "Mate Grey"],
   },
   brand: {
     type: String,
-    enum: ['apple', 'lenovo', 'hp', 'acer', 'microsoft', 'asus'],
+    enum: ["Apple", "Lenovo", "HP", "Acer", "Microsoft", "Asus", "MSi", "Alienware", "Razer", "Huawei", "Dell", "Axioo", "Avita"],
   },
   //   ratings: [
   //     {

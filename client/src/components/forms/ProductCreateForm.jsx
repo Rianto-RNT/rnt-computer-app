@@ -13,7 +13,7 @@ const ProductCreateForm = ({
   subcategoryOptions,
   showSubcategory,
 }) => {
-  const { title, description, price, categories, subcategory, quantity, colors, brands } = values;
+  const { title, description, price, categories, category, subcategory, shipping, quantity, images, colors, brands, color, brand } = values;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -74,8 +74,8 @@ const ProductCreateForm = ({
                     <option value="please-select" disabled>
                       --Select--
                     </option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                   </select>
                 </div>
               </div>
