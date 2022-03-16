@@ -166,15 +166,6 @@ const ProductCreateForm = ({
                   </div>
                 </div>
               )}
-
-              {/* <!--Row--> */}
-              <div className="row">
-                <label className="col-md-3 form-label mb-4">Product Images Upload :</label>
-                <div className="col-md-9">
-                  <input id="demo" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple />
-                </div>
-              </div>
-              {/* <!--End Row--> */}
             </div>
 
             <div className="card-footer">

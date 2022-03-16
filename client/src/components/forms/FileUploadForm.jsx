@@ -90,34 +90,44 @@ const FileUpload = ({ values, setValues, setLoading }) => {
   };
 
   return (
-    <>
-      <Row>
-        <Col>
-          {values.images &&
-            values.images.map((image) => (
-              <Card.Grid key={image.public_id} style={{ width: 150, gridStyle: gridStyle }}>
-                <Badge count="X" onClick={() => handleImageRemove(image.public_id)} style={{ cursor: "pointer" }}>
-                  <Avatar src={image.url} size={103} shape="square" />
-                </Badge>
-              </Card.Grid>
-            ))}
-        </Col>
-      </Row>
-
-      <br />
-
-      <form method="post" className="card">
-        <div className=" card-body">
-          <div className="form-group">
-            <label htmlFor="formFileMultiple" className="form-label">
-              Multiple files input Upload
-            </label>
-
-            <input className="form-control" type="file" id="formFileMultiple" accept="images/*" multiple onChange={fileUploadAndResize} />
-          </div>
+    <div className="row">
+      <div className="card">
+        <div className="card-header">
+          <h3 className="card-title">Upload Images</h3>
         </div>
-      </form>
-    </>
+        <div className="card-body">
+          <Col>
+            {values.images &&
+              values.images.map((image) => (
+                <Card.Grid key={image.public_id} style={{ width: 150, gridStyle: gridStyle }}>
+                  <Badge count="X" onClick={() => handleImageRemove(image.public_id)} style={{ cursor: "pointer" }}>
+                    <Avatar src={image.url} size={103} shape="square" />
+                  </Badge>
+                </Card.Grid>
+              ))}
+          </Col>
+
+          <form method="post" className="card">
+            <div className=" card-body">
+              <div className="form-group">
+                <label htmlFor="formFileMultiple" className="form-label">
+                  Multiple files input Upload
+                </label>
+
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFileMultiple"
+                  accept="images/*"
+                  multiple
+                  onChange={fileUploadAndResize}
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

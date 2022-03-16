@@ -19,7 +19,7 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["Yellow","Green", "Red", "Black", "Silver", "Blue", "White", "Grey", "Space Grey", "Mate Black", "Mate Grey"],
+  colors: ["Yellow", "Green", "Red", "Black", "Silver", "Blue", "White", "Grey", "Space Grey", "Mate Black", "Mate Grey"],
   brands: ["Apple", "Lenovo", "HP", "Acer", "Microsoft", "Asus", "MSi", "Alienware", "Razer", "Huawei", "Dell", "Axioo", "Avita"],
   color: "",
   brand: "",
@@ -132,8 +132,6 @@ const UpdateProduct = ({ match, history }) => {
           <div className="p-3">
             <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
           </div>
-
-          <br />
 
           <ProductUpdateForm
             handleSubmit={handleSubmit}
