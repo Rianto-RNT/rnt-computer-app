@@ -38,8 +38,10 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="product-content text-center">
-          <div className="title fw-bold fs-20">
-            <h6 numberofline={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h6>
+          <div className="title">
+            <h6 className="title fw-bold fs-14" numberofline={2}>
+              {title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}
+            </h6>
           </div>
 
           <div className="mb-2 text-warning">
