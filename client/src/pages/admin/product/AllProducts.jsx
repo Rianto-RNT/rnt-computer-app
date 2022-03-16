@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { getProductByCount } from "../../../services/product"; 
-import { removeProduct } from "../../../services/product"; 
+import { getProductByCount } from "../../../services/product";
+import { removeProduct } from "../../../services/product";
 import AdminNav from "../../../components/nav/AdminNav";
 import AdminProductCard from "../../../components/cards/AdminProductCard";
+import Swal from "sweetalert2";
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
@@ -34,14 +35,23 @@ const AllProducts = () => {
       });
   };
 
-  const handleRemove = (slug) => {
-    // let answer = window.confirm("Delete?");
-    if (window.confirm("Delete?")) {
-      // console.log("send delete request", slug);
-      removeProduct(slug, user.token)
-        .then((res) => {
+  const handleRemove = async (slug) => {
+    if (
+     await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      })
+    ) {
+      await removeProduct(slug, user.token)
+        .then(() => {
           loadAllProducts();
-          toast.error(`${res.data.title} is deleted`);
+          // toast.error(`${res.data.title} is deleted`);
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
         })
         .catch((err) => {
           if (err.response.status === 400) toast.error(err.response.data);
@@ -58,7 +68,7 @@ const AllProducts = () => {
         </div>
 
         <div className="col">
-        {loading ? <Spin tip="Loading..." indicator={antIcon} /> : <h4>Update Product</h4>}
+          {loading ? <Spin tip="Loading..." indicator={antIcon} /> : <h4>Update Product</h4>}
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-4 pb-3">
