@@ -8,6 +8,7 @@ import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/c
 import FileUploadForm from "../../../components/forms/FileUploadForm";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+import Swal from "sweetalert2";
 
 const initialState = {
   title: "",
@@ -48,8 +49,16 @@ const CreateProduct = () => {
     createProduct(values, user.token)
       .then((res) => {
         console.log(res);
-        window.alert(`${res.data.title}" is created`);
-        window.location.reload();
+
+        Swal.fire({
+          title: `${res.data.title} is created`,
+          timer: 5000,
+          text: "Keep feed me with product :)",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(function () {
+          window.location.reload();
+        });
       })
       .catch((error) => {
         console.log(error);

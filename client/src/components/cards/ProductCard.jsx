@@ -37,27 +37,27 @@ const ProductCard = ({ product }) => {
           </a>
         </div>
 
-        <div className="card-body pt-0">
-          <div className="product-content text-center">
-            <div className="title fw-bold fs-20">
-              <h6 numberofline={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h6>
-            </div>
+        <div className="product-content text-center">
+          <div className="title fw-bold fs-20">
+            <h6 numberofline={2}>{title.length < 35 ? `${title}` : `${title.substring(0, 50)}...`}</h6>
+          </div>
 
-            <div className="mb-2 text-warning">
-              <i className="fa fa-star text-warning"/>
-              <i className="fa fa-star text-warning"></i>
-              <i className="fa fa-star text-warning"></i>
-              <i className="fa fa-star-half-o text-warning"></i>
-              <i className="fa fa-star-o text-warning"></i>
-            </div>
-            <div className="price">
-              <h5 className="display-8 text-danger">{price}</h5>
-            </div>
+          <div className="mb-2 text-warning">
+            <i className="fa fa-star text-warning" />
+            <i className="fa fa-star text-warning"></i>
+            <i className="fa fa-star text-warning"></i>
+            <i className="fa fa-star-half-o text-warning"></i>
+            <i className="fa fa-star-o text-warning"></i>
+          </div>
+          <div className="price">
+            <h5 className="display-8 text-danger">
+              <p>Rp. {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+            </h5>
           </div>
         </div>
 
         <div className="card-footer text-center">
-          <Link to={'/cart/item'} className="btn btn-primary mb-1">
+          <Link to={"/cart/item"} className="btn btn-primary mb-1">
             <i className="fe fe-shopping-cart me-2"></i>Add to cart
           </Link>
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">

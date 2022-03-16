@@ -9,6 +9,7 @@ import { updateProduct } from "../../../services/product";
 import AdminNav from "../../../components/nav/AdminNav";
 import ProductUpdateForm from "../../../components/forms/ProductUpdateForm";
 import FileUploadForm from "../../../components/forms/FileUploadForm";
+import Swal from "sweetalert2";
 
 const initialState = {
   title: "",
@@ -80,8 +81,16 @@ const UpdateProduct = ({ match, history }) => {
     updateProduct(slug, values, user.token)
       .then((res) => {
         setLoading(false);
-        toast.success(`${res.data.title}" is updated`);
-        history.push("/admin/products");
+
+        Swal.fire({
+          title: `${res.data.title} is updated`,
+          timer: 5000,
+          text: "Thank for updating me :)",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(function () {
+          history.push("/admin/products");
+        });
       })
       .catch((error) => {
         console.log(error);
