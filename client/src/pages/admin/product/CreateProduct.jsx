@@ -11,14 +11,14 @@ import { Spin } from "antd";
 import Swal from "sweetalert2";
 
 const initialState = {
-  title: "",
-  description: "",
-  price: "",
+  title: "Test Product",
+  description: "test Delete",
+  price: "12312",
   categories: [],
   category: "",
   subcategory: [],
   shipping: "",
-  quantity: "",
+  quantity: "12",
   images: [],
   colors: ["Yellow", "Green", "Red", "Black", "Silver", "Blue", "White", "Grey", "Space Grey", "Mate Black", "Mate Grey"],
   brands: ["Apple", "Lenovo", "HP", "Acer", "Microsoft", "Asus", "MSi", "Alienware", "Razer", "Huawei", "Dell", "Axioo", "Avita"],
@@ -53,7 +53,7 @@ const CreateProduct = () => {
         Swal.fire({
           title: `${res.data.title} is created`,
           timer: 5000,
-          text: "Keep feed me with product :)",
+          text: "Please check your product list :)",
           icon: "success",
           confirmButtonText: "OK",
         }).then(function () {

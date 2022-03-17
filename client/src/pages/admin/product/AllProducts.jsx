@@ -35,29 +35,27 @@ const AllProducts = () => {
       });
   };
 
-  const handleRemove = async (slug) => {
-    if (
-     await Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      })
-    ) {
-      await removeProduct(slug, user.token)
-        .then(() => {
-          loadAllProducts();
-          // toast.error(`${res.data.title} is deleted`);
+  const handleRemove = (slug) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((product) => {
+      if (product.isConfirmed) {
+        removeProduct(slug, user.token).then(() => {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        })
-        .catch((err) => {
-          if (err.response.status === 400) toast.error(err.response.data);
-          console.log(err);
+          loadAllProducts();
         });
-    }
+      } else {
+        Swal.fire("Cancelled", "Your product data is safe :)", "error");
+      }
+    });
   };
 
   return (
@@ -68,7 +66,7 @@ const AllProducts = () => {
         </div>
 
         <div className="col">
-          {loading ? <Spin tip="Loading..." indicator={antIcon} /> : <h4>Update Product</h4>}
+          {loading ? <Spin tip="Loading..." indicator={antIcon} /> : <h4>Product List</h4>}
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-4 pb-3">

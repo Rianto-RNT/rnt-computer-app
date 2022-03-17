@@ -94,26 +94,26 @@ const Footer = () => {
                     Copyright © 2022 <a href="#!">RNT Computer App</a>. Designed with <span className="fa fa-heart text-danger"></span>
                     by <a href="#!"> Rianto </a>
                   </div>
-                  <div class="col-xl-4 col-lg-12 col-md-12 ms-auto text-end">
-                    <ul class="footer-social-list ">
+                  <div className="col-xl-4 col-lg-12 col-md-12 ms-auto text-end">
+                    <ul className="footer-social-list ">
                       <li>
                         <a href="https://web.facebook.com/ryanmorrisonsay/">
-                          <i class="fa fa-facebook"></i>
+                          <i className="fa fa-facebook"></i>
                         </a>
                       </li>
                       <li>
                         <a href="https://www.google.com/">
-                          <i class="fa fa-google"></i>
+                          <i className="fa fa-google"></i>
                         </a>
                       </li>
                       <li>
                         <a href="https://twitter.com/ryanmorrisonsay">
-                        <i class="bi bi-twitter text-success" ></i>
+                        <i className="bi bi-twitter text-success" ></i>
                         </a>
                       </li>
                       <li>
                         <a href="https://www.linkedin.com/in/rianto-rnt/">
-                          <i class="fa fa-linkedin"></i>
+                          <i className="fa fa-linkedin"></i>
                         </a>
                       </li>
                     </ul>

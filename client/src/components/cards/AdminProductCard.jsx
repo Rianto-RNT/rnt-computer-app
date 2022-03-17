@@ -17,7 +17,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
       cover={
         <input
           type="image"
-          img
+          img="true"
           src={images && images.length ? images[0].url : noImages}
           style={{ height: "333px", objectFit: "cover" }}
           className="p-1"
