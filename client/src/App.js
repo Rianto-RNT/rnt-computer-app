@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 
 import { hot } from "react-hot-loader";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.min.css";
+import "swiper/components/pagination/pagination.min.css";
 import "./assets/css/style.css";
 
 import { Switch, Route } from "react-router-dom";
