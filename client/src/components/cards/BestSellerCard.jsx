@@ -30,11 +30,12 @@ const BestSellerCard = () => {
           <div className="card-header">
             <h3 className="card-title">Best Seller</h3>
           </div>
+
           <div className="tab-pane active" id="tab-11">
             {products.length > 0 ? (
               <Swiper
                 slidesPerView={4}
-                spaceBetween={30}
+                spaceBetween={5}
                 centeredSlides={true}
                 navigation={true}
                 pagination={{

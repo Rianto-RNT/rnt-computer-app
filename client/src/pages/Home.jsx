@@ -3,7 +3,6 @@ import { getProductByCount } from "../services/product";
 import ProductCard from "../components/cards/ProductCard";
 import LoaderCard from "../components/cards/LoaderCard";
 import HomeBanner from "../components/carousel/HomeBanner";
-import HomeBannerImagesSlider from "../components/carousel/HomeBannerImage";
 import NewArrivalCard from "../components/cards/NewArrivalCard";
 import BestSellerCard from "../components/cards/BestSellerCard";
 
@@ -68,7 +67,7 @@ const Home = () => {
             </div>
 
             {/* CAROUSEL */}
-            <HomeBanner slides={HomeBannerImagesSlider} />
+            <HomeBanner HomeBanner={HomeBanner}/>
             {/* END OF CROUSEL */}
 
             {/* BEST SELLER */}
@@ -270,7 +269,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="card">
                   <div className="card-header">
                     <div className="card-title">Top Product</div>
@@ -342,7 +341,6 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>

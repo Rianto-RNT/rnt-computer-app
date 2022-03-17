@@ -6,6 +6,10 @@ import "swiper/swiper.min.css";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
+
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 import "./assets/css/style.css";
 
 import { Switch, Route } from "react-router-dom";

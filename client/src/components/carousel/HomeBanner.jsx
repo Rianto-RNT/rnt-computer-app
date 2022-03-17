@@ -1,52 +1,26 @@
-import React, { useState } from "react";
-import HomeBannerImagesSlider from "./HomeBannerImage";
+import React from "react";
+import Slider from "react-slick";
 
-const HomeBanner = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
-  const length = slides.length;
-
-  const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+const HomeBanner = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  };
-
-  if (!Array.isArray(slides) || slides.length <= 0) {
-    return null;
-  }
 
   return (
     <div className="row">
       <div className="card">
         <div className="card-body">
-          <div id="carousel-controls" className="carousel slide" data-bs-ride="carousel">
-            <ol className="carousel-indicators">
-              <li data-target="carousel-controls" data-slide-to="0" className="active"></li>
-              <li data-target="carousel-controls" data-slide-to="1"></li>
-            </ol>
-            <div className="carousel-inner">
-              <div className="carousel-slide active">
-                {HomeBannerImagesSlider.map((slide, index) => {
-                  return (
-                    <div className={index === current ? "slide active" : "slide"} key={index}>
-                      {index === current && <img src={slide.image} alt="banner" className="image" />}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <a className="carousel-control-prev" onClick={prevSlide} role="button" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" onClick={nextSlide} role="button" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="sr-only">Next</span>
-            </a>
-          </div>
+          <Slider {...settings}>
+            <img src={require("../../assets/images/rnt-creative-banner-one.jpg")} />
+            <img src={require("../../assets/images/rnt-creative-banner-two.jpg")} />
+          </Slider>
         </div>
       </div>
     </div>
