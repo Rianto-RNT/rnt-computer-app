@@ -122,7 +122,7 @@ exports.reuseableProduct = asyncHandler(async (req, res, next) => {
     .populate('category')
     .populate('subcategory')
     .sort([[sort, order]])
-    .limit(4)
+    .limit(limit)
     .exec();
 
   if (!products) {

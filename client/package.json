@@ -32,6 +32,7 @@
     "redux-devtools-extension": "^2.13.9",
     "sass": "^1.49.9",
     "sweetalert2": "^11.4.4",
+    "swiper": "^6.8.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
