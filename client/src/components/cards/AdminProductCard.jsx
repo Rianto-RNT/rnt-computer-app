@@ -15,7 +15,14 @@ const AdminProductCard = ({ product, handleRemove }) => {
   return (
     <Card
       cover={
-        <img src={images && images.length ? images[0].url : noImages} style={{ height: "333px", objectFit: "cover" }} className="p-1" />
+        <input
+          type="image"
+          img
+          src={images && images.length ? images[0].url : noImages}
+          style={{ height: "333px", objectFit: "cover" }}
+          className="p-1"
+          alt="photo"
+        />
       }
       actions={[
         <Link to={`/admin/product/${slug}`}>

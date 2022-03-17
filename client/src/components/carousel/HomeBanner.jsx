@@ -5,10 +5,8 @@ const HomeBanner = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    infinite: true,
     autoplay: true,
     autoplaySpeed: 2000,
   };
@@ -18,8 +16,8 @@ const HomeBanner = () => {
       <div className="card">
         <div className="card-body">
           <Slider {...settings}>
-            <img src={require("../../assets/images/rnt-creative-banner-one.jpg")} />
-            <img src={require("../../assets/images/rnt-creative-banner-two.jpg")} />
+            <img src={require("../../assets/images/rnt-creative-banner-one.jpg")} alt="home-banner-one" />
+            <img src={require("../../assets/images/rnt-creative-banner-two.jpg")} alt="home-banner-two" />
           </Slider>
         </div>
       </div>

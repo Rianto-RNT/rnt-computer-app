@@ -3,7 +3,7 @@ import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { Avatar, Badge, Col, Row, Card } from "antd";
+import { Avatar, Badge, Col, Card } from "antd";
 
 const gridStyle = {
   width: "25%",

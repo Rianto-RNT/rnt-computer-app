@@ -69,22 +69,22 @@ const Footer = () => {
                   </div>
                   <div className="col-lg-4 col-sm-12 col-md-4">
                     <h6>Send with</h6>
-                    <img src={require("../../assets/images/indo-payments/pos.svg")} />
-                    <img src={require("../../assets/images/indo-payments/jnt.svg")} />
-                    <img src={require("../../assets/images/indo-payments/jne.svg")} />
-                    <img src={require("../../assets/images/indo-payments/sicepat.svg")} />
+                    <img src={require("../../assets/images/indo-payments/pos.svg")} alt="send-with-pos" />
+                    <img src={require("../../assets/images/indo-payments/jnt.svg")} alt="send-with-jnt" />
+                    <img src={require("../../assets/images/indo-payments/jne.svg")} alt="send-with-jne"/>
+                    <img src={require("../../assets/images/indo-payments/sicepat.svg")} alt="send-with-sicepat"/>
                     <hr />
 
                     <h6 className="mb-0 m-t-30">Payments</h6>
                     <br />
-                    <img src={require("../../assets/images/indo-payments/ntb-syariah.svg")} />
-                    <img src={require("../../assets/images/indo-payments/bni.svg")} />
-                    <img src={require("../../assets/images/indo-payments/bri.svg")} />
+                    <img src={require("../../assets/images/indo-payments/ntb-syariah.svg")} alt="payment-ntb-syariah" />
+                    <img src={require("../../assets/images/indo-payments/bni.svg")} alt="payment-bni" />
+                    <img src={require("../../assets/images/indo-payments/bri.svg")}  alt="payment-bri"/>
                     <br />
-                    <img src={require("../../assets/images/indo-payments/gopay.svg")} />
-                    <img src={require("../../assets/images/indo-payments/dana.svg")} />
-                    <img src={require("../../assets/images/indo-payments/alfa.svg")} />
-                    <img src={require("../../assets/images/indo-payments/indomaret.svg")} />
+                    <img src={require("../../assets/images/indo-payments/gopay.svg")} alt="payment-gopay" />
+                    <img src={require("../../assets/images/indo-payments/dana.svg")} alt="payment-dana" />
+                    <img src={require("../../assets/images/indo-payments/alfa.svg")} alt="payment-alfa" />
+                    <img src={require("../../assets/images/indo-payments/indomaret.svg")} alt="payment-indomaret" />
                   </div>
                 </div>
               </div>

@@ -283,7 +283,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark">Hand Bag</a>
+                          <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
                           <div className="mb-1 text-warning">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -305,7 +305,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark">Hand Bag</a>
+                          <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
                           <div className="mb-1 text-warning">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -327,7 +327,7 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark">Hand Bag</a>
+                          <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
                           <div className="mb-1 text-warning">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
