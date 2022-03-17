@@ -266,6 +266,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product Delete
   - Product Update Endpoint
   - New Arrival Product with sort, order and limit
+  - Get total product count (pagination)
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -303,7 +304,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Calling reuseable Product endpoint in home page
   - New Arrival Card component
   - Best Seller Card Component
-
+  
 ## Articles
 
 [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)

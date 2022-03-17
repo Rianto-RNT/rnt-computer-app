@@ -122,7 +122,7 @@ exports.reuseableProduct = asyncHandler(async (req, res, next) => {
     .populate('category')
     .populate('subcategory')
     .sort([[sort, order]])
-    .limit(limit)
+    .limit(4)
     .exec();
 
   if (!products) {
@@ -134,7 +134,20 @@ exports.reuseableProduct = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(200).json({ success: true, data: products });
+  res
+    .status(200)
+    .json({ success: true, count: products.length, data: products });
+});
+
+// @desc    Count product total for pagination
+// @route   GET /api/products/total
+// @access  Public
+exports.productTotal = asyncHandler(async (req, res, next) => {
+  const products = await Product.find({}).estimatedDocumentCount().exec();
+
+  res
+    .status(200)
+    .json({ success: true, count: products.length, data: products });
 });
 
 // @desc      Upload images for product

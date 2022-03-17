@@ -15,8 +15,12 @@ const {
   removeProduct,
   uploadImages,
   removeImages,
-  reuseableProduct
+  reuseableProduct,
+  productTotal,
 } = require('../controllers/product');
+
+// Count product total for paggination routes
+router.get('/products/total', productTotal);
 
 // Main Routes
 router.get('/product', getAllProduct);
@@ -26,6 +30,7 @@ router.post('/product', protect, adminProtect, createProduct);
 router.put('/product/:slug', protect, adminProtect, updateProduct);
 router.delete('/product/:slug', protect, adminProtect, removeProduct);
 
+// Show product with other card in homepage (ex: New Arrival, etc)
 router.post('/products', reuseableProduct);
 
 // image upload cloud
