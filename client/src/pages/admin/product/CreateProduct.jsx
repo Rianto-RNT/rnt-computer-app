@@ -11,14 +11,14 @@ import { Spin } from "antd";
 import Swal from "sweetalert2";
 
 const initialState = {
-  title: "Test Product",
-  description: "test Delete",
-  price: "12312",
+  title: "",
+  description: "",
+  price: "",
   categories: [],
   category: "",
   subcategory: [],
   shipping: "",
-  quantity: "12",
+  quantity: "",
   images: [],
   colors: ["Yellow", "Green", "Red", "Black", "Silver", "Blue", "White", "Grey", "Space Grey", "Mate Black", "Mate Grey"],
   brands: ["Apple", "Lenovo", "HP", "Acer", "Microsoft", "Asus", "MSi", "Alienware", "Razer", "Huawei", "Dell", "Axioo", "Avita"],

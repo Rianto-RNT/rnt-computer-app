@@ -104,6 +104,9 @@ npx -p npm@6 npm i --legacy-peer-deps
 
 - [dotenv](https://github.com/motdotla/dotenv#readme)
 - [ant-design](https://github.com/ant-design/ant-design/)
+- [swiper](https://github.com/nolimits4web/swiper)
+- [slick](https://github.com/kenwheeler/slick)
+- [sweetalert2](https://github.com/sweetalert2/sweetalert2)
 - [redux](https://github.com/reduxjs/redux)
 - [axios](https://github.com/axios/axios)
 - [firebase-admin](github.com/firebase/firebase-admin-node)
@@ -125,6 +128,7 @@ npx -p npm@6 npm i --legacy-peer-deps
 - [slugify](https://github.com/simov/slugify)
 - [bcryptjs](https://github.com/dcodeIO/bcrypt.js#readme)
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+- [webpack](https://github.com/webpack/webpack)
 - [express-mongo-sanitize](https://github.com/fiznool/express-mongo-sanitize#readme)
 - [xss-clean](https://github.com/jsonmaur/xss-clean)
 - [helmet](https://github.com/helmetjs/helmet)
