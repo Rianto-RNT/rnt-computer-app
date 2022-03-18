@@ -11,6 +11,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "./assets/css/style.css";
+import "./assets/css/style.css.map";
+import "./assets/css/dark-style.css";
+import "./assets/css/skin-modes.css";
+import "./assets/css/transparent-style.css";
 
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
