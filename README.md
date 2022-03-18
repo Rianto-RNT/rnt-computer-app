@@ -88,6 +88,8 @@ npx -p npm@6 npm i --legacy-peer-deps
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 - [Firebase](https://firebase.google.com/) - Authentication — user login and identity
 - [Firebase-admin](https://firebase.google.com/) - lets you interact with Firebase from privileged environments to perform actions
+- [Bootstrap](https://getbootstrap.com/) - front-end open source toolkit for responsive site
+- [Sash](https://themeforest.net/item/sash-bootstrap-5-admin-dashboard-template/35183671) - Admin template you can customize your dashboard effortlessly within no time.
 - [VSCode](https://code.visualstudio.com) - Free source-code editor made by Microsoft
 - [Express](http://expressjs.com/) - The web framework used
 - [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
@@ -100,20 +102,14 @@ npx -p npm@6 npm i --legacy-peer-deps
 - [Heroku](https://www.heroku.com/) - Cloud platform
 - [Digital Ocean](https://www.digitalocean.com) - Cloud platform
 
-## NPM Packages
+## NPM Packages Frontend Development
 
-- [dotenv](https://github.com/motdotla/dotenv#readme)
 - [ant-design](https://github.com/ant-design/ant-design/)
 - [swiper](https://github.com/nolimits4web/swiper)
 - [slick](https://github.com/kenwheeler/slick)
 - [sweetalert2](https://github.com/sweetalert2/sweetalert2)
 - [redux](https://github.com/reduxjs/redux)
 - [axios](https://github.com/axios/axios)
-- [firebase-admin](github.com/firebase/firebase-admin-node)
-- [morgan](https://github.com/expressjs/morgan)
-- [multer](https://github.com/expressjs/multer)
-- [body-parser](https://github.com/expressjs/body-parser#readme)
-- [Uniqueid](github.com/adamhalasz/uniqid)
 - [eslint](https://github.com/eslint/eslint)
 - [eslint-config-airbnb](https://github.com/airbnb/javascript)
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
@@ -122,13 +118,23 @@ npx -p npm@6 npm i --legacy-peer-deps
 - [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node)
 - [eslint-plugin-prettier](https://github.com/mysticatea/eslint-plugin-node)
 - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
+- [prettier](https://github.com/prettier/prettier)
+- [webpack](https://github.com/webpack/webpack)
+
+## NPM Packages Backend Development
+
+- [firebase-admin](github.com/firebase/firebase-admin-node)
+- [dotenv](https://github.com/motdotla/dotenv#readme)
+- [morgan](https://github.com/expressjs/morgan)
+- [multer](https://github.com/expressjs/multer)
+- [body-parser](https://github.com/expressjs/body-parser#readme)
+- [Uniqueid](github.com/adamhalasz/uniqid)
 - [ndb](https://github.com/GoogleChromeLabs/ndb)
 - [prettier](https://github.com/prettier/prettier)
 - [nodemon](https://github.com/remy/nodemon)
 - [slugify](https://github.com/simov/slugify)
 - [bcryptjs](https://github.com/dcodeIO/bcrypt.js#readme)
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
-- [webpack](https://github.com/webpack/webpack)
 - [express-mongo-sanitize](https://github.com/fiznool/express-mongo-sanitize#readme)
 - [xss-clean](https://github.com/jsonmaur/xss-clean)
 - [helmet](https://github.com/helmetjs/helmet)
@@ -311,9 +317,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   
 ## Articles
 
-[mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
+- [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
 
-[How to use mongodb atlas](https://kaloraat.com/articles/how-to-use-mongodb-atlas)
+- [How to use mongodb atlas](https://kaloraat.com/articles/how-to-use-mongodb-atlas)
 
 ## Future Updates
 
