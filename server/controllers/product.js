@@ -27,33 +27,11 @@ exports.getSingleProduct = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: product });
 });
 
-// WITHOUT PAGINATION
-// // @desc    List all product
-// // @route   GET /api/product/:count
-// // @access  Public
-// exports.listAllProduct = asyncHandler(async (req, res, next) => {
-//   const products = await Product.find({})
-//     .limit(parseInt(req.params.count))
-//     .populate('category')
-//     .populate('subcategory')
-//     .sort([['createdAt', 'desc']])
-//     .exec();
-
-//   res
-//     .status(200)
-//     .json({ success: true, count: products.length, data: products });
-// });
-
-// @desc    List all product include pagination
+// @desc    List all product
 // @route   GET /api/product/:count
 // @access  Private / Admin
 exports.listAllProduct = asyncHandler(async (req, res, next) => {
-  const { page } = req.body;
-  const currentPage = page || 1;
-  const perPage = 3;
-
   const products = await Product.find({})
-    .skip((currentPage - 1) * perPage)
     .limit(parseInt(req.params.count))
     .populate('category')
     .populate('subcategory')
@@ -139,33 +117,6 @@ exports.removeProduct = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.reuseableProduct = asyncHandler(async (req, res, next) => {
   const { sort, order, limit } = req.body;
-
-  const products = await Product.find({})
-    .populate('category')
-    .populate('subcategory')
-    .sort([[sort, order]])
-    .limit(limit)
-    .exec();
-
-  if (!products) {
-    return next(
-      new ErrorResponse(
-        `Failed! Product with ${req.body.slug} not found. Please select correct value.`,
-        400
-      )
-    );
-  }
-
-  res
-    .status(200)
-    .json({ success: true, count: products.length, data: products });
-});
-
-// @desc    Paggination New Arival and Best Seller, etc for product
-// @route   POST /api/products
-// @access  Public
-exports.reuseableProductPagination = asyncHandler(async (req, res, next) => {
-  const { sort, order, page } = req.body;
 
   const products = await Product.find({})
     .populate('category')
