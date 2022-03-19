@@ -30,7 +30,7 @@ router.post('/product', protect, adminProtect, createProduct);
 router.put('/product/:slug', protect, adminProtect, updateProduct);
 router.delete('/product/:slug', protect, adminProtect, removeProduct);
 
-// Show product with other card in homepage (ex: New Arrival, etc)
+// Show product with other card in homepage (ex: New Arrival, Pagination etc)
 router.post('/products', reuseableProduct);
 
 // image upload cloud
