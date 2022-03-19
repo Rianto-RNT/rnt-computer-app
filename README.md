@@ -314,6 +314,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Calling reuseable Product endpoint in home page
   - New Arrival Card component
   - Best Seller Card Component
+  - Product Detail page
   
 ## Articles
 

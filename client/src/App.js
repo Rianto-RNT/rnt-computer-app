@@ -46,6 +46,8 @@ import CreateProduct from "./pages/admin/product/CreateProduct";
 import AllProducts from "./pages/admin/product/AllProducts";
 import UpdateProduct from "./pages/admin/product/UpdateProduct";
 
+import ProductDetail from "./pages/product/ProductDetail";
+
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./services/auth";
@@ -106,6 +108,8 @@ const App = () => {
         <AdminRoute exact path="/admin/product" component={CreateProduct} />
         <AdminRoute exact path="/admin/products" component={AllProducts} />
         <AdminRoute exact path="/admin/product/:slug" component={UpdateProduct} />
+
+        <Route exact path="/product/:slug" component={ProductDetail} />
       </Switch>
       <Footer />
     </>
