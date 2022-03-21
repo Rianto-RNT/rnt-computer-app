@@ -43,12 +43,6 @@ const ProductDetailCard = ({ product }) => {
 
               <p className="text-muted mb-4">( 40 Customers Reviews) </p>
 
-              <h4 className="mt-4">
-                <b> Description</b>
-              </h4>
-
-              <p>{description}</p>
-
               <h3 className="mb-4">
                 <span className="me-2 fw-bold fs-25">
                   <p>Rp. {price}</p>
@@ -58,6 +52,14 @@ const ProductDetailCard = ({ product }) => {
                   <del className="fs-18 text-muted">Todo diskon price</del>
                 </span>
               </h3>
+
+              <div>
+                <h4 className="mt-4">
+                  <b> Description</b>
+                </h4>
+                <p>{description}</p>
+              </div>
+
               <div className=" mt-4 mb-5">
                 <span className="fw-bold me-2">Offer :</span>
                 <span className="fw-bold text-primary">15% Cashback </span>by using icici bank credit card.

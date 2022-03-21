@@ -318,6 +318,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product detail carausel, title, price and description
   - Handle no product images in product details
   - Product detail specification
+  - Tab menu for description and specification in Product detail
   
 ## Articles
 

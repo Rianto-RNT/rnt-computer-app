@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Tabs } from "antd";
+
+const { TabPane } = Tabs;
 
 const ProductSpecificationCard = ({ product }) => {
   const { title, price, description, category, subcategory, name, images, quantity, shipping, color, brand, sold, slug } = product;
@@ -10,104 +13,102 @@ const ProductSpecificationCard = ({ product }) => {
         <div className="panel panel-primary">
           <div className=" tab-menu-heading">
             <div className="tabs-menu1">
-              <ul className="nav panel-tabs">
-                <li>
-                  <a href="#tab5" className="active" data-bs-toggle="tab">
-                    Specifications
-                  </a>
-                </li>
-              </ul>
+              <Tabs>
+                <TabPane key="1" tab="Descriptions">
+                  <p className="mb-3 fs-15"> {description && description}</p>
+                </TabPane>
+                
+                <TabPane key="2" tab="Specifications">
+                  {product && (
+                    <div className="table-responsive">
+                      <table className="table table-bordered">
+                        <tbody>
+                          <tr>
+                            <td className="fw-bold">Price</td>
+                            <td>Rp. {price}</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Brand</td>
+                            <td>{brand}</td>
+                          </tr>
+                          {category && (
+                            <tr>
+                              <td className="fw-bold">Category Name</td>
+                              <td>
+                                <Link to={`/category/${slug}`}>{category.name}</Link>
+                              </td>
+                            </tr>
+                          )}
+
+                          {subcategory && (
+                            <tr>
+                              <td className="fw-bold">Subcategory</td>
+                              <td>
+                                {subcategory.map((s) => (
+                                  <Link key={s._id} to={`/subcategory/${s.slug}`}>
+                                    {s.name}
+                                  </Link>
+                                ))}
+                              </td>
+                            </tr>
+                          )}
+
+                          <tr>
+                            <td className="fw-bold">Shipping</td>
+                            <td>{shipping}</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Color</td>
+                            <td>{color}</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Quantity</td>
+                            <td>{quantity}</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Sold</td>
+                            <td>{sold}</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Package Dimensions</td>
+                            <td> 33 x 22 x 3 cm; 450 Grams</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Manufacturer</td>
+                            <td>Chokka Production</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Item part number </td>
+                            <td>BNVRDMRHENFULL-Z14</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Best Sellers Rank</td>
+                            <td> #141 in Clothing & Accessories (See Top 100 in Clothing & Accessories)</td>
+                          </tr>
+                          <tr>
+                            <td className="fw-bold">Customer Reviews</td>
+                            <td>
+                              <p className="text-muted float-start me-3">
+                                <span className="fa fa-star text-warning"></span>
+                                <span className="fa fa-star text-warning"></span>
+                                <span className="fa fa-star text-warning"></span>
+                                <span className="fa fa-star-half-o text-warning"></span>
+                                <span className="fa fa-star-o text-warning"></span>
+                                <span className="text-success fw-semibold">(2,076 ratings)</span>
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </TabPane>
+              </Tabs>
             </div>
           </div>
           <div className="panel-body tabs-menu-body">
             <div className="tab-content">
-              <div className="tab-pane active" id="tab5">
-                <h4 className="mb-5 mt-3 fw-bold">Description :</h4>
-                <p className="mb-3 fs-15">{description}</p>
-                <br />
-                <h4 className="mb-5 mt-3 fw-bold">Specifications :</h4>
-                <div className="table-responsive">
-                  <table className="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td className="fw-bold">Price</td>
-                        <td>Rp. {price}</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Brand</td>
-                        <td>{brand}</td>
-                      </tr>
-                      {category && (
-                        <tr>
-                          <td className="fw-bold">Category Name</td>
-                          <td>
-                            <Link to={`/category/${slug}`}>{category.name}</Link>
-                          </td>
-                        </tr>
-                      )}
-
-                      {subcategory && (
-                        <tr>
-                          <td className="fw-bold">Subcategory</td>
-                          <td>
-                            {subcategory.map((s) => (
-                              <Link key={s._id} to={`/subcategory/${s.slug}`}>
-                                {s.name}
-                              </Link>
-                            ))}
-                          </td>
-                        </tr>
-                      )}
-
-                      <tr>
-                        <td className="fw-bold">Shipping</td>
-                        <td>{shipping}</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Color</td>
-                        <td>{color}</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Quantity</td>
-                        <td>{quantity}</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Sold</td>
-                        <td>{sold}</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Package Dimensions</td>
-                        <td> 33 x 22 x 3 cm; 450 Grams</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Manufacturer</td>
-                        <td>Chokka Production</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Item part number </td>
-                        <td>BNVRDMRHENFULL-Z14</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Best Sellers Rank</td>
-                        <td> #141 in Clothing & Accessories (See Top 100 in Clothing & Accessories)</td>
-                      </tr>
-                      <tr>
-                        <td className="fw-bold">Customer Reviews</td>
-                        <td>
-                          <p className="text-muted float-start me-3">
-                            <span className="fa fa-star text-warning"></span>
-                            <span className="fa fa-star text-warning"></span>
-                            <span className="fa fa-star text-warning"></span>
-                            <span className="fa fa-star-half-o text-warning"></span>
-                            <span className="fa fa-star-o text-warning"></span>
-                            <span className="text-success fw-semibold">(2,076 ratings)</span>
-                          </p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <div className="tab-pane active" id="tab5"></div>
               <div className="tab-pane pt-5" id="tab6">
                 <div className="table-responsive">
                   <table className="table table-bordered">

@@ -45,7 +45,7 @@ const ProductUpdateForm = ({
                 <div className="col-md-9">
                   <div className="form-group">
                     <textarea
-                      type="text"
+                      type="textarea"
                       name="description"
                       className="form-control mb-4"
                       placeholder="Maximum 2000 character"
