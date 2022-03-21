@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getSingleProduct } from "../../services/product";
 import ProductDetailCard from "../../components/cards/ProductDetailCard";
+import ProductSpecificationCard from "../../components/cards/ProductSpesificationCard";
 
 const ProductDetail = ({ match }) => {
   const [product, setProduct] = useState({});
@@ -11,13 +12,15 @@ const ProductDetail = ({ match }) => {
     loadSingleProduct();
   }, [slug]);
 
-  const loadSingleProduct = () =>
-    getSingleProduct(slug)
-      .then((res) => setProduct(res.data));
+  const loadSingleProduct = () => getSingleProduct(slug).then((res) => setProduct(res.data));
   return (
     <div className="row">
       <div className="col-xl-12">
-        <ProductDetailCard product={product}/>
+        <ProductDetailCard product={product} />
+      </div>
+
+      <div className="col-xl-12 col-md-12">
+        <ProductSpecificationCard product={product}/>
       </div>
 
       <h3 className="p-3 mb-5">Related Products</h3>
