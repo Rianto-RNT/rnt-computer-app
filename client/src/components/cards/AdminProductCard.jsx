@@ -13,32 +13,34 @@ const AdminProductCard = ({ product, handleRemove }) => {
   const [text, setText] = useState("");
 
   return (
-    <Card
-      cover={
-        <input
-          type="image"
-          img="true"
-          src={images && images.length ? images[0].url : noImages}
-          style={{ height: "333px", objectFit: "cover" }}
-          className="p-1"
-          alt="photo"
-        />
-      }
-      actions={[
-        <Link to={`/admin/product/${slug}`}>
-          <EditOutlined className="text-warning" />,
-        </Link>,
-        <DeleteOutlined onClick={() => handleRemove(slug)} className="text-danger" />,
-      ]}
-    >
-      <Meta title={title} />
-      <br />
-      <Collapse bordered={false} defaultActiveKey={["1"]} onChange={(e) => setText(e.target)}>
-        <Panel showArrow={true} header="Read more" key="2">
-          <p>{description}</p>
-        </Panel>
-      </Collapse>
-    </Card>
+    <div className="mt-6">
+      <Card
+        cover={
+          <input
+            type="image"
+            img="true"
+            src={images && images.length ? images[0].url : noImages}
+            style={{ height: "333px", objectFit: "cover" }}
+            className="p-1"
+            alt="photo"
+          />
+        }
+        actions={[
+          <Link to={`/admin/product/${slug}`}>
+            <EditOutlined className="text-warning" />,
+          </Link>,
+          <DeleteOutlined onClick={() => handleRemove(slug)} className="text-danger" />,
+        ]}
+      >
+        <Meta title={title} />
+        <br />
+        <Collapse bordered={false} defaultActiveKey={["1"]} onChange={(e) => setText(e.target)}>
+          <Panel showArrow={true} header="Read more" key="2">
+            <p>{description}</p>
+          </Panel>
+        </Collapse>
+      </Card>
+    </div>
   );
 };
 

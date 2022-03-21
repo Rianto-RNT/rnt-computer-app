@@ -55,7 +55,7 @@ const UpdateSubcategory = ({ history, match }) => {
         <div className="col-md-2">
           <AdminNav />
         </div>
-        <div className="col">
+        <div className="col mt-8">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Update Subcategory</h4>}
 
           <div className="form-group">

@@ -88,7 +88,7 @@ const CreateSubcategory = () => {
           <AdminNav />
         </div>
 
-        <div className="col">
+        <div className="col mt-8">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Subcategory</h4>}
 
           <div className="form-group">

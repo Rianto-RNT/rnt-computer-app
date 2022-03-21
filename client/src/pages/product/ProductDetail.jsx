@@ -14,7 +14,7 @@ const ProductDetail = ({ match }) => {
 
   const loadSingleProduct = () => getSingleProduct(slug).then((res) => setProduct(res.data));
   return (
-    <div className="row">
+    <div className="row mt-7">
       <div className="col-xl-12">
         <ProductDetailCard product={product} />
       </div>
