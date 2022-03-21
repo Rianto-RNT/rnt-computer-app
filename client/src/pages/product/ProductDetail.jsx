@@ -55,11 +55,11 @@ const ProductDetail = ({ match }) => {
                   <a href="shop-description.html">Flower Pot for Home Decor</a>
                 </h1>
                 <div className="mb-2 text-warning">
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star-half-o text-warning"></i>
-                  <i className="fa fa-star-o text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star-half-o text-warning"></i>
+                  <i className="fe fe-star-o text-warning"></i>
                 </div>
                 <div className="price">
                   $16,599<span className="ms-4">$18,299</span>
@@ -112,11 +112,11 @@ const ProductDetail = ({ match }) => {
                   <a href="shop-description.html">Black Digital Camera</a>
                 </h1>
                 <div className="mb-2 text-warning">
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star-half-o text-warning"></i>
-                  <i className="fa fa-star-o text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star-half-o text-warning"></i>
+                  <i className="fe fe-star-o text-warning"></i>
                 </div>
                 <div className="price">
                   $16,599<span className="ms-4">$56,599</span>
@@ -169,11 +169,11 @@ const ProductDetail = ({ match }) => {
                   <a href="shop-description.html">Candy Pure Rose Water</a>
                 </h1>
                 <div className="mb-2 text-warning">
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star-half-o text-warning"></i>
-                  <i className="fa fa-star-o text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star-half-o text-warning"></i>
+                  <i className="fe fe-star-o text-warning"></i>
                 </div>
                 <div className="price">
                   $16,599<span className="ms-4">$25,599</span>
@@ -226,11 +226,11 @@ const ProductDetail = ({ match }) => {
                   <a href="shop-description.html">White Tshirt for Men</a>
                 </h1>
                 <div className="mb-2 text-warning">
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-star-half-o text-warning"></i>
-                  <i className="fa fa-star-o text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star text-warning"></i>
+                  <i className="fe fe-star-half-o text-warning"></i>
+                  <i className="fe fe-star-o text-warning"></i>
                 </div>
                 <div className="price">
                   $16,599<span className="ms-4">$18,399</span>

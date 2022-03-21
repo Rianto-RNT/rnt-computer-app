@@ -45,11 +45,11 @@ const ProductCard = ({ product }) => {
           </div>
 
           <div className="mb-2 text-warning">
-            <i className="fa fa-star text-warning" />
-            <i className="fa fa-star text-warning"></i>
-            <i className="fa fa-star text-warning"></i>
-            <i className="fa fa-star-half-o text-warning"></i>
-            <i className="fa fa-star-o text-warning"></i>
+            <i className="fe fe-star text-warning" />
+            <i className="fe fe-star text-warning"></i>
+            <i className="fe fe-star text-warning"></i>
+            <i className="fe fe-star-half-o text-warning"></i>
+            <i className="fe fe-star-o text-warning"></i>
           </div>
           <div className="price">
             <h5 className="display-8 text-danger">

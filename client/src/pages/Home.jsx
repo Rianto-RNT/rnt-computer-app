@@ -46,12 +46,12 @@ const Home = () => {
                     <ul className="nav item2-gl-menu float-end my-2">
                       <li className="border-end">
                         <a href="#tab-11" className="show active" data-bs-toggle="tab" title="List style">
-                          <i className="fa fa-th"></i>
+                          <i className="fe fe-grid"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#!" data-bs-toggle="tab" className="" title="Grid">
-                          <i className="fa fa-align-left"></i>
+                          <i className="fe fe-align-left"></i>
                         </a>
                       </li>
                     </ul>
@@ -285,11 +285,11 @@ const Home = () => {
                         <div className="media-body valign-middle">
                           <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
                           <div className="mb-1 text-warning">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-half-o"></i>
-                            <i className="fa fa-star-o"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star-half-o"></i>
+                            <i className="fe fe-star-o"></i>
                           </div>
                           <h5 className="fw-bold">$345</h5>
                         </div>
@@ -307,11 +307,11 @@ const Home = () => {
                         <div className="media-body valign-middle">
                           <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
                           <div className="mb-1 text-warning">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-half-o"></i>
-                            <i className="fa fa-star-o"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star-half-o"></i>
+                            <i className="fe fe-star-o"></i>
                           </div>
                           <h5 className="fw-bold">$345</h5>
                         </div>
@@ -329,11 +329,11 @@ const Home = () => {
                         <div className="media-body valign-middle">
                           <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
                           <div className="mb-1 text-warning">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-half-o"></i>
-                            <i className="fa fa-star-o"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star"></i>
+                            <i className="fe fe-star-half-o"></i>
+                            <i className="fe fe-star-o"></i>
                           </div>
                           <h5 className="fw-bold">$345</h5>
                         </div>
@@ -441,11 +441,11 @@ const Home = () => {
                                 <a href="shop-description.html" className="">
                                   <h3 className="fw-bold fs-30 mb-3">Candy Pure Rose Water</h3>
                                   <div className="mb-2 text-warning">
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star-half-o fs-18 text-warning"></i>
-                                    <i className="fa fa-star-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star-half-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star-o fs-18 text-warning"></i>
                                   </div>
                                 </a>
                                 <p className="fs-16">
@@ -529,11 +529,11 @@ const Home = () => {
                                 <a href="shop-description.html" className="">
                                   <h3 className="fw-bold fs-30 mb-3">White Tshirt for Men</h3>
                                   <div className="mb-2 text-warning">
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star-half-o fs-18 text-warning"></i>
-                                    <i className="fa fa-star-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star-half-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star-o fs-18 text-warning"></i>
                                   </div>
                                 </a>
                                 <p className="fs-16">
@@ -617,11 +617,11 @@ const Home = () => {
                                 <a href="shop-description.html" className="">
                                   <h3 className="fw-bold fs-30 mb-3">Stylish Rockerz 255 Ear Pods</h3>
                                   <div className="mb-2 text-warning">
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star-half-o fs-18 text-warning"></i>
-                                    <i className="fa fa-star-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star-half-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star-o fs-18 text-warning"></i>
                                   </div>
                                 </a>
                                 <p className="fs-16">
@@ -709,11 +709,11 @@ const Home = () => {
                                 <a href="shop-description.html" className="">
                                   <h3 className="fw-bold fs-30 mb-3">Flower Pot for Home Decor</h3>
                                   <div className="mb-2 text-warning">
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star-half-o fs-18 text-warning"></i>
-                                    <i className="fa fa-star-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star-half-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star-o fs-18 text-warning"></i>
                                   </div>
                                 </a>
                                 <p className="fs-16">
@@ -801,11 +801,11 @@ const Home = () => {
                                 <a href="shop-description.html" className="">
                                   <h3 className="fw-bold fs-30 mb-3">Running Shoes for men</h3>
                                   <div className="mb-2 text-warning">
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star fs-18 text-warning"></i>
-                                    <i className="fa fa-star-half-o fs-18 text-warning"></i>
-                                    <i className="fa fa-star-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star fs-18 text-warning"></i>
+                                    <i className="fe fe-star-half-o fs-18 text-warning"></i>
+                                    <i className="fe fe-star-o fs-18 text-warning"></i>
                                   </div>
                                 </a>
                                 <p className="fs-16">

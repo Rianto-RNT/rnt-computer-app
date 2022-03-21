@@ -34,11 +34,11 @@ const ProductDetailCard = ({ product }) => {
               <h3 className="mb-3 fw-semibold">{title}</h3>
 
               <p className="text-muted float-start me-3">
-                <span className="fa fa-star text-warning"></span>
-                <span className="fa fa-star text-warning"></span>
-                <span className="fa fa-star text-warning"></span>
-                <span className="fa fa-star-half-o text-warning"></span>
-                <span className="fa fa-star-o text-warning"></span>
+                <span className="fe fe-star text-warning"></span>
+                <span className="fe fe-star text-warning"></span>
+                <span className="fe fe-star text-warning"></span>
+                <span className="fe fe-star-half-o text-warning"></span>
+                <span className="fe fe-star-o text-warning"></span>
               </p>
 
               <p className="text-muted mb-4">( 40 Customers Reviews) </p>

@@ -89,11 +89,11 @@ const ProductSpecificationCard = ({ product }) => {
                             <td className="fw-bold">Customer Reviews</td>
                             <td>
                               <p className="text-muted float-start me-3">
-                                <span className="fa fa-star text-warning"></span>
-                                <span className="fa fa-star text-warning"></span>
-                                <span className="fa fa-star text-warning"></span>
-                                <span className="fa fa-star-half-o text-warning"></span>
-                                <span className="fa fa-star-o text-warning"></span>
+                                <span className="fe fe-star text-warning"></span>
+                                <span className="fe fe-star text-warning"></span>
+                                <span className="fe fe-star text-warning"></span>
+                                <span className="fe fe-star-half-o text-warning"></span>
+                                <span className="fe fe-star-o text-warning"></span>
                                 <span className="text-success fw-semibold">(2,076 ratings)</span>
                               </p>
                             </td>

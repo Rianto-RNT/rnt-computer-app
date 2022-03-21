@@ -174,7 +174,7 @@ const ProductUpdateForm = ({
               <div className="row">
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
-                  <button className="btn btn-primary">Add Product</button>
+                  <button className="btn btn-primary">Update</button>
 
                   <button className="btn btn-default float-end">Discard</button>
                 </div>
