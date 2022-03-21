@@ -315,6 +315,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - New Arrival Card component
   - Best Seller Card Component
   - Product Detail page
+  - Product detail carausel, title, price and description
+  - Handle no product images in product details
   
 ## Articles
 

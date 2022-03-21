@@ -16,11 +16,13 @@ const ProductDetailCard = ({ product }) => {
                 <div className="product-carousel">
                   <div className="carousel slide border">
                     <div className="carousel-inner">
-                     
+                      {images && images.length ? (
                         <Carousel showArrows={true} infiniteLoop={true}>
                           {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
                         </Carousel>
-                 
+                      ) : (
+                        <img src={noImages} alt="img" />
+                      )}
                     </div>
                   </div>
                 </div>
