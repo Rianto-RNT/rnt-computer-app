@@ -1,6 +1,7 @@
-import React from "react";
-// import noImages from "../../assets/images/noImages.png";
+import React, { useState } from "react";
+import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
 
 const ProductDetailCard = ({ product }) => {
   const { title, price, description, images, slug } = product;
@@ -13,32 +14,13 @@ const ProductDetailCard = ({ product }) => {
             <div className="row">
               <div className="col-xl-12">
                 <div className="product-carousel">
-                  <div id="Slider" className="carousel slide border" data-bs-ride="false">
+                  <div className="carousel slide border">
                     <div className="carousel-inner">
-                      <div className="carousel-item active">
-                        <img src="../assets/images/pngs/13.png" alt="img" className="img-fluid mx-auto d-block" />
-                        <div className="text-center mt-5 mb-5 btn-list"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="clearfix carousel-slider">
-                  <div id="thumbcarousel" className="carousel slide" data-bs-interval="t">
-                    <div className="carousel-inner">
-                      <ul className="carousel-item active">
-                        <li data-bs-target="#Slider" data-bs-slide-to="0" className="thumb active m-2">
-                          <img src="../assets/images/pngs/13.png" alt="img" />
-                        </li>
-                        <li data-bs-target="#Slider" data-bs-slide-to="1" className="thumb m-2">
-                          <img src="../assets/images/pngs/14.png" alt="img" />
-                        </li>
-                        <li data-bs-target="#Slider" data-bs-slide-to="2" className="thumb m-2">
-                          <img src="../assets/images/pngs/12.png" alt="img" />
-                        </li>
-                        <li data-bs-target="#Slider" data-bs-slide-to="3" className="thumb m-2">
-                          <img src="../assets/images/pngs/11.png" alt="img" />
-                        </li>
-                      </ul>
+                     
+                        <Carousel showArrows={true} infiniteLoop={true}>
+                          {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
+                        </Carousel>
+                 
                     </div>
                   </div>
                 </div>
@@ -67,8 +49,8 @@ const ProductDetailCard = ({ product }) => {
 
               <h3 className="mb-4">
                 <span className="me-2 fw-bold fs-25">
-                <p>Rp. {price}</p> 
-                {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
+                  <p>Rp. {price}</p>
+                  {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
                 </span>
                 <span>
                   <del className="fs-18 text-muted">Todo diskon price</del>
@@ -88,7 +70,7 @@ const ProductDetailCard = ({ product }) => {
                 <div className="row gutters-xs ms-4">
                   <div className="col-3">
                     <label className="colorinput">
-                      <input name="color" type="radio" defaultValue="azure" className="colorinput-input"  />
+                      <input name="color" type="radio" defaultValue="azure" className="colorinput-input" />
                       <span className="colorinput-color bg-danger rounded-10"></span>
                     </label>
                   </div>
