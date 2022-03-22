@@ -15,26 +15,16 @@ const ProductCard = ({ product }) => {
                 <i className="fe fe-eye"> </i>
               </Link>
             </li>
-            <li>
-              <a href="add-product.html" className="bg-success text-white border-success border">
-                <i className="fe fe-edit"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#!" className="bg-danger text-white border-danger border">
-                <i className="fe fe-x"></i>
-              </a>
-            </li>
           </ul>
 
-          <a href="shop-description.html" className="bg-light">
+          <Link to={`/product/${slug}`} className="bg-light">
             <img
               className="img-fluid br-7 w-100"
               src={images && images.length ? images[0].url : noImages}
               style={{ height: "333px", objectFit: "cover" }}
               alt="img"
             />
-          </a>
+          </Link>
         </div>
 
         <div className="product-content text-center">

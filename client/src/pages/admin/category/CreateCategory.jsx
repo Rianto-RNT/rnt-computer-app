@@ -82,7 +82,7 @@ const CreateCategory = () => {
         <div className="col-md-2">
           <AdminNav />
         </div>
-        <div className="col">
+        <div className="col mt-8">
           {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Category</h4>}
 
           <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
