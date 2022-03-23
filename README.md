@@ -319,6 +319,14 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Handle no product images in product details
   - Product detail specification
   - Tab menu for description and specification in Product detail
+
+## TODO to fix
+- All heading in admin dashboard not showing because sticky header.
+- Register complete not working
+- Pagination/loadmore for product list in admin dashboard
+- Update all product with the real image, description, title, etc.
+- Add newline when showing description in product detail.
+- Fix Price number in product detail.
   
 ## Articles
 
