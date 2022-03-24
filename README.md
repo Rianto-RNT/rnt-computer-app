@@ -323,6 +323,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - display Star Rating in product detail (log)
   - star ratings modal
   - Login to leave ratings
+  - login to leave ratings and redirect page to home
 
 ## TODO to fix
 - All heading in admin dashboard not showing because sticky header.
