@@ -36,17 +36,6 @@ const ProductDetailCard = ({ product }) => {
               <h3 className="mb-3 fw-semibold">{title}</h3>
 
               <div className="list-group-horizontal d-flex me-3 mt-4 mb-5">
-                <RatingModal>
-                  <StarRatings
-                    name={_id}
-                    numberOfStars={5}
-                    rating={2}
-                    changeRating={(newRating, name) => console.log("newRating", newRating, "name", name)}
-                    isSelectable={true}
-                    starRatedColor="red"
-                  />
-                </RatingModal>
-
                 <div className="col-3">( 40 Customers Reviews ) </div>
                 <div className="flex-23 col-3"> ( 20 Item Sold ) </div>
               </div>
@@ -110,22 +99,18 @@ const ProductDetailCard = ({ product }) => {
               </div>
               <div className="row row-sm">
                 <div className="col">
-                  <div className="mb-2 me-2 sizes">
-                    <span className="fw-bold me-4">Quantity:</span>
-                    <div className="input-group input-indec input-indec1 w-30 w-sm-50 mt-3">
-                      <span className="input-group-btn">
-                        <button type="button" className="minus btn btn-white btn-number btn-icon br-7 ">
-                          <i className="fa fa-minus text-muted"></i>
-                        </button>
-                      </span>
-                      <input type="text" name="quantity" className="form-control text-center qty" defaultValue="1" />
-                      <span className="input-group-btn">
-                        <button type="button" className="quantity-right-plus btn btn-white btn-number btn-icon br-7 add">
-                          <i className="fa fa-plus text-muted"></i>
-                        </button>
-                      </span>
-                    </div>
-                  </div>
+                  <button type="button" className="btn btn-icon btn-sm btn-warning">
+                    <RatingModal>
+                      <StarRatings
+                        name={_id}
+                        numberOfStars={5}
+                        rating={2}
+                        changeRating={(newRating, name) => console.log("newRating", newRating, "name", name)}
+                        isSelectable={true}
+                        starRatedColor="red"
+                      />
+                    </RatingModal>
+                  </button>
                 </div>
               </div>
               <hr />

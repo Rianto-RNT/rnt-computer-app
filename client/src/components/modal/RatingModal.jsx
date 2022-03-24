@@ -2,27 +2,25 @@ import React, { useState } from "react";
 import { Modal, Button } from "antd";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
-import { StarOutlined } from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 
 const RatingModal = ({ children }) => {
   const { user } = useSelector((state) => ({ ...state }));
   const [modalVisible, setModalVisible] = useState(false);
 
+  let history = useHistory();
+
+  const handleModal = () => {
+    if (user && user.token) {
+      setModalVisible(true);
+    } else {
+      history.push("/login");
+    }
+  };
+
   return (
     <>
-      <div onClick={() => setModalVisible(true)}>
-        {user ? (
-          <div class="text-muted float-start me-3">
-            <span class="fe fe-star text-warning"></span>
-            <span class="fe fe-star text-warning"></span>
-            <span class="fe fe-star text-warning"></span>
-            <span class="fe fe-star text-warning"></span>
-            <span class="fe fe-star text-warning"></span>
-          </div>
-        ) : (
-          "Login to leave rating"
-        )}
-      </div>
+      <div onClick={handleModal}>{user ? <i className="fe fe-star"> Add Ratings </i> : "Login to leave ratings"}</div>
       <Modal
         centered
         visible={modalVisible}

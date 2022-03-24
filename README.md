@@ -322,6 +322,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Tab menu for description and specification in Product detail
   - display Star Rating in product detail (log)
   - star ratings modal
+  - Login to leave ratings
 
 ## TODO to fix
 - All heading in admin dashboard not showing because sticky header.
