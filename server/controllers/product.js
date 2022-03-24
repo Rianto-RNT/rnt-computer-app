@@ -3,6 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const cloudUpload = require('../utils/cloudUpload');
 const Product = require('../models/Product');
+const User = require('../models/User');
 
 // @desc    Get all product
 // @route   GET /api/product
@@ -177,7 +178,7 @@ exports.uploadImages = asyncHandler(async (req, res, next) => {
 });
 
 // @desc      Remove product images
-// @route     DELETE /api/v1/product/:id/images
+// @route     DELETE /api/product/:id/images
 // @access    Private
 exports.removeImages = asyncHandler(async (req, res, next) => {
   const image_id = req.body.public_id;
@@ -198,4 +199,76 @@ exports.removeImages = asyncHandler(async (req, res, next) => {
     success: true,
     data: 'Image have been deleted',
   });
+});
+
+// @desc      Product ratings by currently user login
+// @route     PUT /api/product/star-ratings/:productId
+// @access    Private
+exports.productRating = asyncHandler(async (req, res, next) => {
+  const product = await Product.findById(req.params.productId).exec();
+
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  const { star } = req.body;
+
+  // Make sure current user login already add ratings
+  let existingRatingObject = product.ratings.find(
+    (el) => el.postedBy.toString() === user._id.toString()
+  );
+
+  // if user not left ratings yet, then push it
+  if (existingRatingObject === undefined) {
+    let ratingAdded = await Product.findByIdAndUpdate(
+      product._id,
+      {
+        $push: { ratings: { star: star, postedBy: user._id } },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+
+    console.log('ratingAdded', ratingAdded);
+
+    res.status(200).json({ success: true, data: ratingAdded });
+  } else {
+    // if user have already left rating, then update it
+    const ratingUpdated = Product.updateOne(
+      {
+        ratings: { $elMatch: existingRatingObject },
+      },
+      {
+        $set: { 'ratings.$.star': star },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+
+    console.log('ratingUpdated', ratingUpdated);
+
+    res.status(200).json({ success: true, data: ratingUpdated });
+  }
+
+  if (!product) {
+    return next(
+      new ErrorResponse(
+        `Failed! Product with ${req.params.productId} not found. Please add another value.`,
+        400
+      )
+    );
+  }
+
+  if (!user) {
+    return next(
+      new ErrorResponse(
+        `Failed! user with ${req.user.email} not found. Please valid email.`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: product });
 });

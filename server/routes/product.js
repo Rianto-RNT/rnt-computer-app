@@ -17,6 +17,7 @@ const {
   removeImages,
   reuseableProduct,
   productTotal,
+  productRating
 } = require('../controllers/product');
 
 // Count product total for paggination routes
@@ -36,5 +37,8 @@ router.post('/products', reuseableProduct);
 // image upload cloud
 router.post('/product/upload-images', protect, adminProtect, uploadImages);
 router.post('/product/remove-images', protect, adminProtect, removeImages);
+
+// Ratings routes
+router.put('/product/start-ratings/:productId', protect,  productRating);
 
 module.exports = router;

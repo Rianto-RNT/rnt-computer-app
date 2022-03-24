@@ -277,6 +277,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product Update Endpoint
   - New Arrival Product with sort, order and limit
   - Get total product count (pagination)
+  - Star Ratings / average rating banckend
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
