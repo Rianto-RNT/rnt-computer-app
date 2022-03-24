@@ -320,6 +320,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Handle no product images in product details
   - Product detail specification
   - Tab menu for description and specification in Product detail
+  - display Star Rating in product detail (log)
 
 ## TODO to fix
 - All heading in admin dashboard not showing because sticky header.

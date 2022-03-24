@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
+import StarRatings from "react-star-ratings";
 
 const ProductDetailCard = ({ product }) => {
-  const { title, price, description, images, quantity, slug } = product;
+  const { title, price, description, images, quantity, slug, _id } = product;
 
   return (
     <div className="card">
@@ -33,25 +34,30 @@ const ProductDetailCard = ({ product }) => {
             <div className="mt-2 mb-4">
               <h3 className="mb-3 fw-semibold">{title}</h3>
 
-              <p className="text-muted float-start me-3">
-                <span className="fe fe-star text-warning"></span>
-                <span className="fe fe-star text-warning"></span>
-                <span className="fe fe-star text-warning"></span>
-                <span className="fe fe-star-half-o text-warning"></span>
-                <span className="fe fe-star-o text-warning"></span>
-              </p>
-
+              <div className="text-muted float-start me-3">
+                <StarRatings
+                  name={_id}
+                  numberOfStars={5}
+                  rating={2}
+                  changeRating={(newRating, name) => console.log("newRating", newRating, "name", name)}
+                  isSelectable={true}
+                  starRatedColor="orange"
+                />
+              </div>
+                        <br />
               <p className="text-muted mb-4">( 40 Customers Reviews) </p>
-
-              <h3 className="mb-4">
-                <span className="me-2 fw-bold fs-25">
-                  <p>Rp. {price}</p>
-                  {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
-                </span>
-                <span>
-                  <del className="fs-18 text-muted">Todo diskon price</del>
-                </span>
-              </h3>
+                        
+              <div className="row mt-6">
+                <h3 className="mb-4">
+                  <span className="me-2 fw-bold fs-25">
+                    <p>Rp. {price}</p>
+                    {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
+                  </span>
+                  <span>
+                    <del className="fs-18 text-muted">Todo diskon price</del>
+                  </span>
+                </h3>
+              </div>
 
               <div>
                 <h4 className="mt-4">
