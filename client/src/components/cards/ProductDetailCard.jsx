@@ -3,6 +3,7 @@ import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import StarRatings from "react-star-ratings";
+import RatingModal from "../modal/RatingModal";
 
 const ProductDetailCard = ({ product }) => {
   const { title, price, description, images, quantity, slug, _id } = product;
@@ -34,19 +35,22 @@ const ProductDetailCard = ({ product }) => {
             <div className="mt-2 mb-4">
               <h3 className="mb-3 fw-semibold">{title}</h3>
 
-              <div className="text-muted float-start me-3">
-                <StarRatings
-                  name={_id}
-                  numberOfStars={5}
-                  rating={2}
-                  changeRating={(newRating, name) => console.log("newRating", newRating, "name", name)}
-                  isSelectable={true}
-                  starRatedColor="orange"
-                />
+              <div className="list-group-horizontal d-flex me-3 mt-4 mb-5">
+                <RatingModal>
+                  <StarRatings
+                    name={_id}
+                    numberOfStars={5}
+                    rating={2}
+                    changeRating={(newRating, name) => console.log("newRating", newRating, "name", name)}
+                    isSelectable={true}
+                    starRatedColor="red"
+                  />
+                </RatingModal>
+
+                <div className="col-3">( 40 Customers Reviews ) </div>
+                <div className="flex-23 col-3"> ( 20 Item Sold ) </div>
               </div>
-                        <br />
-              <p className="text-muted mb-4">( 40 Customers Reviews) </p>
-                        
+
               <div className="row mt-6">
                 <h3 className="mb-4">
                   <span className="me-2 fw-bold fs-25">
