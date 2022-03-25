@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import StarRatings from "react-star-ratings";
 import RatingModal from "../modal/RatingModal";
+import { productAverageRatings } from "../../services/rating";
 
 const ProductDetailCard = ({ product, onStarClick, star }) => {
   const { title, price, description, images, quantity, slug, _id } = product;
@@ -36,6 +37,9 @@ const ProductDetailCard = ({ product, onStarClick, star }) => {
               <h3 className="mb-3 fw-semibold">{title}</h3>
 
               <div className="list-group-horizontal d-flex me-3 mt-4 mb-5">
+                <div className="col-3">
+                  {product && product.ratings && product.ratings.length > 0 ? productAverageRatings(product) : "No Ratings Found"}
+                </div>
                 <div className="col-3">( 40 Customers Reviews ) </div>
                 <div className="flex-23 col-3"> ( 20 Item Sold ) </div>
               </div>

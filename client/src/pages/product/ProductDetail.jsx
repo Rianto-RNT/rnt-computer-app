@@ -18,19 +18,15 @@ const ProductDetail = ({ match }) => {
   }, [slug]);
 
   useEffect(() => {
-   if (product.ratings && user) {
-    let existingRatingObject = product.ratings.find(
-      (ele) => ele.postedBy.toString() === user._id.toString()
-    );
+    if (product.ratings && user) {
+      let existingRatingObject = product.ratings.find((ele) => ele.postedBy.toString() === user._id.toString());
 
-    existingRatingObject && setStar(existingRatingObject.star)
-   }
+      existingRatingObject && setStar(existingRatingObject.star);
+    }
   });
 
-
-
   const loadSingleProduct = () => getSingleProduct(slug).then((res) => setProduct(res.data));
-  
+
   const onStarClick = (newRating, name) => {
     setStar(newRating);
     productStarRating(name, newRating, user.token).then((res) => {
