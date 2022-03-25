@@ -325,6 +325,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Login to leave ratings
   - login to leave ratings and redirect page to home
   - API Request for product star ratings
+  - Show user existing ratings in product they vote
 
 ## TODO to fix
 - All heading in admin dashboard not showing because sticky header.

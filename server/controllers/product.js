@@ -203,7 +203,7 @@ exports.removeImages = asyncHandler(async (req, res, next) => {
 
 // @desc      Product ratings by currently user login
 // @route     PUT /api/product/star-ratings/:productId
-// @access    Private
+// @access    Private / User
 exports.productRating = asyncHandler(async (req, res, next) => {
   const product = await Product.findById(req.params.productId).exec();
 
