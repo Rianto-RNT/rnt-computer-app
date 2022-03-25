@@ -57,3 +57,17 @@ export const reuseableProduct = async (sort, order, limit) => {
 
   return response.data;
 };
+
+export const productStarRating = async (productId, star, authtoken) => {
+  let response = await axios.put(
+    `${process.env.REACT_APP_API}/product/star-ratings/${productId}`,
+    { star },
+    {
+      headers: {
+        authtoken,
+      },
+    },
+  );
+
+  return response.data;
+};

@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import StarRatings from "react-star-ratings";
 import RatingModal from "../modal/RatingModal";
 
-const ProductDetailCard = ({ product }) => {
+const ProductDetailCard = ({ product, onStarClick, star }) => {
   const { title, price, description, images, quantity, slug, _id } = product;
 
   return (
@@ -104,8 +104,8 @@ const ProductDetailCard = ({ product }) => {
                       <StarRatings
                         name={_id}
                         numberOfStars={5}
-                        rating={2}
-                        changeRating={(newRating, name) => console.log("newRating", newRating, "name", name)}
+                        rating={star}
+                        changeRating={onStarClick}
                         isSelectable={true}
                         starRatedColor="red"
                       />

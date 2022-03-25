@@ -213,7 +213,7 @@ exports.productRating = asyncHandler(async (req, res, next) => {
 
   // Make sure current user login already add ratings
   let existingRatingObject = product.ratings.find(
-    (el) => el.postedBy.toString() === user._id.toString()
+    (ele) => ele.postedBy.toString() === user._id.toString()
   );
 
   // if user not left ratings yet, then push it
@@ -236,7 +236,7 @@ exports.productRating = asyncHandler(async (req, res, next) => {
     // if user have already left rating, then update it
     const ratingUpdated = Product.updateOne(
       {
-        ratings: { $elMatch: existingRatingObject },
+        ratings: { $elemMatch: existingRatingObject },
       },
       {
         $set: { 'ratings.$.star': star },
@@ -251,24 +251,4 @@ exports.productRating = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({ success: true, data: ratingUpdated });
   }
-
-  if (!product) {
-    return next(
-      new ErrorResponse(
-        `Failed! Product with ${req.params.productId} not found. Please add another value.`,
-        400
-      )
-    );
-  }
-
-  if (!user) {
-    return next(
-      new ErrorResponse(
-        `Failed! user with ${req.user.email} not found. Please valid email.`,
-        400
-      )
-    );
-  }
-
-  res.status(200).json({ success: true, data: product });
 });
