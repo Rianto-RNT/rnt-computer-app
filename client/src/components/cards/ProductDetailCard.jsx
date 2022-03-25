@@ -36,15 +36,11 @@ const ProductDetailCard = ({ product, onStarClick, star }) => {
             <div className="mt-2 mb-4">
               <h3 className="mb-3 fw-semibold">{title}</h3>
 
-              <div className="list-group-horizontal d-flex me-3 mt-4 mb-5">
-                <div className="col-3">
-                  {product && product.ratings && product.ratings.length > 0 ? productAverageRatings(product) : "No Ratings Found"}
-                </div>
-                <div className="col-3">( 40 Customers Reviews ) </div>
-                <div className="flex-23 col-3"> ( 20 Item Sold ) </div>
-              </div>
+              <span className="text-muted float-start me-3">
+                {product && product.ratings && product.ratings.length > 0 ? productAverageRatings(product) : "No Ratings Found"}
+              </span>
 
-              <div className="row mt-6">
+              <div className="row mt-6 pt-4">
                 <h3 className="mb-4">
                   <span className="me-2 fw-bold fs-25">
                     <p>Rp. {price}</p>
@@ -118,7 +114,7 @@ const ProductDetailCard = ({ product, onStarClick, star }) => {
                 </div>
               </div>
               <hr />
-              <div className="btn-list mt-4">
+              <div className="btn-list">
                 <a href="cart.html" className="btn ripple btn-primary me-2">
                   <i className="fe fe-shopping-cart"> </i> Add to cart
                 </a>

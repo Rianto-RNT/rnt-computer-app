@@ -326,7 +326,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - login to leave ratings and redirect page to home
   - API Request for product star ratings
   - Show user existing ratings in product they vote
-  - Show Average rating total product
+  - Show Average rating total in product detail
+  - Show Average rating total product in home page
+  
 
 ## TODO to fix
 - All heading in admin dashboard not showing because sticky header.
@@ -335,6 +337,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Update all product with the real image, description, title, etc.
 - Add newline when showing description in product detail.
 - Fix Price number in product detail.
+- show total/Length customer review
   
 ## Articles
 

@@ -1,6 +1,7 @@
 import React from "react";
 import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
+import productAverageRatings from "../../services/rating";
 
 const ProductCard = ({ product }) => {
   const { title, price, images, slug } = product;
@@ -34,14 +35,17 @@ const ProductCard = ({ product }) => {
             </h6>
           </div>
 
-          <div className="mb-2 text-warning">
-            <i className="fe fe-star text-warning" />
+          <div className="mb-3 text-danger">
+            <span className="h-100 d-flex justify-content-center align-items-center">
+              {product && product.ratings && product.ratings.length > 0 ? productAverageRatings(product) : "No Ratings Found"}
+            </span>
+            {/* <i className="fe fe-star text-warning" />
             <i className="fe fe-star text-warning"></i>
             <i className="fe fe-star text-warning"></i>
             <i className="fe fe-star-half-o text-warning"></i>
-            <i className="fe fe-star-o text-warning"></i>
+            <i className="fe fe-star-o text-warning"></i> */}
           </div>
-          <div className="price">
+          <div className="price pt-3">
             <h5 className="display-8 text-danger">
               <p>Rp. {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
             </h5>

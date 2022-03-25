@@ -15,9 +15,10 @@ export const productAverageRatings = (p) => {
     let result = (totalReduced * 5) / higest;
     // console.log("result", result);
     return (
-      <div>
-        <StarRatings rating={result} />
-      </div>
+      <>
+        <StarRatings rating={result} starRatedColor="red" starDimension="20px" starSpacing="20" editing={false} />
+        {/* <span className="col-3 text-align-center text-danger"> ( {p.ratings.length} Customer Review )</span> */}
+      </>
     );
   }
 };
