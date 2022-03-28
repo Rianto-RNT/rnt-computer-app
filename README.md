@@ -278,6 +278,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - New Arrival Product with sort, order and limit
   - Get total product count (pagination)
   - Star Ratings / average rating banckend
+  - Related Product endpoint
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -328,6 +329,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Show user existing ratings in product they vote
   - Show Average rating total in product detail
   - Show Average rating total product in home page
+  - Show related product in product detail
   
 
 ## TODO to fix
