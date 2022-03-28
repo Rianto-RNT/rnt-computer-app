@@ -22,6 +22,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./pages/Home";
+import CategoryHome from "./pages/category/CategoryHome";
 import Header from "./components/nav/Header";
 import Footer from "./components/nav/Footer";
 
@@ -90,6 +91,7 @@ const App = () => {
       <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/complete-registration" component={RegisterComplete} />

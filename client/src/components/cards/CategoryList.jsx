@@ -24,13 +24,6 @@ const CategoryList = () => {
           <span className="product-label">{c.slug.length}</span>
         </li>
       </ul>
-
-      //   <li className="list-group-item border-0 p-0">
-      //         <a href="#!">
-      //           <i className="fe fe-chevron-right"></i> Mens
-      //         </a>
-      //         <span className="product-label">22</span>
-      //       </li>
     ));
 
   return (

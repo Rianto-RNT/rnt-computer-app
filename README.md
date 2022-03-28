@@ -331,6 +331,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Show Average rating total product in home page
   - Show related product in product detail
   - Category list in home page
+  - fetch Single category test
   
 
 ## TODO to fix
