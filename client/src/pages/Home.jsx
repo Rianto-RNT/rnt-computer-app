@@ -5,6 +5,7 @@ import LoaderCard from "../components/cards/LoaderCard";
 import HomeBanner from "../components/carousel/HomeBanner";
 import NewArrivalCard from "../components/cards/NewArrivalCard";
 import BestSellerCard from "../components/cards/BestSellerCard";
+import CategoryList from "../components/cards/CategoryList";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -87,39 +88,9 @@ const Home = () => {
           <div className="col-xl-3 col-lg-4">
             <div className="row">
               <div className="col-md-12 col-lg-12">
-                <div className="card">
-                  <div className="card-header">
-                    <div className="card-title">Categories</div>
-                  </div>
-                  <div className="card-body">
-                    <ul className="list-group">
-                      <li className="list-group-item border-0 p-0">
-                        <a href="#!">
-                          <i className="fe fe-chevron-right"></i> Mens
-                        </a>
-                        <span className="product-label">22</span>
-                      </li>
-                      <li className="list-group-item border-0 p-0">
-                        <a href="#!">
-                          <i className="fe fe-chevron-right"></i> Womens
-                        </a>
-                        <span className="product-label">15</span>
-                      </li>
-                      <li className="list-group-item border-0 p-0">
-                        <a href="#!">
-                          <i className="fe fe-chevron-right"></i> Kids
-                        </a>
-                        <span className="product-label">10</span>
-                      </li>
-                      <li className="list-group-item border-0 p-0">
-                        <a href="#!">
-                          <i className="fe fe-chevron-right"></i> Others
-                        </a>
-                        <span className="product-label">88</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                  
+                  <CategoryList />
+
                 <div className="card">
                   <div className="card-header">
                     <div className="card-title">Price Range</div>
