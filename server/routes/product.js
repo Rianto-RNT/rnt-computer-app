@@ -17,7 +17,8 @@ const {
   removeImages,
   reuseableProduct,
   productTotal,
-  productRating
+  productRating,
+  getRelatedProduct
 } = require('../controllers/product');
 
 // Count product total for paggination routes
@@ -40,5 +41,9 @@ router.post('/product/remove-images', protect, adminProtect, removeImages);
 
 // Ratings routes
 router.put('/product/star-ratings/:productId', protect,  productRating);
+
+// related product routes
+router.get('/product/related/:productId', getRelatedProduct);
+
 
 module.exports = router;

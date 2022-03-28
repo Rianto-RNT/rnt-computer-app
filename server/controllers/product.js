@@ -140,6 +140,34 @@ exports.reuseableProduct = asyncHandler(async (req, res, next) => {
     .json({ success: true, count: products.length, data: products });
 });
 
+// @desc    Related product in Product detail
+// @route   Get /api/product/related/:productId
+// @access  Public
+exports.getRelatedProduct = asyncHandler(async (req, res, next) => {
+  const product = await Product.findById(req.params.productId).exec();
+
+  const related = await Product.find({
+    _id: { $ne: product._id },
+    category: product.category,
+  })
+    .populate('category')
+    .populate('subcategory')
+    .populate('ratings')
+    .limit(4)
+    .exec();
+
+  if (!related) {
+    return next(
+      new ErrorResponse(
+        `Failed! Product with ${req.params.productId} not found. Please select correct value.`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: related });
+});
+
 // @desc    Count product total for pagination
 // @route   GET /api/products/total
 // @access  Public

@@ -71,3 +71,9 @@ export const productStarRating = async (productId, star, authtoken) => {
 
   return response.data;
 };
+
+export const getRelatedProduct = async (productId) => {
+  const response = await axios.get(`${process.env.REACT_APP_API}/product/related/${productId}`);
+
+  return response.data;
+};
