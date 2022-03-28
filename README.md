@@ -332,6 +332,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Show related product in product detail
   - Category list in home page
   - fetch Single category test
+  - click category then show product only with the same category (ex. apple => product : apple)
   
 
 ## TODO to fix

@@ -18,7 +18,7 @@ const CategoryHome = ({ match }) => {
     });
   }, []);
 
-  return <span>{slug}</span>;
+  return <p className="pt-12">{slug}</p>;
 };
 
 export default CategoryHome;

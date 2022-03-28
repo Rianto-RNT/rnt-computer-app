@@ -3,6 +3,7 @@ const asyncHandler = require('../middlewares/async');
 const slugify = require('slugify');
 const Category = require('../models/Category');
 const Subcategory = require('../models/Subcategory');
+const Product = require('../models/Product');
 
 // @desc    Get All Category
 // @route   GET /api/category
@@ -30,7 +31,12 @@ exports.getSingleCategory = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(200).json({ success: true, data: category });
+  const products = await Product.find({ category })
+    .populate('category')
+    .populate('ratings')
+    .exec();
+
+  res.status(200).json({ success: true, data: { category, products } });
 });
 
 // @desc    Create Category
