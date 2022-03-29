@@ -281,6 +281,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Related Product endpoint
   - Reformat Subcategory 
   - Search and Filtering
+  - Search redux setup
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)

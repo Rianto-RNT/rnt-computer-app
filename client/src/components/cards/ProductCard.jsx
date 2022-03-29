@@ -39,12 +39,8 @@ const ProductCard = ({ product }) => {
             <span className="h-100 d-flex justify-content-center align-items-center">
               {product && product.ratings && product.ratings.length > 0 ? productAverageRatings(product) : "No Ratings Found"}
             </span>
-            {/* <i className="fe fe-star text-warning" />
-            <i className="fe fe-star text-warning"></i>
-            <i className="fe fe-star text-warning"></i>
-            <i className="fe fe-star-half-o text-warning"></i>
-            <i className="fe fe-star-o text-warning"></i> */}
           </div>
+          
           <div className="price pt-3">
             <h5 className="display-8 text-danger">
               <p>Rp. {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>

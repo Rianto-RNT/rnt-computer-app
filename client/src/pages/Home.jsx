@@ -30,43 +30,9 @@ const Home = () => {
       {/* <!-- CONTAINER --> */}
       <div className="main-container container-fluid">
         {/* <!-- PAGE-HEADER --> */}
-        <div className="page-header">
+        <div className="page-header pt-5">
           <div className="col-xl-12">
-            <div className="card p-0">
-              <div className="card-body p-4">
-                <div className="row">
-                  <div className="col-xl-5 col-lg-8 col-md-8 col-sm-8">
-                    <div className="input-group d-flex w-100 float-start">
-                      <input type="text" className="form-control border-end-0 my-2" placeholder="Search ..." />
-                      <button className="btn input-group-text bg-transparent border-start-0 text-muted my-2">
-                        <i className="fe fe-search text-muted" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                    <ul className="nav item2-gl-menu float-end my-2">
-                      <li className="border-end">
-                        <a href="#tab-11" className="show active" data-bs-toggle="tab" title="List style">
-                          <i className="fe fe-grid"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#!" data-bs-toggle="tab" className="" title="Grid">
-                          <i className="fe fe-align-left"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="col-xl-3 col-lg-12">
-                    <a href="add-product.html" className="btn btn-primary btn-block float-end my-2">
-                      <i className="fa fa-plus-square me-2"></i>New Product
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 
             {/* CAROUSEL */}
             <HomeBanner HomeBanner={HomeBanner} />
