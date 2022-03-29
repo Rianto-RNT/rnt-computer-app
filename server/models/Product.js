@@ -7,6 +7,7 @@ const ProductSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     maxlength: [150, 'Title cannot be more than 150 character length'],
+    text: true,
   },
   slug: {
     type: String,
@@ -18,6 +19,7 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add a product description'],
     maxlength: [2000, 'Description Cannot be more than 2000 character length'],
+    index: true,
   },
   price: {
     type: Number,
@@ -47,21 +49,47 @@ const ProductSchema = new mongoose.Schema({
   },
   color: {
     type: String,
-    enum: ["Yellow","Green", "Red", "Black", "Silver", "Blue", "White", "Grey", "Space Grey", "Mate Black", "Mate Grey"],
+    enum: [
+      'Yellow',
+      'Green',
+      'Red',
+      'Black',
+      'Silver',
+      'Blue',
+      'White',
+      'Grey',
+      'Space Grey',
+      'Mate Black',
+      'Mate Grey',
+    ],
   },
   brand: {
     type: String,
-    enum: ["Apple", "Lenovo", "HP", "Acer", "Microsoft", "Asus", "MSi", "Alienware", "Razer", "Huawei", "Dell", "Axioo", "Avita"],
-  },
-    ratings: [
-      {
-        star: Number,
-        postedBy: {
-          type: mongoose.Schema.ObjectId,
-          ref: 'User',
-        },
-      },
+    enum: [
+      'Apple',
+      'Lenovo',
+      'HP',
+      'Acer',
+      'Microsoft',
+      'Asus',
+      'MSi',
+      'Alienware',
+      'Razer',
+      'Huawei',
+      'Dell',
+      'Axioo',
+      'Avita',
     ],
+  },
+  ratings: [
+    {
+      star: Number,
+      postedBy: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

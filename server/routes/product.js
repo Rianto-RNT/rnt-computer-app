@@ -18,7 +18,8 @@ const {
   reuseableProduct,
   productTotal,
   productRating,
-  getRelatedProduct
+  getRelatedProduct,
+  searchFilters
 } = require('../controllers/product');
 
 // Count product total for paggination routes
@@ -44,6 +45,9 @@ router.put('/product/star-ratings/:productId', protect,  productRating);
 
 // related product routes
 router.get('/product/related/:productId', getRelatedProduct);
+
+// Search and filtering feature routes
+router.post('/search/filters', searchFilters)
 
 
 module.exports = router;

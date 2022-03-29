@@ -280,6 +280,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Star Ratings / average rating banckend
   - Related Product endpoint
   - Reformat Subcategory 
+  - Search and Filtering
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)

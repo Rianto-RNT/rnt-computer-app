@@ -280,3 +280,31 @@ exports.productRating = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: ratingUpdated });
   }
 });
+
+// @desc    Advanced Searching and filtering
+// @route   POST /api/serch/filters
+// @access  Public
+const handleQuery = async (req, res, query) => {
+  const products = await Product.find({ $text: { $search: query } })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+  res.status(200).json({ success: true, data: products });
+};
+
+exports.searchFilters = asyncHandler(async (req, res, next) => {
+  const { query } = req.body;
+
+  if (query) {
+    console.log('query', query);
+    await handleQuery(req, res, query);
+  }
+
+  // const products = await Product.find();
+
+  // res
+  //   .status(200)
+  //   .json({ success: true, count: products.length, data: products });
+});
