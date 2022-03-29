@@ -6,6 +6,7 @@ import HomeBanner from "../components/carousel/HomeBanner";
 import NewArrivalCard from "../components/cards/NewArrivalCard";
 import BestSellerCard from "../components/cards/BestSellerCard";
 import CategoryList from "../components/cards/CategoryList";
+import SubcategoryList from "../components/cards/SubcategoryList";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -68,7 +69,7 @@ const Home = () => {
             </div>
 
             {/* CAROUSEL */}
-            <HomeBanner HomeBanner={HomeBanner}/>
+            <HomeBanner HomeBanner={HomeBanner} />
             {/* END OF CROUSEL */}
 
             {/* BEST SELLER */}
@@ -88,8 +89,10 @@ const Home = () => {
           <div className="col-xl-3 col-lg-4">
             <div className="row">
               <div className="col-md-12 col-lg-12">
-                  
-                  <CategoryList />
+                
+                <CategoryList />
+
+                <SubcategoryList />
 
                 <div className="card">
                   <div className="card-header">
@@ -254,7 +257,9 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
+                          <a className="fw-semibold text-dark" href="#!">
+                            Hand Bag
+                          </a>
                           <div className="mb-1 text-warning">
                             <i className="fe fe-star"></i>
                             <i className="fe fe-star"></i>
@@ -276,7 +281,9 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
+                          <a className="fw-semibold text-dark" href="#!">
+                            Hand Bag
+                          </a>
                           <div className="mb-1 text-warning">
                             <i className="fe fe-star"></i>
                             <i className="fe fe-star"></i>
@@ -298,7 +305,9 @@ const Home = () => {
                           alt="avatar-img"
                         />
                         <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">Hand Bag</a>
+                          <a className="fw-semibold text-dark" href="#!">
+                            Hand Bag
+                          </a>
                           <div className="mb-1 text-warning">
                             <i className="fe fe-star"></i>
                             <i className="fe fe-star"></i>

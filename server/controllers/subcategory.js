@@ -2,6 +2,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const slugify = require('slugify');
 const Subcategory = require('../models/Subcategory');
+const Product = require('../models/Product');
 
 // @desc    Get All Subcategory
 // @route   GET /api/subcategory
@@ -18,7 +19,14 @@ exports.getAllSubcategory = asyncHandler(async (req, res, next) => {
 // @route   GET /api/subcategory/:slug
 // @access  Public
 exports.getSingleSubcategory = asyncHandler(async (req, res, next) => {
-  const subcategory = await Subcategory.findOne({ slug: req.params.slug });
+  const subcategory = await Subcategory.findOne({
+    slug: req.params.slug,
+  }).exec();
+
+  const products = await Product.find({ subcategory })
+    .populate('category')
+    .populate('ratings')
+    .exec();
 
   if (!subcategory) {
     return next(
@@ -29,7 +37,7 @@ exports.getSingleSubcategory = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(200).json({ success: true, data: subcategory });
+  res.status(200).json({ success: true, data: { subcategory, products } });
 });
 
 // @desc    Create Subcategory
@@ -52,7 +60,7 @@ exports.createSubcategory = asyncHandler(async (req, res, next) => {
       )
     );
   }
-  
+
   res.status(201).json({ success: true, data: subcategory });
 });
 

@@ -279,6 +279,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Get total product count (pagination)
   - Star Ratings / average rating banckend
   - Related Product endpoint
+  - Reformat Subcategory 
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -332,7 +333,9 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Show related product in product detail
   - Category list in home page
   - fetch Single category test
-  - click category then show product only with the same category (ex. apple => product : apple)
+  - Click category then show product only with the same category (ex. apple => product : apple)
+  - Category page with product
+  - Subcategory page with product showing
   
 
 ## TODO to fix
