@@ -3,17 +3,27 @@ import { getProductByCount } from "../services/product";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
 import { fetchProductByFilter } from "../services/product";
+import { Slider, Switch } from "antd";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [price, setPrice] = useState([0, 35000000]);
+  const [ok, setOk] = useState(false);
 
+  let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
 
   useEffect(() => {
     loadAllProducts();
   }, []);
+
+  const fetchProducts = (arg) => {
+    fetchProductByFilter(arg).then((res) => {
+      setProducts(res.data);
+    });
+  };
 
   // 1) load products by default on page load
   const loadAllProducts = () => {
@@ -28,13 +38,24 @@ const Shop = () => {
     const searchDelayed = setTimeout(() => {
       fetchProducts({ query: text });
     }, 300);
-    return () => clearTimeout(searchDelayed)
+    return () => clearTimeout(searchDelayed);
   }, [text]);
 
-  const fetchProducts = (arg) => {
-    fetchProductByFilter(arg).then((res) => {
-      setProducts(res.data);
+  // 3) load product by price range
+  useEffect(() => {
+    console.log("ok to request");
+    fetchProducts({ price });
+  }, [ok]);
+
+  const handleSlider = (value) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
     });
+    setPrice(value);
+    setTimeout(() => {
+      setOk(!ok);
+    }, 300);
   };
 
   return (
@@ -57,26 +78,21 @@ const Shop = () => {
                   <div className="card-header">
                     <div className="card-title">Price Range</div>
                   </div>
+
                   <div className="card-body">
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">Upto $500</span>
-                    </label>
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">$500 - $1000</span>
-                    </label>
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">$1000 - $1500</span>
-                    </label>
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">Over $2000</span>
-                    </label>
                     <div className="d-flex">
                       <div className="card-body px-0">
-                        <div id="mySlider"></div>
+                        <Slider
+                          tipFormatter={(v) => `Rp. ${v}`}
+                          range={true}
+                          value={price}
+                          formatter={(value) => `$ ${value}`.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g), ",")}
+                          parser={(value) => value.replace(new RegExp(/\$\s?|(,*)/g), "")}
+                          defaultValue={1000}
+                          onChange={handleSlider}
+                          max="50000000"
+                          tooltipVisible
+                        />
                       </div>
                     </div>
                   </div>

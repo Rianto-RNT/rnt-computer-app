@@ -341,6 +341,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Subcategory page with product showing
   - Shop Page menu
   - search by text title
+  - Filter product by price range (slider)
   
 
 ## TODO to fix
