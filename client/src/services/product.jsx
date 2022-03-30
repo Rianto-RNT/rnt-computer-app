@@ -77,3 +77,9 @@ export const getRelatedProduct = async (productId) => {
 
   return response.data;
 };
+
+export const fetchProductByFilter = async (arg) => {
+  const response = await axios.post(`${process.env.REACT_APP_API}/search/filters`, arg);
+
+  return response.data;
+};

@@ -2,19 +2,38 @@ import React, { useState, useEffect } from "react";
 import { getProductByCount } from "../services/product";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
+import { fetchProductByFilter } from "../services/product";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect((res) => {
+  let { search } = useSelector((state) => ({ ...state }));
+  const { text } = search;
+
+  useEffect(() => {
     loadAllProducts();
   }, []);
 
+  // 1) load products by default on page load
   const loadAllProducts = () => {
     getProductByCount(15).then((p) => {
       setProducts(p.data);
       setLoading(false);
+    });
+  };
+
+  // 2) load product on user search text input
+  useEffect(() => {
+    const searchDelayed = setTimeout(() => {
+      fetchProducts({ query: text });
+    }, 300);
+    return () => clearTimeout(searchDelayed)
+  }, [text]);
+
+  const fetchProducts = (arg) => {
+    fetchProductByFilter(arg).then((res) => {
+      setProducts(res.data);
     });
   };
 
@@ -34,7 +53,6 @@ const Shop = () => {
           <div className="col-xl-3 col-lg-4">
             <div className="row">
               <div className="col-md-12 col-lg-12">
-
                 <div className="card">
                   <div className="card-header">
                     <div className="card-title">Price Range</div>

@@ -339,6 +339,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Category page with product
   - Subcategory page with product showing
   - Shop Page menu
+  - search by text title
   
 
 ## TODO to fix
