@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getProductByCount } from "../services/product";
+import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
-import LoaderCard from "../components/cards/LoaderCard";
-import HomeBanner from "../components/carousel/HomeBanner";
-import NewArrivalCard from "../components/cards/NewArrivalCard";
-import BestSellerCard from "../components/cards/BestSellerCard";
-import CategoryList from "../components/cards/CategoryList";
-import SubcategoryList from "../components/cards/SubcategoryList";
 
-const Home = () => {
+const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    loadAllProduct();
+  useEffect((res) => {
+    loadAllProducts();
   }, []);
 
-  const loadAllProduct = () => {
-    setLoading(true);
-    getProductByCount(9).then((res) => {
-      setProducts(res.data);
+  const loadAllProducts = () => {
+    getProductByCount(15).then((p) => {
+      setProducts(p.data);
       setLoading(false);
     });
   };
@@ -30,24 +24,9 @@ const Home = () => {
       {/* <!-- CONTAINER --> */}
       <div className="main-container container-fluid">
         {/* <!-- PAGE-HEADER --> */}
-        <div className="page-header pt-5">
-          <div className="col-xl-12">
-            
-
-            {/* CAROUSEL */}
-            <HomeBanner HomeBanner={HomeBanner} />
-            {/* END OF CROUSEL */}
-
-            {/* BEST SELLER */}
-            <BestSellerCard />
-            {/* ENDBEST SELLER */}
-
-            {/* END OF CROUSEL */}
-            <NewArrivalCard />
-            {/* END OF CROUSEL */}
-          </div>
+        <div className="page-header pt-8">
+          <div className="col-xl-12">{loading ? <h4>Loading...</h4> : <h4>Shop</h4>}</div>
         </div>
-
         {/* <!-- PAGE-HEADER END --> */}
 
         {/* <!-- ROW-1 OPEN --> */}
@@ -55,10 +34,6 @@ const Home = () => {
           <div className="col-xl-3 col-lg-4">
             <div className="row">
               <div className="col-md-12 col-lg-12">
-                
-                <CategoryList />
-
-                <SubcategoryList />
 
                 <div className="card">
                   <div className="card-header">
@@ -88,71 +63,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card">
-                  <div className="card-header">
-                    <h3 className="card-title">Colors</h3>
-                  </div>
-                  <div className="card-body">
-                    <form className="shop__filter">
-                      <div className="row gutters-xs">
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="azure" className="colorinput-input" />
-                            <span className="colorinput-color bg-azure"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="indigo" className="colorinput-input" />
-                            <span className="colorinput-color bg-indigo"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="purple" className="colorinput-input" />
-                            <span className="colorinput-color bg-purple"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="pink" className="colorinput-input" />
-                            <span className="colorinput-color bg-pink"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="red" className="colorinput-input" />
-                            <span className="colorinput-color bg-red"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="orange" className="colorinput-input" />
-                            <span className="colorinput-color bg-orange"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="yellow" className="colorinput-input" />
-                            <span className="colorinput-color bg-yellow"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="lime" className="colorinput-input" />
-                            <span className="colorinput-color bg-lime"></span>
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <label className="colorinput">
-                            <input name="color" type="radio" value="green" className="colorinput-input" />
-                            <span className="colorinput-color bg-green"></span>
-                          </label>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+
                 <div className="card">
                   <div className="card-body">
                     <div className="form-group">
@@ -294,72 +205,69 @@ const Home = () => {
           <div className="col-xl-9 col-lg-8">
             <div className="tab-content">
               <div className="tab-pane active" id="tab-11">
-                {loading ? (
-                  <LoaderCard count={15} />
-                ) : (
-                  <div className="row">
-                    {products.map((product) => (
-                      <div key={product._id} className="col-md-6 col-xl-4 col-sm-6">
-                        <ProductCard product={product} />
-                      </div>
-                    ))}
+                <span>{products.length < 1 && <p>No Products Found</p>}</span>
 
-                    <div className="mb-5">
-                      <div className="float-end">
-                        <ul className="pagination ">
-                          <li className="page-item page-prev disabled">
-                            <a className="page-link" href="#!" tabIndex="-1">
-                              Prev
-                            </a>
-                          </li>
-                          <li className="page-item active">
-                            <a className="page-link" href="#!">
-                              1
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link" href="#!">
-                              2
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link" href="#!">
-                              3
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link" href="#!">
-                              4
-                            </a>
-                          </li>
-                          <li className="page-item">
-                            <a className="page-link" href="#!">
-                              5
-                            </a>
-                          </li>
-                          <li className="page-item page-next">
-                            <a className="page-link" href="#!">
-                              Next
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                <div className="row">
+                  {products.map((p) => (
+                    <div key={p._id} className="col-md-6 col-xl-4 col-sm-6">
+                      <ProductCard product={p} />
+                    </div>
+                  ))}
+
+                  <div className="mb-5">
+                    <div className="float-end">
+                      <ul className="pagination ">
+                        <li className="page-item page-prev disabled">
+                          <a className="page-link" href="#!" tabIndex="-1">
+                            Prev
+                          </a>
+                        </li>
+                        <li className="page-item active">
+                          <a className="page-link" href="#!">
+                            1
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a className="page-link" href="#!">
+                            2
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a className="page-link" href="#!">
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a className="page-link" href="#!">
+                            4
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a className="page-link" href="#!">
+                            5
+                          </a>
+                        </li>
+                        <li className="page-item page-next">
+                          <a className="page-link" href="#!">
+                            Next
+                          </a>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
-              
+
+              {/* <!-- COL-END --> */}
             </div>
-            {/* <!-- COL-END --> */}
+            {/* <!-- ROW-1 CLOSED --> */}
           </div>
-          {/* <!-- ROW-1 CLOSED --> */}
+          {/* <!-- ROW-1 END --> */}
         </div>
-        {/* <!-- ROW-1 END --> */}
+        {/* <!-- CONTAINER CLOSED --> */}
       </div>
-      {/* <!-- CONTAINER CLOSED --> */}
     </div>
-    // </div>
   );
 };
 
-export default Home;
+export default Shop;

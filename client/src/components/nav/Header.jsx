@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "antd";
-import { HomeOutlined, UserAddOutlined, UserOutlined, LoginOutlined, LogoutOutlined } from "@ant-design/icons";
+import { HomeOutlined, UserAddOutlined, UserOutlined, LoginOutlined, LogoutOutlined, ShopOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,22 @@ const rightStyleLogin = {
   position: "absolute",
   top: 0,
   right: 120,
+};
+
+const rightStyleSearch = {
+  display: "flex-end",
+  justifyContent: "space-between",
+  position: "absolute",
+  top: 0,
+  right: 300,
+};
+
+const leftStyleShop = {
+  display: "flex-end",
+  justifyContent: "space-between",
+  position: "absolute",
+  top: 0,
+  right: 800,
 };
 
 const Header = () => {
@@ -44,6 +60,10 @@ const Header = () => {
     <Menu className="app-header sticky" key="header" onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item key="home" icon={<HomeOutlined />}>
         <Link to="/">Home</Link>
+      </Item>
+
+      <Item key="shop" icon={<ShopOutlined />}>
+        <Link to="/shop">Shop</Link>
       </Item>
 
       {!user && (

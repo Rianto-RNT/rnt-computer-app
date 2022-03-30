@@ -338,6 +338,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Click category then show product only with the same category (ex. apple => product : apple)
   - Category page with product
   - Subcategory page with product showing
+  - Shop Page menu
   
 
 ## TODO to fix
