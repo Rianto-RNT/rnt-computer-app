@@ -284,7 +284,8 @@ exports.productRating = asyncHandler(async (req, res, next) => {
 // @desc    Advanced Searching and filtering
 // @route   POST /api/serch/filters
 // @access  Public
-// START OF SEARCH FILTER
+// <-- START OF SEARCH FILTER -->
+// 1) Search by text
 const handleQuery = asyncHandler(async (req, res, query) => {
   const products = await Product.find({ $text: { $search: query } })
     .populate('category', '_id name')
@@ -295,12 +296,37 @@ const handleQuery = asyncHandler(async (req, res, query) => {
   res.status(200).json({ success: true, data: products });
 });
 
-exports.searchFilters = asyncHandler( async (req, res, next) => {
-  const { query } = req.body;
+// 2) Filtering by Price
+const handlePrice = asyncHandler(async (req, res, price) => {
+  let products = await Product.find({
+    price: {
+      $gte: price[0],
+      $lte: price[1],
+    },
+  })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+    if (!products) {
+      return next(new ErrorResponse(`Product not found with ${price}. Please add correct value.`))
+    }
+
+  res.status(200).json({ success: true, data: products });
+});
+
+exports.searchFilters = asyncHandler(async (req, res, next) => {
+  const { query, price } = req.body;
 
   if (query) {
     console.log('query', query);
     await handleQuery(req, res, query);
   }
+
+  if (price !== undefined) {
+    console.log('price range is ==>', price);
+    await handlePrice(req, res, price);
+  }
 });
-// END OF SEARCH FILTER
+// <-- END OF SEARCH FILTER -->
