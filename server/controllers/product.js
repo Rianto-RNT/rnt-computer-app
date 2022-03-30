@@ -309,24 +309,52 @@ const handlePrice = asyncHandler(async (req, res, price) => {
     .populate('ratings', '_id name')
     .exec();
 
-    if (!products) {
-      return next(new ErrorResponse(`Product not found with ${price}. Please add correct value.`))
-    }
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Product not found with ${price}. Please add correct value.`
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: products });
+});
+
+// 3) Filtering by category
+const handleCategory = asyncHandler(async (req, res, category) => {
+  let products = await Product.find({ category })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Product not found with ${category}. Please add correct value.`
+      )
+    );
+  }
 
   res.status(200).json({ success: true, data: products });
 });
 
 exports.searchFilters = asyncHandler(async (req, res, next) => {
-  const { query, price } = req.body;
+  const { query, price, category } = req.body;
 
   if (query) {
-    console.log('query', query);
+    console.log('query ==>', query);
     await handleQuery(req, res, query);
   }
 
   if (price !== undefined) {
     console.log('price range is ==>', price);
     await handlePrice(req, res, price);
+  }
+
+  if (category) {
+    console.log('category on request ==> ', category);
+    await handleCategory(req, res, category);
   }
 });
 // <-- END OF SEARCH FILTER -->

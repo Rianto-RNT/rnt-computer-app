@@ -342,6 +342,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Shop Page menu
   - search by text title
   - Filter product by price range (slider)
+  - Filtering product by category
   
 
 ## TODO to fix
