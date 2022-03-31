@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { getProductByCount } from "../services/product";
+import { getAllCategory } from "../services/category";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
 import { fetchProductByFilter } from "../services/product";
-import { Slider, Switch } from "antd";
+import { Slider, Checkbox } from "antd";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 35000000]);
   const [ok, setOk] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState([]);
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -17,6 +20,7 @@ const Shop = () => {
 
   useEffect(() => {
     loadAllProducts();
+    getAllCategory().then((res) => setCategories(res.data));
   }, []);
 
   const fetchProducts = (arg) => {
@@ -52,11 +56,50 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
+
     setPrice(value);
+
+    setCategoryId([]);
+
     setTimeout(() => {
       setOk(!ok);
     }, 300);
   };
+
+  // 4) Load products by category (list all category with checkbox)
+  const handleCheck = (e) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+
+    setPrice([0, 0]);
+
+    let inTheState = [...categoryId];
+    let justChecked = e.target.value;
+    let foundInTheState = inTheState.indexOf(justChecked); // index of -1
+
+    // indexOf method?? if not found returns -1 else return index
+    if (foundInTheState === -1) {
+      inTheState.push(justChecked);
+    } else {
+      // if found pull out one item from index
+      inTheState.splice(foundInTheState, 1);
+    }
+
+    setCategoryId(inTheState);
+    // console.log(inTheState);
+    fetchProducts({ category: inTheState });
+  };
+
+  const showCategories = () =>
+    categories.map((c) => (
+      <div key={c._id}>
+        <Checkbox checked={categoryId.includes(c._id)} onChange={handleCheck} value={c._id}>
+          {c.name}
+        </Checkbox>
+      </div>
+    ));
 
   return (
     // <div className="main-content app-content mt-0">
@@ -102,21 +145,9 @@ const Shop = () => {
                   <div className="card-body">
                     <div className="form-group">
                       <label className="form-label">Category</label>
-                      <select name="beast" id="select-beast" className="form-control form-select select2">
-                        <option value="0">--Select--</option>
-                        <option value="1">Dress</option>
-                        <option value="2">Bags &amp; Purses</option>
-                        <option value="3">Coat &amp; Jacket</option>
-                        <option value="4">Beauty</option>
-                        <option value="5">Jeans</option>
-                        <option value="5">Jewellery</option>
-                        <option value="5">Electronics</option>
-                        <option value="5">Sports</option>
-                        <option value="5">Technology</option>
-                        <option value="5">Watches</option>
-                        <option value="5">Accessories</option>
-                      </select>
+                      {showCategories()}
                     </div>
+
                     <div className="form-group">
                       <label className="form-label">Brand</label>
                       <select name="beast" id="select-beast1" className="form-control form-select select2">
@@ -129,6 +160,7 @@ const Shop = () => {
                         <option value="6">Yellow</option>
                       </select>
                     </div>
+
                     <div className="form-group">
                       <label className="form-label">Type</label>
                       <select name="beast" id="select-beast2" className="form-control form-select select2">
@@ -140,6 +172,7 @@ const Shop = () => {
                         <option value="5">Extra Large</option>
                       </select>
                     </div>
+
                     <div className="form-group">
                       <label className="form-label">Color</label>
                       <select name="beast" id="select-beast3" className="form-control form-select select2">

@@ -266,6 +266,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Update Subcategory in admin dashboard
 
 - Product (backend)
+
   - Create product model/schema mongoose
   - Product Routes and Controller
   - Product Controller - Get all product from database
@@ -279,10 +280,11 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Get total product count (pagination)
   - Star Ratings / average rating banckend
   - Related Product endpoint
-  - Reformat Subcategory 
+  - Reformat Subcategory
   - Search and Filtering
   - Search redux setup
   - Filtering Product by Price range
+  - Filtering product by category
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -343,9 +345,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - search by text title
   - Filter product by price range (slider)
   - Filtering product by category
-  
+  - reset filtering when choose one filter/search (ex, search, category, price, etc)
 
 ## TODO to fix
+
 - All heading in admin dashboard not showing because sticky header.
 - Register complete not working
 - Pagination/loadmore for product list in admin dashboard
@@ -353,7 +356,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 - Add newline when showing description in product detail.
 - Fix Price number in product detail.
 - show total/Length customer review
-  
+
 ## Articles
 
 - [mongodb atlas documentation](https://docs.atlas.mongodb.com/getting-started/)
