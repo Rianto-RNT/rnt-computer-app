@@ -4,6 +4,7 @@ const asyncHandler = require('../middlewares/async');
 const cloudUpload = require('../utils/cloudUpload');
 const Product = require('../models/Product');
 const User = require('../models/User');
+const { aggregate } = require('../models/Product');
 
 // @desc    Get all product
 // @route   GET /api/product
@@ -339,8 +340,36 @@ const handleCategory = asyncHandler(async (req, res, category) => {
   res.status(200).json({ success: true, data: products });
 });
 
+// 4) Filtering by stars
+const handleStars = asyncHandler(async (req, res, stars) => {
+  Product.aggregate([
+    {
+      $project: {
+        document: '$$ROOT',
+        floorAverage: {
+          $floor: { $avg: '$ratings.star' },
+        },
+      },
+    },
+    { $match: { floorAverage: stars } },
+  ])
+    .limit(15)
+    .exec((err, aggregates) => {
+      if (err) console.log('Aggregate Error', err);
+      Product.find({ _id: aggregates })
+        .populate('category', '_id name')
+        .populate('subcategory', '_id name')
+        .populate('ratings', '_id name')
+        .exec((err, products) => {
+          if (err) console.log('Product Aggragate ERROR', err);
+
+          res.status(200).json({ success: true, data: products });
+        });
+    });
+});
+
 exports.searchFilters = asyncHandler(async (req, res, next) => {
-  const { query, price, category } = req.body;
+  const { query, price, category, stars } = req.body;
 
   if (query) {
     console.log('query ==>', query);
@@ -355,6 +384,11 @@ exports.searchFilters = asyncHandler(async (req, res, next) => {
   if (category) {
     console.log('category on request ==> ', category);
     await handleCategory(req, res, category);
+  }
+
+  if (stars) {
+    console.log('stars on request ==> ', stars);
+    await handleStars(req, res, stars);
   }
 });
 // <-- END OF SEARCH FILTER -->

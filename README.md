@@ -285,6 +285,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Search redux setup
   - Filtering Product by Price range
   - Filtering product by category
+  - Filter by Star Ratings
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
