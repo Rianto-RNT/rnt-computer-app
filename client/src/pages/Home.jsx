@@ -19,6 +19,7 @@ const Home = () => {
   const loadAllProduct = () => {
     setLoading(true);
     getProductByCount(9).then((res) => {
+      window.scrollTo(0, 0);
       setProducts(res.data);
       setLoading(false);
     });

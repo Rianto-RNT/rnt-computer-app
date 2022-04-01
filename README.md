@@ -347,6 +347,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filter product by price range (slider)
   - Filtering product by category
   - reset filtering when choose one filter/search (ex, search, category, price, etc)
+  - Filter product by Star rating
 
 ## TODO to fix
 

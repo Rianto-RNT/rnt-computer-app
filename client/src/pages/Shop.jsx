@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Slider, Checkbox } from "antd";
 import { getProductByCount } from "../services/product";
 import { getAllCategory } from "../services/category";
-import { useSelector, useDispatch } from "react-redux";
-import ProductCard from "../components/cards/ProductCard";
 import { fetchProductByFilter } from "../services/product";
-import { Slider, Checkbox } from "antd";
+import ProductCard from "../components/cards/ProductCard";
+import Star from "../components/forms/Star";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -13,12 +14,14 @@ const Shop = () => {
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState([]);
+  const [star, setStar] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     loadAllProducts();
     getAllCategory().then((res) => setCategories(res.data));
   }, []);
@@ -61,6 +64,8 @@ const Shop = () => {
 
     setCategoryId([]);
 
+    setStar("");
+
     setTimeout(() => {
       setOk(!ok);
     }, 300);
@@ -74,6 +79,7 @@ const Shop = () => {
     });
 
     setPrice([0, 0]);
+    setStar("");
 
     let inTheState = [...categoryId];
     let justChecked = e.target.value;
@@ -100,6 +106,44 @@ const Shop = () => {
         </Checkbox>
       </div>
     ));
+
+  // 5) Load Product by Star Ratings
+  const handleStarClick = (num) => {
+    // console.log(num);
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+
+    setPrice([0, 0]);
+
+    setCategoryId([]);
+
+    setStar(num);
+    fetchProducts({ stars: num });
+  };
+
+  const showStars = () => (
+    <>
+      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+        <div type="button" className="mb-1 text-danger btn-info-light btn-sm btn-pill">
+          <Star starClick={handleStarClick} numberOfStars={5} />
+        </div>
+        <div type="button" className="mb-1 text-danger  btn-info-light btn-sm btn-pill">
+          <Star starClick={handleStarClick} numberOfStars={4} />
+        </div>
+        <div type="button" className="mb-1 text-danger  btn-info-light btn-sm btn-pill">
+          <Star starClick={handleStarClick} numberOfStars={3} />
+        </div>
+        <div type="button" className="mb-1 text-danger btn-info-light btn-sm btn-pill">
+          <Star starClick={handleStarClick} numberOfStars={2} />
+        </div>
+        <div type="button" className="mb-1 text-danger  btn-info-light btn-sm btn-pill">
+          <Star starClick={handleStarClick} numberOfStars={1} />
+        </div>
+      </div>
+    </>
+  );
 
   return (
     // <div className="main-content app-content mt-0">
@@ -190,78 +234,11 @@ const Shop = () => {
 
                 <div className="card">
                   <div className="card-header">
-                    <div className="card-title">Top Product</div>
+                    <div className="card-title">Ratings</div>
                   </div>
                   <div className="card-body">
                     <div className="">
-                      <div className="d-flex overflow-visible">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/8.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">
-                            Hand Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star-half-o"></i>
-                            <i className="fe fe-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <div className="">
-                      <div className="d-flex overflow-visible">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/8.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">
-                            Hand Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star-half-o"></i>
-                            <i className="fe fe-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <div className="">
-                      <div className="d-flex overflow-visible">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/8.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">
-                            Hand Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star-half-o"></i>
-                            <i className="fe fe-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
+                      <div className="media-body valign-middle">{showStars()}</div>
                     </div>
                   </div>
                 </div>
