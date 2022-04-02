@@ -16,7 +16,7 @@ const CreateCategory = () => {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState([]);
 
-  // Search Category in Create Foms **Steps 1
+  // Search Category in Create Forms **Steps 1
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
