@@ -369,8 +369,8 @@ const handleStars = asyncHandler(async (req, res, stars) => {
 });
 
 // 5) Filtering by subcategory
-const handleSubcategory = asyncHandler(async (req, res, subcategory) => {
-  let products = await Product.find({ subcategory: subcategory })
+const handleSubcategory = asyncHandler(async (req, res, sub) => {
+  let products = await Product.find({ subcategory: sub })
     .populate('category', '_id name')
     .populate('subcategory', '_id name')
     .populate('ratings', '_id name')
@@ -388,7 +388,7 @@ const handleSubcategory = asyncHandler(async (req, res, subcategory) => {
 });
 
 exports.searchFilters = asyncHandler(async (req, res, next) => {
-  const { query, price, category, stars, subcategory } = req.body;
+  const { query, price, category, stars, sub } = req.body;
 
   if (query) {
     console.log('query ==>', query);
@@ -410,9 +410,9 @@ exports.searchFilters = asyncHandler(async (req, res, next) => {
     await handleStars(req, res, stars);
   }
 
-  if (subcategory) {
-    console.log('subcategory on request ==> ', subcategory);
-    await handleSubcategory(req, res, subcategory);
+  if (sub) {
+    console.log('subcategory on request ==> ', sub);
+    await handleSubcategory(req, res, sub);
   }
 
   
