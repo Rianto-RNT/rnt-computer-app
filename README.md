@@ -286,6 +286,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filtering Product by Price range
   - Filtering product by category
   - Filter by Star Ratings
+  - Filtering by Subcategory
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -348,6 +349,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filtering product by category
   - reset filtering when choose one filter/search (ex, search, category, price, etc)
   - Filter product by Star rating
+  - Filtering by subcategory 
 
 ## TODO to fix
 

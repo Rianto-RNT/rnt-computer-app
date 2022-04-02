@@ -368,8 +368,27 @@ const handleStars = asyncHandler(async (req, res, stars) => {
     });
 });
 
+// 5) Filtering by subcategory
+const handleSubcategory = asyncHandler(async (req, res, subcategory) => {
+  let products = await Product.find({ subcategory: subcategory })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Product not found with ${subcategory}. Please add correct value.`
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: products });
+});
+
 exports.searchFilters = asyncHandler(async (req, res, next) => {
-  const { query, price, category, stars } = req.body;
+  const { query, price, category, stars, subcategory } = req.body;
 
   if (query) {
     console.log('query ==>', query);
@@ -390,5 +409,12 @@ exports.searchFilters = asyncHandler(async (req, res, next) => {
     console.log('stars on request ==> ', stars);
     await handleStars(req, res, stars);
   }
+
+  if (subcategory) {
+    console.log('subcategory on request ==> ', subcategory);
+    await handleSubcategory(req, res, subcategory);
+  }
+
+  
 });
 // <-- END OF SEARCH FILTER -->
