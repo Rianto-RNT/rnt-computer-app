@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { Spin } from "antd";
-import { createCategory, getAllCategory, removeCategory } from "../../../services/category";
 import { Link } from "react-router-dom";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import { Spin } from "antd";
+import AdminNav from "../../../components/nav/AdminNav";
+import { createCategory, getAllCategory, removeCategory } from "../../../services/category";
 import CategoryForm from "../../../components/forms/CategoryForm";
 import LocalSearch from "../../../components/search/LocalSearch";
-
-const rightStyleEdit = { position: "absolute", top: 0, right: 15 };
-const rightStyleDelete = {
-  display: "flex-end",
-  justifyContent: "space-between",
-  position: "absolute",
-  top: 0,
-  right: 60,
-};
 
 const CreateCategory = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -43,8 +34,15 @@ const CreateCategory = () => {
         // console.log(res)
         setLoading(false);
         setName("");
-        toast.success(`"${res.data.name}" is created`);
-        loadAllCategory();
+        Swal.fire({
+          title: `${res.data.name} is created`,
+          timer: 5000,
+          text: "Please check your category list :)",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(function () {
+          loadAllCategory();
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -53,22 +51,27 @@ const CreateCategory = () => {
       });
   };
 
-  const handleRemove = async (slug) => {
-    if (window.confirm("Remove Category?")) {
-      setLoading(true);
-      removeCategory(slug, user.token)
-        .then((res) => {
-          setLoading(false);
-          toast.error(`${res.data.name} deleted`);
+  const handleRemove = (slug) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((product) => {
+      if (product.isConfirmed) {
+        removeCategory(slug, user.token).then(() => {
+          Swal.fire("Deleted!", "Your category has been deleted.", "success");
           loadAllCategory();
-        })
-        .catch((error) => {
-          if (error.response.status === 400) {
-            setLoading(false);
-            toast.error(error.response.data);
-          }
         });
-    }
+      } else {
+        Swal.fire("Cancelled", "Your category data is safe :)", "error");
+      }
+    });
   };
 
   // step 3
@@ -84,7 +87,19 @@ const CreateCategory = () => {
         </div>
 
         <div className="col-md-10">
-          <div className="page-header pt-7">{loading ? <Spin size="large" tip="Loading..." /> : <h3>Category</h3>}</div>
+          <div className="page-header pt-7">
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Category</h1>}{" "}
+            <div>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Category
+                </li>
+              </ol>
+            </div>
+          </div>
           <div className="card">
             <div className="card-body">
               <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
@@ -118,9 +133,9 @@ const CreateCategory = () => {
                       </tr>
                     </thead>
                     {category.filter(searched(keyword)).map((c) => (
-                      <tbody>
+                      <tbody key={c._id}>
                         <tr>
-                          <td key={c._id}>{c.name}</td>
+                          <td>{c.name}</td>
                           <td className="text-center">{c.createdAt}</td>
 
                           <td className="text-center align-middle">

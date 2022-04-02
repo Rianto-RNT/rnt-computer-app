@@ -7,10 +7,10 @@ const LocalSearch = ({ keyword, setKeyword }) => {
   };
 
   return (
-    <div class="input-group mb-5">
+    <div className="input-group mb-5">
       <input type="search" value={keyword} onChange={handleSearchChange} className="form-control" placeholder="Search" />
-      <div class="input-group-text btn btn-primary">
-        <i class="fe fe-search" aria-hidden="true"></i>
+      <div className="input-group-text btn btn-primary">
+        <i className="fe fe-search" aria-hidden="true"></i>
       </div>
     </div>
   );
