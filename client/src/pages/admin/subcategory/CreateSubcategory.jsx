@@ -6,18 +6,9 @@ import { Spin } from "antd";
 import { createSubcategory, removeSubcategory, getAllSubcategory } from "../../../services/subcategory";
 import { getAllCategory } from "../../../services/category";
 import { Link } from "react-router-dom";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../../../components/forms/CategoryForm";
 import LocalSearch from "../../../components/search/LocalSearch";
 
-const rightStyleEdit = { position: "absolute", top: 0, right: 15 };
-const rightStyleDelete = {
-  display: "flex-end",
-  justifyContent: "space-between",
-  position: "absolute",
-  top: 0,
-  right: 60,
-};
 
 const CreateSubcategory = () => {
   const { user } = useSelector((state) => ({ ...state }));
