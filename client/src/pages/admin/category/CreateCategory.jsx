@@ -127,7 +127,7 @@ const CreateCategory = () => {
                   <table className="table border-top table-bordered mb-0">
                     <thead>
                       <tr>
-                        <th className="text-center">Name</th>
+                        <th className="text-center">Category Name</th>
                         <th className="text-center">Date</th>
                         <th className="text-center">Actions</th>
                       </tr>

@@ -82,49 +82,113 @@ const CreateSubcategory = () => {
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="main-container container-fluid">
+      <div className="row row-cards">
         <div className="col-md-2">
           <AdminNav />
         </div>
 
-        <div className="col mt-8">
-          {loading ? <Spin size="large" tip="Loading..." /> : <h4>Create Subcategory</h4>}
-
-          <div className="form-group">
-            <label>Category</label>
-            <select defaultValue={"please-select"} name="parents" className="form-control" onChange={(e) => setParents(e.target.value)}>
-              <option value="please-select" disabled>
-                --Please select--
-              </option>
-              {category.length > 0 &&
-                category.map((c) => (
-                  <option key={c._id} value={c._id}>
-                    {c.name}
-                  </option>
-                ))}
-            </select>
+        <div className="col-md-10">
+          <div className="page-header pt-7">
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Subcategory</h1>}
+            <div>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Subcategory
+                </li>
+              </ol>
+            </div>
           </div>
 
-          <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
+          <div className="card">
+            <div className="card-body">
+              <div className="form-group">
+                <label>Category</label>
+                <select defaultValue={"please-select"} name="parents" className="form-control" onChange={(e) => setParents(e.target.value)}>
+                  <option value="please-select" disabled>
+                    --Please select--
+                  </option>
+                  {category.length > 0 &&
+                    category.map((c) => (
+                      <option key={c._id} value={c._id}>
+                        {c.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
+            </div>
+          </div>
 
           {/* // STEP 2 and step 3 have been moved here */}
           <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
           {/* STEP 5 */}
-          {subcategory.filter(searched(keyword)).map((s) => (
-            <div key={s._id} className="alert alert-secondary">
-              {s.name}
-              <span onClick={() => handleRemove(s.slug)} className="btn btn-md" style={rightStyleDelete}>
-                <DeleteOutlined className="text-danger" />
-              </span>
-              <span className="btn btn-md" style={rightStyleEdit}>
-                <Link to={`/admin/subcategory/${s.slug}`}>
-                  <EditOutlined className="text-warning" />
-                </Link>
-              </span>
+          <div className="card">
+            <div className="card-body">
+              <div className="card-header border-bottom-0 p-4">
+                <h2 className="card-title">1 - 25 of 256 subcategories</h2>
+                <div className="page-options ms-auto">
+                  <select className="form-control select2 w-100">
+                    <option value="asc">Latest</option>
+                    <option value="desc">Oldest</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="e-table px-5 pb-5">
+                <div className="table-responsive table-lg">
+                  <table className="table border-top table-bordered mb-0">
+                    <thead>
+                      <tr>
+                        <th className="text-center">Subcategory Name</th>
+                        <th className="text-center">Date</th>
+                        <th className="text-center">Actions</th>
+                      </tr>
+                    </thead>
+                    {subcategory.filter(searched(keyword)).map((s) => (
+                      <tbody key={s._id}>
+                        <tr>
+                          <td>{s.name}</td>
+                          <td className="text-center">{s.createdAt}</td>
+
+                          <td className="text-center align-middle">
+                            <div className="btn-group align-top ">
+                              <Link to={`/admin/subcategory/${s.slug}`} className="btn btn-sm btn-warning badge" type="button">
+                                <i className="fe fe-edit"></i>
+                              </Link>
+                              <button onClick={() => handleRemove(s.slug)} className="btn btn-sm btn-danger badge" type="button">
+                                <i className="fe fe-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                      // <div key={s._id} className="alert alert-secondary">
+                      //   {s.name}
+                      //   <span onClick={() => handleRemove(s.slug)} className="btn btn-md" style={rightStyleDelete}>
+                      //     <DeleteOutlined className="text-danger" />
+                      //   </span>
+                      //   <span className="btn btn-md" style={rightStyleEdit}>
+                      //     <Link to={`/admin/subcategory/${s.slug}`}>
+                      //       <EditOutlined className="text-warning" />
+                      //     </Link>
+                      //   </span>
+                      // </div>
+                    ))}
+                  </table>
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>
