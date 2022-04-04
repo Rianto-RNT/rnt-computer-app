@@ -23,7 +23,7 @@ const UpdateCategory = ({ history, match }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    updateCategory(match.params.slug, { name: "" }, user.token)
+    updateCategory(match.params.slug, { name }, user.token)
       .then((res) => {
         setLoading(false);
         setName("");
@@ -54,7 +54,8 @@ const UpdateCategory = ({ history, match }) => {
 
         <div className="col-md-10">
           <div className="page-header pt-7">
-            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Category</h1>}{" "}
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Category</h1>}
+
             <div>
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
