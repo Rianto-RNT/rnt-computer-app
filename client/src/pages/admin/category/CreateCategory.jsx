@@ -62,8 +62,8 @@ const CreateCategory = () => {
       confirmButtonText: "Yes, delete it!",
       closeOnConfirm: false,
       closeOnCancel: false,
-    }).then((product) => {
-      if (product.isConfirmed) {
+    }).then((category) => {
+      if (category.isConfirmed) {
         removeCategory(slug, user.token).then(() => {
           Swal.fire("Deleted!", "Your category has been deleted.", "success");
           loadAllCategory();

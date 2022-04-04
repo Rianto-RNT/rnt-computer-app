@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 import { Spin } from "antd";
 import { createSubcategory, removeSubcategory, getAllSubcategory } from "../../../services/subcategory";
-import { getAllCategory } from "../../../services/category";
-import { Link } from "react-router-dom";
+import AdminNav from "../../../components/nav/AdminNav";
 import CategoryForm from "../../../components/forms/CategoryForm";
+import { getAllCategory } from "../../../services/category";
 import LocalSearch from "../../../components/search/LocalSearch";
-
 
 const CreateSubcategory = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -39,7 +39,16 @@ const CreateSubcategory = () => {
       .then((res) => {
         setLoading(false);
         setName("");
-        toast.success(`"${res.data.name}" is created`);
+        // toast.success(`"${res.data.name}" is created`);
+        Swal.fire({
+          title: `${res.data.name} is created`,
+          timer: 5000,
+          text: "Please check your subcategory list :)",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(function () {
+          loadAllCategory();
+        });
         loadAllSubcategory();
       })
       .catch((err) => {
@@ -50,24 +59,27 @@ const CreateSubcategory = () => {
   };
 
   const handleRemove = async (slug) => {
-    if (window.confirm("Remove Category?")) {
-      setLoading(true);
-      removeSubcategory(slug, user.token)
-        .then((res) => {
-          setLoading(false);
-          toast.error(`${res.data.name} deleted`);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((subcategory) => {
+      if (subcategory.isConfirmed) {
+        removeSubcategory(slug, user.token).then(() => {
+          Swal.fire("Deleted!", "Your subcategory has been deleted.", "success");
           loadAllSubcategory();
-        })
-        .catch((error) => {
-          if (error.response.status === 400) {
-            setLoading(false);
-            toast.error(error.response.data);
-          }
         });
-    }
+      } else {
+        Swal.fire("Cancelled", "Your subcategory data is safe :)", "error");
+      }
+    });
   };
-
-  // step 3
 
   // Step 4
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);

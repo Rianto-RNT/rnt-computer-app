@@ -25,13 +25,12 @@ exports.getSingleSubcategory = asyncHandler(async (req, res, next) => {
 
   const products = await Product.find({ subcategory })
     .populate('category')
-    .populate('ratings')
     .exec();
 
   if (!subcategory) {
     return next(
       new ErrorResponse(
-        `Subcategory not found with ${req.params.slug}. Please add corect value`,
+        `Subcategory not found with ${req.params.name}. Please add corect value`,
         400
       )
     );
