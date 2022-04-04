@@ -351,6 +351,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - reset filtering when choose one filter/search (ex, search, category, price, etc)
   - Filter product by Star rating
   - Filter product by subcategory 
+  - Filter product by Brands 
 
 ## TODO to fix
 

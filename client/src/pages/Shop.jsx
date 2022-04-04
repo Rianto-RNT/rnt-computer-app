@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Slider, Checkbox, Button } from "antd";
+import { Slider, Checkbox, Button, Radio } from "antd";
 import { getProductByCount } from "../services/product";
 import { getAllCategory } from "../services/category";
 import { getAllSubcategory } from "../services/subcategory";
@@ -18,6 +18,22 @@ const Shop = () => {
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
+  const [brands, setbrands] = useState([
+    "Apple",
+    "Lenovo",
+    "HP",
+    "Acer",
+    "Microsoft",
+    "Asus",
+    "MSi",
+    "Alienware",
+    "Razer",
+    "Huawei",
+    "Dell",
+    "Axioo",
+    "Avita",
+  ]);
+  const [brand, setBrand] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -67,15 +83,11 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-
     setCategoryId([]);
-
     setPrice(value);
-
     setStar("");
-
     setSub("");
-
+    setBrand("");
     setTimeout(() => {
       setOk(!ok);
     }, 300);
@@ -87,10 +99,10 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-
     setPrice([0, 0]);
     setStar("");
     setSub("");
+    setBrand("");
 
     let inTheState = [...categoryId];
     let justChecked = e.target.value;
@@ -125,15 +137,11 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-
     setPrice([0, 0]);
-
     setCategoryId([]);
-
     setStar(num);
-
     setSub("");
-
+    setBrand("");
     fetchProducts({ stars: num });
   };
 
@@ -173,21 +181,42 @@ const Shop = () => {
       </div>
     ));
 
-    const handleSub = (sub) => {
-      // console.log("Subcategory ==>", s);
-      setSub(sub);
-      dispatch({
-        type: "SEARCH_QUERY",
-        payload: { text: "" },
-      });
-  
-      setPrice([0, 0]);
-  
-      setCategoryId([]);
-  
-      setStar("");
-      fetchProducts({ sub });
-    };
+  const handleSub = (sub) => {
+    // console.log("Subcategory ==>", s);
+    setSub(sub);
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryId([]);
+    setStar("");
+    setBrand("");
+    fetchProducts({ sub });
+  };
+
+  // 7) Load Product by Brands
+  const handleBrand = (e) => {
+    setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryId([]);
+    setStar("");
+    setBrand(e.target.value);
+    fetchProducts({ brand: e.target.value });
+  };
+
+  const showBrands = () =>
+    brands.map((b) => (
+      <div>
+        <Radio value={b} name={b} checked={b === brand} onChange={handleBrand}>
+          {b}
+        </Radio>
+      </div>
+    ));
 
   return (
     // <div className="main-content app-content mt-0">
@@ -237,20 +266,7 @@ const Shop = () => {
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label">Brand</label>
-                      <select name="beast" id="select-beast1" className="form-control form-select select2">
-                        <option value="0">--Select--</option>
-                        <option value="1">White</option>
-                        <option value="2">Black</option>
-                        <option value="3">Red</option>
-                        <option value="4">Green</option>
-                        <option value="5">Blue</option>
-                        <option value="6">Yellow</option>
-                      </select>
-                    </div>
-
-                    <div className="form-group">
-                      <label className="form-label">Type</label>
+                      <label className="form-label">Shipping</label>
                       <select name="beast" id="select-beast2" className="form-control form-select select2">
                         <option value="0">--Select--</option>
                         <option value="1">Extra Small</option>
@@ -262,16 +278,18 @@ const Shop = () => {
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label">Color</label>
-                      <select name="beast" id="select-beast3" className="form-control form-select select2">
-                        <option value="0">--Select--</option>
+                      <label className="form-label">Brand</label>
+                      {/* <select name="beast" id="select-beast1" className="form-control form-select select2"> */}
+                      {showBrands()}
+
+                      {/* <option value="0">--Select--</option>
                         <option value="1">White</option>
                         <option value="2">Black</option>
                         <option value="3">Red</option>
                         <option value="4">Green</option>
                         <option value="5">Blue</option>
-                        <option value="6">Yellow</option>
-                      </select>
+                        <option value="6">Yellow</option> */}
+                      {/* </select> */}
                     </div>
 
                     <div className="text-wrap">
@@ -280,6 +298,72 @@ const Shop = () => {
                         {showSubs()}
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="card-header">
+                    <h3 className="card-title">Colors</h3>
+                  </div>
+                  <div className="card-body">
+                    <form className="shop__filter">
+                      <div className="row gutters-xs">
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="azure" className="colorinput-input" />
+                            <span className="colorinput-color bg-azure"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="indigo" className="colorinput-input" />
+                            <span className="colorinput-color bg-indigo"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="purple" className="colorinput-input" />
+                            <span className="colorinput-color bg-purple"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="pink" className="colorinput-input" />
+                            <span className="colorinput-color bg-pink"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="red" className="colorinput-input" />
+                            <span className="colorinput-color bg-red"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="orange" className="colorinput-input" />
+                            <span className="colorinput-color bg-orange"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="yellow" className="colorinput-input" />
+                            <span className="colorinput-color bg-yellow"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="lime" className="colorinput-input" />
+                            <span className="colorinput-color bg-lime"></span>
+                          </label>
+                        </div>
+                        <div className="col-auto">
+                          <label className="colorinput">
+                            <input name="color" type="radio" value="green" className="colorinput-input" />
+                            <span className="colorinput-color bg-green"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
 
