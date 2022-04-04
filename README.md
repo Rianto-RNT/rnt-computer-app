@@ -287,6 +287,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filtering product by category
   - Filter by Star Ratings
   - Filtering by Subcategory
+  - Filtering Product by Shipping, Color and Brand
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)

@@ -387,8 +387,66 @@ const handleSubcategory = asyncHandler(async (req, res, sub) => {
   res.status(200).json({ success: true, data: products });
 });
 
+// 6) Filtering by Shipping
+const handleShipping = asyncHandler(async (req, res, shipping) => {
+  let products = await Product.find({ shipping })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Product not found with ${shipping}. Please add correct value.`
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: products });
+});
+
+// 7) Filtering by Color
+const handleColor = asyncHandler(async (req, res, color) => {
+  let products = await Product.find({ color })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Product not found with ${color}. Please add correct value.`
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: products });
+});
+
+// 8) Filtering by brand
+const handleBrand = asyncHandler(async (req, res, brand) => {
+  let products = await Product.find({ brand })
+    .populate('category', '_id name')
+    .populate('subcategory', '_id name')
+    .populate('ratings', '_id name')
+    .exec();
+
+  if (!products) {
+    return next(
+      new ErrorResponse(
+        `Product not found with ${brand}. Please add correct value.`
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: products });
+});
+
 exports.searchFilters = asyncHandler(async (req, res, next) => {
-  const { query, price, category, stars, sub } = req.body;
+  const { query, price, category, stars, sub, shipping, color, brand } =
+    req.body;
 
   if (query) {
     console.log('query ==>', query);
@@ -415,6 +473,19 @@ exports.searchFilters = asyncHandler(async (req, res, next) => {
     await handleSubcategory(req, res, sub);
   }
 
-  
+  if (shipping) {
+    console.log('shipping on request ==> ', shipping);
+    await handleShipping(req, res, shipping);
+  }
+
+  if (color) {
+    console.log('color on request ==> ', color);
+    await handleColor(req, res, color);
+  }
+
+  if (brand) {
+    console.log('brand on request ==> ', brand);
+    await handleBrand(req, res, brand);
+  }
 });
 // <-- END OF SEARCH FILTER -->
