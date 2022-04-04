@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import { Spin } from "antd";
+import { toast } from "react-toastify";
+import AdminNav from "../../../components/nav/AdminNav";
 import { getSingleSubcategory, updateSubcategory } from "../../../services/subcategory";
 import { getAllCategory } from "../../../services/category";
 import CategoryForm from "../../../components/forms/CategoryForm";
@@ -15,13 +17,11 @@ const UpdateSubcategory = ({ history, match }) => {
   const [category, setCategory] = useState([]);
 
   // request from backend
-  // eslint-disable-next-line
-  const [parents, setParents] = useState("");
+  const [parent, setParent] = useState("");
 
   useEffect(() => {
     loadAllCategory();
     loadSingleCategory();
-    // eslint-disable-next-line
   }, []);
 
   const loadAllCategory = () => getAllCategory().then((c) => setCategory(c.data));
@@ -29,18 +29,25 @@ const UpdateSubcategory = ({ history, match }) => {
   const loadSingleCategory = () =>
     getSingleSubcategory(match.params.slug).then((s) => {
       setName(s.data.name);
-      setParents(s.data.parent);
+      setParent(s.data.parent);
     });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    updateSubcategory(match.params.slug, { name, category }, user.token)
+    updateSubcategory(match.params.slug, { name, parent }, user.token)
       .then((res) => {
         setLoading(false);
         setName("");
-        toast.success(`"${res.data.name}" is updated`);
-        history.push("/admin/subcategory");
+        Swal.fire({
+          title: `${res.data.name} is updated`,
+          timer: 5000,
+          text: "Please check your subcategory list :)",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(function () {
+          history.push("/admin/subcategory");
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -50,30 +57,56 @@ const UpdateSubcategory = ({ history, match }) => {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="main-container container-fluid">
+      <div className="row row-cards">
         <div className="col-md-2">
           <AdminNav />
         </div>
-        <div className="col mt-8">
-          {loading ? <Spin size="large" tip="Loading..." /> : <h4>Update Subcategory</h4>}
 
-          <div className="form-group">
-            <label>Category</label>
-            <select name="category" className="form-control" onChange={(e) => setParents(e.target.value)} defaultValue={"Please-Choose"}>
-              <option value="Please-Choose" disabled>
-                -Please Choose-
-              </option>
-              {category.length > 0 &&
-                category.map((c) => (
-                  <option key={c._id} value={c._id}>
-                    {c.name}
-                  </option>
-                ))}
-            </select>
+        <div className="col-md-10">
+          <div className="page-header pt-7">
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Subcategory</h1>}
+            <div>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Update Subcategory
+                </li>
+              </ol>
+            </div>
           </div>
 
-          <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
+          <div className="card">
+            <div className="card-body">
+              <div className="form-group">
+                <label>Category</label>
+                <select
+                  name="category"
+                  className="form-control"
+                  onChange={(e) => setParent(e.target.value)}
+                  defaultValue={"Please-Choose"}
+                >
+                  <option value="Please-Choose" disabled>
+                    -Please Choose-
+                  </option>
+                  {category.length > 0 &&
+                    category.map((c) => (
+                      <option key={c._id} value={c._id}>
+                        {c.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <CategoryForm handleSubmit={handleSubmit} name={name} setName={setName} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

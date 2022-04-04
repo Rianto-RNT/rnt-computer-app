@@ -39,7 +39,6 @@ const CreateSubcategory = () => {
       .then((res) => {
         setLoading(false);
         setName("");
-        // toast.success(`"${res.data.name}" is created`);
         Swal.fire({
           title: `${res.data.name} is created`,
           timer: 5000,
@@ -47,9 +46,8 @@ const CreateSubcategory = () => {
           icon: "success",
           confirmButtonText: "OK",
         }).then(function () {
-          loadAllCategory();
+          loadAllSubcategory();
         });
-        loadAllSubcategory();
       })
       .catch((err) => {
         console.log(err);
