@@ -352,6 +352,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filter product by Star rating
   - Filter product by subcategory 
   - Filter product by Brands 
+  - Filter product by Color 
+  - Filter product by Shipping 
 
 ## TODO to fix
 

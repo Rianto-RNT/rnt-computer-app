@@ -48,6 +48,8 @@ const Shop = () => {
     "Mate Grey",
   ]);
   const [color, setColor] = useState("");
+  const [shippings, setShippings] = useState(["Yes", "No"]);
+  const [shipping, setShipping] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -103,6 +105,7 @@ const Shop = () => {
     setSub("");
     setBrand("");
     setColor("");
+    setShipping("");
     setTimeout(() => {
       setOk(!ok);
     }, 300);
@@ -119,6 +122,7 @@ const Shop = () => {
     setSub("");
     setBrand("");
     setColor("");
+    setShipping("");
 
     let inTheState = [...categoryId];
     let justChecked = e.target.value;
@@ -159,6 +163,7 @@ const Shop = () => {
     setSub("");
     setBrand("");
     setColor("");
+    setShipping("");
     fetchProducts({ stars: num });
   };
 
@@ -210,6 +215,7 @@ const Shop = () => {
     setStar("");
     setBrand("");
     setColor("");
+    setShipping("");
     fetchProducts({ sub });
   };
 
@@ -224,13 +230,14 @@ const Shop = () => {
     setCategoryId([]);
     setStar("");
     setColor("");
+    setShipping("");
     setBrand(e.target.value);
     fetchProducts({ brand: e.target.value });
   };
 
   const showBrands = () =>
     brands.map((b) => (
-      <div >
+      <div>
         <Radio value={b} name={b} checked={b === brand} onChange={handleBrand}>
           {b}
         </Radio>
@@ -248,6 +255,7 @@ const Shop = () => {
     setCategoryId([]);
     setStar("");
     setBrand("");
+    setShipping("");
     setColor(e.target.value);
     fetchProducts({ color: e.target.value });
   };
@@ -261,6 +269,29 @@ const Shop = () => {
           <span className="col-md-10">{c}</span>
         </label>
       </div>
+    ));
+
+  // 9) Load Product by Shipping
+  const handleShippingChange = (e) => {
+    setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryId([]);
+    setStar("");
+    setBrand("");
+    setColor("");
+    setShipping(e.target.value);
+    fetchProducts({ shipping: e.target.value });
+  };
+
+  const showShipping = () =>
+    shippings.map((s) => (
+      <Radio name={s} value={s} checked={s === shipping} onChange={handleShippingChange}>
+        {s}
+      </Radio>
     ));
 
   return (
@@ -312,14 +343,8 @@ const Shop = () => {
 
                     <div className="form-group">
                       <label className="form-label">Shipping</label>
-                      <select name="beast" id="select-beast2" className="form-control form-select select2">
-                        <option value="0">--Select--</option>
-                        <option value="1">Extra Small</option>
-                        <option value="2">Small</option>
-                        <option value="3">Medium</option>
-                        <option value="4">Large</option>
-                        <option value="5">Extra Large</option>
-                      </select>
+
+                      {showShipping()}
                     </div>
 
                     <div className="form-group">
