@@ -34,6 +34,20 @@ const Shop = () => {
     "Avita",
   ]);
   const [brand, setBrand] = useState("");
+  const [colors, setColors] = useState([
+    "Yellow",
+    "Green",
+    "Red",
+    "Black",
+    "Silver",
+    "Blue",
+    "White",
+    "Grey",
+    "Space Grey",
+    "Mate Black",
+    "Mate Grey",
+  ]);
+  const [color, setColor] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -88,6 +102,7 @@ const Shop = () => {
     setStar("");
     setSub("");
     setBrand("");
+    setColor("");
     setTimeout(() => {
       setOk(!ok);
     }, 300);
@@ -103,6 +118,7 @@ const Shop = () => {
     setStar("");
     setSub("");
     setBrand("");
+    setColor("");
 
     let inTheState = [...categoryId];
     let justChecked = e.target.value;
@@ -142,6 +158,7 @@ const Shop = () => {
     setStar(num);
     setSub("");
     setBrand("");
+    setColor("");
     fetchProducts({ stars: num });
   };
 
@@ -192,6 +209,7 @@ const Shop = () => {
     setCategoryId([]);
     setStar("");
     setBrand("");
+    setColor("");
     fetchProducts({ sub });
   };
 
@@ -205,16 +223,43 @@ const Shop = () => {
     setPrice([0, 0]);
     setCategoryId([]);
     setStar("");
+    setColor("");
     setBrand(e.target.value);
     fetchProducts({ brand: e.target.value });
   };
 
   const showBrands = () =>
     brands.map((b) => (
-      <div>
+      <div >
         <Radio value={b} name={b} checked={b === brand} onChange={handleBrand}>
           {b}
         </Radio>
+      </div>
+    ));
+
+  // 8) Load Products by Color
+  const handleColor = (e) => {
+    setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryId([]);
+    setStar("");
+    setBrand("");
+    setColor(e.target.value);
+    fetchProducts({ color: e.target.value });
+  };
+
+  const ShowColors = () =>
+    colors.map((c) => (
+      <div className="btn-group">
+        <label className="colorinput">
+          <input name={c} type="radio" value={c} checked={c === color} onChange={handleColor} className="colorinput-input" />
+          <span className="colorinput-color bg-gray"></span>
+          <span className="col-md-10">{c}</span>
+        </label>
       </div>
     ));
 
@@ -279,17 +324,7 @@ const Shop = () => {
 
                     <div className="form-group">
                       <label className="form-label">Brand</label>
-                      {/* <select name="beast" id="select-beast1" className="form-control form-select select2"> */}
                       {showBrands()}
-
-                      {/* <option value="0">--Select--</option>
-                        <option value="1">White</option>
-                        <option value="2">Black</option>
-                        <option value="3">Red</option>
-                        <option value="4">Green</option>
-                        <option value="5">Blue</option>
-                        <option value="6">Yellow</option> */}
-                      {/* </select> */}
                     </div>
 
                     <div className="text-wrap">
@@ -308,13 +343,15 @@ const Shop = () => {
                   <div className="card-body">
                     <form className="shop__filter">
                       <div className="row gutters-xs">
-                        <div className="col-auto">
+                        {ShowColors()}
+
+                        {/* <div className="col-auto">
                           <label className="colorinput">
                             <input name="color" type="radio" value="azure" className="colorinput-input" />
                             <span className="colorinput-color bg-azure"></span>
                           </label>
-                        </div>
-                        <div className="col-auto">
+                        </div> */}
+                        {/* <div className="col-auto">
                           <label className="colorinput">
                             <input name="color" type="radio" value="indigo" className="colorinput-input" />
                             <span className="colorinput-color bg-indigo"></span>
@@ -361,7 +398,7 @@ const Shop = () => {
                             <input name="color" type="radio" value="green" className="colorinput-input" />
                             <span className="colorinput-color bg-green"></span>
                           </label>
-                        </div>
+                        </div> */}
                       </div>
                     </form>
                   </div>
