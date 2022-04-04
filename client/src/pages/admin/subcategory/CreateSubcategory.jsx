@@ -173,17 +173,6 @@ const CreateSubcategory = () => {
                           </td>
                         </tr>
                       </tbody>
-                      // <div key={s._id} className="alert alert-secondary">
-                      //   {s.name}
-                      //   <span onClick={() => handleRemove(s.slug)} className="btn btn-md" style={rightStyleDelete}>
-                      //     <DeleteOutlined className="text-danger" />
-                      //   </span>
-                      //   <span className="btn btn-md" style={rightStyleEdit}>
-                      //     <Link to={`/admin/subcategory/${s.slug}`}>
-                      //       <EditOutlined className="text-warning" />
-                      //     </Link>
-                      //   </span>
-                      // </div>
                     ))}
                   </table>
                 </div>
