@@ -17,7 +17,6 @@ const ProductCreateForm = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <!-- ROW-1 OPEN --> */}
       <div className="row">
         <div className="col-lg-12">
           <div className="card">
@@ -36,7 +35,6 @@ const ProductCreateForm = ({
                 </div>
               </div>
 
-              {/* <!-- Row --> */}
               <div className="row mb-4">
                 <label className="col-md-3 form-label">Product Description :</label>
                 <div className="col-md-9">
@@ -53,7 +51,6 @@ const ProductCreateForm = ({
                   </div>
                 </div>
               </div>
-              {/* <!--End Row--> */}
 
               <div className="row mb-4">
                 <label className="col-md-3 form-label">Price :</label>

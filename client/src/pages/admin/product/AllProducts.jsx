@@ -123,7 +123,7 @@ const AllProducts = () => {
           <div className="mb-5">
             <ul className="pagination float-end">
               <li className="page-item page-prev disabled">
-                <a className="page-link" href="#!" tabindex="-1">
+                <a className="page-link" href="#!" tabIndex="-1">
                   Prev
                 </a>
               </li>

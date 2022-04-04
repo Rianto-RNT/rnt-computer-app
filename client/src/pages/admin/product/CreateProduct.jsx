@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import AdminNav from "../../../components/nav/AdminNav";
-import { createProduct } from "../../../services/product";
-import ProductCreateForm from "../../../components/forms/ProductCreateForm";
-import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
-import FileUploadForm from "../../../components/forms/FileUploadForm";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import AdminNav from "../../../components/nav/AdminNav";
+import FileUploadForm from "../../../components/forms/FileUploadForm";
+import ProductCreateForm from "../../../components/forms/ProductCreateForm";
+import { createProduct } from "../../../services/product";
+import { getAllCategory, getAllSubcategoryForProduct } from "../../../services/category";
 
 const initialState = {
   title: "",
@@ -83,28 +84,44 @@ const CreateProduct = () => {
 
   return (
     <div className="main-container container-fluid">
-      <div className="row">
+      <div className="row row-cards">
         <div className="col-md-2">
           <AdminNav />
         </div>
 
         <div className="col-md-10">
-          {loading ? <Spin tip="Uploading..." indicator={antIcon} /> : <h4>Create Product</h4>}
-          <hr />
-
-          <div className="p-3">
-            <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
+          <div className="page-header pt-7">
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Add Product</h1>}
+            <div>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Add Product
+                </li>
+              </ol>
+            </div>
           </div>
 
-          <ProductCreateForm
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            setValues={setValues}
-            values={values}
-            handleCategoryChange={handleCategoryChange}
-            subcategoryOptions={subcategoryOptions}
-            showSubcategory={showSubcategory}
-          />
+          <FileUploadForm values={values} setValues={setValues} setLoading={setLoading} />
+
+          <div className="card">
+            <div className="card-header">
+              <h3 className="card-title">Product Form</h3>
+            </div>
+            <div className="card-body">
+              <ProductCreateForm
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                setValues={setValues}
+                values={values}
+                handleCategoryChange={handleCategoryChange}
+                subcategoryOptions={subcategoryOptions}
+                showSubcategory={showSubcategory}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
