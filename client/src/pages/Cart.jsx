@@ -8,8 +8,6 @@ const Cart = () => {
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
-  //
-
   const getTotal = () => {
     return cart.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price;
@@ -32,12 +30,14 @@ const Cart = () => {
         <tr>
           <td>
             <div className="text-center">
-              <img
-                src={c.images && c.images.length ? c.images[0].url : noImages}
-                style={{ objectFit: "cover" }}
-                alt="image"
-                className="cart-img text-center"
-              />
+              <Link to={`/product/${c.slug}`}>
+                <img
+                  src={c.images && c.images.length ? c.images[0].url : noImages}
+                  style={{ objectFit: "cover" }}
+                  alt="image"
+                  className="cart-img text-center"
+                />
+              </Link>
             </div>
           </td>
           <td>{c.title}</td>
