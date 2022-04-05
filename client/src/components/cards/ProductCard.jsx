@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
 import productAverageRatings from "../../services/rating";
@@ -6,6 +6,8 @@ import _ from "lodash";
 
 const ProductCard = ({ product }) => {
   const { title, price, images, slug } = product;
+
+  const [tooltip, setTooltip] = useState("Click to add");
 
   const handleAddToCart = () => {
     // Create Cart Array
@@ -25,6 +27,8 @@ const ProductCard = ({ product }) => {
       // save to local storage
       //console.log('unique ===>>' unique)
       localStorage.setItem("cart", JSON.stringify(unique));
+      // show tooltip
+      setTooltip("Added");
     }
   };
 
@@ -71,9 +75,18 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="card-footer text-center">
-          <Link to={"/cart/item"} onClick={handleAddToCart} className="btn btn-primary mb-1">
+        
+          <Link
+            to={"/cart/item"}
+            onClick={handleAddToCart}
+            data-bs-placement="left"
+            data-bs-toggle="tooltip-primary"
+            title={tooltip}
+            className="btn btn-primary mb-1"
+          >
             <i className="fe fe-shopping-cart me-2"></i>Add to cart
           </Link>
+         
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">
             <i className="fe fe-heart me-2 wishlist-icon"></i>Add to wishlist
           </a>
