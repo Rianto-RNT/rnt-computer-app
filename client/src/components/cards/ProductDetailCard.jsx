@@ -1,13 +1,50 @@
 import React, { useState } from "react";
-import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import _ from "lodash";
 import { Carousel } from "react-responsive-carousel";
 import StarRatings from "react-star-ratings";
 import RatingModal from "../modal/RatingModal";
 import { productAverageRatings } from "../../services/rating";
+import noImages from "../../assets/images/noImages.png";
 
 const ProductDetailCard = ({ product, onStarClick, star }) => {
   const { title, price, description, images, quantity, slug, _id } = product;
+
+  const [tooltip, setTooltip] = useState("Click to add");
+
+  // Redux
+  const { user, cart } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    // Create Cart Array
+    let cart = [];
+    if (typeof window !== undefined) {
+      // if cart is in localstorate then GET it
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      // push new product to cart
+      cart.push({
+        ...product,
+        count: 1,
+      });
+      // remove duplicates
+      let unique = _.uniqWith(cart, _.isEqual);
+      // save to local storage
+      //console.log('unique ===>>' unique)
+      localStorage.setItem("cart", JSON.stringify(unique));
+      // show tooltip
+      setTooltip("Added");
+
+      // add to redux state
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: unique,
+      });
+    }
+  };
 
   return (
     <div className="card">
@@ -115,9 +152,16 @@ const ProductDetailCard = ({ product, onStarClick, star }) => {
               </div>
               <hr />
               <div className="btn-list">
-                <a href="cart.html" className="btn ripple btn-primary me-2">
+                <Link
+                  to={"/cart/item"}
+                  onClick={handleAddToCart}
+                  data-bs-placement="left"
+                  data-bs-toggle="tooltip-primary"
+                  title={tooltip}
+                  className="btn ripple btn-primary me-2"
+                >
                   <i className="fe fe-shopping-cart"> </i> Add to cart
-                </a>
+                </Link>
                 <a href="checkout.html" className="btn ripple btn-secondary">
                   <i className="fe fe-credit-card"> </i> Buy Now
                 </a>

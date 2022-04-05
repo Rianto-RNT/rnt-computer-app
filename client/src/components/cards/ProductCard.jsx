@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import noImages from "../../assets/images/noImages.png";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import productAverageRatings from "../../services/rating";
 import _ from "lodash";
+import noImages from "../../assets/images/noImages.png";
+import productAverageRatings from "../../services/rating";
 
 const ProductCard = ({ product }) => {
   const { title, price, images, slug } = product;
 
   const [tooltip, setTooltip] = useState("Click to add");
+
+  // Redux
+  const { user, cart } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     // Create Cart Array
@@ -29,6 +34,12 @@ const ProductCard = ({ product }) => {
       localStorage.setItem("cart", JSON.stringify(unique));
       // show tooltip
       setTooltip("Added");
+
+      // add to redux state
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: unique,
+      });
     }
   };
 
@@ -75,7 +86,6 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="card-footer text-center">
-        
           <Link
             to={"/cart/item"}
             onClick={handleAddToCart}
@@ -86,7 +96,7 @@ const ProductCard = ({ product }) => {
           >
             <i className="fe fe-shopping-cart me-2"></i>Add to cart
           </Link>
-         
+
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">
             <i className="fe fe-heart me-2 wishlist-icon"></i>Add to wishlist
           </a>
