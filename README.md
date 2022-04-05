@@ -359,6 +359,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - dispatch add to cart to redux
   - Cart Page Setup {JSON.Stringify}
   - Cart Total
+  - if user not login give option to login page then after login redirect to cart for checkout.
   
 
 ## TODO to fix

@@ -7,19 +7,23 @@ const Cart = () => {
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
-  // 
+  //
 
   const getTotal = () => {
-      return cart.reduce((currentValue, nextValue) => {
-        return currentValue + nextValue.count * nextValue.price
-      }, 0)
-  }
+    return cart.reduce((currentValue, nextValue) => {
+      return currentValue + nextValue.count * nextValue.price;
+    }, 0);
+  };
 
-//   const getSubTotal = () => {
-//       return cart.reduce((currentValue, nextValue) => {
-//         return currentValue + nextValue.count * nextValue.price
-//       }, 0)
-//   }
+  //   const getSubTotal = () => {
+  //       return cart.reduce((currentValue, nextValue) => {
+  //         return currentValue + nextValue.count * nextValue.price
+  //       }, 0)
+  //   }
+
+  const saveOrderToDb = () => {
+    //
+  };
 
   return (
     <div className="main-container container-fluid">
@@ -206,17 +210,23 @@ const Cart = () => {
             <div className="card-footer">
               {user ? (
                 <div className="btn-list">
-                  <a href="shop.html" className="btn btn-primary">
+                  <Link to={"/shop"} className="btn btn-primary">
                     <i className="fe fe-arrow-left me-1"></i>Continue Shopping
-                  </a>
-                  <a href="checkout.html" className="btn btn-success float-sm-end">
+                  </Link>
+                  <a href="checkout.html" onClick={saveOrderToDb} disabled={!cart.length} className="btn btn-success float-sm-end">
                     Check out<i className="fe fe-arrow-right ms-1"></i>
                   </a>
                 </div>
               ) : (
-                <a href="checkout.html" className="btn btn-danger float-sm-end">
+                <Link
+                  to={{
+                    pathname: "/login",
+                    state: { from: "cart" },
+                  }}
+                  className="btn btn-danger float-sm-start col"
+                >
                   Login to check out
-                </a>
+                </Link>
               )}
             </div>
           </div>
