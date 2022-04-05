@@ -356,6 +356,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filter product by Shipping 
   - Add product to local storage
   - Cart in redux state
+  - dispatch add to cart to redux
 
 ## TODO to fix
 

@@ -4,7 +4,6 @@ import LoadableApp from "./LoadableApp";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.min.css";
-// import 'font-awesome/css/font-awesome.min.css';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 
