@@ -1,41 +1,68 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import noImages from "../assets/images/noImages.png";
 
 const Cart = () => {
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
+  // 
+
+  const getTotal = () => {
+      return cart.reduce((currentValue, nextValue) => {
+        return currentValue + nextValue.count * nextValue.price
+      }, 0)
+  }
+
+//   const getSubTotal = () => {
+//       return cart.reduce((currentValue, nextValue) => {
+//         return currentValue + nextValue.count * nextValue.price
+//       }, 0)
+//   }
+
   return (
-    <div class="main-container container-fluid">
+    <div className="main-container container-fluid">
       {/* <!-- PAGE-HEADER --> */}
-      <div class="page-header">
-        <h1 class="page-title">Cart</h1>
+      <div className="page-header">
+        <h1 className="page-title">Cart</h1>
         <div>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <a href="javascript:void(0)">E-Commerce</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               Cart
             </li>
           </ol>
         </div>
       </div>
       {/* <!-- PAGE-HEADER END --> */}
-      <div className="pt-10">{JSON.stringify(cart)}</div>
+
+      {/* <div className="pt-10">{JSON.stringify(cart)}</div> */}
+
       {/* <!-- ROW-1 OPEN --> */}
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-8">
-          <div class="card cart">
-            <div class="card-header">
-              <h3 class="card-title">Shopping Cart</h3>
+      <div className="row">
+        <div className="col-lg-12 col-md-12 col-sm-12 col-xl-8">
+          <div className="card cart">
+            <div className="card-header">
+              <h3 className="card-title">Shopping Cart</h3>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered table-vcenter">
+            <div className="card-body">
+              {cart.length ? (
+                <h5 className="cart-title">
+                  <span>Upss... Your cart is empty.</span>
+                  <Link to={"/shop"} className="btn btn-primary btn-sm mr-3">
+                    <span>Shop Now</span>
+                  </Link>
+                </h5>
+              ) : (
+                "Show Cart Item"
+              )}
+              <div className="table-responsive">
+                <table className="table table-bordered table-vcenter">
                   <thead>
-                    <tr class="border-top">
+                    <tr className="border-top">
                       <th>Product</th>
                       <th>Title</th>
                       <th>Price</th>
@@ -45,215 +72,69 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="text-center">
-                          <img src="../assets/images/pngs/4.jpg" alt="" class="cart-img text-center" />
-                        </div>
-                      </td>
-                      <td>laborum et dolorum fuga</td>
-                      <td class="fw-bold">$568</td>
-                      <td>
-                        <div class="handle-counter" id="handleCounter4">
-                          <button type="button" class="counter-minus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-minus text-muted"></i>
-                          </button>
-                          <input type="text" value="2" class="qty" />
-                          <button type="button" class="counter-plus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-plus text-muted"></i>
-                          </button>
-                        </div>
-                      </td>
-                      <td>$568</td>
-                      <td>
-                        <div class=" d-flex g-2">
-                          <a
-                            class="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Edit"
-                          >
-                            <span class="bi bi-heart fs-16"></span>
-                          </a>
-                          <a
-                            class="btn text-danger bg-danger-transparent btn-icon py-1"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Delete"
-                          >
-                            <span class="bi bi-trash fs-16"></span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="text-center">
-                          <img src="../assets/images/pngs/8.jpg" alt="" class="cart-img" />
-                        </div>
-                      </td>
-                      <td>laborum et dolorum fuga</td>
-                      <td class="fw-bold">$1,027</td>
-                      <td>
-                        <div class="handle-counter" id="handleCounter4">
-                          <button type="button" class="counter-minus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-minus text-muted"></i>
-                          </button>
-                          <input type="text" value="2" class="qty" />
-                          <button type="button" class="counter-plus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-plus text-muted"></i>
-                          </button>
-                        </div>
-                      </td>
-                      <td>$3,082</td>
-                      <td>
-                        <div class=" d-flex g-2">
-                          <a
-                            class="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Edit"
-                          >
-                            <span class="bi bi-heart fs-16"></span>
-                          </a>
-                          <a
-                            class="btn text-danger bg-danger-transparent btn-icon py-1"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Delete"
-                          >
-                            <span class="bi bi-trash fs-16"></span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="text-center">
-                          <img src="../assets/images/pngs/10.jpg" alt="" class="cart-img" />
-                        </div>
-                      </td>
-                      <td>laborum et dolorum fuga</td>
-                      <td class="fw-bold">$1,589</td>
-                      <td>
-                        <div class="handle-counter" id="handleCounter4">
-                          <button type="button" class="counter-minus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-minus text-muted"></i>
-                          </button>
-                          <input type="text" value="2" class="qty" />
-                          <button type="button" class="counter-plus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-plus text-muted"></i>
-                          </button>
-                        </div>
-                      </td>
-                      <td>$7,945</td>
-                      <td>
-                        <div class=" d-flex g-2">
-                          <a
-                            class="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Edit"
-                          >
-                            <span class="bi bi-heart fs-16"></span>
-                          </a>
-                          <a
-                            class="btn text-danger bg-danger-transparent btn-icon py-1"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Delete"
-                          >
-                            <span class="bi bi-trash fs-16"></span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="text-center">
-                          <img src="../assets/images/pngs/9.jpg" alt="" class="cart-img" />
-                        </div>
-                      </td>
-                      <td>laborum et dolorum fuga</td>
-                      <td class="fw-bold">$1,027</td>
-                      <td>
-                        <div class="handle-counter" id="handleCounter4">
-                          <button type="button" class="counter-minus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-minus text-muted"></i>
-                          </button>
-                          <input type="text" value="2" class="qty" />
-                          <button type="button" class="counter-plus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-plus text-muted"></i>
-                          </button>
-                        </div>
-                      </td>
-                      <td>$3,082</td>
-                      <td>
-                        <div class=" d-flex g-2">
-                          <a
-                            class="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Edit"
-                          >
-                            <span class="bi bi-heart fs-16"></span>
-                          </a>
-                          <a
-                            class="btn text-danger bg-danger-transparent btn-icon py-1"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Delete"
-                          >
-                            <span class="bi bi-trash fs-16"></span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="text-center">
-                          <img src="../assets/images/pngs/6.jpg" alt="" class="cart-img" />
-                        </div>
-                      </td>
-                      <td>laborum et dolorum fuga</td>
-                      <td class="fw-bold">$1,589</td>
-                      <td>
-                        <div class="handle-counter" id="handleCounter4">
-                          <button type="button" class="counter-minus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-minus text-muted"></i>
-                          </button>
-                          <input type="text" value="2" class="qty" />
-                          <button type="button" class="counter-plus btn btn-white lh-2 shadow-none">
-                            <i class="fa fa-plus text-muted"></i>
-                          </button>
-                        </div>
-                      </td>
-                      <td>$7,945</td>
-                      <td>
-                        <div class=" d-flex g-2">
-                          <a
-                            class="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Edit"
-                          >
-                            <span class="bi bi-heart fs-16"></span>
-                          </a>
-                          <a
-                            class="btn text-danger bg-danger-transparent btn-icon py-1"
-                            data-bs-toggle="tooltip"
-                            data-bs-original-title="Delete"
-                          >
-                            <span class="bi bi-trash fs-16"></span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                    {cart.map((c, i) => (
+                      <tr>
+                        <td>
+                          <div className="text-center">
+                            <img
+                              src={c.images && c.images.length ? c.images[0].url : noImages}
+                              style={{ objectFit: "cover" }}
+                              alt="image"
+                              className="cart-img text-center"
+                            />
+                          </div>
+                        </td>
+                        <td>{c.title}</td>
+                        <td className="fw-bold">{c.count}</td>
+
+                        {/* Quantity */}
+                        <td>
+                          <div className="handle-counter" id="handleCounter4">
+                            <button type="button" className="counter-minus btn btn-white lh-2 shadow-none">
+                              <i className="fa fa-minus text-muted"></i>
+                            </button>
+                            <input type="text" value="2" className="qty" />
+                            <button type="button" className="counter-plus btn btn-white lh-2 shadow-none">
+                              <i className="fa fa-plus text-muted"></i>
+                            </button>
+                          </div>
+                        </td>
+
+                        <td>Rp. {c.price * c.count}</td>
+                        <td>
+                          <div className=" d-flex g-2">
+                            <a
+                              className="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
+                              data-bs-toggle="tooltip"
+                              data-bs-original-title="Edit"
+                            >
+                              <span className="bi bi-heart fs-16"></span>
+                            </a>
+                            <a
+                              className="btn text-danger bg-danger-transparent btn-icon py-1"
+                              data-bs-toggle="tooltip"
+                              data-bs-original-title="Delete"
+                            >
+                              <span className="bi bi-trash fs-16"></span>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <div class="input-group mb-1">
-                    <input type="text" class="form-control" placeholder="Search ..." />
-                    <span class="input-group-text btn btn-primary">Apply Coupon</span>
+            <div className="card-footer">
+              <div className="row">
+                <div className="col-md-6 col-sm-6">
+                  <div className="input-group mb-1">
+                    <input type="text" className="form-control" placeholder="Search ..." />
+                    <span className="input-group-text btn btn-primary">Apply Coupon</span>
                   </div>
                 </div>
-                <div class="col-md-6 col-sm-6 text-end">
-                  <a href="javascript:void(0)" class="btn btn-default disabled btn-md">
+                <div className="col-md-6 col-sm-6 text-end">
+                  <a href="javascript:void(0)" className="btn btn-default disabled btn-md">
                     Update Cart
                   </a>
                 </div>
@@ -261,70 +142,82 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-12 col-xl-4 col-sm-12 col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Cart Totals</div>
+
+        <div className="col-lg-12 col-xl-4 col-sm-12 col-md-12">
+          <div className="card">
+            <div className="card-header">
+              <div className="card-title">Cart Totals</div>
             </div>
-            <div class="card-body py-2">
-              <div class="table-responsive">
-                <table class="table table-borderless text-nowrap mb-0">
+            <div className="card-body py-2">
+              <div className="table-responsive">
+                <table className="table table-borderless text-nowrap mb-0">
                   <tbody>
-                    <tr>
-                      <td class="text-start">Sub Total</td>
-                      <td class="text-end">
-                        <span class="fw-bold  ms-auto">$568</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start">Additional Discount</td>
-                      <td class="text-end">
-                        <span class="fw-bold text-success">- $55</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start">Delivery Charges</td>
-                      <td class="text-end">
-                        <span class="fw-bold text-green">0 (Free)</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start">Tax</td>
-                      <td class="text-end">
-                        <span class="fw-bold text-danger">+ $39</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start">Coupon Discount</td>
-                      <td class="text-end">
-                        <span class="fw-bold text-success">- $15%</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start">Vat Tax</td>
-                      <td class="text-end">
-                        <span class="fw-bold">+ $9</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start fs-18">Total Bill</td>
-                      <td class="text-end">
-                        <span class="ms-2 fw-bold fs-23">$568</span>
-                      </td>
-                    </tr>
+                    {cart.map((c, i) => (
+                      <>
+                        <tr>
+                          <td className="text-start">Sub Total</td>
+                          <td className="text-end">
+                            <span className="fw-bold  ms-auto">$568</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-start">Additional Discount</td>
+                          <td className="text-end">
+                            <span className="fw-bold text-success">- $55</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-start">Delivery Charges</td>
+                          <td className="text-end">
+                            <span className="fw-bold text-green">0 (Free)</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-start">Tax</td>
+                          <td className="text-end">
+                            <span className="fw-bold text-danger">+ $39</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-start">Coupon Discount</td>
+                          <td className="text-end">
+                            <span className="fw-bold text-success">- $15%</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-start">Vat Tax</td>
+                          <td className="text-end">
+                            <span className="fw-bold">+ $9</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-start fs-18">Total Bill</td>
+                          <td className="text-end">
+                            <span className="ms-2 fw-bold fs-23">Rp. {getTotal()}</span>
+                          </td>
+                        </tr>
+                        <hr />
+                      </>
+                    ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <div class="card-footer">
-              <div class="btn-list">
-                <a href="shop.html" class="btn btn-primary">
-                  <i class="fa fa-arrow-left me-1"></i>Continue Shopping
+            <div className="card-footer">
+              {user ? (
+                <div className="btn-list">
+                  <a href="shop.html" className="btn btn-primary">
+                    <i className="fe fe-arrow-left me-1"></i>Continue Shopping
+                  </a>
+                  <a href="checkout.html" className="btn btn-success float-sm-end">
+                    Check out<i className="fe fe-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              ) : (
+                <a href="checkout.html" className="btn btn-danger float-sm-end">
+                  Login to check out
                 </a>
-                <a href="checkout.html" class="btn btn-success float-sm-end">
-                  Check out<i class="fa fa-arrow-right ms-1"></i>
-                </a>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -358,6 +358,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Cart in redux state
   - dispatch add to cart to redux
   - Cart Page Setup {JSON.Stringify}
+  - Cart Total
   
 
 ## TODO to fix
