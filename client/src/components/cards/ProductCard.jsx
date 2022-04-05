@@ -2,9 +2,31 @@ import React from "react";
 import noImages from "../../assets/images/noImages.png";
 import { Link } from "react-router-dom";
 import productAverageRatings from "../../services/rating";
+import _ from "lodash";
 
 const ProductCard = ({ product }) => {
   const { title, price, images, slug } = product;
+
+  const handleAddToCart = () => {
+    // Create Cart Array
+    let cart = [];
+    if (typeof window !== undefined) {
+      // if cart is in localstorate then GET it
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      // push new product to cart
+      cart.push({
+        ...product,
+        count: 1,
+      });
+      // remove duplicates
+      let unique = _.uniqWith(cart, _.isEqual);
+      // save to local storage
+      //console.log('unique ===>>' unique)
+      localStorage.setItem("cart", JSON.stringify(unique));
+    }
+  };
 
   return (
     <div className="card">
@@ -40,7 +62,7 @@ const ProductCard = ({ product }) => {
               {product && product.ratings && product.ratings.length > 0 ? productAverageRatings(product) : "No Ratings Found"}
             </span>
           </div>
-          
+
           <div className="price pt-3">
             <h5 className="display-8 text-danger">
               <p>Rp. {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
@@ -49,7 +71,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="card-footer text-center">
-          <Link to={"/cart/item"} className="btn btn-primary mb-1">
+          <Link to={"/cart/item"} onClick={handleAddToCart} className="btn btn-primary mb-1">
             <i className="fe fe-shopping-cart me-2"></i>Add to cart
           </Link>
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">

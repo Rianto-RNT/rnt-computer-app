@@ -354,6 +354,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filter product by Brands 
   - Filter product by Color 
   - Filter product by Shipping 
+  - Add product to local storage
 
 ## TODO to fix
 
