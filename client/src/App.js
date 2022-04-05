@@ -7,7 +7,7 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -23,6 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import Cart from "./pages/Cart";
 import CategoryHome from "./pages/category/CategoryHome";
 import SubcategoryHome from "./pages/category/SubcategoryHome";
 import Header from "./components/nav/Header";
@@ -94,6 +95,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/cart" component={Cart} />
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/subcategory/:slug" component={SubcategoryHome} />
         <Route exact path="/login" component={Login} />
