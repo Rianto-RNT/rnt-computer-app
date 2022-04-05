@@ -153,7 +153,7 @@ const ProductDetailCard = ({ product, onStarClick, star }) => {
               <hr />
               <div className="btn-list">
                 <Link
-                  to={"/cart/item"}
+                  to={"/cart"}
                   onClick={handleAddToCart}
                   data-bs-placement="left"
                   data-bs-toggle="tooltip-primary"

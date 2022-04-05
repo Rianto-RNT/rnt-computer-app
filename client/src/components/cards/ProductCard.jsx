@@ -87,7 +87,7 @@ const ProductCard = ({ product }) => {
 
         <div className="card-footer text-center">
           <Link
-            to={"/cart/item"}
+            to={"/cart"}
             onClick={handleAddToCart}
             data-bs-placement="left"
             data-bs-toggle="tooltip-primary"

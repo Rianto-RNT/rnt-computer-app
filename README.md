@@ -360,6 +360,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Cart Page Setup {JSON.Stringify}
   - Cart Total
   - if user not login give option to login page then after login redirect to cart for checkout.
+  - Cart item in table
   
 
 ## TODO to fix
