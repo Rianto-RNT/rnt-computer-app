@@ -1,12 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import noImages from "../../assets/images/noImages.png";
 
-const ProductCartCard = ({ p, cart }) => {
+const ProductCartCard = ({ p }) => {
   let dispatch = useDispatch();
 
   const handleQuantityChange = (e) => {
+    // console.log("Quantity Available", p.quantity);
+    let count = e.target.value < 1 ? 1 : e.target.value;
+
+    if (count > p.quantity) {
+      toast.error(`Maximum Quantity: " ${p.quantity} "`);
+      return;
+    }
+
     let cart = [];
 
     if (typeof window !== "undefined") {
@@ -16,7 +25,7 @@ const ProductCartCard = ({ p, cart }) => {
 
       cart.map((product, i) => {
         if (product._id === p._id) {
-          cart[i].count = e.target.value;
+          cart[i].count = count;
         }
       });
 
@@ -44,22 +53,22 @@ const ProductCartCard = ({ p, cart }) => {
           </div>
         </td>
         <td>{p.title}</td>
-        <td className="fw-bold">{p.price}</td>
+        <td className="fw-bold">{p.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
 
         {/* Quantity */}
         <td>
           <div className="handle-counter" id="handleCounter4">
-            <button type="button" className="counter-minus btn btn-white lh-2 shadow-none">
+            {/* <button type="button" className="counter-minus btn btn-white btn-sm lh-2 shadow-none">
               <i className="fe fe-minus text-muted"></i>
-            </button>
-            <input type="text" value={p.count} onChange={handleQuantityChange} className="qty" />
-            <button type="button" className="counter-plus btn btn-white lh-2 shadow-none">
+            </button> */}
+            <input type="number" value={p.count} onChange={handleQuantityChange} className="form-control col-md-12" />
+            {/* <button type="button" className="counter-plus btn btn-white btn-sm lh-2 shadow-none">
               <i className="fe fe-plus text-muted"></i>
-            </button>
+            </button> */}
           </div>
         </td>
 
-        <td>Rp. {p.price * p.count}</td>
+        <td>{(p.price * p.count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
         <td>
           <div className=" d-flex g-2">
             <a
