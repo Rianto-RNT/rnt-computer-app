@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import noImages from "../assets/images/noImages.png";
+import ProductCartCard from "../components/cards/ProductCartCard";
 
 const Cart = () => {
   window.scrollTo(0, 0);
+
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
@@ -25,55 +26,24 @@ const Cart = () => {
   };
 
   const showCartItem = () => (
-    <>
-      {cart.map((c, i) => (
-        <tr>
-          <td>
-            <div className="text-center">
-              <Link to={`/product/${c.slug}`}>
-                <img
-                  src={c.images && c.images.length ? c.images[0].url : noImages}
-                  style={{ objectFit: "cover" }}
-                  alt="image"
-                  className="cart-img text-center"
-                />
-              </Link>
-            </div>
-          </td>
-          <td>{c.title}</td>
-          <td className="fw-bold">{c.price}</td>
+    <div className="table-responsive">
+      <table className="table table-bordered table-vcenter">
+        <thead>
+          <tr className="border-top">
+            <th>Product</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-          {/* Quantity */}
-          <td>
-            <div className="handle-counter" id="handleCounter4">
-              <button type="button" className="counter-minus btn btn-white lh-2 shadow-none">
-                <i className="fe fe-minus text-muted"></i>
-              </button>
-              <input type="text" value={c.count} className="qty" />
-              <button type="button" className="counter-plus btn btn-white lh-2 shadow-none">
-                <i className="fe fe-plus text-muted"></i>
-              </button>
-            </div>
-          </td>
-
-          <td>Rp. {c.price * c.count}</td>
-          <td>
-            <div className=" d-flex g-2">
-              <a
-                className="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
-                data-bs-toggle="tooltip"
-                data-bs-original-title="Edit"
-              >
-                <span className="fe fe-heart fs-16"></span>
-              </a>
-              <a className="btn text-danger bg-danger-transparent btn-icon py-1" data-bs-toggle="tooltip" data-bs-original-title="Delete">
-                <span className="fe fe-trash fs-16"></span>
-              </a>
-            </div>
-          </td>
-        </tr>
-      ))}
-    </>
+        {cart.map((p) => (
+          <ProductCartCard key={p._id} p={p} />
+        ))}
+      </table>
+    </div>
   );
 
   return (
@@ -105,21 +75,7 @@ const Cart = () => {
             </div>
             <div className="card-body">
               {cart.length ? (
-                <div className="table-responsive">
-                  <table className="table table-bordered table-vcenter">
-                    <thead>
-                      <tr className="border-top">
-                        <th>Product</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>{showCartItem()}</tbody>
-                  </table>
-                </div>
+                showCartItem()
               ) : (
                 <h5 className="cart-title">
                   <span>Upss... Your cart is empty.</span>
@@ -199,7 +155,6 @@ const Cart = () => {
                         <span className="ms-2 fw-bold fs-23">Rp. {getTotal()}</span>
                       </td>
                     </tr>
-                    <hr />
                   </tbody>
                 </table>
               </div>
