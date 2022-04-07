@@ -37,6 +37,30 @@ const ProductCartCard = ({ p }) => {
     }
   };
 
+  const handleRemove = () => {
+    // console.log(p._id, "to remove")
+    let cart = [];
+
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+
+      // [1,2,3(hereAray),4,5]
+      cart.map((product, i) => {
+        if (product._id === p._id) {
+          cart.splice(i, 1)
+        }
+      });
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: cart,
+      });
+    }
+  };
+
   return (
     <tbody>
       <tr>
@@ -70,6 +94,15 @@ const ProductCartCard = ({ p }) => {
 
         <td>{(p.price * p.count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
         <td>
+          <div className="text-center">
+            {p.shipping === "Yes" ? (
+              <span className="text-success bg-success-transparent rounded btn-icon py-1 me-2 fe fe-check-circle fs-16"></span>
+            ) : (
+              <span className="text-danger bg-danger-transparent rounded btn-icon py-1 me-2 fe fe-x-circle fs-16"></span>
+            )}
+          </div>
+        </td>
+        <td>
           <div className=" d-flex g-2">
             <a
               className="btn text-secondary bg-secondary-transparent btn-icon py-1 me-2"
@@ -78,7 +111,7 @@ const ProductCartCard = ({ p }) => {
             >
               <span className="fe fe-heart fs-16"></span>
             </a>
-            <a className="btn text-danger bg-danger-transparent btn-icon py-1" data-bs-toggle="tooltip" data-bs-original-title="Delete">
+            <a className="btn text-danger bg-danger-transparent btn-icon py-1" onClick={handleRemove}>
               <span className="fe fe-trash fs-16"></span>
             </a>
           </div>

@@ -362,6 +362,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - if user not login give option to login page then after login redirect to cart for checkout.
   - Cart item in table
   - Product cart Quantity increase and decrease amount stock
+  - Remove product from cart (localStorage)
   
 
 ## TODO to fix

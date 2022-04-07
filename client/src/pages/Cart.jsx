@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ProductCartCard from "../components/cards/ProductCartCard";
 
 const Cart = () => {
-  window.scrollTo(0, 0);
+  
 
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
@@ -25,6 +25,8 @@ const Cart = () => {
     //
   };
 
+  window.scrollTo(0, 0);
+
   const showCartItem = () => (
     <div className="table-responsive">
       <table className="table table-bordered table-vcenter">
@@ -32,9 +34,14 @@ const Cart = () => {
           <tr className="border-top">
             <th className="align-middle text-center">Product</th>
             <th className="align-middle text-center">Title</th>
-            <th className="align-middle text-center">Price <p className="h6 card-title">(IDR)</p></th>
+            <th className="align-middle text-center">
+              Price <p className="h6 card-title fs-12">( IDR )</p>
+            </th>
             <th className="align-middle text-center">Quantity</th>
-            <th className="align-middle text-center">Subtotal</th>
+            <th className="align-middle text-center">
+              Subtotal <p className="h6 card-title fs-12">( IDR )</p>
+            </th>
+            <th className="align-middle text-center">Shipping</th>
             <th className="align-middle text-center">Action</th>
           </tr>
         </thead>
@@ -116,43 +123,65 @@ const Cart = () => {
                     <tr>
                       <td className="text-start">Sub Total</td>
                       <td className="text-end">
-                        <span className="fw-bold  ms-auto">Rp. {getTotal().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                        <span className="fw-bold  ms-auto">
+                          Rp.
+                          {getTotal()
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          <p className="h6 card-title text-success">( {`Product total: ${cart.length} items`} )</p>
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-start">Additional Discount <p className="h6 card-title text-danger">(Not applying yet)</p></td>
+                      <td className="text-start">
+                        Additional Discount <p className="h6 card-title text-danger">(Not applying yet)</p>
+                      </td>
                       <td className="text-end">
                         <span className="fw-bold text-success">- $55</span>
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-start">Delivery Charges <p className="h6 card-title text-danger">(Not applying yet)</p></td>
+                      <td className="text-start">
+                        Delivery Charges <p className="h6 card-title text-danger">(Not applying yet)</p>
+                      </td>
                       <td className="text-end">
                         <span className="fw-bold text-green">0 (Free)</span>
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-start">Tax <p className="h6 card-title text-danger">(Not applying yet)</p></td>
+                      <td className="text-start">
+                        Tax <p className="h6 card-title text-danger">(Not applying yet)</p>
+                      </td>
                       <td className="text-end">
                         <span className="fw-bold text-danger">+ $39</span>
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-start">Coupon Discount <p className="h6 card-title text-danger">(Not applying yet)</p></td>
+                      <td className="text-start">
+                        Coupon Discount <p className="h6 card-title text-danger">(Not applying yet)</p>
+                      </td>
                       <td className="text-end">
                         <span className="fw-bold text-success">- $15%</span>
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-start">Vat Tax <p className="h6 card-title text-danger">(Not applying yet)</p></td>
+                      <td className="text-start">
+                        Vat Tax <p className="h6 card-title text-danger">(Not applying yet)</p>
+                      </td>
                       <td className="text-end">
                         <span className="fw-bold">+ $9</span>
                       </td>
                     </tr>
                     <tr>
                       <td className="text-start fs-18">Total Bill</td>
+
                       <td className="text-end">
-                        <span className="ms-2 fw-bold fs-23">Rp. {getTotal().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                        <span className="ms-2 fw-bold fs-23">
+                          Rp.
+                          {getTotal()
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        </span>
                       </td>
                     </tr>
                   </tbody>
