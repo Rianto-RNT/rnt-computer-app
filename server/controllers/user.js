@@ -3,7 +3,6 @@ const asyncHandler = require('../middlewares/async');
 const User = require('../models/User');
 const Product = require('../models/Product');
 const Cart = require('../models/Cart');
-const { use } = require('../routes/user');
 
 // @desc    Get User Cart
 // @route   GET /api/user/cart
