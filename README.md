@@ -364,6 +364,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product cart Quantity increase and decrease amount stock
   - Remove product from cart (localStorage)
   - Product cart drawer feature
+  - Checkout page setup
   
 
 ## TODO to fix

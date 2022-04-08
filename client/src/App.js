@@ -24,6 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import CategoryHome from "./pages/category/CategoryHome";
 import SubcategoryHome from "./pages/category/SubcategoryHome";
 import Header from "./components/nav/Header";
@@ -98,6 +99,9 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/cart" component={Cart} />
+        
+        <UserRoute exact path="/checkout" component={Checkout} />
+        
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/subcategory/:slug" component={SubcategoryHome} />
         <Route exact path="/login" component={Login} />

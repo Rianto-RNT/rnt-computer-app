@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCartCard from "../components/cards/ProductCartCard";
 
-const Cart = () => {
-  
-
+const Cart = ({ history }) => {
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
@@ -22,7 +20,8 @@ const Cart = () => {
   //   }
 
   const saveOrderToDb = () => {
-    //
+    alert("Save Order to Database");
+    history.push("/checkout");
   };
 
   // window.scrollTo(0, 0);
@@ -194,9 +193,9 @@ const Cart = () => {
                   <Link to={"/shop"} className="btn btn-primary">
                     <i className="fe fe-arrow-left me-1"></i>Continue Shopping
                   </Link>
-                  <a href="checkout.html" onClick={saveOrderToDb} disabled={!cart.length} className="btn btn-success float-sm-end col-md-5">
+                  <button onClick={saveOrderToDb} disabled={!cart.length} className="btn btn-success float-sm-end col-md-5">
                     Check out<i className="fe fe-arrow-right ms-1"></i>
-                  </a>
+                  </button>
                 </div>
               ) : (
                 <Link
