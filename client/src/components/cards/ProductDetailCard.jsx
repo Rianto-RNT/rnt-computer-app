@@ -43,6 +43,12 @@ const ProductDetailCard = ({ product, onStarClick, star }) => {
         type: "ADD_TO_CART",
         payload: unique,
       });
+
+      // Show cart item in drawer
+      dispatch({
+        type: "SET_VISIBLE",
+        payload: true,
+      });
     }
   };
 

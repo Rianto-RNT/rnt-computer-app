@@ -40,6 +40,12 @@ const ProductCard = ({ product }) => {
         type: "ADD_TO_CART",
         payload: unique,
       });
+
+      // Show cart item in drawer
+      dispatch({
+        type: "SET_VISIBLE",
+        payload: true,
+      });
     }
   };
 
@@ -86,8 +92,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="card-footer text-center">
-          <Link
-            to={"/cart"}
+          <button
             onClick={handleAddToCart}
             data-bs-placement="left"
             data-bs-toggle="tooltip-primary"
@@ -95,7 +100,7 @@ const ProductCard = ({ product }) => {
             className="btn btn-primary mb-1"
           >
             <i className="fe fe-shopping-cart me-2"></i>Add to cart
-          </Link>
+          </button>
 
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">
             <i className="fe fe-heart me-2 wishlist-icon"></i>Add to wishlist

@@ -25,7 +25,7 @@ const Cart = () => {
     //
   };
 
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
 
   const showCartItem = () => (
     <div className="table-responsive">
