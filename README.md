@@ -365,7 +365,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Remove product from cart (localStorage)
   - Product cart drawer feature
   - Checkout page setup
-  
+  - Save cart request
 
 ## TODO to fix
 
