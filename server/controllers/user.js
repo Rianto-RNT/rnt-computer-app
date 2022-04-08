@@ -3,9 +3,33 @@ const asyncHandler = require('../middlewares/async');
 const User = require('../models/User');
 const Product = require('../models/Product');
 const Cart = require('../models/Cart');
+const { use } = require('../routes/user');
+
+// @desc    Get User Cart
+// @route   GET /api/user/cart
+// @access  Private
+exports.getUserCart = asyncHandler(async (req, res, next) => {
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  const cart = await Cart.findOne({ orderedBy: user._id })
+    .populate('products.product')
+    .exec();
+
+  const { products, cartTotal, totalAfterDiscount } = cart;
+
+  if (!cart) {
+    return next(
+      new ErrorResponse(`Resource not found with ${cart}. (Get User Cart)`, 400)
+    );
+  }
+
+  res
+    .status(200)
+    .json({ success: true, data: { products, cartTotal, totalAfterDiscount } });
+});
 
 // @desc    Create User Cart
-// @route   POST /api/cart
+// @route   POST /api/user/cart
 // @access  Private
 exports.userCart = asyncHandler(async (req, res, next) => {
   const { cart } = req.body;

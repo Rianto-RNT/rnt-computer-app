@@ -290,6 +290,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filtering Product by Shipping, Color and Brand
   - Cart Model
   - User Cart Controller and routes
+  - Get user cart from database
 
 
 - Product (frontend)
