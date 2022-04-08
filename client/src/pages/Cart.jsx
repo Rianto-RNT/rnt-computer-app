@@ -124,11 +124,11 @@ const Cart = () => {
                       <td className="text-start">Sub Total</td>
                       <td className="text-end">
                         <span className="fw-bold  ms-auto">
-                          Rp.
+                          Rp.{" "}
                           {getTotal()
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                          <p className="h6 card-title text-success">( {`Product total: ${cart.length} items`} )</p>
+                          <p className="h6 card-title text-success">( {`Product Total: ${cart.length} items`} )</p>
                         </span>
                       </td>
                     </tr>
@@ -177,7 +177,7 @@ const Cart = () => {
 
                       <td className="text-end">
                         <span className="ms-2 fw-bold fs-23">
-                          Rp.
+                          Rp.{" "}
                           {getTotal()
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

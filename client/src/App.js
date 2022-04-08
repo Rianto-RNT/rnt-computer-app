@@ -52,6 +52,7 @@ import AllProducts from "./pages/admin/product/AllProducts";
 import UpdateProduct from "./pages/admin/product/UpdateProduct";
 
 import ProductDetail from "./pages/product/ProductDetail";
+import CartDrawer from "./components/drawer/CartDrawer";
 
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
@@ -91,6 +92,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <CartDrawer />
       <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
