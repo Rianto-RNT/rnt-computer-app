@@ -370,6 +370,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Product cart drawer feature
   - Checkout page setup
   - Save cart request
+  - Get user cart in checkout page
 
 ## TODO to fix
 
