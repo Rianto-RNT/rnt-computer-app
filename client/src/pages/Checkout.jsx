@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserCart } from "../services/user";
+import noImages from "../assets/images/noImages.png";
 
 const Checkout = ({ product }) => {
   const [products, setProducts] = useState([]);
@@ -265,12 +266,17 @@ const Checkout = ({ product }) => {
             {/* MAP PRODUCT ORDER */}
             <div className="card-body">
               {products.map((p, i) => (
-                <div className="">
+                <div className="card" key={p._id}>
                   <div className="d-flex">
-                    <img className="avatar-xxl br-7" src="../assets/images/pngs/4.jpg" />
+                    <img
+                      className="avatar-xxl br-7"
+                      src={p.images && p.images.length ? p.images[0].url : noImages}
+                      style={{ objectFit: "cover" }}
+                      alt="image"
+                    />
                     <div className="ms-3">
                       <h4 className="mb-1 fw-semibold fs-13">
-                        <p href="shop-description.html">{p.product.title}</p>
+                        <p>{p.product.title}</p>
                       </h4>
                       <div className="fs-14">{p.count} items</div>
                       <p>{p.color}</p>
@@ -284,19 +290,23 @@ const Checkout = ({ product }) => {
 
               <ul className="list-group border br-7 mt-5">
                 <li className="list-group-item border-0">
-                  Sub Total <p className="h6 fs-12 pt-2">( {products.length} Product)</p>
-                  <span className="h6 fw-bold mb-0 float-end">{products.price * products.count}</span>
+                  Products Total
+                  <span className="h6  mb-0 float-end">( {products.length} Items )</span>
+                </li>
+                <li className="list-group-item border-0">
+                  Sub Total
+                  <span className="h6  mb-0 float-end">Rp. {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </li>
                 <li className="list-group-item border-0">
                   Discount
-                  <span className="h6 fw-bold mb-0 float-end">5%</span>
+                  <span className="h6  mb-0 float-end">5%</span>
                 </li>
                 <li className="list-group-item border-0">
                   Shipping
-                  <span className="h6 fw-bold mb-0 float-end">{products.shipping}</span>
+                  <span className="h6  mb-0 float-end">Free</span>
                 </li>
                 <li className="list-group-item border-0">
-                  Total
+                  <span className="h4 fw-bold"> Total Price </span>
                   <span className="h4 fw-bold mb-0 float-end">Rp. {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </li>
               </ul>
