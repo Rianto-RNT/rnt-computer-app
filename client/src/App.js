@@ -99,19 +99,18 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/cart" component={Cart} />
-        
-        <UserRoute exact path="/checkout" component={Checkout} />
-        
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/subcategory/:slug" component={SubcategoryHome} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/complete-registration" component={RegisterComplete} />
         <Route exact path="/forgot-password" component={ForgotPassword} />
+        <Route exact path="/product/:slug" component={ProductDetail} />
 
         <UserRoute exact path="/my-account/history" component={History} />
         <UserRoute exact path="/my-account/change-password" component={ChangePassword} />
         <UserRoute exact path="/my-account/wishlist" component={Wishlist} />
+        <UserRoute exact path="/checkout" component={Checkout} />
 
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/category" component={CreateCategory} />
@@ -124,7 +123,7 @@ const App = () => {
         <AdminRoute exact path="/admin/products" component={AllProducts} />
         <AdminRoute exact path="/admin/product/:slug" component={UpdateProduct} />
 
-        <Route exact path="/product/:slug" component={ProductDetail} />
+        
       </Switch>
       <Footer />
     </>

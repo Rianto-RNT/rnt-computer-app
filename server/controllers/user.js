@@ -16,15 +16,7 @@ exports.getUserCart = asyncHandler(async (req, res, next) => {
 
   const { products, cartTotal, totalAfterDiscount } = cart;
 
-  if (!cart) {
-    return next(
-      new ErrorResponse(`Resource not found with ${cart}. (Get User Cart)`, 400)
-    );
-  }
-
-  res
-    .status(200)
-    .json({ success: true, data: { products, cartTotal, totalAfterDiscount } });
+  res.status(200).json({ products, cartTotal, totalAfterDiscount });
 });
 
 // @desc    Create User Cart
@@ -79,5 +71,6 @@ exports.userCart = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(200).json({ success: true, data: newCart });
+  console.log('new cart ----> ', newCart);
+  res.status(200).json({ ok: true });
 });
