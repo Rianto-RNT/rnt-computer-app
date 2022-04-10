@@ -74,3 +74,20 @@ exports.userCart = asyncHandler(async (req, res, next) => {
   console.log('new cart ----> ', newCart);
   res.status(200).json({ ok: true });
 });
+
+// @desc    Empty User Cart in checkout
+// @route   PUT /api/user/cart
+// @access  Private
+exports.emptyCart = asyncHandler(async (req, res, next) => {
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  const cart = await Cart.findOneAndRemove({ orderedBy: user._id }).exec();
+
+  if (!cart) {
+    return next(
+      new ErrorResponse(`Resource not found with ${cart}. (Empty User Cart)`, 400)
+    );
+  }
+
+  res.status(200).json({ success: true, data: cart });
+});

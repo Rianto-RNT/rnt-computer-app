@@ -4,10 +4,11 @@ const router = express.Router();
 
 // Midleware
 const { protect } = require('../middlewares/auth');
-const { userCart, getUserCart } = require('../controllers/user');
+const { userCart, getUserCart, emptyCart } = require('../controllers/user');
 
-router.post('/user/cart', protect, userCart);
 router.get('/user/cart', protect, getUserCart);
+router.post('/user/cart', protect, userCart);
+router.put('/user/cart', protect, emptyCart);
 
 // router.get('/user', (req, res) => {
 //     res.json({
