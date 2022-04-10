@@ -11,7 +11,7 @@ import Star from "../components/forms/Star";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0, 35000000]);
+  const [price, setPrice] = useState([0, 0]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState([]);
@@ -84,6 +84,9 @@ const Shop = () => {
   useEffect(() => {
     const searchDelayed = setTimeout(() => {
       fetchProducts({ query: text });
+      if (!text) {
+        loadAllProducts()
+      }
     }, 300);
     return () => clearTimeout(searchDelayed);
   }, [text]);

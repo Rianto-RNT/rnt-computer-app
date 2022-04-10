@@ -28,3 +28,15 @@ export const emptyUserCart = async (authtoken) => {
     },
   });
 };
+
+export const saveUserAddress = async (authtoken, address) => {
+  return await axios.delete(
+    `${process.env.REACT_APP_API}/user/address`,
+    { address },
+    {
+      headers: {
+        authtoken,
+      },
+    },
+  );
+};

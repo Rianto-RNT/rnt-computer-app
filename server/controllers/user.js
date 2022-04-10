@@ -46,8 +46,9 @@ exports.userCart = asyncHandler(async (req, res, next) => {
     object.color = cart[i].color;
 
     // get price for createing total
-    let { price } = await Product.findById(cart[i]._id).select('price').exec();
-    object.price = price;
+    let userProductCheckout = await Product.findById(cart[i]._id).select('price').exec();
+
+    object.price = userProductCheckout.price;
 
     products.push(object);
   }
