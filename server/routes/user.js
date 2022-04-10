@@ -8,7 +8,7 @@ const { userCart, getUserCart, emptyCart } = require('../controllers/user');
 
 router.get('/user/cart', protect, getUserCart);
 router.post('/user/cart', protect, userCart);
-router.put('/user/cart', protect, emptyCart);
+router.delete('/user/cart', protect, emptyCart);
 
 // router.get('/user', (req, res) => {
 //     res.json({

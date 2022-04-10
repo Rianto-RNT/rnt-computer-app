@@ -237,7 +237,7 @@ const Shop = () => {
 
   const showBrands = () =>
     brands.map((b) => (
-      <div>
+      <div key={b}>
         <Radio value={b} name={b} checked={b === brand} onChange={handleBrand}>
           {b}
         </Radio>
@@ -262,7 +262,7 @@ const Shop = () => {
 
   const ShowColors = () =>
     colors.map((c) => (
-      <div className="btn-group">
+      <div className="btn-group" key={c}>
         <label className="colorinput">
           <input name={c} type="radio" value={c} checked={c === color} onChange={handleColor} className="colorinput-input" />
           <span className="colorinput-color bg-gray"></span>
@@ -289,7 +289,7 @@ const Shop = () => {
 
   const showShipping = () =>
     shippings.map((s) => (
-      <Radio name={s} value={s} checked={s === shipping} onChange={handleShippingChange}>
+      <Radio key={s} name={s} value={s} checked={s === shipping} onChange={handleShippingChange}>
         {s}
       </Radio>
     ));

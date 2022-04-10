@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserCart } from "../services/user";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { getUserCart, emptyUserCart } from "../services/user";
 import noImages from "../assets/images/noImages.png";
 
-const Checkout = ({ product }) => {
+const Checkout = ({ product, history }) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -18,6 +20,38 @@ const Checkout = ({ product }) => {
       setTotal(res.data.cartTotal);
     });
   }, []);
+
+  const emptyCart = () => {
+    // 1) Remove from local storage
+    if (typeof window !== "undefined") localStorage.removeItem("cart");
+    // 2) Remove from Redux
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: [],
+    });
+    // 3) Remove from Backend
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Empty My Cart!",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((cart) => {
+      if (cart.isConfirmed) {
+        emptyUserCart(user.token).then(() => {
+          Swal.fire("Empty!", "Your cart has been deleted.", "success");
+          setProducts([]);
+          setTotal(0);
+        });
+      } else {
+        Swal.fire("Cancelled", "Your Cart data is safe :)", "info");
+      }
+    });
+  };
 
   const saveAddressToDb = () => {
     //
@@ -237,7 +271,7 @@ const Checkout = ({ product }) => {
             </div>
           </div>
         </div>
-        <div className="col-xl-4 col-md-12">
+        <div className="col-xl-4 col-md-14">
           <div className="card cart">
             <div className="card-header">
               <h3 className="card-title">Address</h3>
@@ -266,8 +300,8 @@ const Checkout = ({ product }) => {
             {/* MAP PRODUCT ORDER */}
             <div className="card-body">
               {products.map((p, i) => (
-                <div className="card" key={p._id}>
-                  <div className="d-flex">
+                <div className="card pt-2" key={p._id}>
+                  <div className="d-flex ">
                     <img
                       className="avatar-xxl br-7"
                       src={p.images && p.images.length ? p.images[0].url : noImages}
@@ -311,8 +345,21 @@ const Checkout = ({ product }) => {
                 </li>
               </ul>
             </div>
-            <div className="card-footer text-end">
-              <input type="button" className="btn btn-primary" value="Place Order" id="click-payment" />
+            <div className="card-footer text-center">
+              <div className="btn-list">
+                <button
+                  onClick={emptyCart}
+                  type="button"
+                  className="btn btn-danger-light float-sm-start"
+                  value="Place Order"
+                  id="click-payment"
+                >
+                  Empty Cart
+                </button>
+                <button type="button" className="btn btn-primary float-sm-end col-md-5" value="Place Order" id="click-payment">
+                  Place Order
+                </button>
+              </div>
             </div>
           </div>
         </div>

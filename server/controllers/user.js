@@ -76,7 +76,7 @@ exports.userCart = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Empty User Cart in checkout
-// @route   PUT /api/user/cart
+// @route   DELETE /api/user/cart
 // @access  Private
 exports.emptyCart = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ email: req.user.email }).exec();

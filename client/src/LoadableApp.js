@@ -16,7 +16,7 @@ const LoadApp = Loadable({
   loader: () => import("./App"),
   loading() {
     return (
-      <div className="container">
+      <div className="container-fluid pt-8">
         <Spin size="large" style={styles} />
       </div>
     );
