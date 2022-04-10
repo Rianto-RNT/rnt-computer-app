@@ -292,6 +292,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - User Cart Controller and routes
   - Get user cart from database
   - Empty/remove user cart in checkout
+  - Save User address in checkout
 
 
 - Product (frontend)

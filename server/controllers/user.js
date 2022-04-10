@@ -85,9 +85,33 @@ exports.emptyCart = asyncHandler(async (req, res, next) => {
 
   if (!cart) {
     return next(
-      new ErrorResponse(`Resource not found with ${cart}. (Empty User Cart)`, 400)
+      new ErrorResponse(
+        `Resource not found with ${cart}. (Empty User Cart)`,
+        400
+      )
     );
   }
 
   res.status(200).json({ success: true, data: cart });
+});
+
+// @desc    Save Address in checkout
+// @route   POST /api/user/address
+// @access  Private
+exports.saveAddress = asyncHandler(async (req, res, next) => {
+  const userAddress = await User.findOneAndUpdate(
+    { email: req.user.email },
+    { address: req.body.address }
+  ).exec();
+
+  if (!userAddress) {
+    return next(
+      new ErrorResponse(
+        `Resource not found with ${req.body.address}. (save address User checkout)`,
+        400
+      )
+    );
+  }
+
+  res.status(200).json({ success: true, data: userAddress });
 });
