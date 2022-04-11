@@ -293,6 +293,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Get user cart from database
   - Empty/remove user cart in checkout
   - Save User address in checkout
+  - Coupon Shcema model
 
 
 - Product (frontend)
