@@ -21,14 +21,14 @@ const CreateCoupon = () => {
 
         <div className="col-md-10">
           <div className="page-header pt-7">
-            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Category</h1>}{" "}
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Redeem Coupons</h1>}{" "}
             <div>
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
                   <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Coupons
+                Redeem Coupons
                 </li>
               </ol>
             </div>

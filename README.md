@@ -379,6 +379,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Empty user cart in checkout pages
   - User Address in checkout
   - Save user address in checkout pages
+  - Coupon Page in admin dashboard
 
 ## TODO to fix
 
