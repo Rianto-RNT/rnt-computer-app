@@ -16,12 +16,7 @@ const UserSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
-  address: {
-    fullAddress: String,
-    noteFromUser: String,
-    userFullName: String,
-    phoneNumber: Number,
-  },
+  address: String,
   //   wishlist: [{ type: ObjectId, ref: 'Product' }],
   createdAt: {
     type: Date,

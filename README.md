@@ -376,6 +376,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - user Checkout order
   - Empty user cart in checkout pages
   - User Address in checkout
+  - Save user address in checkout pages
 
 ## TODO to fix
 

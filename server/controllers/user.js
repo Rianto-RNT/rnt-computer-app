@@ -22,6 +22,57 @@ exports.getUserCart = asyncHandler(async (req, res, next) => {
 // @desc    Create User Cart
 // @route   POST /api/user/cart
 // @access  Private
+// exports.userCart = async (req, res) => {
+//   // console.log(req.body); // {cart: []}
+//   const { cart } = req.body;
+
+//   let products = [];
+
+//   const user = await User.findOne({ email: req.user.email }).exec();
+
+//   // check if cart with logged in user id already exist
+//   let cartExistByThisUser = await Cart.findOne({ orderdBy: user._id }).exec();
+
+//   if (cartExistByThisUser) {
+//     cartExistByThisUser.remove();
+//     console.log("removed old cart");
+//   }
+
+//   for (let i = 0; i < cart.length; i++) {
+//     let object = {};
+
+//     object.product = cart[i]._id;
+//     object.count = cart[i].count;
+//     object.color = cart[i].color;
+//     // get price for creating total
+//     let productFromDb = await Product.findById(cart[i]._id)
+//       .select("price")
+//       .exec();
+//     object.price = productFromDb.price;
+
+//     products.push(object);
+//   }
+
+//   // console.log('products', products)
+
+//   let cartTotal = 0;
+//   for (let i = 0; i < products.length; i++) {
+//     cartTotal = cartTotal + products[i].price * products[i].count;
+//   }
+
+//   // console.log("cartTotal", cartTotal);
+
+//   let newCart = await new Cart({
+//     products,
+//     cartTotal,
+//     orderdBy: user._id,
+//   }).save();
+
+//   console.log("new cart ----> ", newCart);
+//   res.json({ ok: true });
+// };
+
+////==========================================
 exports.userCart = asyncHandler(async (req, res, next) => {
   const { cart } = req.body;
 
@@ -46,7 +97,9 @@ exports.userCart = asyncHandler(async (req, res, next) => {
     object.color = cart[i].color;
 
     // get price for createing total
-    let userProductCheckout = await Product.findById(cart[i]._id).select('price').exec();
+    let userProductCheckout = await Product.findById(cart[i]._id)
+      .select('price')
+      .exec();
 
     object.price = userProductCheckout.price;
 
@@ -75,6 +128,7 @@ exports.userCart = asyncHandler(async (req, res, next) => {
   console.log('new cart ----> ', newCart);
   res.status(200).json({ ok: true });
 });
+////////=================
 
 // @desc    Empty User Cart in checkout
 // @route   DELETE /api/user/cart
@@ -105,14 +159,5 @@ exports.saveAddress = asyncHandler(async (req, res, next) => {
     { address: req.body.address }
   ).exec();
 
-  if (!userAddress) {
-    return next(
-      new ErrorResponse(
-        `Resource not found with ${req.body.address}. (save address User checkout)`,
-        400
-      )
-    );
-  }
-
-  res.status(200).json({ success: true, data: userAddress });
+  res.status(200).json({ ok: true });
 });
