@@ -24,4 +24,4 @@ const CouponSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Cart', CouponSchema);
+module.exports = mongoose.model('Coupon', CouponSchema);
