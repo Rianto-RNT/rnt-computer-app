@@ -24,20 +24,9 @@ exports.getCoupon = asyncHandler(async (req, res, next) => {
 // @route   POST /api/coupon
 // @access  Private / Admin
 exports.createCoupon = asyncHandler(async (req, res, next) => {
-  let { name, expired, discount } = req.body;
+  let { name, expired, discount } = req.body.coupon;
 
-  let coupon = await Coupon.create({ name, expired, discount }).save();
-
-  if (!coupon) {
-    return next(
-      new ErrorResponse(
-        `Coupon not found with ${req.params.name}. Please add corect value`,
-        400
-      )
-    );
-  }
-
-  res.status(200).json({ success: true, data: coupon });
+  res.json(await new Coupon({ name, expired, discount }).save());
 });
 
 // @desc    Delete coupon
