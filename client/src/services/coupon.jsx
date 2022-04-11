@@ -7,11 +7,15 @@ export const getCoupons = async (slug) => {
 };
 
 export const createCoupon = async (coupon, authtoken) => {
-  const response = await axios.post(`${process.env.REACT_APP_API}/coupon`, coupon, {
-    headers: {
-      authtoken,
+  const response = await axios.post(
+    `${process.env.REACT_APP_API}/coupon`,
+    { coupon },
+    {
+      headers: {
+        authtoken,
+      },
     },
-  });
+  );
 
   return response.data;
 };

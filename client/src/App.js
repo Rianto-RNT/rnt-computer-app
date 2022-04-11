@@ -17,6 +17,8 @@ import "./assets/css/dark-style.css";
 import "./assets/css/skin-modes.css";
 import "./assets/css/transparent-style.css";
 
+import "react-datepicker/dist/react-datepicker.css";
+
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,6 +49,8 @@ import UpdateCategory from "./pages/admin/category/UpdateCategory";
 
 import CreateSubcategory from "./pages/admin/subcategory/CreateSubcategory";
 import UpdateSubcategory from "./pages/admin/subcategory/UpdateSubcategory";
+
+import CreateCoupon from "./pages/admin/coupon/CreateCoupon";
 
 import CreateProduct from "./pages/admin/product/CreateProduct";
 import AllProducts from "./pages/admin/product/AllProducts";
@@ -119,11 +123,11 @@ const App = () => {
         <AdminRoute exact path="/admin/subcategory" component={CreateSubcategory} />
         <AdminRoute exact path="/admin/subcategory/:slug" component={UpdateSubcategory} />
 
+        <AdminRoute exact path="/admin/coupon" component={CreateCoupon} />
+
         <AdminRoute exact path="/admin/product" component={CreateProduct} />
         <AdminRoute exact path="/admin/products" component={AllProducts} />
         <AdminRoute exact path="/admin/product/:slug" component={UpdateProduct} />
-
-        
       </Switch>
       <Footer />
     </>
