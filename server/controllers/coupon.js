@@ -6,18 +6,7 @@ const Coupon = require('../models/Coupon');
 // @route   GET /api/coupons
 // @access  Public
 exports.getCoupon = asyncHandler(async (req, res, next) => {
-  let coupon = await Coupon.find({}).sort({ createdAt: -1 }).exec();
-
-  if (!coupon) {
-    return next(
-      new ErrorResponse(
-        `Coupon not found with ${req.params.couponId}. Please add corect value`,
-        400
-      )
-    );
-  }
-
-  res.status(200).json({ success: true, data: coupon });
+  res.json(await Coupon.find({}).sort({ createdAt: -1 }).exec());
 });
 
 // @desc    Create coupon
@@ -33,16 +22,5 @@ exports.createCoupon = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/coupon/:couponId
 // @access  Private / Admin
 exports.deleteCoupon = asyncHandler(async (req, res, next) => {
-  let coupon = await Coupon.findByIdAndDelete(req.params.couponId).exec();
-
-  if (!coupon) {
-    return next(
-      new ErrorResponse(
-        `Coupon not found with ${req.params.couponId}. Please add corect value`,
-        400
-      )
-    );
-  }
-
-  res.status(200).json({ success: true, data: coupon });
+  res.json(await Coupon.findByIdAndDelete(req.params.couponId).exec());
 });

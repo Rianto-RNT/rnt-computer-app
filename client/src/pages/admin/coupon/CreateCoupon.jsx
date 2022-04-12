@@ -5,8 +5,9 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { Spin } from "antd";
 import DatePicker from "react-datepicker";
-import { DeleteOutlined, FieldTimeOutlined } from "@ant-design/icons";
+
 import AdminNav from "../../../components/nav/AdminNav";
+import LocalSearch from "../../../components/search/LocalSearch";
 import { getCoupons, createCoupon, removeCoupon } from "../../../services/coupon";
 
 const CreateCoupon = () => {
@@ -14,9 +15,16 @@ const CreateCoupon = () => {
   const [expired, setExpired] = useState("");
   const [discount, setDiscount] = useState("");
   const [loading, setLoading] = useState(false);
+  const [coupons, setCoupons] = useState([]);
 
   // Redux
   const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    loadAllCoupons();
+  }, []);
+
+  const loadAllCoupons = () => getCoupons().then((res) => setCoupons(res.data));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,12 +33,26 @@ const CreateCoupon = () => {
     createCoupon({ name, expired, discount }, user.token)
       .then((res) => {
         setLoading(false);
+        loadAllCoupons();
         setName("");
         setDiscount("");
         setExpired("");
         toast.success(`${res.data.name} is Created`);
       })
       .catch((err) => console.log("ERROR Create Coupon", err));
+  };
+
+  const handleRemove = (couponId) => {
+    if (window.confirm("Delete?")) {
+      setLoading(true);
+      removeCoupon(couponId, user.token)
+        .then((res) => {
+          loadAllCoupons();
+          setLoading(false);
+          toast.error(`${res.data.name} deleted`);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -124,6 +146,56 @@ const CreateCoupon = () => {
                 </div>
                 {/* <!--End Row--> */}
               </form>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-header border-bottom-0 p-4">
+              <h2 className="card-title">1 - 30 of 546 Products</h2>
+              <div className="page-options ms-auto">
+                <select className="form-control select2 w-100">
+                  <option value="asc">Latest</option>
+                  <option value="desc">Oldest</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="e-table px-5 pb-5">
+              <div className="table-responsive table-lg">
+                <table className="table border-top table-bordered mb-0">
+                  <thead>
+                    <tr>
+                      <td className="text-center">Name</td>
+                      <td className="text-center">Discount ( % )</td>
+                      <td className="text-center">Expired</td>
+                      <td className="text-center">Date</td>
+                      <td className="text-center">Actions</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {coupons.map((c) => (
+                      <tr key={c._id}>
+                        <td className="text-nowrap align-middle">{c.name}</td>
+                        <td className="text-center align-middle">{c.discount} %</td>
+                        <td className="text-center align-middle">{new Date(c.expired).toLocaleDateString()}</td>
+                        <td className="text-center align-middle">
+                          <span>{c.createdAt}</span>
+                        </td>
+                        <td className="text-center align-middle">
+                          <div className="btn-group align-top">
+                            {/* <Link to={`/admin/product/${slug}`} className="btn btn-sm btn-warning badge" type="button">
+                              <i className="fe fe-edit"></i>
+                            </Link> */}
+                            <button onClick={() => handleRemove(c._id)} className="btn btn-sm btn-danger badge" type="button">
+                              <i className="fe fe-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

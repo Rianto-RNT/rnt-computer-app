@@ -381,6 +381,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Save user address in checkout pages
   - Coupon Page in admin dashboard
   - Create Coupon in admin dashboard
+  - Coupon List and delete in admin dashboard
 
 ## TODO to fix
 
