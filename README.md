@@ -295,7 +295,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Save User address in checkout
   - Coupon Shcema model
   - Coupon Routes and Controller
-
+  - Apply discount Coupon in user Cart Enpoint
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -358,10 +358,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Filtering product by category
   - reset filtering when choose one filter/search (ex, search, category, price, etc)
   - Filter product by Star rating
-  - Filter product by subcategory 
-  - Filter product by Brands 
-  - Filter product by Color 
-  - Filter product by Shipping 
+  - Filter product by subcategory
+  - Filter product by Brands
+  - Filter product by Color
+  - Filter product by Shipping
   - Add product to local storage
   - Cart in redux state
   - dispatch add to cart to redux

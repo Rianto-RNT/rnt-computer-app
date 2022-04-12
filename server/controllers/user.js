@@ -2,6 +2,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const User = require('../models/User');
 const Product = require('../models/Product');
+const Coupon = require('../models/Coupon');
 const Cart = require('../models/Cart');
 
 // @desc    Get User Cart
@@ -22,57 +23,6 @@ exports.getUserCart = asyncHandler(async (req, res, next) => {
 // @desc    Create User Cart
 // @route   POST /api/user/cart
 // @access  Private
-// exports.userCart = async (req, res) => {
-//   // console.log(req.body); // {cart: []}
-//   const { cart } = req.body;
-
-//   let products = [];
-
-//   const user = await User.findOne({ email: req.user.email }).exec();
-
-//   // check if cart with logged in user id already exist
-//   let cartExistByThisUser = await Cart.findOne({ orderdBy: user._id }).exec();
-
-//   if (cartExistByThisUser) {
-//     cartExistByThisUser.remove();
-//     console.log("removed old cart");
-//   }
-
-//   for (let i = 0; i < cart.length; i++) {
-//     let object = {};
-
-//     object.product = cart[i]._id;
-//     object.count = cart[i].count;
-//     object.color = cart[i].color;
-//     // get price for creating total
-//     let productFromDb = await Product.findById(cart[i]._id)
-//       .select("price")
-//       .exec();
-//     object.price = productFromDb.price;
-
-//     products.push(object);
-//   }
-
-//   // console.log('products', products)
-
-//   let cartTotal = 0;
-//   for (let i = 0; i < products.length; i++) {
-//     cartTotal = cartTotal + products[i].price * products[i].count;
-//   }
-
-//   // console.log("cartTotal", cartTotal);
-
-//   let newCart = await new Cart({
-//     products,
-//     cartTotal,
-//     orderdBy: user._id,
-//   }).save();
-
-//   console.log("new cart ----> ", newCart);
-//   res.json({ ok: true });
-// };
-
-////==========================================
 exports.userCart = asyncHandler(async (req, res, next) => {
   const { cart } = req.body;
 
@@ -128,7 +78,6 @@ exports.userCart = asyncHandler(async (req, res, next) => {
   console.log('new cart ----> ', newCart);
   res.status(200).json({ ok: true });
 });
-////////=================
 
 // @desc    Empty User Cart in checkout
 // @route   DELETE /api/user/cart
@@ -160,4 +109,50 @@ exports.saveAddress = asyncHandler(async (req, res, next) => {
   ).exec();
 
   res.status(200).json({ ok: true });
+});
+
+// @desc    Apply Coupon To User Cart
+// @route   POST /api/user/cart/coupon
+// @access  Private
+exports.saveAddress = asyncHandler(async (req, res, next) => {
+  const { coupon } = req.body;
+
+  console.log('Coupon===>> ', coupon);
+
+  const validCoupon = await Coupon.findOne({ name: coupon }).exec();
+  if (validCoupon === null) {
+    return res.json({
+      err: 'Invalid Coupon',
+    });
+  }
+  console.log('valid coupon ====>> ', validCoupon);
+
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  let { product, cartTotal } = await Cart.findOne({
+    orderedBy: user._id,
+  })
+    .populate('products.product', '_id title price')
+    .exec();
+
+  console.log(
+    'cartTotal ===>>',
+    cartTotal,
+    'discount ===>>',
+    validCoupon.discount
+  );
+
+  // calculate the Price total after discount
+  let totalAfterDiscount = (
+    cartTotal -
+    (cartTotal * validCoupon.discount) / 100
+  ).toFixed(2); // 99.99
+
+  Cart.findByIdAndUpdate(
+    { orderedBy: user._id },
+    { totalAfterDiscount },
+    { new: true }
+  );
+
+  res.json(totalAfterDiscount);
 });
