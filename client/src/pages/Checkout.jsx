@@ -12,6 +12,7 @@ const Checkout = () => {
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
   const [addressSaved, setAddressSaved] = useState(false);
+  const [coupon, setCoupon] = useState("");
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => ({ ...state }));
@@ -74,6 +75,64 @@ const Checkout = () => {
     });
   };
 
+  const applyDiscountCoupon = () => {
+    console.log("send coupon to backend", coupon);
+  };
+
+  const showBillingInformation = () => (
+    <div className="form-group">
+      <label className="form-label">
+        Delivery Address <span className="text-danger">*</span>
+      </label>
+      <ReactQuill theme="snow" value={address} onChange={setAddress} />
+      <p className="h6 pt-1 fs-12 text-danger"> *Delivery address must have: Name, Full Address, Building, and Phone Number.</p>
+    </div>
+  );
+
+  const showYourOrder = () => (
+    <>
+      {products.map((p, i) => (
+        <div className="card pt-2" key={p._id}>
+          <div className="d-flex ">
+            <img
+              className="avatar-xxl br-7"
+              src={p.images && p.images.length ? p.images[0].url : noImages}
+              style={{ objectFit: "cover" }}
+              alt="image"
+            />
+            <div className="ms-3">
+              <h4 className="mb-1 fw-semibold fs-14">
+                <p>{p.product.title}</p>
+              </h4>
+              <div className="fs-14">
+                <p>( {p.color} )</p>
+              </div>
+              <p>{p.count} Items</p>
+              <p>Rp. {(p.product.price * p.count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+
+  const showApplyCoupon = () => (
+    <>
+      <div className="input-group mb-1">
+        <input
+          onChange={(e) => setCoupon(e.target.value)}
+          value={coupon}
+          type="text"
+          className="form-control"
+          placeholder="Insert Your Coupon Here ..."
+        />
+        <span onClick={applyDiscountCoupon} className="input-group-text btn btn-primary">
+          Apply Coupon
+        </span>
+      </div>
+    </>
+  );
+
   return (
     <div className="main-container container-fluid pt-8">
       {/* <!-- PAGE-HEADER --> */}
@@ -99,15 +158,7 @@ const Checkout = () => {
               <h3 className="card-title">Billing Information</h3>
             </div>
             <div className="card-body">
-              <div className="row">
-                <div className="form-group">
-                  <label className="form-label">
-                    Delivery Address <span className="text-danger">*</span>
-                  </label>
-                  <ReactQuill theme="snow" value={address} onChange={setAddress} />
-                  <p className="h6 pt-1 fs-12 text-danger"> *Delivery address must have: Name, Full Address, Building, and Phone Number.</p>
-                </div>
-              </div>
+              <div className="row">{showBillingInformation()}</div>
             </div>
             <div className="card-footer">
               <button className="btn btn-primary mt-2" onClick={saveAddressToDb}>
@@ -118,12 +169,7 @@ const Checkout = () => {
 
           <div className="card">
             <div className="card-body">
-              <div className="row">
-                <div className="input-group mb-1">
-                  <input type="text" className="form-control" placeholder="Insert Your Coupon Here ..." />
-                  <span className="input-group-text btn btn-primary">Apply Coupon</span>
-                </div>
-              </div>
+              <div className="row">{showApplyCoupon()}</div>
             </div>
           </div>
         </div>
@@ -135,29 +181,7 @@ const Checkout = () => {
             </div>
 
             <div className="card-body">
-              {products.map((p, i) => (
-                <div className="card pt-2" key={p._id}>
-                  <div className="d-flex ">
-                    <img
-                      className="avatar-xxl br-7"
-                      src={p.images && p.images.length ? p.images[0].url : noImages}
-                      style={{ objectFit: "cover" }}
-                      alt="image"
-                    />
-                    <div className="ms-3">
-                      <h4 className="mb-1 fw-semibold fs-14">
-                        <p>{p.product.title}</p>
-                      </h4>
-                      <div className="fs-14">
-                        <p>( {p.color} )</p>
-                      </div>
-                      <p>{p.count} Items</p>
-                      <p>Rp. {(p.product.price * p.count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
+              {showYourOrder()}
               <ul className="list-group border br-7 mt-5">
                 <li className="list-group-item border-0">
                   Products Total
