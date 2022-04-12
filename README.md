@@ -383,6 +383,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Create Coupon in admin dashboard
   - Coupon List and delete in admin dashboard
   - Apply Coupon in Checkout page (console.log)
+  - Coupon Applied and Set total discount price (Checkout page)
 
 ## TODO to fix
 

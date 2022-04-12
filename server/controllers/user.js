@@ -114,7 +114,7 @@ exports.saveAddress = asyncHandler(async (req, res, next) => {
 // @desc    Apply Coupon To User Cart
 // @route   POST /api/user/cart/coupon
 // @access  Private
-exports.saveAddress = asyncHandler(async (req, res, next) => {
+exports.applyCouponToUserCart = asyncHandler(async (req, res, next) => {
   const { coupon } = req.body;
 
   console.log('Coupon===>> ', coupon);
@@ -146,7 +146,7 @@ exports.saveAddress = asyncHandler(async (req, res, next) => {
   let totalAfterDiscount = (
     cartTotal -
     (cartTotal * validCoupon.discount) / 100
-  ).toFixed(2); // 99.99
+  ).toFixed(0); // 99.99
 
   Cart.findByIdAndUpdate(
     { orderedBy: user._id },
