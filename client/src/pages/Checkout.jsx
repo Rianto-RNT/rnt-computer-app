@@ -13,7 +13,7 @@ const Checkout = () => {
   const [address, setAddress] = useState("");
   const [addressSaved, setAddressSaved] = useState(false);
   const [coupon, setCoupon] = useState("");
-  const [totalAfterDiscount, setTotalAfterDiscount] = useState("");
+  const [totalAfterDiscount, setTotalAfterDiscount] = useState(0);
   const [discountError, setDiscountError] = useState("");
 
   const dispatch = useDispatch();
@@ -52,6 +52,8 @@ const Checkout = () => {
           Swal.fire("Empty!", "Your cart has been deleted.", "success");
           setProducts([]);
           setTotal(0);
+          setTotalAfterDiscount(0)
+          setCoupon("")
         });
       } else {
         Swal.fire("Cancelled", "Your Cart data is safe :)", "info");
@@ -100,7 +102,7 @@ const Checkout = () => {
         Delivery Address <span className="text-danger">*</span>
       </label>
       <ReactQuill theme="snow" value={address} onChange={setAddress} />
-      <p className="h6 pt-1 fs-12 text-danger"> *Delivery address must have: Name, Full Address, Building, and Phone Number.</p>
+      <p className="h6 pt-1 fs-12 text-info"> *Delivery address must have: Name, Full Address, Building, and Phone Number.</p>
     </div>
   );
 
@@ -135,7 +137,10 @@ const Checkout = () => {
     <>
       <div className="input-group mb-1">
         <input
-          onChange={(e) => setCoupon(e.target.value)}
+          onChange={(e) => {
+            setCoupon(e.target.value);
+            setDiscountError("");
+          }}
           value={coupon}
           type="text"
           className="form-control"
@@ -185,6 +190,15 @@ const Checkout = () => {
           <div className="card">
             <div className="card-body">
               <div className="row">{showApplyCoupon()}</div>
+
+              {discountError && (
+                <div className="alert alert-danger mb-0 col-md-6" role="alert">
+                  <span className="alert-inner--icon">
+                    <i className="fe fe-slash"></i>
+                  </span>
+                  <span className="alert-inner--text"> {discountError} </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -199,14 +213,36 @@ const Checkout = () => {
               {showYourOrder()}
               <ul className="list-group border br-7 mt-5">
                 <li className="list-group-item border-0">
+                  Sub Total
+                  <span className="h6  mb-0 float-end">Rp. {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                </li>
+                <li className="list-group-item border-0">
                   Products Total
                   <span className="h6  mb-0 float-end">( {products.length} Items )</span>
+                </li>
+                <li className="list-group-item border-0">
+                  Discount
+                  <span className="h6  mb-0 float-end">TODO: show discount %</span>
                 </li>
                 <li className="list-group-item border-0">
                   <span className="h4 fw-bold"> Total Price </span>
                   <span className="h4 fw-bold mb-0 float-end">Rp. {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </li>
               </ul>
+
+              {totalAfterDiscount > 0 && (
+                <div className="text-wrap pt-2">
+                  <div className="alert alert-success" role="alert">
+                    <span className="alert-inner--icon">
+                      <i className="fe fe-thumbs-up"></i>
+                    </span>
+                    <span className="alert-inner--text">
+                      <strong> Success! Coupon applied.</strong> <br />
+                      Total Payable: <h3>Rp. {totalAfterDiscount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </h3>
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="card-footer text-center">

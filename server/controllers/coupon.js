@@ -9,6 +9,13 @@ exports.getCoupon = asyncHandler(async (req, res, next) => {
   res.json(await Coupon.find({}).sort({ createdAt: -1 }).exec());
 });
 
+// @desc    Get Single coupon
+// @route   GET /api/coupon/:couponId
+// @access  Public
+exports.getSingleCoupon = asyncHandler(async (req, res, next) => {
+  res.json(await Coupon.findById(req.params.couponId).exec());
+});
+
 // @desc    Create coupon
 // @route   POST /api/coupon
 // @access  Private / Admin
