@@ -387,6 +387,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Coupon Applied and Set total discount price (Checkout page)
   - Coupon Invalid and coupon success applied messages in checkout pages
   - Coupon in redux
+  - React Stripe Setup in frontend
 
 ## TODO to fix
 
