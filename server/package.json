@@ -44,7 +44,7 @@
     "mongoose": "^6.2.3",
     "morgan": "^1.10.0",
     "slugify": "^1.4.5",
-    "stripe": "^8.104.0",
+    "stripe": "^8.217.0",
     "uniqueid": "^1.0.0"
   },
   "devDependencies": {

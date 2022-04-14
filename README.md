@@ -296,6 +296,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Coupon Shcema model
   - Coupon Routes and Controller
   - Apply discount Coupon in user Cart Enpoint
+  - Create Payment Intent stripe, routes, and controller
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
