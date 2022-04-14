@@ -385,6 +385,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Apply Coupon in Checkout page (console.log)
   - Coupon Applied and Set total discount price (Checkout page)
   - Coupon Invalid and coupon success applied messages in checkout pages
+  - Coupon in redux
 
 ## TODO to fix
 

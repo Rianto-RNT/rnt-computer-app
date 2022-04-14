@@ -27,6 +27,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Payment from "./pages/Payment";
 import CategoryHome from "./pages/category/CategoryHome";
 import SubcategoryHome from "./pages/category/SubcategoryHome";
 import Header from "./components/nav/Header";
@@ -103,6 +104,10 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/cart" component={Cart} />
+        
+        <UserRoute exact path="/checkout" component={Checkout} />
+        <UserRoute exact path="/payment" component={Payment} />
+        
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/subcategory/:slug" component={SubcategoryHome} />
         <Route exact path="/login" component={Login} />
@@ -114,7 +119,6 @@ const App = () => {
         <UserRoute exact path="/my-account/history" component={History} />
         <UserRoute exact path="/my-account/change-password" component={ChangePassword} />
         <UserRoute exact path="/my-account/wishlist" component={Wishlist} />
-        <UserRoute exact path="/checkout" component={Checkout} />
 
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/category" component={CreateCategory} />

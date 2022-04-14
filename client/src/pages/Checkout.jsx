@@ -7,7 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import { getUserCart, emptyUserCart, saveUserAddress, applyCoupon } from "../services/user";
 import noImages from "../assets/images/noImages.png";
 
-const Checkout = () => {
+const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
@@ -52,8 +52,8 @@ const Checkout = () => {
           Swal.fire("Empty!", "Your cart has been deleted.", "success");
           setProducts([]);
           setTotal(0);
-          setTotalAfterDiscount(0)
-          setCoupon("")
+          setTotalAfterDiscount(0);
+          setCoupon("");
         });
       } else {
         Swal.fire("Cancelled", "Your Cart data is safe :)", "info");
@@ -87,11 +87,19 @@ const Checkout = () => {
       if (res.data) {
         setTotalAfterDiscount(res.data);
         // Push the totalAfterDiscount to redux
+        dispatch({
+          type: "COUPON_APPLIED",
+          payload: true,
+        });
       }
       // what if when error
       if (res.data.err) {
         setDiscountError(res.data.err);
-        // upate redux coupon applied
+        // upate redux coupon applied true/false
+        dispatch({
+          type: "COUPON_APPLIED",
+          payload: false,
+        });
       }
     });
   };
@@ -251,7 +259,11 @@ const Checkout = () => {
                   Empty Cart
                 </button>
 
-                <button disabled={!addressSaved || !products.length} className="btn btn-primary float-sm-end col-md-5">
+                <button
+                  onClick={() => history.push("/payment")}
+                  disabled={!addressSaved || !products.length}
+                  className="btn btn-primary float-sm-end col-md-5"
+                >
                   Place Order
                 </button>
               </div>
