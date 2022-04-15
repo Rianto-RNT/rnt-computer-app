@@ -13,9 +13,9 @@ exports.createPaymentIntent = asyncHandler(async (req, res, next) => {
   // Apply coupon
   // calculate price
 
-  const paymentIntent = await stripe.paymentIntens.create({
-    amount: 10000000,
-    currency: 'IDR',
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 100,
+    currency: "usd",
   });
 
   res.send({
