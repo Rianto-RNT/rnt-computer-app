@@ -9,16 +9,23 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET);
 // @desc    Create Payment Intent Stripe
 // @route   POST /api/create-payment-intent
 // @access  Private
-exports.createPaymentIntent = asyncHandler(async (req, res, next) => {
-  // Apply coupon
-  // calculate price
+exports.createPaymentIntent = async (req, res) => {
+  // later apply coupon
+  // later calculate price
 
+  // 1 find user
+  const user = await User.findOne({ email: req.user.email }).exec();
+  // 2 get user cart total
+  const { cartTotal } = await Cart.findOne({ orderedBy: user._id }).exec();
+
+  console.log("CART TOTAL CHARGED ===>>", cartTotal);
+  // create payment intent with order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 100,
+    amount: cartTotal * 100,
     currency: "usd",
   });
 
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
-});
+};
