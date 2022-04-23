@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const StripeCheckout = ({ history }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, coupon } = useSelector((state) => ({ ...state }));
 
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ const StripeCheckout = ({ history }) => {
   const elements = useElements();
 
   useEffect(() => {
-    createPaymentIntent(user.token).then((res) => {
+    createPaymentIntent(user.token, coupon).then((res) => {
       console.log("create payment intent", res.data);
       setClientSecret(res.data.clientSecret);
     });
