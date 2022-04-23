@@ -297,6 +297,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Coupon Routes and Controller
   - Apply discount Coupon in user Cart Enpoint
   - Create Payment Intent stripe, routes, and controller
+  - Total After Discount backend
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -390,6 +391,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - React Stripe Setup in frontend
   - Stripe Checkout component
   - Successful payment
+  - show discount and coupon applied in frontend
 
 ## TODO to fix
 
