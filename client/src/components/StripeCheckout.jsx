@@ -3,9 +3,9 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 import { createPaymentIntent } from "../services/stripe";
 import { Link } from "react-router-dom";
-import { Card } from "antd";
 import { DollarOutlined, CheckOutlined } from "@ant-design/icons";
 import noImages from "../assets/images/noImages.png";
+import { Card } from "antd";
 
 const StripeCheckout = ({ history }) => {
   const dispatch = useDispatch();
@@ -88,21 +88,55 @@ const StripeCheckout = ({ history }) => {
   };
 
   return (
-    <div className="container-fluid pt-8">
-      <div className="card">
-        <div className=" card-body">
-          <>
-            {!succeeded && (
-              <div>
-                {coupon && totalAfterDiscount !== undefined ? (
-                  <p className="aler alert-success"> {`Total after discount: ${totalAfterDiscount}`} </p>
-                ) : (
-                  <p className="Alert alert-danger"> No Coupon applied</p>
-                )}
+    <div className="main-container container-fluid pt-8">
+      <div className="">
+        <div className="col-xl-12 col-md-10">
+          <div className="card-body">
+            <div className="row">
+              <div className="col-sm-12 col-lg-12">
+                <div className="card">
+                  {!succeeded && (
+                    <div>
+                      {coupon && totalAfterDiscount !== undefined ? (
+                        <div className="card-alert alert alert-success mb-0"> {`Total after discount: ${totalAfterDiscount}`} </div>
+                      ) : (
+                        <div className="card-alert alert alert-danger mb-0">No Coupon applied</div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </>
-          <div className="text center pb-5">
+            </div>
+
+            {/* <!-- ROW-5 OPEN --> */}
+            <div class="row">
+              <div class="col-xl-4 col-md-12">
+                <div class="card">
+                  <img src={noImages} class="card-img-top" alt="img" />
+                  {/* <div class="card-body border-bottom">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div> */}
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <span class="card-link">Total: ${cartTotal}</span>
+                    </li>
+                    {/* <li class="list-group-item">
+                      <span href="javascript:void(0)" class="card-link">
+                        Total payable: ${(payable / 100).toFixed(2)}
+                      </span>
+                    </li> */}
+                  </ul>
+                  <div class="card-body border-top">
+                    {/* <span class="card-link">Total: ${cartTotal}</span> */}
+                    <span href="javascript:void(0)" class="card-link">
+                      Total payable: ${(payable / 100).toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <!-- ROW-5 CLOSED --> */}
+
             <Card
               cover={
                 <img
@@ -124,27 +158,29 @@ const StripeCheckout = ({ history }) => {
               ]}
             />
           </div>
-        </div>
-      </div>
 
-      <div className="card">
-        <div className="card-body">
-          <form id="payment-form" className="stripe-form" onSubmit={handleSubmit}>
-            <CardElement id="card-element" options={cartStyle} onChange={handleChange} />
-            <button className="stripe-button" disabled={processing || disabled || succeeded}>
-              <span id="button-text">{processing ? <div className="spinner" id="spinner"></div> : "Pay"}</span>
-            </button>
-            <br />
-            {error && (
-              <div className="card-error" role="alert">
-                {error}
-              </div>
-            )}
-            <br />
-            <p className={succeeded ? "result-message" : "result-message hidden"}>
-              Payment Successful. <Link to="/user/history">See it in your purchase history.</Link>
-            </p>
-          </form>
+          <div className="card">
+            <div className="card-body">
+              <form id="payment-form" className="stripe-form" onSubmit={handleSubmit}>
+                <CardElement id="card-element" options={cartStyle} onChange={handleChange} />
+                <button className="stripe-button" disabled={processing || disabled || succeeded}>
+                  <span id="button-text">{processing ? <div className="spinner" id="spinner"></div> : "Pay"}</span>
+                </button>
+                <br />
+                {error && (
+                  <div className="card-error" role="alert">
+                    {error}
+                  </div>
+                )}
+
+                <div class="card text-white bg-success">
+                  <p className={succeeded ? "result-message" : "result-message hidden"}>
+                    Payment Successful. <Link to="/user/history">See it in your purchase history.</Link>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
