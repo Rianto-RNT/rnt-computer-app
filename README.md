@@ -299,6 +299,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Create Payment Intent stripe, routes, and controller
   - Total After Discount backend
   - Order Schema Model
+  - Order Controller and routes
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)

@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Product = require('../models/Product');
 const Coupon = require('../models/Coupon');
 const Cart = require('../models/Cart');
+const Order = require('../models/Order');
 
 // @desc    Get User Cart
 // @route   GET /api/user/cart
@@ -157,4 +158,24 @@ exports.applyCouponToUserCart = asyncHandler(async (req, res, next) => {
   ).exec();
 
   res.json(totalAfterDiscount);
+});
+
+// @desc    Create User Order
+// @route   POST /api/user/order
+// @access  Private
+exports.createOrder = asyncHandler(async (req, res, next) => {
+  const { paymentIntent } = req.body.stripeResponse;
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  let { products } = await Cart.findOne({ orderedBy: user._id }).exec();
+
+  let newOrder = await new Order({
+    products,
+    paymentIntent,
+    orderedBy: user._id,
+  }).save();
+
+  console.log('NEW ORDER SAVED ====>>>', newOrder);
+
+  res.json({ ok: true });
 });
