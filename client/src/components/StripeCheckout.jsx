@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
-import { createPaymentIntent } from "../services/stripe";
 import { Link } from "react-router-dom";
-import { DollarOutlined, CheckOutlined } from "@ant-design/icons";
-import noImages from "../assets/images/noImages.png";
 import { Card } from "antd";
+import { DollarOutlined, CheckOutlined } from "@ant-design/icons";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { createPaymentIntent } from "../services/stripe";
+import { createOrder, emptyUserCart } from "../services/user";
+import noImages from "../assets/images/noImages.png";
 
 const StripeCheckout = ({ history }) => {
   const dispatch = useDispatch();
@@ -54,6 +55,24 @@ const StripeCheckout = ({ history }) => {
     } else {
       // here you get result after successful payment
       // create order and save in database for admin to process
+      createOrder(payload, user.token).then((res) => {
+        if (res.data.oke) {
+          // empty cart from localStorage
+          if (typeof window !== "undefined") localStorage.removeItem("Cart");
+          // empty cart from redux
+          dispatch({
+            type: "ADD_TO_CART",
+            payload: [],
+          });
+          // reset coupon to false
+          dispatch({
+            type: "COUPON_APPLIED",
+            payload: false,
+          });
+          // empty cart from database
+          emptyUserCart(user.token);
+        }
+      });
       // empty user cart from redux store and local storage
       console.log(JSON.stringify(payload, null, 4));
       setError(null);
@@ -108,34 +127,7 @@ const StripeCheckout = ({ history }) => {
               </div>
             </div>
 
-            {/* <!-- ROW-5 OPEN --> */}
-            <div class="row">
-              <div class="col-xl-4 col-md-12">
-                <div class="card">
-                  <img src={noImages} class="card-img-top" alt="img" />
-                  {/* <div class="card-body border-bottom">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div> */}
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                      <span class="card-link">Total: ${cartTotal}</span>
-                    </li>
-                    {/* <li class="list-group-item">
-                      <span href="javascript:void(0)" class="card-link">
-                        Total payable: ${(payable / 100).toFixed(2)}
-                      </span>
-                    </li> */}
-                  </ul>
-                  <div class="card-body border-top">
-                    {/* <span class="card-link">Total: ${cartTotal}</span> */}
-                    <span href="javascript:void(0)" class="card-link">
-                      Total payable: ${(payable / 100).toFixed(2)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* <!-- ROW-5 CLOSED --> */}
+            
 
             <Card
               cover={
@@ -173,7 +165,7 @@ const StripeCheckout = ({ history }) => {
                   </div>
                 )}
 
-                <div class="card text-white bg-success">
+                <div className="card text-white bg-success">
                   <p className={succeeded ? "result-message" : "result-message hidden"}>
                     Payment Successful. <Link to="/user/history">See it in your purchase history.</Link>
                   </p>
