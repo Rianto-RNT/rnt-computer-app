@@ -56,7 +56,7 @@ const StripeCheckout = ({ history }) => {
       // here you get result after successful payment
       // create order and save in database for admin to process
       createOrder(payload, user.token).then((res) => {
-        if (res.data.oke) {
+        if (res.data.ok) {
           // empty cart from localStorage
           if (typeof window !== "undefined") localStorage.removeItem("Cart");
           // empty cart from redux

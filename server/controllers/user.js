@@ -163,7 +163,10 @@ exports.applyCouponToUserCart = asyncHandler(async (req, res, next) => {
 // @desc    Create User Order
 // @route   POST /api/user/order
 // @access  Private
-exports.createOrder = asyncHandler(async (req, res, next) => {
+exports.createOrder = async (req, res, next) => {
+  // console.log(req.body);
+  // return;
+
   const { paymentIntent } = req.body.stripeResponse;
   const user = await User.findOne({ email: req.user.email }).exec();
 
@@ -178,4 +181,4 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
   console.log('NEW ORDER SAVED ====>>>', newOrder);
 
   res.json({ ok: true });
-});
+};
