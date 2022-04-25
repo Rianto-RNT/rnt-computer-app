@@ -300,6 +300,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Total After Discount backend
   - Order Schema Model
   - Order Controller and routes
+  - decrement product quantity and increment product sold when user pay a products
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
