@@ -11,7 +11,7 @@ const {
   saveAddress,
   applyCouponToUserCart,
   createOrder,
-  getAllUserOrder
+  orders
 } = require('../controllers/user');
 
 router.get('/user/cart', protect, getUserCart);
@@ -20,7 +20,7 @@ router.delete('/user/cart', protect, emptyCart);
 router.post('/user/address', protect, saveAddress);
 
 router.post('/user/order', protect, createOrder);
-router.get('/user/order', protect, getAllUserOrder);
+router.get('/user/orders', protect, orders);
 
 // Coupon Apply in frontend save to database
 router.post('/user/cart/coupon', protect, applyCouponToUserCart);

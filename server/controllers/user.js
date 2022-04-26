@@ -196,14 +196,14 @@ exports.createOrder = async (req, res, next) => {
 };
 
 // @desc    Get All User Order
-// @route   GET /api/user/order
+// @route   GET /api/user/orders
 // @access  Private / User
-exports.getAllUserOrder = asyncHandler(async (req, res, next) => {
+exports.orders = async (req, res, next) => {
   let user = await User.findOne({ email: req.user.email }).exec();
 
   let userOrders = await Order.find({ orderedBy: user._id })
     .populate('products.product')
     .exec();
 
-  res.json(userOrders);
-});
+  res.json({ count: userOrders.length, userOrders });
+};
