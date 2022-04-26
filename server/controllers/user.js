@@ -189,8 +189,21 @@ exports.createOrder = async (req, res, next) => {
   });
 
   let updated = await Product.bulkWrite(bulkOption, {});
-  console.log("PRODUCT QUANTITY-- AND SOLD++ ====>>>",updated);
+  console.log('PRODUCT QUANTITY-- AND SOLD++ ====>>>', updated);
 
   console.log('NEW ORDER SAVED ====>>>', newOrder);
   res.json({ ok: true });
 };
+
+// @desc    Get All User Order
+// @route   GET /api/user/order
+// @access  Private / User
+exports.getAllUserOrder = asyncHandler(async (req, res, next) => {
+  let user = await User.findOne({ email: req.user.email }).exec();
+
+  let userOrders = await Order.find({ orderedBy: user._id })
+    .populate('products.product')
+    .exec();
+
+  res.json(userOrders);
+});
