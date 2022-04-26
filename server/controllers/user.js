@@ -205,5 +205,5 @@ exports.orders = async (req, res, next) => {
     .populate('products.product')
     .exec();
 
-  res.json({ count: userOrders.length, userOrders });
+  res.json(userOrders);
 };

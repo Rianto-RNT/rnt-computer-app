@@ -19,13 +19,30 @@ const History = () => {
       setOrders(res.data);
     });
 
+  const showOrderInTable = (order) => <p>Each Order and it's Products</p>;
+
+  const showEachOrders = () =>
+    orders.map((order, i) => (
+      <div key={i} className="m-5 p-3 card">
+        <p>show payment info</p>
+        {showOrderInTable(order)}
+        <div className="row">
+          <div className="col">
+            <p>PDF download</p>
+          </div>
+        </div>
+      </div>
+    ));
+
   return (
     <div className="container-fluid pt-8">
       <div className="row">
         <div className="col-md-2">
           <UserNav />
         </div>
-        <div className="col">User history page</div>
+        <div className="col text-center h4"> {orders.length > 0 ? "User Purchase orders" : "No Purchase Orders"} </div>
+
+        {showEachOrders()}
       </div>
     </div>
   );
