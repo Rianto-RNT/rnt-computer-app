@@ -94,12 +94,14 @@ const ProductCard = ({ product }) => {
         <div className="card-footer text-center">
           <button
             onClick={handleAddToCart}
+            disabled={product.quantity < 1}
             data-bs-placement="left"
             data-bs-toggle="tooltip-primary"
             title={tooltip}
             className="btn btn-primary mb-1"
           >
-            <i className="fe fe-shopping-cart me-2"></i>Add to cart
+            <i className="fe fe-shopping-cart me-2"></i>
+            {product.quantity < 1 ? "Out of stock" : "Add to cart"}
           </button>
 
           <a href="wishlist.html" className="btn btn-outline-primary mb-1">

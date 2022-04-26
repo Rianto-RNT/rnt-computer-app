@@ -396,6 +396,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Successful payment
   - show discount and coupon applied in frontend
   - empty user cart when create order
+  - disable button / Out of stock when quantity unavailabel or equal to zero 
 
 ## TODO to fix
 
