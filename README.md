@@ -401,6 +401,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - User orders in purchase history
   - Purchase order in card (user history)
   - Show user orders product list table in user history 
+  - Show user Payment info in User History page
 
 ## TODO to fix
 
