@@ -4,6 +4,7 @@ import { getUserOrders } from "../../services/user";
 import { useSelector, useDispatch } from "react-redux";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
+import { Document, Page, Text, View, StyleSheet, PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import ShowPaymentInfo from "../../components/cards/ShowPaymentInfo";
 
 const History = () => {
@@ -19,6 +20,25 @@ const History = () => {
       console.log(JSON.stringify(res.data, null, 4));
       setOrders(res.data);
     });
+
+  const showDownloadLink = (order) => (
+    <PDFDownloadLink
+      document={
+        <Document>
+          <Page size={"A4"}>
+            <View>
+              <Text>Section #1</Text>
+              <Text>Section #2</Text>
+            </View>
+          </Page>
+        </Document>
+      }
+      fileName="invoice.pdf"
+      className="btn btn-sm btn-primary"
+    >
+      Dowbload PDF
+    </PDFDownloadLink>
+  );
 
   const showOrderInTable = (order) => (
     <table className="table table-border">
@@ -42,7 +62,13 @@ const History = () => {
             <td>{p.product.brand}</td>
             <td>{p.color}</td>
             <td>{p.count}</td>
-            <td>{p.product.shipping === "Yes" ? <CheckCircleOutlined style={{color: 'green'}} /> : <CloseCircleOutlined style={{color: 'red'}} />}</td>
+            <td>
+              {p.product.shipping === "Yes" ? (
+                <CheckCircleOutlined style={{ color: "green" }} />
+              ) : (
+                <CloseCircleOutlined style={{ color: "red" }} />
+              )}
+            </td>
           </tr>
         ))}
       </tbody>
@@ -52,12 +78,10 @@ const History = () => {
   const showEachOrders = () =>
     orders.map((order, i) => (
       <div key={i} className="m-5 p-3 card">
-        <ShowPaymentInfo order={order}/>
+        <ShowPaymentInfo order={order} />
         {showOrderInTable(order)}
         <div className="row">
-          <div className="col">
-            <p>PDF download</p>
-          </div>
+          <div className="col">{showDownloadLink()}</div>
         </div>
       </div>
     ));
