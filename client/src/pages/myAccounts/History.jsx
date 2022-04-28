@@ -6,6 +6,7 @@ import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import { Document, Page, Text, View, StyleSheet, PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import ShowPaymentInfo from "../../components/cards/ShowPaymentInfo";
+import Invoice from "../../components/order/Invoice";
 
 const History = () => {
   const [orders, setOrders] = useState([]);
@@ -22,20 +23,7 @@ const History = () => {
     });
 
   const showDownloadLink = (order) => (
-    <PDFDownloadLink
-      document={
-        <Document>
-          <Page size={"A4"}>
-            <View>
-              <Text>Section #1</Text>
-              <Text>Section #2</Text>
-            </View>
-          </Page>
-        </Document>
-      }
-      fileName="invoice.pdf"
-      className="btn btn-sm btn-primary"
-    >
+    <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" className="btn btn-sm btn-primary">
       Dowbload PDF
     </PDFDownloadLink>
   );
