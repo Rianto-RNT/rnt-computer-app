@@ -67,9 +67,23 @@ const History = () => {
   );
 
   const showDownloadLink = (order) => (
-    <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" className="btn btn-sm btn-primary">
-      Dowbload PDF
-    </PDFDownloadLink>
+    <>
+      <div className="card-footer text-end">
+        <button type="button" className="btn btn-primary mb-1" onclick="javascript:window.print();">
+          <i className="fe fe-credit-card"></i> Pay Invoice
+        </button>
+        <button type="button" className="btn btn-secondary mb-1" onclick="javascript:window.print();">
+          <i className="fe fe-send"></i> Send Invoice
+        </button>
+        <button type="button" className="btn btn-danger mb-1" onclick="javascript:window.print();">
+          <i className="fe fe-printer"></i> Print Invoice
+        </button>
+      </div>
+
+      <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" className="btn btn-sm btn-primary">
+        Dowbload PDF
+      </PDFDownloadLink>
+    </>
   );
 
   const showEachOrders = () =>
@@ -92,20 +106,20 @@ const History = () => {
 
         <div className="col-md-10">
           <div className="page-header pt-7">
-            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Product List</h1>}
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">History</h1>}
             <div>
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                  <Link to={"/my-account/history"}>Invoice</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Product List
+                  History
                 </li>
               </ol>
             </div>
           </div>
 
-          <div className="col text-center h4"> {orders.length > 0 ? "User Purchase orders" : "No Purchase Orders"} </div>
+          <div className="col text-center h4"> {orders.length > 0 ? <h4> User Purchase orders</h4> : <h4> No Purchase Orders</h4>} </div>
 
           {showEachOrders()}
         </div>
