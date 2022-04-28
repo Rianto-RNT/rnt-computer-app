@@ -404,6 +404,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Show user Payment info in User History page
   - Invoice PDF view and Download invoice PDF
   - Invoice Component
+  - Download Invoice as PDF file
 
 ## TODO to fix
 

@@ -22,12 +22,6 @@ const History = () => {
       setOrders(res.data);
     });
 
-  const showDownloadLink = (order) => (
-    <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" className="btn btn-sm btn-primary">
-      Dowbload PDF
-    </PDFDownloadLink>
-  );
-
   const showOrderInTable = (order) => (
     <table className="table table-border">
       <thead className="thead-light">
@@ -61,6 +55,12 @@ const History = () => {
         ))}
       </tbody>
     </table>
+  );
+
+  const showDownloadLink = (order) => (
+    <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" className="btn btn-sm btn-primary">
+      Dowbload PDF
+    </PDFDownloadLink>
   );
 
   const showEachOrders = () =>
