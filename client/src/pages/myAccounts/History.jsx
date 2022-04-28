@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Spin } from "antd";
 import UserNav from "../../components/nav/UserNav";
 import { getUserOrders } from "../../services/user";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +12,7 @@ import Invoice from "../../components/order/Invoice";
 
 const History = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
@@ -23,38 +26,44 @@ const History = () => {
     });
 
   const showOrderInTable = (order) => (
-    <table className="table table-border">
-      <thead className="thead-light">
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Price</th>
-          <th scope="col">Brand</th>
-          <th scope="col">Color</th>
-          <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
-        </tr>
-      </thead>
-      <tbody>
-        {order.products.map((p, i) => (
-          <tr key={i}>
-            <td>
-              <b>{p.product.title}</b>
-            </td>
-            <td>{p.product.price}</td>
-            <td>{p.product.brand}</td>
-            <td>{p.color}</td>
-            <td>{p.count}</td>
-            <td>
-              {p.product.shipping === "Yes" ? (
-                <CheckCircleOutlined style={{ color: "green" }} />
-              ) : (
-                <CloseCircleOutlined style={{ color: "red" }} />
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="card">
+      <div className="e-table px-5 pb-5">
+        <div className="table-responsive table-lg">
+          <table className="table border-top table-bordered mb-0">
+            <thead className="thead-light">
+              <tr>
+                <th className="text-center">Title</th>
+                <th className="text-center">Price</th>
+                <th className="text-center">Brand</th>
+                <th className="text-center">Color</th>
+                <th className="text-center">Count</th>
+                <th className="text-center">Shipping</th>
+              </tr>
+            </thead>
+            <tbody>
+              {order.products.map((p, i) => (
+                <tr key={i}>
+                  <td>
+                    <b>{p.product.title}</b>
+                  </td>
+                  <td>{p.product.price}</td>
+                  <td>{p.product.brand}</td>
+                  <td>{p.color}</td>
+                  <td>{p.count}</td>
+                  <td>
+                    {p.product.shipping === "Yes" ? (
+                      <CheckCircleOutlined style={{ color: "green" }} />
+                    ) : (
+                      <CloseCircleOutlined style={{ color: "red" }} />
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 
   const showDownloadLink = (order) => (
@@ -75,14 +84,31 @@ const History = () => {
     ));
 
   return (
-    <div className="container-fluid pt-8">
-      <div className="row">
+    <div className="main-container container-fluid">
+      <div className="row row-cards">
         <div className="col-md-2">
           <UserNav />
         </div>
-        <div className="col text-center h4"> {orders.length > 0 ? "User Purchase orders" : "No Purchase Orders"} </div>
 
-        {showEachOrders()}
+        <div className="col-md-10">
+          <div className="page-header pt-7">
+            {loading ? <Spin size="large" tip="Loading..." /> : <h1 className="page-title">Product List</h1>}
+            <div>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to={"/admin/dashboard"}>Admin Dashboard</Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Product List
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div className="col text-center h4"> {orders.length > 0 ? "User Purchase orders" : "No Purchase Orders"} </div>
+
+          {showEachOrders()}
+        </div>
       </div>
     </div>
   );
