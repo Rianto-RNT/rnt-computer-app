@@ -302,6 +302,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Order Controller and routes
   - decrement product quantity and increment product sold when user pay a products
   - Get All User Orders (controllers and routes)
+  - Admin Controller and routes (user orders status)
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -405,6 +406,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Invoice PDF view and Download invoice PDF
   - Invoice Component
   - Download Invoice as PDF file
+  - Load orders in admin dashboard
+   
 
 ## TODO to fix
 

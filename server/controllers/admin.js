@@ -6,12 +6,10 @@ const Order = require('../models/Order');
 // @route   GET /admin/orders
 // @access  Private / Admin
 exports.orders = asyncHandler(async (req, res, next) => {
-  let allOrders = async (req, res) => {
-    let allOrders = await Order.find({})
-      .sort('-createdAdt')
-      .populate('products.product')
-      .exec();
-  };
+  let allOrders = await Order.find({})
+    .sort('-createdAdt')
+    .populate('products.product')
+    .exec();
 
   res.json(allOrders);
 });
