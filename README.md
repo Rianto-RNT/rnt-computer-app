@@ -407,6 +407,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Invoice Component
   - Download Invoice as PDF file
   - Load orders in admin dashboard
+  - User Order Status update in admin dashboard
    
 
 ## TODO to fix

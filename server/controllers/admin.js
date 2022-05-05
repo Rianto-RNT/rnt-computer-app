@@ -18,6 +18,8 @@ exports.orders = asyncHandler(async (req, res, next) => {
 // @route   PUT /admin/order-status
 // @access  Private / Admin
 exports.orderStatus = async (req, res, next) => {
+  // console.log(req.body);
+  // return;
   const { orderId, orderStatus } = req.body;
 
   let updated = await Order.findByIdAndUpdate(
