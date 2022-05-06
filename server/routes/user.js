@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Midleware
-const { protect } = require('../middlewares/auth');
+const { protect, adminProtect } = require('../middlewares/auth');
 const {
   userCart,
   getUserCart,
@@ -11,7 +11,10 @@ const {
   saveAddress,
   applyCouponToUserCart,
   createOrder,
-  orders
+  orders,
+  addToWishlist,
+  wishlist,
+  removeFromWishlist
 } = require('../controllers/user');
 
 router.get('/user/cart', protect, getUserCart);
@@ -24,6 +27,12 @@ router.get('/user/orders', protect, orders);
 
 // Coupon Apply in frontend save to database
 router.post('/user/cart/coupon', protect, applyCouponToUserCart);
+
+
+// User Wishlist
+router.post('my-account/wishlist', protect, addToWishlist)
+router.get('my-account/wishlist', protect, wishlist)
+router.put('my-account/wishlist/:productId', protect, removeFromWishlist)
 
 // router.get('/user', (req, res) => {
 //     res.json({

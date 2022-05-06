@@ -207,3 +207,44 @@ exports.orders = async (req, res, next) => {
 
   res.json(userOrders);
 };
+
+// @desc    Get User Wishlist
+// @route   GET /my-account/wishlist
+// @access  Private / User
+exports.wishlist = async (req, res, next) => {
+  const list = await User.findOne({ email: req.user.email })
+    .select('wishlist')
+    .populate('wishlist')
+    .exec();
+
+  res.json(list);
+};
+
+// @desc    Add to wishlist
+// @route   POST /my-account/wishlist
+// @access  Private / User
+exports.addToWishlist = async (req, res, next) => {
+  const { productId } = req.body;
+
+  const user = await User.findOneAndUpdate(
+    { email: req.user.email },
+    { $addToSet: { wishlist: productId } },
+    { new: true }
+  ).exec();
+
+  res.json({ ok: true });
+};
+
+// @desc    Edit / Remove user wishlist
+// @route   PUT /my-account/wishlist/:productId
+// @access  Private / User
+exports.removeFromWishlist = async (req, res, next) => {
+  const { productId } = req.params;
+
+  const user = await User.findOneAndUpdate(
+    { email: req.user.email },
+    { $pull: { wishlist: productId } }
+  ).exec();
+
+  req.json({ ok: true });
+};

@@ -17,7 +17,12 @@ const UserSchema = new mongoose.Schema({
     default: [],
   },
   address: String,
-  //   wishlist: [{ type: ObjectId, ref: 'Product' }],
+  wishlist: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Product',
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
