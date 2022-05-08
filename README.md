@@ -411,6 +411,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - User Order Status update in admin dashboard
   - User Product order table list in admin dashboard
   - user Wishlist services in frontend
+  - Wishlist In Frontend (user)
    
 
 ## TODO to fix

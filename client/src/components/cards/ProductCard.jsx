@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
     addToWishlist(product._id, user.token).then((res) => {
       console.log("ADDED TO WISHLIST", res.data);
       toast.success("Added to wishlist");
-      // history.push("/user/wishlist");
+      history.push("/my-account/wishlist");
     });
   };
 
