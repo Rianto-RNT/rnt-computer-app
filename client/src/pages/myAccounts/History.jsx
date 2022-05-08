@@ -69,13 +69,15 @@ const History = () => {
   const showDownloadLink = (order) => (
     <>
       <div className="card-footer text-end">
-        <button type="button" className="btn btn-primary mb-1" onclick="javascript:window.print();">
+        <button type="button" className="btn btn-primary mb-1">
+          {" "}
+          {/*onClick="javascript:window.print();"*/}
           <i className="fe fe-credit-card"></i> Pay Invoice
         </button>
-        <button type="button" className="btn btn-secondary mb-1" onclick="javascript:window.print();">
+        <button type="button" className="btn btn-secondary mb-1">
           <i className="fe fe-send"></i> Send Invoice
         </button>
-        <button type="button" className="btn btn-danger mb-1" onclick="javascript:window.print();">
+        <button type="button" className="btn btn-danger mb-1">
           <i className="fe fe-printer"></i> Print Invoice
         </button>
       </div>

@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Midleware
-const { protect, adminProtect } = require('../middlewares/auth');
+const { protect } = require('../middlewares/auth');
 const {
   userCart,
   getUserCart,
@@ -30,9 +30,9 @@ router.post('/user/cart/coupon', protect, applyCouponToUserCart);
 
 
 // User Wishlist
-router.post('my-account/wishlist', protect, addToWishlist)
-router.get('my-account/wishlist', protect, wishlist)
-router.put('my-account/wishlist/:productId', protect, removeFromWishlist)
+router.post("/user/wishlist", protect, addToWishlist);
+router.get("/user/wishlist", protect, wishlist);
+router.put("/user/wishlist/:productId", protect, removeFromWishlist);
 
 // router.get('/user', (req, res) => {
 //     res.json({

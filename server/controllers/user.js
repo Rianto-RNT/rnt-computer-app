@@ -211,10 +211,10 @@ exports.orders = async (req, res, next) => {
 // @desc    Get User Wishlist
 // @route   GET /my-account/wishlist
 // @access  Private / User
-exports.wishlist = async (req, res, next) => {
+exports.wishlist = async (req, res) => {
   const list = await User.findOne({ email: req.user.email })
-    .select('wishlist')
-    .populate('wishlist')
+    .select("wishlist")
+    .populate("wishlist")
     .exec();
 
   res.json(list);
@@ -223,13 +223,12 @@ exports.wishlist = async (req, res, next) => {
 // @desc    Add to wishlist
 // @route   POST /my-account/wishlist
 // @access  Private / User
-exports.addToWishlist = async (req, res, next) => {
+exports.addToWishlist = async (req, res) => {
   const { productId } = req.body;
 
   const user = await User.findOneAndUpdate(
     { email: req.user.email },
-    { $addToSet: { wishlist: productId } },
-    { new: true }
+    { $addToSet: { wishlist: productId } }
   ).exec();
 
   res.json({ ok: true });
@@ -238,13 +237,12 @@ exports.addToWishlist = async (req, res, next) => {
 // @desc    Edit / Remove user wishlist
 // @route   PUT /my-account/wishlist/:productId
 // @access  Private / User
-exports.removeFromWishlist = async (req, res, next) => {
+exports.removeFromWishlist = async (req, res) => {
   const { productId } = req.params;
-
   const user = await User.findOneAndUpdate(
     { email: req.user.email },
     { $pull: { wishlist: productId } }
   ).exec();
 
-  req.json({ ok: true });
+  res.json({ ok: true });
 };

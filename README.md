@@ -410,6 +410,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Load orders in admin dashboard
   - User Order Status update in admin dashboard
   - User Product order table list in admin dashboard
+  - user Wishlist services in frontend
    
 
 ## TODO to fix
