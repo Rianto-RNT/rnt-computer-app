@@ -412,7 +412,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - User Product order table list in admin dashboard
   - user Wishlist services in frontend
   - Wishlist In Frontend (user)
-  - (COD) Cash On Delivery for payment option  
+  - (COD) Cash On Delivery for payment option
+  - create cash on delivery order or redirect to payment page 
    
 
 ## TODO to fix
