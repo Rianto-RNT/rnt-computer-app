@@ -252,7 +252,7 @@ exports.removeFromWishlist = async (req, res) => {
 // @route   POST /api/user/cash-on-delivery-order
 // @access  Private / user
 exports.createCashOnDelivery = async (req, res, next) => {
-  const { cod } = req.body;
+  const { cod, couponApplied } = req.body;
 
   // if COD is true, create order with status of Cash On delivery
   if (!cod) return res.status(400).send('Failed to create cash order !!!');
@@ -261,17 +261,26 @@ exports.createCashOnDelivery = async (req, res, next) => {
 
   let userCart = await Cart.findOne({ orderedBy: user._id }).exec();
 
+  let finalAmount = 0;
+
+  if (couponApplied && userCart.totalAfterDiscount) {
+    finalAmount = Math.round(userCart.totalAfterDiscount * 100);
+  } else {
+    finalAmount = Math.round(userCart.cartTotal * 100);
+  }
+
   let newOrder = await new Order({
     products: userCart.products,
     paymentIntent: {
       id: uniqueid(),
-      amount: userCart.cartTotal,
-      currency: "usd",
-      status: "Cash On Delivery",
+      amount: finalAmount,
+      currency: 'usd',
+      status: 'Cash On Delivery',
       created: Date.now(),
-      payment_method_types: ["cash"],
+      payment_method_types: ['cash'],
     },
     orderedBy: user._id,
+    orderStatus: 'Cash On Delivery',
   }).save();
 
   // decrement quantity, increment sold

@@ -18,6 +18,7 @@ const Checkout = ({ history }) => {
 
   const dispatch = useDispatch();
   const { user, cod } = useSelector((state) => ({ ...state }));
+  const couponTrueOrFalse = useSelector((state) => state.coupon);
 
   useEffect(() => {
     getUserCart(user.token).then((res) => {
@@ -162,13 +163,42 @@ const Checkout = ({ history }) => {
   );
 
   const createCashOnDeliveryOrder = () => {
-    createCod(user.token, cod).then((res) => {
-      console.log('USER CASH ON DELYVERY ORDER CREATED ===>>>', res)
+    createCod(user.token, cod, couponTrueOrFalse).then((res) => {
+      console.log("USER CASH ON DELYVERY ORDER CREATED ===>>>", res);
 
-      // empty cart from redux, local storage, reset coupon, 
+      // empty cart from redux, local storage, reset coupon,
       // reset COD, redirect user to history page
+      if (res.data.ok) {
+        // empty localstorage
+        if (typeof window !== "undefined") localStorage.removeItem("cart");
 
-    })
+        // empty redux cart
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: [],
+        });
+
+        // empty redux coupon
+        dispatch({
+          type: "COUPON_APPLIED",
+          payload: false,
+        });
+
+        // empty redux COD
+        dispatch({
+          type: "COD",
+          payload: false,
+        });
+
+        // empty user cart from backend database
+        emptyUserCart(user.token);
+
+        // redirect
+        setTimeout(() => {
+          history.push("/my-account/history");
+        }, 3000);
+      }
+    });
   };
 
   return (

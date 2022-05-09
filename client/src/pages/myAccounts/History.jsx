@@ -89,7 +89,7 @@ const History = () => {
   );
 
   const showEachOrders = () =>
-    orders.map((order, i) => (
+    orders.reverse().map((order, i) => (
       <div key={i} className="m-5 p-3 card">
         <ShowPaymentInfo order={order} />
         {showOrderInTable(order)}
@@ -121,7 +121,7 @@ const History = () => {
             </div>
           </div>
 
-          <div className="col text-center h4"> {orders.length > 0 ? <h4> User Purchase orders</h4> : <h4> No Purchase Orders</h4>} </div>
+          <div className="col text-center h4"> {orders.length > 0 ?  "User Purchase orders" : "User Purchase orders"} </div>
 
           {showEachOrders()}
         </div>
