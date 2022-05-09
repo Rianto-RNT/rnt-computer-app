@@ -20,8 +20,24 @@ const Cart = ({ history }) => {
   //       }, 0)
   //   }
 
+  // save online payment to database
   const saveOrderToDb = () => {
     // console.log("cart", JSON.stringify(cart, null, 4));
+    userCart(cart, user.token)
+      .then((res) => {
+        console.log("CART POST RESPONSE", res);
+        if (res.data.ok) history.push("/checkout");
+      })
+      .catch((err) => console.log("Cart Save ERROR ", err));
+  };
+
+  // Save Cash On Delivery order to database
+  const saveCodOrderToDb = () => {
+    dispatch({
+      type: "COD",
+      payload: true,
+    });
+
     userCart(cart, user.token)
       .then((res) => {
         console.log("CART POST RESPONSE", res);
@@ -195,14 +211,19 @@ const Cart = ({ history }) => {
             </div>
             <div className="card-footer">
               {user ? (
-                <div className="btn-list">
-                  <Link to={"/shop"} className="btn btn-primary">
-                    <i className="fe fe-arrow-left me-1"></i>Continue Shopping
-                  </Link>
-                  <button onClick={saveOrderToDb} disabled={!cart.length} className="btn btn-success float-sm-end col-md-5">
-                    Check out<i className="fe fe-arrow-right ms-1"></i>
+                <>
+                  <div className="btn-list">
+                    <Link to={"/shop"} className="btn btn-primary">
+                      <i className="fe fe-arrow-left me-1"></i>Continue Shopping
+                    </Link>
+                    <button onClick={saveOrderToDb} disabled={!cart.length} className="btn btn-success float-sm-end col-md-5">
+                      Check out<i className="fe fe-arrow-right ms-1"></i>
+                    </button>
+                  </div>
+                  <button onClick={saveCodOrderToDb} disabled={!cart.length} className="btn btn-secondary col">
+                    Cash On Delivery ( COD ) <i className="fe fe-arrow-right ms-1"></i>
                   </button>
-                </div>
+                </>
               ) : (
                 <Link
                   to={{
