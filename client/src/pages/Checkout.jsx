@@ -162,7 +162,7 @@ const Checkout = ({ history }) => {
   );
 
   const createCashOnDeliveryOrder = () => {
-    createCod(user.token).then((res) => {
+    createCod(user.token, cod).then((res) => {
       console.log('USER CASH ON DELYVERY ORDER CREATED ===>>>', res)
 
       // empty cart from redux, local storage, reset coupon, 

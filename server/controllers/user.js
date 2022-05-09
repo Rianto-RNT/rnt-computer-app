@@ -5,6 +5,7 @@ const Product = require('../models/Product');
 const Coupon = require('../models/Coupon');
 const Cart = require('../models/Cart');
 const Order = require('../models/Order');
+const uniqueid = require('uniqueid');
 
 // @desc    Get User Cart
 // @route   GET /api/user/cart
@@ -213,8 +214,8 @@ exports.orders = async (req, res, next) => {
 // @access  Private / User
 exports.wishlist = async (req, res) => {
   const list = await User.findOne({ email: req.user.email })
-    .select("wishlist")
-    .populate("wishlist")
+    .select('wishlist')
+    .populate('wishlist')
     .exec();
 
   res.json(list);
@@ -244,5 +245,48 @@ exports.removeFromWishlist = async (req, res) => {
     { $pull: { wishlist: productId } }
   ).exec();
 
+  res.json({ ok: true });
+};
+
+// @desc    Create user cash on delivery order
+// @route   POST /api/user/cash-on-delivery-order
+// @access  Private / user
+exports.createCashOnDelivery = async (req, res, next) => {
+  const { cod } = req.body;
+
+  // if COD is true, create order with status of Cash On delivery
+  if (!cod) return res.status(400).send('Failed to create cash order !!!');
+
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  let userCart = await Cart.findOne({ orderedBy: user._id }).exec();
+
+  let newOrder = await new Order({
+    products: userCart.products,
+    paymentIntent: {
+      id: uniqueid(),
+      amount: userCart.cartTotal,
+      currency: "usd",
+      status: "Cash On Delivery",
+      created: Date.now(),
+      payment_method_types: ["cash"],
+    },
+    orderedBy: user._id,
+  }).save();
+
+  // decrement quantity, increment sold
+  let bulkOption = userCart.products.map((item) => {
+    return {
+      updateOne: {
+        filter: { _id: item.product._id }, // IMPORTANT itme.product
+        update: { $inc: { quantity: -item.count, sold: +item.count } },
+      },
+    };
+  });
+
+  let updated = await Product.bulkWrite(bulkOption, {});
+  console.log('PRODUCT QUANTITY-- AND SOLD++ ====>>>', updated);
+
+  console.log('NEW ORDER SAVED ====>>>', newOrder);
   res.json({ ok: true });
 };

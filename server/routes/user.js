@@ -14,7 +14,8 @@ const {
   orders,
   addToWishlist,
   wishlist,
-  removeFromWishlist
+  removeFromWishlist,
+  createCashOnDelivery
 } = require('../controllers/user');
 
 router.get('/user/cart', protect, getUserCart);
@@ -22,7 +23,8 @@ router.post('/user/cart', protect, userCart);
 router.delete('/user/cart', protect, emptyCart);
 router.post('/user/address', protect, saveAddress);
 
-router.post('/user/order', protect, createOrder);
+router.post('/user/order', protect, createOrder); // online payment strive
+router.post('/user/cash-on-delivery-order', protect, createCashOnDelivery); // COD
 router.get('/user/orders', protect, orders);
 
 // Coupon Apply in frontend save to database

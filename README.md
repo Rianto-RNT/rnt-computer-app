@@ -304,6 +304,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Get All User Orders (controllers and routes)
   - Admin Controller and routes (user orders status)
   - User product wishlist controller and routes
+  - user Cash On Delivery Order (backend)
 
 - Product (frontend)
   - Create product page, product services and routes (admin autorization)
@@ -414,7 +415,7 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Wishlist In Frontend (user)
   - (COD) Cash On Delivery for payment option
   - create cash on delivery order or redirect to payment page 
-   
+
 
 ## TODO to fix
 
