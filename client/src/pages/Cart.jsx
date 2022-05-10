@@ -113,22 +113,6 @@ const Cart = ({ history }) => {
                 </h5>
               )}
             </div>
-
-            <div className="card-footer">
-              <div className="row">
-                <div className="col-md-6 col-sm-6">
-                  <div className="input-group mb-1">
-                    <input type="text" className="form-control" placeholder="Search ..." />
-                    <span className="input-group-text btn btn-primary disabled">Apply Coupon</span>
-                  </div>
-                </div>
-                <div className="col-md-6 col-sm-6 text-end">
-                  <a href="#!" className="btn btn-default disabled btn-md">
-                    Update Cart
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
