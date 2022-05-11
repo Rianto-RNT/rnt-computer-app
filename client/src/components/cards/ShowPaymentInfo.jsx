@@ -19,7 +19,7 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
 
       <div className="col-lg-6 text-end border-bottom border-lg-0">
         <h4>#INV-{order.paymentIntent.id}</h4>
-        <h5>Orderd On: {new Date(order.paymentIntent.created * 1000).toLocaleString()}</h5>
+        <h5>Ordered On: {new Date(order.paymentIntent.created * 1000).toLocaleString()}</h5>
         {showStatus && (
           <h5 type="button" className="btn btn-secondary btn-sm mb-1" disabled>
             Status: {order.orderStatus}
@@ -55,7 +55,7 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
         <p className="mb-1">Currency: {order.paymentIntent.currency.toUpperCase()}</p>
         <p className="mb-1">Method: {order.paymentIntent.payment_method_types[0]}</p>
         <p className="mb-1">Payment: {order.paymentIntent.status.toUpperCase()}</p>
-        <p className="mb-1">Bank Name: APAMO Bank</p>
+        <p className="mb-1">Bank Name: RNT Bank</p>
         <p className="mb-1">Mayung: 543218769</p>
         <p>Country: Indonesia</p>
       </div>

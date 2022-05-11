@@ -1,10 +1,9 @@
 import React from "react";
-import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import ShowPaymentInfo from "../cards/ShowPaymentInfo";
 
 const Orders = ({ orders, handleStatusChange }) => {
   const showOrderInTable = (order) => (
-    <div className="card">
+    <>
       <div className="e-table px-5 pb-5">
         <div className="table-responsive table-lg">
           <table className="table border-top table-bordered mb-0">
@@ -24,15 +23,15 @@ const Orders = ({ orders, handleStatusChange }) => {
                   <td>
                     <b>{p.product.title}</b>
                   </td>
-                  <td>{p.product.price}</td>
-                  <td>{p.product.brand}</td>
-                  <td>{p.color}</td>
-                  <td>{p.count}</td>
-                  <td>
+                  <td className="text-end">Rp. {p.product.price}</td>
+                  <td className="text-center">{p.product.brand}</td>
+                  <td className="text-center">{p.color}</td>
+                  <td className="text-center">{p.count}</td>
+                  <td className="text-center">
                     {p.product.shipping === "Yes" ? (
-                      <CheckCircleOutlined style={{ color: "green" }} />
+                      <i className="fe fe-check-circle text-success"></i>
                     ) : (
-                      <CloseCircleOutlined style={{ color: "red" }} />
+                      <i className="fe fe-x-circle text-danger"></i>
                     )}
                   </td>
                 </tr>
@@ -41,21 +40,21 @@ const Orders = ({ orders, handleStatusChange }) => {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 
   return (
-    <div className="card">
+    <>
       {orders.map((order) => (
-        <div className="card-body" key={order._id}>
-          <div className="row pb-5">
-            <ShowPaymentInfo  order={order} showStatus={false} />
+        <div className="card">
+          <div className="card-body" key={order._id}>
+            <ShowPaymentInfo order={order} showStatus={false} />
 
-            <div className="row">
-              <div className="col-md-4">Delivery Status</div>
-              <div className="col-md-6">
+            <div className="col-xl-6 col-lg-12 float-end">
+              <div className="form-group select2-sm float-end">
+                <label className="form-label text-info float-end">Delivery Status</label>
                 <select
-                  className="form-control"
+                  className="form-control form-select form-select-sm select2 col-md-14"
                   defaultValue={order.orderStatus}
                   name="Status"
                   onChange={(e) => handleStatusChange(order._id, e.target.value)}
@@ -70,12 +69,16 @@ const Orders = ({ orders, handleStatusChange }) => {
                 </select>
               </div>
             </div>
-
-            <div className="card pt-6">{showOrderInTable(order)}</div>
+            {showOrderInTable(order)}
+            <div className="card-footer">
+              <div className="row">
+                <span className="text-center">*** - Thank You - ***</span>
+              </div>
+            </div>
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

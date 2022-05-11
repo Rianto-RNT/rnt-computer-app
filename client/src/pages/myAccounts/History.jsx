@@ -68,34 +68,31 @@ const History = () => {
 
   const showDownloadLink = (order) => (
     <>
-      <div className="card-footer text-end">
+      <div className="card-footer text-end btn-list">
         <button type="button" className="btn btn-primary mb-1">
-          {" "}
           {/*onClick="javascript:window.print();"*/}
           <i className="fe fe-credit-card"></i> Pay Invoice
         </button>
-        <button type="button" className="btn btn-secondary mb-1">
+        <button type="button" className="btn btn-success mb-1">
           <i className="fe fe-send"></i> Send Invoice
         </button>
         <button type="button" className="btn btn-danger mb-1">
           <i className="fe fe-printer"></i> Print Invoice
         </button>
+        <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" type="button" className="btn btn-warning mb-1">
+          <i className="fe fe-download"></i> Dowbload PDF
+        </PDFDownloadLink>
       </div>
-
-      <PDFDownloadLink document={<Invoice ordr={order} />} fileName="invoice.pdf" className="btn btn-sm btn-primary">
-        Dowbload PDF
-      </PDFDownloadLink>
     </>
   );
 
   const showEachOrders = () =>
     orders.reverse().map((order, i) => (
-      <div key={i} className="m-5 p-3 card">
+      <div key={i} className="card-body">
         <ShowPaymentInfo order={order} />
         {showOrderInTable(order)}
-        <div className="row">
-          <div className="col">{showDownloadLink()}</div>
-        </div>
+
+        {showDownloadLink()}
       </div>
     ));
 
@@ -121,9 +118,10 @@ const History = () => {
             </div>
           </div>
 
-          <div className="col text-center h4"> {orders.length > 0 ?  "User Purchase orders" : "User Purchase orders"} </div>
-
-          {showEachOrders()}
+          <div className="card">
+            <div className="card-header"> {orders.length > 0 ? <h4>User Purchase orders</h4> : <h4>User Purchase orders</h4>} </div>
+            <span>{showEachOrders()}</span>
+          </div>
         </div>
       </div>
     </div>
