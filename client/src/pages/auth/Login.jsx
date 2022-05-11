@@ -206,7 +206,7 @@ const Login = ({ history }) => {
               ) : (
                 <span className="login100-form-title pb-4">Login</span>
               )}
-              <form className="login100-form validate-form">{loginForm()}</form>
+              <span className="login100-form validate-form">{loginForm()}</span>
               <Button
                 onClick={googleLogin}
                 type="danger"
