@@ -158,6 +158,10 @@ const Login = ({ history }) => {
       </Item>
 
       <Item>
+        <Item name="checkbox" valuePropName="checked" noStyle>
+          <Checkbox className="ps-checkbox">Remember me</Checkbox>
+        </Item>
+
         <div className="text-end pt-4">
           <p className="mb-0">
             <Link to="/forgot-password" style={rightStyleForgotPassword} className="text-primary ms-1">
@@ -196,11 +200,11 @@ const Login = ({ history }) => {
           </div>
 
           <div className="container-login100">
-            <div className="wrap-login100 p-6">
+            <div className="wrap-login100 p-4 col-md-4">
               {loading ? (
-                <Spin size="middle" tip="Please Wait.." style={{ fontSize: 18 }} className="login100-form-title pb-5" />
+                <Spin size="middle" tip="Please Wait.." style={{ fontSize: 18 }} className="login100-form-title pb-3" />
               ) : (
-                <span className="login100-form-title pb-5">Login</span>
+                <span className="login100-form-title pb-4">Login</span>
               )}
               <form className="login100-form validate-form">{loginForm()}</form>
               <Button
@@ -223,6 +227,21 @@ const Login = ({ history }) => {
                   </Link>
                 </p>
               </Item>
+              <label className="login-social-icon">
+                <span>Login with Social</span>
+              </label>
+              <div className="d-flex justify-content-center">
+                <a href="https://web.facebook.com/ryanmorrisonsay/">
+                  <div className="social-login me-4 text-center">
+                    <i className="fe fe-facebook"></i>
+                  </div>
+                </a>
+                <a href="https://twitter.com/ryanmorrisonsay">
+                  <div className="social-login text-center">
+                    <i className="fe fe-twitter"></i>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
