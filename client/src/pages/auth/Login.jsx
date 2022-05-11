@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { auth, googleAuthProvider } from "../../firebase";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Spin } from "antd";
 import { GoogleOutlined, MailOutlined, UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { auth, googleAuthProvider } from "../../firebase";
 import { createOrUpdateUser } from "../../services/auth";
+import rntLogo from "../../assets/images/rntLogo.png";
 
 const { Item } = Form;
 
@@ -157,13 +158,13 @@ const Login = ({ history }) => {
       </Item>
 
       <Item>
-        <Item name="checkbox" valuePropName="checked" noStyle>
-          <Checkbox className="ps-checkbox">Remember me</Checkbox>
-        </Item>
-
-        <Link to="/forgot-password" style={rightStyleForgotPassword} className="login-form-forgot">
-          Forgot password
-        </Link>
+        <div className="text-end pt-4">
+          <p className="mb-0">
+            <Link to="/forgot-password" style={rightStyleForgotPassword} className="text-primary ms-1">
+              Forgot Password?
+            </Link>
+          </p>
+        </div>
       </Item>
 
       <Item>
@@ -171,7 +172,7 @@ const Login = ({ history }) => {
           onClick={handleSubmit}
           type="primary"
           htmlType="submit"
-          className="login-form-button"
+          className="login100-form-btn btn-primary"
           block
           shape="round"
           icon={<MailOutlined />}
@@ -185,23 +186,45 @@ const Login = ({ history }) => {
   );
 
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          {loading ? <Spin size="large" tip="Loading..." /> : <h4>Login</h4>}
-          {loginForm()}
-          <Button onClick={googleLogin} type="danger" className="mb-3" block shape="round" icon={<GoogleOutlined />} size="middle">
-            Login with Google
-          </Button>
+    <div className="login-img">
+      <div className="page">
+        <div className="">
+          <div className="col col-login mx-auto mt-7">
+            <div className="text-center">
+              <img src={rntLogo} className="header-brand-img" alt="logo" />
+            </div>
+          </div>
 
-          <Item className="text-center">
-            <p>
-              Not have an account ?
-              <Link to="/register" variant="body2" type="link">
-                &nbsp; Register
-              </Link>
-            </p>
-          </Item>
+          <div className="container-login100">
+            <div className="wrap-login100 p-6">
+              {loading ? (
+                <Spin size="middle" tip="Please Wait.." style={{ fontSize: 18 }} className="login100-form-title pb-5" />
+              ) : (
+                <span className="login100-form-title pb-5">Login</span>
+              )}
+              <form className="login100-form validate-form">{loginForm()}</form>
+              <Button
+                onClick={googleLogin}
+                type="danger"
+                className="login100-form-btn btn-danger"
+                block
+                shape="round"
+                icon={<GoogleOutlined />}
+                size="middle"
+              >
+                Login with Google
+              </Button>
+
+              <Item className="text-center pt-3">
+                <p className="text-dark mb-0">
+                  Not a member?
+                  <Link to="/register" variant="body2" type="link" className="text-primary ms-1">
+                    &nbsp; Sign Up
+                  </Link>
+                </p>
+              </Item>
+            </div>
+          </div>
         </div>
       </div>
     </div>
