@@ -58,7 +58,7 @@ const AllProducts = () => {
     });
   };
 
-  const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
+  const searched = (keyword) => (p) => p.title.toLowerCase().includes(keyword);
 
   return (
     <div className="main-container container-fluid">
@@ -109,7 +109,7 @@ const AllProducts = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map((product) => (
+                    {products.filter(searched(keyword)).map((product) => (
                       <tr key={product._id}>
                         <AdminProductCard product={product} handleRemove={handleRemove} />
                       </tr>
