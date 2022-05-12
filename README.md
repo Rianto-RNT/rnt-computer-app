@@ -416,7 +416,8 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - (COD) Cash On Delivery for payment option
   - create cash on delivery order or redirect to payment page 
   - Cash on delivery order success, coupon apply and status order
-  - Code splitting wit lazy and suspense 
+  - Code splitting wit lazy and suspense
+  - Admin password change in admin dashboard 
 
 
 ## TODO to fix

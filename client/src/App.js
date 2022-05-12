@@ -57,6 +57,7 @@ import { currentUser } from "./services/auth";
 // import UpdateSubcategory from "./pages/admin/subcategory/UpdateSubcategory";
 
 // import CreateCoupon from "./pages/admin/coupon/CreateCoupon";
+// import AdminPassChange from "./pages/admin/AdminPasswordChange/AdminPassChange"
 
 // import CreateProduct from "./pages/admin/product/CreateProduct";
 // import AllProducts from "./pages/admin/product/AllProducts";
@@ -95,6 +96,7 @@ const CreateSubcategory = lazy(() => import("./pages/admin/subcategory/CreateSub
 const UpdateSubcategory = lazy(() => import("./pages/admin/subcategory/UpdateSubcategory"));
 
 const CreateCoupon = lazy(() => import("./pages/admin/coupon/CreateCoupon"));
+const AdminPassChange = lazy(() => import("./pages/admin/AdminPasswordChange/AdminPassChange"));
 
 const CreateProduct = lazy(() => import("./pages/admin/product/CreateProduct"));
 const AllProducts = lazy(() => import("./pages/admin/product/AllProducts"));
@@ -185,6 +187,7 @@ const App = () => {
         <AdminRoute exact path="/admin/subcategory/:slug" component={UpdateSubcategory} />
 
         <AdminRoute exact path="/admin/coupon" component={CreateCoupon} />
+        <AdminRoute exact path="/admin/password" component={AdminPassChange} />
 
         <AdminRoute exact path="/admin/product" component={CreateProduct} />
         <AdminRoute exact path="/admin/products" component={AllProducts} />
