@@ -19,7 +19,7 @@ const AdminProductCard = ({ product, handleRemove, handleClick }) => {
       </td>
       <td className="text-nowrap align-middle">{title}</td>
       <td className="text-nowrap align-middle">
-        <span>{createdAt}</span>
+        <span>{new Date(createdAt).toLocaleString()}</span>
       </td>
       <td className="text-center align-middle">{quantity}</td>
       <td className="text-center align-middle">{sold}</td>

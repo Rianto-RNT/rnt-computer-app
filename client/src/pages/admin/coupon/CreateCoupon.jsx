@@ -179,7 +179,7 @@ const CreateCoupon = () => {
                         <td className="text-center align-middle">{c.discount} %</td>
                         <td className="text-center align-middle">{new Date(c.expired).toLocaleDateString()}</td>
                         <td className="text-center align-middle">
-                          <span>{c.createdAt}</span>
+                          <span>{new Date(c.createdAt).toLocaleString()}</span>
                         </td>
                         <td className="text-center align-middle">
                           <div className="btn-group align-top">

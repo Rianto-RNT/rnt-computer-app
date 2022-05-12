@@ -136,7 +136,7 @@ const CreateCategory = () => {
                       <tbody key={c._id}>
                         <tr>
                           <td>{c.name}</td>
-                          <td className="text-center">{c.createdAt}</td>
+                          <td className="text-center">{new Date(c.createdAt).toLocaleString()}</td>
 
                           <td className="text-center align-middle">
                             <div className="btn-group align-top ">

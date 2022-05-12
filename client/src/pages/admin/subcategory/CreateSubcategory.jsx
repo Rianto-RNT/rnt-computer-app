@@ -159,7 +159,7 @@ const CreateSubcategory = () => {
                       <tbody key={s._id}>
                         <tr>
                           <td>{s.name}</td>
-                          <td className="text-center">{s.createdAt}</td>
+                          <td className="text-center">{new Date(s.createdAt).toLocaleString()}</td>
 
                           <td className="text-center align-middle">
                             <div className="btn-group align-top ">

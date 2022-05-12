@@ -22,13 +22,13 @@ const ProductCreateForm = ({
           <div className="card">
             <div className="card-body">
               <div className="row mb-4">
-                <label className="col-md-3 form-label">Product Name :</label>
+                <label className="col-md-3 form-label">Product Title :</label>
                 <div className="col-md-9">
                   <input
                     type="text"
                     name="title"
                     className="form-control"
-                    placeholder="Product Name"
+                    placeholder="Product Title"
                     value={title}
                     onChange={handleChange}
                   />
