@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Slider, Checkbox, Button, Radio } from "antd";
 import { getProductByCount } from "../services/product";
 import ProductCard from "../components/cards/ProductCard";
 import LoaderCard from "../components/cards/LoaderCard";
@@ -10,7 +12,11 @@ import SubcategoryList from "../components/cards/SubcategoryList";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [price, setPrice] = useState([0, 0]);
+  const [ok, setOk] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  let dispatch = useDispatch();
 
   useEffect(() => {
     loadAllProduct();
@@ -25,6 +31,19 @@ const Home = () => {
     });
   };
 
+  const handleSlider = (value) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+
+    setPrice(value);
+
+    setTimeout(() => {
+      setOk(!ok);
+    }, 300);
+  };
+
   return (
     // <div className="main-content app-content mt-0">
     <div className="side-app">
@@ -33,8 +52,6 @@ const Home = () => {
         {/* <!-- PAGE-HEADER --> */}
         <div className="page-header pt-5">
           <div className="col-xl-12">
-            
-
             {/* CAROUSEL */}
             <HomeBanner HomeBanner={HomeBanner} />
             {/* END OF CROUSEL */}
@@ -56,7 +73,6 @@ const Home = () => {
           <div className="col-xl-3 col-lg-4">
             <div className="row">
               <div className="col-md-12 col-lg-12">
-                
                 <CategoryList />
 
                 <SubcategoryList />
@@ -65,30 +81,26 @@ const Home = () => {
                   <div className="card-header">
                     <div className="card-title">Price Range</div>
                   </div>
+
                   <div className="card-body">
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">Upto $500</span>
-                    </label>
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">$500 - $1000</span>
-                    </label>
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">$1000 - $1500</span>
-                    </label>
-                    <label className="custom-control custom-radio mb-0 mt-1">
-                      <input type="radio" className="custom-control-input" name="example-radios" value="option1" />
-                      <span className="custom-control-label">Over $2000</span>
-                    </label>
                     <div className="d-flex">
                       <div className="card-body px-0">
-                        <div id="mySlider"></div>
+                        <Slider
+                          tipFormatter={(v) => `Rp. ${v}`}
+                          range={true}
+                          value={price}
+                          formatter={(value) => `$ ${value}`.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g), ",")}
+                          parser={(value) => value.replace(new RegExp(/\$\s?|(,*)/g), "")}
+                          defaultValue={1000}
+                          onChange={handleSlider}
+                          max="50000000"
+                          tooltipVisible
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="card">
                   <div className="card-header">
                     <h3 className="card-title">Colors</h3>
@@ -210,84 +222,6 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="card">
-                  <div className="card-header">
-                    <div className="card-title">Top Product</div>
-                  </div>
-                  <div className="card-body">
-                    <div className="">
-                      <div className="d-flex overflow-visible">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/8.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">
-                            Hand Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star-half-o"></i>
-                            <i className="fe fe-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <div className="">
-                      <div className="d-flex overflow-visible">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/8.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">
-                            Hand Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star-half-o"></i>
-                            <i className="fe fe-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <div className="">
-                      <div className="d-flex overflow-visible">
-                        <img
-                          className="avatar bradius avatar-xl me-4 p-2 bg-white border"
-                          src="../src/assets/images/pngs/8.png"
-                          alt="avatar-img"
-                        />
-                        <div className="media-body valign-middle">
-                          <a className="fw-semibold text-dark" href="#!">
-                            Hand Bag
-                          </a>
-                          <div className="mb-1 text-warning">
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star"></i>
-                            <i className="fe fe-star-half-o"></i>
-                            <i className="fe fe-star-o"></i>
-                          </div>
-                          <h5 className="fw-bold">$345</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -349,7 +283,6 @@ const Home = () => {
                   </div>
                 )}
               </div>
-              
             </div>
             {/* <!-- COL-END --> */}
           </div>
