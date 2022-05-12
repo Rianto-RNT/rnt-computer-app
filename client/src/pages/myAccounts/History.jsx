@@ -26,42 +26,40 @@ const History = () => {
     });
 
   const showOrderInTable = (order) => (
-    <div className="card">
-      <div className="e-table px-5 pb-5">
-        <div className="table-responsive table-lg">
-          <table className="table border-top table-bordered mb-0">
-            <thead className="thead-light">
-              <tr>
-                <th className="text-center">Title</th>
-                <th className="text-center">Price</th>
-                <th className="text-center">Brand</th>
-                <th className="text-center">Color</th>
-                <th className="text-center">Count</th>
-                <th className="text-center">Shipping</th>
+    <div className="e-table px-5 pb-5">
+      <div className="table-responsive table-lg">
+        <table className="table border-top table-bordered mb-0">
+          <thead className="thead-light">
+            <tr>
+              <th className="text-center">Title</th>
+              <th className="text-center">Price</th>
+              <th className="text-center">Brand</th>
+              <th className="text-center">Color</th>
+              <th className="text-center">Count</th>
+              <th className="text-center">Shipping</th>
+            </tr>
+          </thead>
+          <tbody>
+            {order.products.map((p, i) => (
+              <tr key={i}>
+                <td>
+                  <b>{p.product.title}</b>
+                </td>
+                <td className="text-end">Rp. {p.product.price}</td>
+                <td className="text-center">{p.product.brand}</td>
+                <td className="text-center">{p.color}</td>
+                <td className="text-center">{p.count}</td>
+                <td className="text-center">
+                  {p.product.shipping === "Yes" ? (
+                    <i className="fe fe-check-circle text-success"></i>
+                  ) : (
+                    <i className="fe fe-x-circle text-danger"></i>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {order.products.map((p, i) => (
-                <tr key={i}>
-                  <td>
-                    <b>{p.product.title}</b>
-                  </td>
-                  <td>{p.product.price}</td>
-                  <td>{p.product.brand}</td>
-                  <td>{p.color}</td>
-                  <td>{p.count}</td>
-                  <td>
-                    {p.product.shipping === "Yes" ? (
-                      <CheckCircleOutlined style={{ color: "green" }} />
-                    ) : (
-                      <CloseCircleOutlined style={{ color: "red" }} />
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
@@ -120,7 +118,14 @@ const History = () => {
 
           <div className="card">
             <div className="card-header"> {orders.length > 0 ? <h4>User Purchase orders</h4> : <h4>User Purchase orders</h4>} </div>
+
             <span>{showEachOrders()}</span>
+
+            <div className="card-footer">
+              <div className="row">
+                <span className="text-center">*** - Happy Shopping - ***</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

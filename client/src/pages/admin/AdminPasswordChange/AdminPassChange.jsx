@@ -12,6 +12,7 @@ const AdminPassChange = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    window.scrollTo(0, 0);
 
     await auth.currentUser
       .updatePassword(password)
