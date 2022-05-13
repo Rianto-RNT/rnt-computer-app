@@ -107,10 +107,10 @@ const History = () => {
             <div>
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <Link to={"/my-account/history"}>Invoice</Link>
+                  <Link to={"/my-account/history"}>User History</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  History
+                  My Purchase Order
                 </li>
               </ol>
             </div>

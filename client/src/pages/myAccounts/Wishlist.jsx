@@ -45,7 +45,7 @@ const Wishlist = () => {
               <div>
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <Link to={"/my-account/wishlist"}>My Wishlist</Link>
+                    <Link to={"/my-account/wishlist"}>User History</Link>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Wishlist
