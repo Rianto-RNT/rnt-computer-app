@@ -84,9 +84,9 @@ const Wishlist = () => {
                     </div>
                     <div className="card-body pt-0">
                       <div className="product-content text-center">
-                        <h1 className="title fw-bold fs-18">
-                          <Link to={`/product/${p.slug}`}>{p.title}</Link>
-                        </h1>
+                        <h6 className="title fw-bold fs-14" numberofline={2}>
+                          <Link to={`/product/${p.slug}`}>{p.title.length < 35 ? `${p.title}` : `${p.title.substring(0, 50)}...`}</Link>
+                        </h6>
                         <div className="mb-2 text-warning">
                           {p && p.ratings && p.ratings.length > 0 ? productAverageRatings(p) : "No Ratings Found"}
                         </div>
