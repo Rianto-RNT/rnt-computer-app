@@ -36,19 +36,13 @@ const CategoryHome = ({ match }) => {
             </div>
           </div>
 
-          {products.map((p) => (
-            <div className="row" key={p._id}>
-              <div className="col-sm-2 col-xl-3">
-                <div className="card">
-                  <div className="card-body h-100">
-                    <div className="product-grid6">
-                      <ProductCard product={p} />
-                    </div>
-                  </div>
-                </div>
+          <div className="row row-cards">
+            {products.map((p) => (
+              <div className="col-sm-2 col-xl-3" key={p._id}>
+                <ProductCard product={p} />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

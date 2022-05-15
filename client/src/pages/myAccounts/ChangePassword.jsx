@@ -69,6 +69,7 @@ const ChangePassword = () => {
               </ol>
             </div>
           </div>
+          
           <div className="card">
             <div className="card-header">New Password</div>
             <div className="card-body">{changePasswordForm()}</div>
