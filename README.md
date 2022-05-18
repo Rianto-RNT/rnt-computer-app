@@ -495,17 +495,27 @@ Please enjoy and feel free to share your opinion, constructive criticism, or com
 
 > /admin/product/:slug
 
-## Route Structure Server
+## Route Structure Server Side
 
-> /Home
+> /admin/orders
 
-> /login
+> /create-or-update-user
 
-> /register
+> /current-user
 
-> /forgotpassword
+> /current-admin
 
-> /complete/registration
+> /category
+
+> /subcategory
+
+> /coupon
+
+> /product
+
+> /create-payment-intent
+
+> /user
 
 # Acknowledgement
 
