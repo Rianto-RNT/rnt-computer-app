@@ -400,10 +400,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - Successful payment
   - show discount and coupon applied in frontend
   - empty user cart when create order
-  - disable button / Out of stock when quantity unavailabel or equal to zero 
+  - disable button / Out of stock when quantity unavailabel or equal to zero
   - User orders in purchase history
   - Purchase order in card (user history)
-  - Show user orders product list table in user history 
+  - Show user orders product list table in user history
   - Show user Payment info in User History page
   - Invoice PDF view and Download invoice PDF
   - Invoice Component
@@ -414,11 +414,10 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
   - user Wishlist services in frontend
   - Wishlist In Frontend (user)
   - (COD) Cash On Delivery for payment option
-  - create cash on delivery order or redirect to payment page 
+  - create cash on delivery order or redirect to payment page
   - Cash on delivery order success, coupon apply and status order
   - Code splitting wit lazy and suspense
-  - Admin password change in admin dashboard 
-
+  - Admin password change in admin dashboard
 
 ## TODO to fix
 
@@ -450,17 +449,51 @@ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwe
 Feel free to email me at rianto.rnt@gmail.com if you run into any issues or have questions, ideas or concerns.
 Please enjoy and feel free to share your opinion, constructive criticism, or comments about my work. Thank you! 🙂
 
-## Route Structure Client
+## Route Structure Client Side
 
-> /Home
+> / (Home Page)
+
+> /cart
+
+> /checkout
+
+> /payment
+
+> /category/:slug
+
+> /subcategory/:slug
 
 > /login
 
 > /register
 
-> /forgotpassword
+> /complete-registration
 
-> /complete/registration
+> /forgot-password
+
+> /product/:slug
+
+> /my-account/history
+
+> /my-account/wishlish
+
+> /admin/dashboard
+
+> /admin/category
+
+> /admin/category/:slug
+
+> /admin/subcategory
+
+> /admin/coupon
+
+> /admin/password
+
+> /admin/product
+
+> /admin/products
+
+> /admin/product/:slug
 
 ## Route Structure Server
 
