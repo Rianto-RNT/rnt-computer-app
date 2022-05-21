@@ -29,5 +29,7 @@ exports.createCoupon = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/coupon/:couponId
 // @access  Private / Admin
 exports.deleteCoupon = asyncHandler(async (req, res, next) => {
-  res.json(await Coupon.findByIdAndDelete(req.params.couponId).exec());
+  const coupon = await Coupon.findByIdAndDelete(req.params.couponId).exec();
+
+  res.status(200).json({ success: true, data: {} });
 });

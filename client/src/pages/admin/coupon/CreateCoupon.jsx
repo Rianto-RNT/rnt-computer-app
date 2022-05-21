@@ -91,7 +91,7 @@ const CreateCoupon = () => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Coupon Name"
+                        placeholder="Minimum 6 character length..."
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         autoFocus

@@ -85,7 +85,7 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
   if (!product) {
     return next(
       new ErrorResponse(
-        `Failed! Product with ${req.body.slug} not found. Please select correct value.`,
+        `Failed! Product with ${req.params.slug} not found. Please select correct value.`,
         400
       )
     );
