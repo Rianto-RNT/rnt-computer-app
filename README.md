@@ -21,15 +21,15 @@
 
 ## Deployed Version
 
-Live demo (Feel free to visit) 👉 : https://rian-bootcamp.herokuapp.com/
+Live demo (Feel free to visit) 👉 : https://rnt-computer-app.herokuapp.com/
 
 ## API Usage
 
 Check:
 
-[Bootcamp Booking API Documentation Postman](https://documenter.getpostman.com/view/16994323/UVkiSJNz)
+[RNT Computer App API Documentation Postman](https://documenter.getpostman.com/view/16994323/Uyxoi4ag)
 
-[Bootcamp Booking API Documentation Swagger](https://app.swaggerhub.com/apis-docs/rnt-development-one/bootcamp-booking_api/1.0)
+[RNT Computer App API Documentation Swagger](https://app.swaggerhub.com/apis-docs/rnt-development-one/bootcamp-booking_api/1.0)
 
 for more info.
 
