@@ -46,8 +46,8 @@ const Orders = ({ orders, handleStatusChange }) => {
   return (
     <>
       {orders.map((order) => (
-        <div className="card">
-          <div className="card-body" key={order._id}>
+        <div className="card" key={order._id}>
+          <div className="card-body" >
             <ShowPaymentInfo order={order} showStatus={false} />
 
             <div className="col-xl-6 col-lg-12 float-end">
