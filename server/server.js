@@ -14,14 +14,23 @@ dotenv.config({ path: './config/config.env' });
 //app
 const app = express();
 
-//Connect DB
+// //Connect to Local DB
+// mongoose
+//   .connect(process.env.DATABASE, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log(`MongoDB Local. Connected.`.cyan.underline.bold))
+//   .catch((err) => console.log('MongoDB Local Connection error', err));
+
+//Connect to cloud DB
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log(`MongoDB connected`.cyan.underline.bold))
-  .catch((err) => console.log('MongoDB Connection error', err));
+  .then(() => console.log(`MongoDB Cloud. Connected.`.cyan.underline.bold))
+  .catch((err) => console.log('MongoDB Cloud. Connection error', err));
 
 // Middleware
 app.use(morgan('dev'));
