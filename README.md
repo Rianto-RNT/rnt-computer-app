@@ -21,15 +21,13 @@
 
 ## Deployed Version
 
-Live demo (Feel free to visit) 👉 : https://rnt-computer-app.herokuapp.com/
+Live demo (Feel free to visit) 👉 : https://rnt-computer.herokuapp.com/
 
 ## API Usage
 
 Check:
 
 [RNT Computer App API Documentation Postman](https://documenter.getpostman.com/view/16994323/Uyxoi4ag)
-
-[RNT Computer App API Documentation Swagger](https://app.swaggerhub.com/apis-docs/rnt-development-one/bootcamp-booking_api/1.0)
 
 for more info.
 
@@ -38,14 +36,14 @@ for more info.
 The website is deployed with git into heroku. Below are the steps taken:
 
 ```
-git init
-git add -A
-git commit -m "Commit message"
-heroku login
-heroku create
-heroku config:set CONFIG_KEY=CONFIG_VALUE
-git push heroku master
-heroku open
+$  git init
+$  heroku login
+$  heroku create <heroku_app_name> --buildpack https://github.com/mars/create-react-app-buildpack.git
+$  heroku git:remote -a <heroku_app_name>
+$  git add -A
+$  git commit -m "Commit message"
+$  git push heroku main
+$  heroku open
 ```
 
 ## Installation
@@ -97,8 +95,7 @@ npx -p npm@6 npm i --legacy-peer-deps
 - [Postman](https://www.getpostman.com/) - API testing
 - [Git](https://git-scm.com) - Open source distributed version control system
 - [Cloudinary](https://cloudinary.com) - Effortlessly optimize, transform, upload and manage your cloud's assets.
-- [Stripe](hhttps://stripe.com/) - Online Payment Processing API payment gateway
-- [MapQuest Dev API](https://developer.mapquest.com) - Free online web mapping service
+- [Stripe](https://stripe.com/) - Online Payment Processing API payment gateway
 - [Heroku](https://www.heroku.com/) - Cloud platform
 - [Digital Ocean](https://www.digitalocean.com) - Cloud platform
 
@@ -119,6 +116,7 @@ npx -p npm@6 npm i --legacy-peer-deps
 - [eslint-plugin-prettier](https://github.com/mysticatea/eslint-plugin-node)
 - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
 - [prettier](https://github.com/prettier/prettier)
+- [webpack](https://github.com/webpack/webpack)
 - [webpack](https://github.com/webpack/webpack)
 
 ## NPM Packages Backend Development
