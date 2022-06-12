@@ -198,11 +198,11 @@ const StripeCheckout = ({ history }) => {
                     <div className="card-body">
                       <div className="text-wrap">
                         <span className={succeeded ? "result-message" : "result-message hidden"}>
-                          <div class="alert alert-success alert-dismissible fade show " role="alert">
-                            <span class="alert-inner--icon">
-                              <i class="fe fe-thumbs-up"></i>
+                          <div className="alert alert-success alert-dismissible fade show " role="alert">
+                            <span className="alert-inner--icon">
+                              <i className="fe fe-thumbs-up"></i>
                             </span>
-                            <span class="alert-inner--text">
+                            <span className="alert-inner--text">
                               <strong>Payment Successful.</strong> <Link to="/my-account/history">See it in your purchase history.</Link>
                             </span>
                           </div>
