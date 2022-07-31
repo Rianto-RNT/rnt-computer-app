@@ -1,4 +1,4 @@
-[![](https://github.com/Rianto-RNT/rnt-computer-app/tree/main/client/src/assets/images/overview/project-5.jpg)](https://github.com/Rianto-RNT/rnt-portfolio-template)
+[![](https://github.com/Rianto-RNT/rnt-computer-app/blob/main/client/src/assets/images/overview/project-5.jpg)](https://github.com/Rianto-RNT/rnt-computer-app)
 
 <h1 align="center">
   <br>
