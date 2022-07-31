@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-
+import "swiper/swiper-bundle.css";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
