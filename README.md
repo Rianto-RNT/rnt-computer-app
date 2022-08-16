@@ -53,33 +53,33 @@ $  heroku open
 You can fork the app or you can git-clone the app into your local machine. Once done that, please install all the dependencies by running
 
 ```sh
-npx -p npm@6 npm i --legacy-peer-deps
- npm i
- npm start
+$ npx -p npm@6 npm i --legacy-peer-deps
+$ npm i
+$ npm start
 ```
 
 ## Run App in Development for client / React
 
 ```sh
- npm start
+ $ npm start
 ```
 
 ## Run App in Development for Server / Node
 
 ```sh
- npm run dev
+ $ npm run dev
 ```
 
 ## Import Data to Database
 
 ```sh
- node seeder -import
+$ node seeder -import
 ```
 
 ## Import Data to Database
 
 ```sh
- node seeder -destroy
+$ node seeder -destroy
 ```
 
 ## Build With
@@ -189,7 +189,7 @@ npx -p npm@6 npm i --legacy-peer-deps
 - Setup Server and Install Dependencies
 
 ```sh
-npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwebtoken nodemon dotenv
+$ npm i express body-parser mongoose cors morgan express-jwt firebase-admin jsonwebtoken nodemon dotenv
 ```
 
 - Connect to NoSQL Database
